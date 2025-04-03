@@ -44,7 +44,7 @@ jobs:
       - name: Install semantic-release and plugins
         run: |
           if [ ! -d "node_modules/@semantic-release" ]; then
-            bun add -D semantic-release @semantic-release/changelog @semantic-release/git
+            bun add -D semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/npm
           fi
 
       # Step 6: Run semantic-release

@@ -1,3 +1,17 @@
+## [1.0.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.0...v1.0.1) (2025-04-03)
+
+
+### Bug Fixes
+
+* **release:** update permissions in release workflow for write access ([fc86d31](https://github.com/LordCrainer/adaptcv-frontend/commit/fc86d31ec63fa68fbc8d1679a0b0c81740c95340))
+
+## [1.0.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.0...v1.0.1) (2025-04-03)
+
+
+### Bug Fixes
+
+* **release:** update permissions in release workflow for write access ([fc86d31](https://github.com/LordCrainer/adaptcv-frontend/commit/fc86d31ec63fa68fbc8d1679a0b0c81740c95340))
+
 # 1.0.0 (2025-04-03)
 
 

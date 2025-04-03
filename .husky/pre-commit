@@ -1,39 +1,39 @@
-#!/bin/bash
-# 1. Verificar cambios remotos
-git fetch origin
+# #!/bin/bash
+# # 1. Verificar cambios remotos
+# git fetch origin
 
-if ! git diff --quiet HEAD @{u}; then
-  echo "🔴 Cambios remotos detectados:"
-  git --no-pager log --oneline HEAD..origin/main
+# if ! git diff --quiet HEAD @{u}; then
+#   echo "🔴 Cambios remotos detectados:"
+#   git --no-pager log --oneline HEAD..origin/main
   
-  # 2. Stash de cambios locales (incluyendo unstaged)
-  git stash push --include-untracked --message "Auto-stash pre-pull"
+#   # 2. Stash de cambios locales (incluyendo unstaged)
+#   git stash push --include-untracked --message "Auto-stash pre-pull"
   
-  # 3. Intentar pull con rebase (más seguro que merge)
-  if ! git pull; then
-    echo "❌ Conflicto detectado al hacer pull --rebase:"
-    echo "   - Resuelve los conflictos manualmente"
-    echo "   - Luego ejecuta: git rebase --continue"
-    echo "   - Finalmente recupera cambios con: git stash pop"
-    exit 1
-  fi
+#   # 3. Intentar pull con rebase (más seguro que merge)
+#   if ! git pull; then
+#     echo "❌ Conflicto detectado al hacer pull --rebase:"
+#     echo "   - Resuelve los conflictos manualmente"
+#     echo "   - Luego ejecuta: git rebase --continue"
+#     echo "   - Finalmente recupera cambios con: git stash pop"
+#     exit 1
+#   fi
   
-  # 4. Reaplicar cambios locales solo si el stash existe
-  if git stash list | grep -q "Auto-stash pre-pull"; then
-    if ! git stash pop; then
-      echo "⚠️  Conflicto al reaplicar tus cambios locales:"
-      echo "   - Resuelve los conflictos manualmente en los archivos mencionados"
-      echo "   - Luego marca como resueltos con: git add [archivos]"
-      exit 1
-    else 
-      echo "✅ Cambios locales reaplicados con éxito."
-    fi
-  fi
+#   # 4. Reaplicar cambios locales solo si el stash existe
+#   if git stash list | grep -q "Auto-stash pre-pull"; then
+#     if ! git stash pop; then
+#       echo "⚠️  Conflicto al reaplicar tus cambios locales:"
+#       echo "   - Resuelve los conflictos manualmente en los archivos mencionados"
+#       echo "   - Luego marca como resueltos con: git add [archivos]"
+#       exit 1
+#     else 
+#       echo "✅ Cambios locales reaplicados con éxito."
+#     fi
+#   fi
   
-  # 5. Informar éxito
-  echo "✅ Sincronización completada. Ahora puedes hacer commit:"
-  git status --short
-else 
-  echo "✅ No hay cambios remotos. Puedes continuar con tu commit."
-fi
-  exit 0
+#   # 5. Informar éxito
+#   echo "✅ Sincronización completada. Ahora puedes hacer commit:"
+#   git status --short
+# else 
+#   echo "✅ No hay cambios remotos. Puedes continuar con tu commit."
+# fi
+#   exit 0

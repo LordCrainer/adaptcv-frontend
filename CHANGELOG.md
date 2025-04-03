@@ -1,3 +1,17 @@
+## [1.2.5](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.4...v1.2.5) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** improve pre-commit hook to handle local changes before pulling ([2acb31d](https://github.com/LordCrainer/adaptcv-frontend/commit/2acb31d75735c9438d957e137de977aca5aec058))
+
+## [1.2.5](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.4...v1.2.5) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** improve pre-commit hook to handle local changes before pulling ([2acb31d](https://github.com/LordCrainer/adaptcv-frontend/commit/2acb31d75735c9438d957e137de977aca5aec058))
+
 ## [1.2.4](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.3...v1.2.4) (2025-04-03)
 
 

@@ -1,3 +1,17 @@
+## [1.1.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.1.0...v1.1.1) (2025-04-03)
+
+
+### Bug Fixes
+
+* **release:** improve cache key and conditional installation for semantic-release ([861f099](https://github.com/LordCrainer/adaptcv-frontend/commit/861f099e51aec41e2adf6fd7ec0aad9a59dc5243))
+
+## [1.1.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.1.0...v1.1.1) (2025-04-03)
+
+
+### Bug Fixes
+
+* **release:** improve cache key and conditional installation for semantic-release ([861f099](https://github.com/LordCrainer/adaptcv-frontend/commit/861f099e51aec41e2adf6fd7ec0aad9a59dc5243))
+
 # [1.1.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.7...v1.1.0) (2025-04-03)
 
 

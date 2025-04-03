@@ -1,5 +1,3 @@
-# Realizar git pull antes del commit
-echo "Ejecutando git pull..."
 if ! git pull; then
   echo "Error: git pull falló. Por favor, resuelve los conflictos antes de continuar."
   exit 1

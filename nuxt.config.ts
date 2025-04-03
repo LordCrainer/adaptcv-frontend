@@ -12,6 +12,23 @@ export default defineNuxtConfig({
     'vuetify-nuxt-module',
     '@nuxtjs/i18n'
   ],
+  vuetify: {
+    vuetifyOptions: {
+      icons: {
+        defaultSet: 'mdi',
+        sets: [
+          {
+            name: 'mdi',
+            cdn: 'https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css'
+          },
+          {
+            name: 'fa',
+            cdn: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css'
+          }
+        ]
+      }
+    }
+  },
   i18n: {
     locales: [
       { code: 'en', name: 'English', iso: 'en-US', file: 'en-US.ts' },
@@ -19,6 +36,7 @@ export default defineNuxtConfig({
     ],
     defaultLocale: 'en',
     langDir: 'locales/',
-    lazy: true,
+    restructureDir: './',
+    lazy: true
   }
 })

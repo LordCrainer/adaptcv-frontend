@@ -1,3 +1,17 @@
+## [1.2.8](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.7...v1.2.8) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** remove remote changes verification from pre-commit hook ([f6dbbfc](https://github.com/LordCrainer/adaptcv-frontend/commit/f6dbbfce4bf48335bc661721b70ef0c69108057a))
+
+## [1.2.8](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.7...v1.2.8) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** remove remote changes verification from pre-commit hook ([f6dbbfc](https://github.com/LordCrainer/adaptcv-frontend/commit/f6dbbfce4bf48335bc661721b70ef0c69108057a))
+
 ## [1.2.7](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.6...v1.2.7) (2025-04-03)
 
 

@@ -1,26 +1,18 @@
-#!/bin/bash
+git fetch
 
-# 1. Stash de cambios locales (incluyendo no staged)
-git stash push --keep-index --include-untracked --message "Auto-stash by Husky"
-
-# 2. Intentar git pull con rebase
-if ! git pull; then
-  echo "❌ Error en git pull:"
-  echo "   - Resuelve los conflictos manualmente"
-  echo "   - Luego ejecuta: git rebase --continue"
-  echo "   - Recupera tus cambios con: git stash pop"
-  exit 1
-fi
-
-# 3. Recuperar cambios del stash si existen
-if git stash list | grep -q "Auto-stash by Husky"; then
-  if ! git stash pop; then
-    echo "⚠️  Conflicto al aplicar stash:"
-    echo "   - Resuelve los conflictos manualmente en los archivos mencionados"
-    echo "   - Luego completa el commit normalmente"
+if ! git diff --quiet HEAD @{u}; then
+  echo "🔴 Cambios remotos detectados"
+  
+  # Stash de cambios locales
+  git stash push -m "Auto-stash pre-pull"
+  
+  if ! git pull; then
+    echo "❌ Error en git pull:"
+    echo "   Resuelve los conflictos y luego:"
+    echo "   1. git rebase --continue"
+    echo "   2. git stash pop"
     exit 1
   fi
+  
+  git stash pop
 fi
-
-# 4. Continuar con el commit
-echo "✅ git pull completado. Cambios locales reaplicados. Continuando con el commit..."

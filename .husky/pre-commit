@@ -3,5 +3,4 @@ if ! git pull; then
   exit 1
 fi
 
-# Continuar con el commit si git pull fue exitoso
 echo "git pull completado con éxito. Continuando con el commit..."

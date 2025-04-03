@@ -25,11 +25,15 @@ if ! git diff --quiet HEAD @{u}; then
       echo "   - Resuelve los conflictos manualmente en los archivos mencionados"
       echo "   - Luego marca como resueltos con: git add [archivos]"
       exit 1
+    else 
+      echo "✅ Cambios locales reaplicados con éxito."
     fi
   fi
   
   # 5. Informar éxito
   echo "✅ Sincronización completada. Ahora puedes hacer commit:"
   git status --short
-  exit 0  # Sale del hook para que vuelvas a intentar el commit
+else 
+  echo "✅ No hay cambios remotos. Puedes continuar con tu commit."
 fi
+  exit 0

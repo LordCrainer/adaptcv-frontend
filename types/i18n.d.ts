@@ -10,7 +10,7 @@ interface TranslationKeys {
     privacyPolicy: string
     termsOfService: string
     email: string
-  },
+  }
   actions: {
     add: string
     edit: string
@@ -18,21 +18,42 @@ interface TranslationKeys {
     save: string
     cancel: string
     submit: string
-  },
-  cv: {
-    personalInformation: string
-    email: string
-    name: string
-    fullname: string
-    phone: string
-    address: string
-    skills: string
-    experience: string
-    education: string
-    languages: string
-    projects: string
-    certifications: string
-    summary: string
+  }
+  profile: {
+    personalInfo: {
+      title: string
+      fullname: string
+      professionalTitle: string
+      email: string
+      phone: string
+      address: string
+      description: string
+    }
+    experience: {
+      title: string
+      jobTitle: string
+      company: string
+      position: string
+      startDate: string
+      endDate: string
+      description: string
+    }
+    education: {
+      title: string
+      degree: string
+      institution: string
+      startDate: string
+      endDate: string
+    }
+    skills: {
+      title: string
+      skill: string
+    }
+    languages: {
+      title: string
+      language: string
+      level: string
+    }
   }
   login: {
     password: string

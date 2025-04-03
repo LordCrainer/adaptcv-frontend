@@ -35,20 +35,40 @@ export default {
     confirmPassword: 'Confirm Password',
     signUp: 'Sign Up'
   },
-  cv: {
-    name: 'Name',
-    personalInformation: 'Personal Information',
-    professionalTitle: 'Professional Title',
-    email: 'Email',
-    fullname: 'Full Name',
-    phone: 'Phone',
-    address: 'Address',
-    skills: 'Skills',
-    experience: 'Experience',
-    education: 'Education',
-    languages: 'Languages',
-    projects: 'Projects',
-    certifications: 'Certifications',
-    summary: 'Summary'
+  profile: {
+    personalInfo: {
+      title: 'Personal Information',
+      fullname: 'Full Name',
+      professionalTitle: 'Professional Title',
+      email: 'Email',
+      phone: 'Phone',
+      address: 'Address',
+      description: 'Description'
+    },
+    experience: {
+      jobTitle: 'Job Title',
+      title: 'Experience',
+      company: 'Company',
+      position: 'Position',
+      startDate: 'Start Date',
+      endDate: 'End Date',
+      description: 'Description'
+    },
+    education: {
+      title: 'Education',
+      degree: 'Degree',
+      institution: 'Institution',
+      startDate: 'Start Date',
+      endDate: 'End Date'
+    },
+    skills: {
+      title: 'Skills',
+      skill: 'Skill'
+    },
+    languages: {
+      title: 'Languages',
+      language: 'Language',
+      level: 'Level'
+    }
   }
 } as TranslationKeys

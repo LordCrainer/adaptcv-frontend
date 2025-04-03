@@ -1,3 +1,17 @@
+## [1.3.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.3.0...v1.3.1) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** improve pre-commit hook messages for better user feedback ([85df6eb](https://github.com/LordCrainer/adaptcv-frontend/commit/85df6eb3b2f2a761c68b8060a1680202960f9afa))
+
+## [1.3.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.3.0...v1.3.1) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** improve pre-commit hook messages for better user feedback ([85df6eb](https://github.com/LordCrainer/adaptcv-frontend/commit/85df6eb3b2f2a761c68b8060a1680202960f9afa))
+
 # [1.3.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.8...v1.3.0) (2025-04-03)
 
 

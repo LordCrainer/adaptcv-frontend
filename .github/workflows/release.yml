@@ -30,7 +30,7 @@ jobs:
           path: |
             ~/.bun/install/cache
             node_modules
-          key: ${{ runner.os }}-deps-${{ github.sha }}
+          key: ${{ runner.os }}-deps-${{ hashFiles('.releaserc') }}
           restore-keys: |
             ${{ runner.os }}-deps-
 
@@ -42,8 +42,10 @@ jobs:
 
       # Step 4: Install semantic-release and plugins
       - name: Install semantic-release and plugins
-        run: bun add -D semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/npm
-        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: |
+          if [ ! -d "node_modules/@semantic-release" ]; then
+            bun add -D semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/npm
+          fi
         
       # Step 5: Authenticate with GitHub Packages
       - name: Authenticate with GitHub Packages

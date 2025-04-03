@@ -1,3 +1,21 @@
+# [1.3.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.8...v1.3.0) (2025-04-03)
+
+
+### Features
+
+* **i18n:** add English and Spanish translations and configure i18n support ([9e9418a](https://github.com/LordCrainer/adaptcv-frontend/commit/9e9418aa4cf1e0a6385ec3a052f54b447c76e1bf))
+* **layout:** replace NuxtRouteAnnouncer and NuxtWelcome with NuxtLayout and NuxtPage ([239f2e1](https://github.com/LordCrainer/adaptcv-frontend/commit/239f2e10a82068213b57392d4815fe2f353ae3ee))
+* **package:** add publishConfig for GitHub npm registry ([57fd1b5](https://github.com/LordCrainer/adaptcv-frontend/commit/57fd1b54b73bdfe5be8f9bc7fd86a460e92b20ed))
+
+# [1.3.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.8...v1.3.0) (2025-04-03)
+
+
+### Features
+
+* **i18n:** add English and Spanish translations and configure i18n support ([9e9418a](https://github.com/LordCrainer/adaptcv-frontend/commit/9e9418aa4cf1e0a6385ec3a052f54b447c76e1bf))
+* **layout:** replace NuxtRouteAnnouncer and NuxtWelcome with NuxtLayout and NuxtPage ([239f2e1](https://github.com/LordCrainer/adaptcv-frontend/commit/239f2e10a82068213b57392d4815fe2f353ae3ee))
+* **package:** add publishConfig for GitHub npm registry ([57fd1b5](https://github.com/LordCrainer/adaptcv-frontend/commit/57fd1b54b73bdfe5be8f9bc7fd86a460e92b20ed))
+
 ## [1.2.8](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.7...v1.2.8) (2025-04-03)
 
 

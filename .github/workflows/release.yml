@@ -25,7 +25,7 @@ jobs:
       # Step 2: Cache node_modules
       - name: Cache node_modules
         uses: actions/cache@v3
-        id: cache-deps  # Identificador único para este cache
+        id: cache-deps # Identificador único para este cache
         with:
           path: |
             ~/.bun/install/cache
@@ -44,19 +44,12 @@ jobs:
       - name: Install semantic-release and plugins
         run: |
           if [ ! -d "node_modules/@semantic-release" ]; then
-            bun add -D semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/npm
+            bun add -D semantic-release @semantic-release/changelog @semantic-release/git
           fi
-        
-      # Step 5: Authenticate with GitHub Packages
-      - name: Authenticate with GitHub Packages
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.SAE_TOKEN }}" > ~/.npmrc
-          echo "@lordcrainer:registry=https://npm.pkg.github.com" >> ~/.npmrc 
 
       # Step 6: Run semantic-release
       - name: Semantic Release
         run: bunx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.SAE_TOKEN }} 
+          GITHUB_TOKEN: ${{ secrets.SAE_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.SAE_TOKEN }}
-

@@ -3,6 +3,10 @@
   "version": "1.2.8",
   "private": false,
   "type": "module",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",

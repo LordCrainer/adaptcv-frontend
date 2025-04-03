@@ -40,18 +40,18 @@ jobs:
         with:
           bun-version: 'latest'
 
-      # Step 3: Install semantic-release and plugins
+      # Step 4: Install semantic-release and plugins
       - name: Install release tools
         run: bun add -D semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/npm
         if: steps.bun-cache.outputs.cache-hit != 'true'
         
-      # Step 4: Authenticate with GitHub Packages
+      # Step 5: Authenticate with GitHub Packages
       - name: Authenticate with GitHub Packages
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.SAE_TOKEN }}" > ~/.npmrc
           echo "@lordcrainer:registry=https://npm.pkg.github.com" >> ~/.npmrc 
 
-      # Step 5: Run semantic-release
+      # Step 6: Run semantic-release
       - name: Semantic Release
         run: bunx semantic-release
         env:

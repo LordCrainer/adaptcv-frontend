@@ -1,3 +1,17 @@
+## [1.2.4](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.3...v1.2.4) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** enhance pre-commit hook to auto-stash and reapply local changes ([c40e35e](https://github.com/LordCrainer/adaptcv-frontend/commit/c40e35eea5091da935e3c2fff761602e01d412b4))
+
+## [1.2.4](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.3...v1.2.4) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** enhance pre-commit hook to auto-stash and reapply local changes ([c40e35e](https://github.com/LordCrainer/adaptcv-frontend/commit/c40e35eea5091da935e3c2fff761602e01d412b4))
+
 ## [1.2.3](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.2...v1.2.3) (2025-04-03)
 
 

@@ -1,3 +1,17 @@
+## [1.2.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.0...v1.2.1) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** remove shebang from pre-commit hook script ([cbf12ec](https://github.com/LordCrainer/adaptcv-frontend/commit/cbf12ecd4ea618bf66b1e37fec999b48dca0c41e))
+
+## [1.2.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.0...v1.2.1) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** remove shebang from pre-commit hook script ([cbf12ec](https://github.com/LordCrainer/adaptcv-frontend/commit/cbf12ecd4ea618bf66b1e37fec999b48dca0c41e))
+
 # [1.2.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.1.1...v1.2.0) (2025-04-03)
 
 

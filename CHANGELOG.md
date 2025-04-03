@@ -1,3 +1,19 @@
+## [1.0.3](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.2...v1.0.3) (2025-04-03)
+
+
+### Bug Fixes
+
+* **release:** optimize Bun cache configuration in release workflow ([c01af84](https://github.com/LordCrainer/adaptcv-frontend/commit/c01af84f0d5936e9994f2947c5956a8f2769033a))
+* **release:** update step numbers in release workflow for clarity ([981d73d](https://github.com/LordCrainer/adaptcv-frontend/commit/981d73dd1afb259c7eea753fdacb59f23a408f83))
+
+## [1.0.3](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.2...v1.0.3) (2025-04-03)
+
+
+### Bug Fixes
+
+* **release:** optimize Bun cache configuration in release workflow ([c01af84](https://github.com/LordCrainer/adaptcv-frontend/commit/c01af84f0d5936e9994f2947c5956a8f2769033a))
+* **release:** update step numbers in release workflow for clarity ([981d73d](https://github.com/LordCrainer/adaptcv-frontend/commit/981d73dd1afb259c7eea753fdacb59f23a408f83))
+
 ## [1.0.2](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.1...v1.0.2) (2025-04-03)
 
 

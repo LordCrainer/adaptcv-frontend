@@ -1,3 +1,17 @@
+## [1.0.6](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.5...v1.0.6) (2025-04-03)
+
+
+### Bug Fixes
+
+* **release:** format cache paths for consistency in release workflow ([9e377aa](https://github.com/LordCrainer/adaptcv-frontend/commit/9e377aa82f949314ba8188bcfb24018cdb8174b5))
+
+## [1.0.6](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.5...v1.0.6) (2025-04-03)
+
+
+### Bug Fixes
+
+* **release:** format cache paths for consistency in release workflow ([9e377aa](https://github.com/LordCrainer/adaptcv-frontend/commit/9e377aa82f949314ba8188bcfb24018cdb8174b5))
+
 ## [1.0.5](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.4...v1.0.5) (2025-04-03)
 
 

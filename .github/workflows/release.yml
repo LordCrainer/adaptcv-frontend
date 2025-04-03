@@ -23,6 +23,7 @@ jobs:
         with:
           bun-version: 'latest'
 
+      # Step 3: Install semantic-release and plugins
       - name: Install dependencies
         run: |
           bun add -D semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/npm

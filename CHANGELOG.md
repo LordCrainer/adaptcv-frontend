@@ -1,3 +1,21 @@
+## [1.2.7](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.6...v1.2.7) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** add blank line for improved readability in pre-commit hook ([34ffd7f](https://github.com/LordCrainer/adaptcv-frontend/commit/34ffd7f55d7f681e93adab859a29e296a7b940b8))
+* **husky:** remove unnecessary blank line in pre-commit hook ([5e6deec](https://github.com/LordCrainer/adaptcv-frontend/commit/5e6deecf438aeb20751cc4b175264c0a23d4ce73))
+* **husky:** simplify pre-commit hook by removing local changes stashing and using direct pull ([f02b216](https://github.com/LordCrainer/adaptcv-frontend/commit/f02b216eda4242e5b7a2eddc8f34d53ced4789b6))
+
+## [1.2.7](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.6...v1.2.7) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** add blank line for improved readability in pre-commit hook ([34ffd7f](https://github.com/LordCrainer/adaptcv-frontend/commit/34ffd7f55d7f681e93adab859a29e296a7b940b8))
+* **husky:** remove unnecessary blank line in pre-commit hook ([5e6deec](https://github.com/LordCrainer/adaptcv-frontend/commit/5e6deecf438aeb20751cc4b175264c0a23d4ce73))
+* **husky:** simplify pre-commit hook by removing local changes stashing and using direct pull ([f02b216](https://github.com/LordCrainer/adaptcv-frontend/commit/f02b216eda4242e5b7a2eddc8f34d53ced4789b6))
+
 ## [1.2.6](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.5...v1.2.6) (2025-04-03)
 
 

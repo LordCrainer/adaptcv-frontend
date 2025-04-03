@@ -1,3 +1,29 @@
+# [1.4.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.3.1...v1.4.0) (2025-04-03)
+
+
+### Features
+
+* **card:** add CardDefault component with customizable title, icon, and color ([3b41168](https://github.com/LordCrainer/adaptcv-frontend/commit/3b411681cbf052e6998b0a9e382d3cf51295ab20))
+* **i18n:** add comprehensive translation keys for actions, common terms, and CV details in English and Spanish locales ([a7bbbd3](https://github.com/LordCrainer/adaptcv-frontend/commit/a7bbbd3a823515062d728a7177966b151eea4933))
+* **i18n:** enhance translation keys for English and Spanish locales ([2306efd](https://github.com/LordCrainer/adaptcv-frontend/commit/2306efd6938b39b3ff7eda1f058ec617ee82eb65))
+* **i18n:** expand translation keys for actions, common terms, and CV details in English and Spanish locales ([b376581](https://github.com/LordCrainer/adaptcv-frontend/commit/b37658132b5ecfc39bb3be81fd1d21d9e912d42c))
+* **layout:** add Header and Footer components to default layout ([e4ce9f0](https://github.com/LordCrainer/adaptcv-frontend/commit/e4ce9f0a80a20f3f14bdc737dc875eb9e9a486a6))
+* **profile:** add components for user profile, education, work experience, skills, and languages ([4ecf726](https://github.com/LordCrainer/adaptcv-frontend/commit/4ecf726eee24a9a340765b5d0ce3169c6b346e71))
+* **vuetify:** add icon sets configuration for Material Design and Font Awesome ([0045121](https://github.com/LordCrainer/adaptcv-frontend/commit/0045121ba92c9a22a8742b062f0f82351f69cefa))
+
+# [1.4.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.3.1...v1.4.0) (2025-04-03)
+
+
+### Features
+
+* **card:** add CardDefault component with customizable title, icon, and color ([3b41168](https://github.com/LordCrainer/adaptcv-frontend/commit/3b411681cbf052e6998b0a9e382d3cf51295ab20))
+* **i18n:** add comprehensive translation keys for actions, common terms, and CV details in English and Spanish locales ([a7bbbd3](https://github.com/LordCrainer/adaptcv-frontend/commit/a7bbbd3a823515062d728a7177966b151eea4933))
+* **i18n:** enhance translation keys for English and Spanish locales ([2306efd](https://github.com/LordCrainer/adaptcv-frontend/commit/2306efd6938b39b3ff7eda1f058ec617ee82eb65))
+* **i18n:** expand translation keys for actions, common terms, and CV details in English and Spanish locales ([b376581](https://github.com/LordCrainer/adaptcv-frontend/commit/b37658132b5ecfc39bb3be81fd1d21d9e912d42c))
+* **layout:** add Header and Footer components to default layout ([e4ce9f0](https://github.com/LordCrainer/adaptcv-frontend/commit/e4ce9f0a80a20f3f14bdc737dc875eb9e9a486a6))
+* **profile:** add components for user profile, education, work experience, skills, and languages ([4ecf726](https://github.com/LordCrainer/adaptcv-frontend/commit/4ecf726eee24a9a340765b5d0ce3169c6b346e71))
+* **vuetify:** add icon sets configuration for Material Design and Font Awesome ([0045121](https://github.com/LordCrainer/adaptcv-frontend/commit/0045121ba92c9a22a8742b062f0f82351f69cefa))
+
 ## [1.3.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.3.0...v1.3.1) (2025-04-03)
 
 

@@ -1,2 +1,12 @@
 #!/usr/bin/env sh
-git pull
+. "$(dirname "$0")/_/husky.sh"
+
+# Realizar git pull antes del commit
+echo "Ejecutando git pull..."
+if ! git pull --rebase; then
+  echo "Error: git pull falló. Por favor, resuelve los conflictos antes de continuar."
+  exit 1
+fi
+
+# Continuar con el commit si git pull fue exitoso
+echo "git pull completado con éxito. Continuando con el commit..."

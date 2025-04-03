@@ -1,3 +1,17 @@
+## [1.2.6](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.5...v1.2.6) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** remove local changes stashing from pre-commit hook ([ae68857](https://github.com/LordCrainer/adaptcv-frontend/commit/ae688572754da1ce6bc2b34b33c639f2e150477d))
+
+## [1.2.6](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.5...v1.2.6) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** remove local changes stashing from pre-commit hook ([ae68857](https://github.com/LordCrainer/adaptcv-frontend/commit/ae688572754da1ce6bc2b34b33c639f2e150477d))
+
 ## [1.2.5](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.4...v1.2.5) (2025-04-03)
 
 

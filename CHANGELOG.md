@@ -1,3 +1,17 @@
+# [1.1.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.7...v1.1.0) (2025-04-03)
+
+
+### Features
+
+* **husky:** add pre-commit hook to pull latest changes and configure husky ([72cebea](https://github.com/LordCrainer/adaptcv-frontend/commit/72cebea99fe4d932005c4ed0df21f15c7bacede0))
+
+# [1.1.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.7...v1.1.0) (2025-04-03)
+
+
+### Features
+
+* **husky:** add pre-commit hook to pull latest changes and configure husky ([72cebea](https://github.com/LordCrainer/adaptcv-frontend/commit/72cebea99fe4d932005c4ed0df21f15c7bacede0))
+
 ## [1.0.7](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.6...v1.0.7) (2025-04-03)
 
 

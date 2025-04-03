@@ -23,14 +23,15 @@ jobs:
           token: ${{ secrets.SAE_TOKEN }}
 
       # Step 2: Set up Node.js
-      - name: Cache Bun dependencies
-        uses: actions/cache@v3
-        id: bun-cache
+      - uses: actions/cache@v3
+        id: cache-node-modules  # Identificador único para este cache
         with:
-          path: ~/.bun/install/cache
-          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
+          path: |
+            ~/.bun/install/cache  # Cache global de Bun
+            node_modules          # Dependencias locales
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('.releaserc') }}
           restore-keys: |
-            ${{ runner.os }}-bun-
+            ${{ runner.os }}-node-modules-
 
       # Step 3: Set up Bun
       - name: Install dependencies
@@ -41,7 +42,7 @@ jobs:
       # Step 4: Install semantic-release and plugins
       - name: Install semantic-release and plugins
         run: bun add -D semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/npm
-        if: steps.bun-cache.outputs.cache-hit != 'true'
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         
       # Step 5: Authenticate with GitHub Packages
       - name: Authenticate with GitHub Packages

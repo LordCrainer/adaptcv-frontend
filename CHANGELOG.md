@@ -1,3 +1,17 @@
+## [1.0.2](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.1...v1.0.2) (2025-04-03)
+
+
+### Bug Fixes
+
+* **release:** update release workflow to cache Bun dependencies and improve installation steps ([a1ddbd4](https://github.com/LordCrainer/adaptcv-frontend/commit/a1ddbd42a72b75f92caa9fc0c833e965c9dce04c))
+
+## [1.0.2](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.1...v1.0.2) (2025-04-03)
+
+
+### Bug Fixes
+
+* **release:** update release workflow to cache Bun dependencies and improve installation steps ([a1ddbd4](https://github.com/LordCrainer/adaptcv-frontend/commit/a1ddbd42a72b75f92caa9fc0c833e965c9dce04c))
+
 ## [1.0.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.0...v1.0.1) (2025-04-03)
 
 

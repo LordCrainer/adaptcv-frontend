@@ -1,3 +1,19 @@
+## [1.0.4](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.3...v1.0.4) (2025-04-03)
+
+
+### Bug Fixes
+
+* **release:** rename job from version_and_publish to version_publish for consistency ([e5457c6](https://github.com/LordCrainer/adaptcv-frontend/commit/e5457c6fec0d42fbb3f16eea3efc3e272ae8476c))
+* **release:** update cache configuration to include node_modules and improve clarity ([c43532c](https://github.com/LordCrainer/adaptcv-frontend/commit/c43532c3b9fc2e39036178eaf8ae39cddc0066a8))
+
+## [1.0.4](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.3...v1.0.4) (2025-04-03)
+
+
+### Bug Fixes
+
+* **release:** rename job from version_and_publish to version_publish for consistency ([e5457c6](https://github.com/LordCrainer/adaptcv-frontend/commit/e5457c6fec0d42fbb3f16eea3efc3e272ae8476c))
+* **release:** update cache configuration to include node_modules and improve clarity ([c43532c](https://github.com/LordCrainer/adaptcv-frontend/commit/c43532c3b9fc2e39036178eaf8ae39cddc0066a8))
+
 ## [1.0.3](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.0.2...v1.0.3) (2025-04-03)
 
 

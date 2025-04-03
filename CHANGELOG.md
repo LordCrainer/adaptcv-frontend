@@ -1,3 +1,17 @@
+## [1.2.3](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.2...v1.2.3) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** remove success message from pre-commit hook ([38de027](https://github.com/LordCrainer/adaptcv-frontend/commit/38de027d3d5881e54bd7390fbe6c3b9a1eaede82))
+
+## [1.2.3](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.2...v1.2.3) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** remove success message from pre-commit hook ([38de027](https://github.com/LordCrainer/adaptcv-frontend/commit/38de027d3d5881e54bd7390fbe6c3b9a1eaede82))
+
 ## [1.2.2](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.1...v1.2.2) (2025-04-03)
 
 

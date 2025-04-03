@@ -1,0 +1,43 @@
+name: Automate Release
+
+on:
+  push:
+    branches:
+      - main
+      - release/*
+
+jobs:
+  version_and_publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'  # Ajusta la versión de Node.js si es necesario
+          registry-url: 'https://npm.pkg.github.com/'
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Step 4: Authenticate with GitHub Packages
+      - name: Authenticate with GitHub Packages
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.SAE_TOKEN }}" > ~/.npmrc
+          echo "@lordcrainer:registry=https://npm.pkg.github.com" >> ~/.npmrc 
+
+      # Step 5: Run semantic-release
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.SAE_TOKEN }} 
+          NODE_AUTH_TOKEN: ${{ secrets.SAE_TOKEN }}
+

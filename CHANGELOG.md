@@ -1,3 +1,17 @@
+## [1.2.2](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.1...v1.2.2) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** remove unnecessary comment from pre-commit hook ([f619214](https://github.com/LordCrainer/adaptcv-frontend/commit/f61921427be364819446f465d6bf9846ee27b37d))
+
+## [1.2.2](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.1...v1.2.2) (2025-04-03)
+
+
+### Bug Fixes
+
+* **husky:** remove unnecessary comment from pre-commit hook ([f619214](https://github.com/LordCrainer/adaptcv-frontend/commit/f61921427be364819446f465d6bf9846ee27b37d))
+
 ## [1.2.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.2.0...v1.2.1) (2025-04-03)
 
 

@@ -9,6 +9,16 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/test-utils',
     '@pinia/nuxt',
-    'vuetify-nuxt-module'
-  ]
+    'vuetify-nuxt-module',
+    '@nuxtjs/i18n'
+  ],
+  i18n: {
+    locales: [
+      { code: 'en', name: 'English', iso: 'en-US', file: 'en-US.ts' },
+      { code: 'es', name: 'Spanish', iso: 'es-ES', file: 'es-ES.ts' }
+    ],
+    defaultLocale: 'en',
+    langDir: 'locales/',
+    lazy: true,
+  }
 })

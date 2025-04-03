@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# 1. Verificar cambios remotos
 git fetch origin
 
 if ! git diff --quiet HEAD @{u}; then

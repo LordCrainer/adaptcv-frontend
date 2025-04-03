@@ -1,3 +1,17 @@
+# [1.2.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.1.1...v1.2.0) (2025-04-03)
+
+
+### Features
+
+* **husky:** enhance pre-commit hook to perform git pull with conflict handling ([44af0f5](https://github.com/LordCrainer/adaptcv-frontend/commit/44af0f5366c7911034b1c2bbb44bbcd750dd627e))
+
+# [1.2.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.1.1...v1.2.0) (2025-04-03)
+
+
+### Features
+
+* **husky:** enhance pre-commit hook to perform git pull with conflict handling ([44af0f5](https://github.com/LordCrainer/adaptcv-frontend/commit/44af0f5366c7911034b1c2bbb44bbcd750dd627e))
+
 ## [1.1.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.1.0...v1.1.1) (2025-04-03)
 
 

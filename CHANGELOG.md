@@ -1,3 +1,12 @@
+# [1.5.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.4.0...v1.5.0) (2025-04-03)
+
+
+### Features
+
+* **i18n:** restructure translation keys for user profile, experience, education, skills, and languages ([ca78a0d](https://github.com/LordCrainer/adaptcv-frontend/commit/ca78a0d52218b0a1febb3b90b74107365fff9f80))
+* **i18n:** update translation keys for user profile components and improve layout responsiveness ([669b966](https://github.com/LordCrainer/adaptcv-frontend/commit/669b966f46ec8f9d55f24665cf2e0c419233cff0))
+* **release:** add @semantic-release/npm plugin for improved package management ([aa98cbd](https://github.com/LordCrainer/adaptcv-frontend/commit/aa98cbd15f94a5d271a35c5433e01e19edaef80f))
+
 # [1.4.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.3.1...v1.4.0) (2025-04-03)
 
 

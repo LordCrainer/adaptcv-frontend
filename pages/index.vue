@@ -1,22 +1,22 @@
 <template>
   <v-row>
-    <v-col cols="6">
+    <v-col cols="12" md="6">
       <CardDefault
-        :title="$t('cv.personalInformation')"
+        :title="$t('profile.personalInfo.title')"
         :icon="'mdi-account'"
         :color="'primary'">
         <UserProfile></UserProfile>
       </CardDefault>
     </v-col>
-    <v-col cols="6">
+    <v-col cols="12" md="6">
       <CardDefault
-        :title="$t('cv.workExperience')"
+        :title="$t('profile.experience.title')"
         :icon="'mdi-briefcase'"
         :color="'primary'">
         <WorkExperience></WorkExperience>
       </CardDefault>
     </v-col>
-    <v-col cols="6">
+    <v-col cols="12" md="6">
       <CardDefault
         :title="$t('cv.education')"
         :icon="'mdi-school'"
@@ -24,7 +24,7 @@
         <Education></Education>
       </CardDefault>
     </v-col>
-    <v-col cols="6">
+    <v-col cols="12" md="6">
       <CardDefault
         :title="$t('cv.skills')"
         :icon="'mdi-star'"
@@ -32,7 +32,7 @@
         <Skills></Skills>
       </CardDefault>
     </v-col>
-    <v-col cols="6">
+    <v-col cols="12" md="6">
       <CardDefault
         :title="$t('cv.languages')"
         :icon="'mdi-translate'"

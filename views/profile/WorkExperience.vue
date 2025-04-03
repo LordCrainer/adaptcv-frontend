@@ -1,42 +1,39 @@
 <template>
   <v-row>
     <v-col cols="12">
-      <h1>{{ $t('cv.workExperience') }}</h1>
-    </v-col>
-    <v-col cols="12">
       <v-form @submit.prevent="submitForm">
         <v-text-field
           v-model="formData.jobTitle"
           variant="outlined"
-          :label="$t('cv.jobTitle')"
+          :label="$t('profile.experience.jobTitle')"
+          placeholder="Ej: Software Engineer"
           required></v-text-field>
 
         <v-text-field
           v-model="formData.company"
-          :label="$t('cv.company')"
+          :label="$t('profile.experience.company')"
           variant="outlined"
+          placeholder="Ej: Tech Company"
           required></v-text-field>
 
         <v-text-field
           v-model="formData.startDate"
-          :label="$t('cv.startDate')"
+          :label="$t('profile.experience.startDate')"
           variant="outlined"
           type="date"></v-text-field>
 
         <v-text-field
           v-model="formData.endDate"
-          :label="$t('cv.endDate')"
+          :label="$t('profile.experience.endDate')"
           variant="outlined"
           type="date"></v-text-field>
 
         <v-textarea
           v-model="formData.description"
-          :label="$t('cv.description')"
-          variant="outlined"></v-textarea>
-
-        <v-btn type="submit" color="success">
-          {{ $t('actions.save') }}
-        </v-btn>
+          :label="$t('profile.experience.description')"
+          variant="outlined"
+          placeholder="Ej: A brief description of your work experience"
+          required></v-textarea>
       </v-form>
     </v-col>
   </v-row>

@@ -4,21 +4,21 @@
       <v-form @submit.prevent="submitForm">
         <v-text-field
           v-model="formData.name"
-          :label="$t('cv.fullname')"
+          :label="$t('profile.personalInfo.fullname')"
           placeholder="Ej: John Doe"
           variant="outlined"
           required></v-text-field>
 
         <v-text-field
           v-model="formData.professionalTitle"
-          :label="$t('cv.professionalTitle')"
+          :label="$t('profile.personalInfo.professionalTitle')"
           placeholder="Ej: Software Engineer"
           variant="outlined"
           required></v-text-field>
 
         <v-text-field
           v-model="formData.email"
-          :label="$t('cv.email')"
+          :label="$t('profile.personalInfo.email')"
           placeholder="Ej: example@example.com"
           variant="outlined"
           type="email"
@@ -26,16 +26,23 @@
 
         <v-text-field
           v-model="formData.phone"
-          :label="$t('cv.phone')"
+          :label="$t('profile.personalInfo.phone')"
           placeholder="Ej: +1234567890"
           variant="outlined"
           type="tel"></v-text-field>
 
         <v-text-field
           v-model="formData.address"
-          :label="$t('cv.address')"
+          :label="$t('profile.personalInfo.address')"
           placeholder="Ej: city, country"
           variant="outlined"></v-text-field>
+
+        <v-textarea
+          v-model="formData.description"
+          :label="$t('profile.personalInfo.description')"
+          variant="outlined"
+          placeholder="Ej: A brief description about yourself"
+          name="description"></v-textarea>
       </v-form>
     </v-col>
   </v-row>
@@ -50,10 +57,7 @@ const formData = ref({
   email: '',
   phone: '',
   address: '',
-  city: '',
-  state: '',
-  zip: '',
-  country: ''
+  description: ''
 })
 
 const submitForm = () => {

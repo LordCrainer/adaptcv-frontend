@@ -1,37 +1,30 @@
 <template>
   <v-row>
     <v-col cols="12">
-      <h1>{{ $t('cv.education') }}</h1>
-    </v-col>
-    <v-col cols="12">
       <v-form @submit.prevent="submitForm">
         <v-text-field
           v-model="formData.degree"
           variant="outlined"
-          :label="$t('cv.degree')"
+          :label="$t('profile.education.degree')"
           required></v-text-field>
 
         <v-text-field
           v-model="formData.institution"
-          :label="$t('cv.institution')"
+          :label="$t('profile.education.institution')"
           variant="outlined"
           required></v-text-field>
 
         <v-text-field
           v-model="formData.startDate"
-          :label="$t('cv.startDate')"
+          :label="$t('profile.education.startDate')"
           variant="outlined"
           type="date"></v-text-field>
 
         <v-text-field
           v-model="formData.endDate"
-          :label="$t('cv.endDate')"
+          :label="$t('profile.education.endDate')"
           variant="outlined"
           type="date"></v-text-field>
-
-        <v-btn type="submit" color="success">
-          {{ $t('actions.save') }}
-        </v-btn>
       </v-form>
     </v-col>
   </v-row>

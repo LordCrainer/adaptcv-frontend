@@ -1,31 +1,23 @@
 <template>
-  <v-card>
-    <v-container>
-      <v-row>
-        <v-col cols="12">
-          <h1>{{ $t('cv.languages') }}</h1>
-        </v-col>
-        <v-col cols="12">
-          <v-form @submit.prevent="submitForm">
-            <v-text-field
-              v-model="formData.language"
-              :label="$t('cv.language')"
-              required></v-text-field>
+  <v-row>
+    <v-col cols="12">
+      <v-form @submit.prevent="submitForm">
+        <v-text-field
+          v-model="formData.language"
+          :label="$t('profile.languages.language')"
+          placeholder="Ej: English"
+          variant="outlined"
+          required></v-text-field>
 
-            <v-select
-              v-model="formData.proficiency"
-              :items="proficiencyLevels"
-              :label="$t('cv.proficiency')"
-              required></v-select>
-
-            <v-btn type="submit" color="success">
-              {{ $t('actions.save') }}
-            </v-btn>
-          </v-form>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-card>
+        <v-select
+          v-model="formData.proficiency"
+          :items="proficiencyLevels"
+          variant="outlined"
+          :label="$t('profile.languages.level')"
+          required></v-select>
+      </v-form>
+    </v-col>
+  </v-row>
 </template>
 
 <script setup lang="ts">

@@ -25,14 +25,14 @@ jobs:
       # Step 2: Cache node_modules
       - name: Cache node_modules
         uses: actions/cache@v3
-        id: cache-node-modules  # Identificador único para este cache
+        id: cache-deps  # Identificador único para este cache
         with:
           path: |
             ~/.bun/install/cache
             node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('.releaserc') }}
+          key: ${{ runner.os }}-deps-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-node-modules-
+            ${{ runner.os }}-deps-
 
       # Step 3: Set up Bun
       - name: Install dependencies
@@ -43,7 +43,7 @@ jobs:
       # Step 4: Install semantic-release and plugins
       - name: Install semantic-release and plugins
         run: bun add -D semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/npm
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        if: steps.cache-deps.outputs.cache-hit != 'true'
         
       # Step 5: Authenticate with GitHub Packages
       - name: Authenticate with GitHub Packages

@@ -1,3 +1,14 @@
+# [1.7.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.6.0...v1.7.0) (2025-04-04)
+
+
+### Features
+
+* **card:** update CardDefault component layout and styling ([1a61f7d](https://github.com/LordCrainer/adaptcv-frontend/commit/1a61f7d865402f9ec70410d352d2eda5b9601e98))
+* **header:** add theme toggle functionality to Header component ([feac8f1](https://github.com/LordCrainer/adaptcv-frontend/commit/feac8f160baf839299ddab7c753ac9102757e9ff))
+* **layout:** create default layout with header and footer components ([ca00ed9](https://github.com/LordCrainer/adaptcv-frontend/commit/ca00ed9bd9c0c5eb41f59fe48870eaa8138af268))
+* **profile:** add validation rules for required fields in UserProfile and WorkExperience components ([ca6ab5b](https://github.com/LordCrainer/adaptcv-frontend/commit/ca6ab5b86b1ac9b8dc0b0b7f6fcfe1a5fc0b65f2))
+* **profile:** enhance UserProfile and WorkExperience components with improved layout and new summary field ([ab80940](https://github.com/LordCrainer/adaptcv-frontend/commit/ab80940c64bb56dd14ce65cef42111cd7241fac0))
+
 # [1.6.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.5.0...v1.6.0) (2025-04-04)
 
 

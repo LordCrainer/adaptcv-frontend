@@ -29,6 +29,7 @@
             :label="$t('profile.personalInfo.fullname')"
             placeholder="Ej: John Doe"
             variant="outlined"
+            :rules="[rules.required($t('profile.personalInfo.fullname'))]"
             required></v-text-field>
           <v-text-field
             v-model="formData.email"
@@ -100,6 +101,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+
+const { rules } = useRules()
 
 interface FormData {
   name: string

@@ -7,6 +7,7 @@
             v-model="formData.jobTitle"
             variant="outlined"
             :label="$t('profile.experience.jobTitle')"
+            :rules="[rules.required($t('profile.experience.jobTitle'))]"
             placeholder="Ej: Software Engineer"
             required></v-text-field>
         </v-col>
@@ -52,6 +53,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+
+const { rules } = useRules()
 
 const $editor = ref<DragonEditor>()
 

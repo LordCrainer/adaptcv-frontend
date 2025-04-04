@@ -6,7 +6,7 @@
     :color="color"
     :prepend-icon="icon">
     <template v-slot:title>
-      <span class="font-weight-black">{{ $t(`${title}`) }}</span>
+      <span class="font-weight-black">{{ title }}</span>
     </template>
     <v-card-text class="bg-white pt-4">
       <slot></slot>

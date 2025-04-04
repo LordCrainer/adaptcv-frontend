@@ -2,7 +2,7 @@
   <div>
     <v-form @submit.prevent="submitForm">
       <v-row>
-        <v-col md="6">
+        <v-col cols="12" md="6" class="py-1">
           <v-text-field
             v-model="formData.jobTitle"
             variant="outlined"
@@ -11,7 +11,7 @@
             placeholder="Ej: Software Engineer"
             required></v-text-field>
         </v-col>
-        <v-col md="6">
+        <v-col md="6" class="py-1">
           <v-text-field
             v-model="formData.company"
             :label="$t('profile.experience.company')"
@@ -19,8 +19,7 @@
             placeholder="Ej: Tech Company"
             required></v-text-field>
         </v-col>
-        <v-col class="px-4 py-0">
-          <v-row class="px-4 text-h6">Periodo de tiempo</v-row>
+        <v-col cols="12">
           <v-row>
             <v-col md="6">
               <v-text-field

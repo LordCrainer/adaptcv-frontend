@@ -16,13 +16,13 @@
             src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"></v-img>
         </v-card>
       </v-col>
-      <v-col cols="12" md="8">
-        <div>
-          <div class="pb-4">
-            <v-btn color="primary" variant="outlined" @click="fillInformation">
-              {{ $t('profile.personalInfo.fillInformation') }}
-            </v-btn>
-          </div>
+      <v-col cols="12" md="8" class="d-flex flex-column ga-2">
+        <div class="d-flex justify-end py-4">
+          <v-btn color="secondary" variant="outlined" @click="fillInformation">
+            {{ $t('profile.personalInfo.fillInformation') }}
+          </v-btn>
+        </div>
+        <div class="d-flex flex-column ga-2">
           <v-text-field
             prepend-inner-icon="mdi-account"
             v-model="formData.name"
@@ -48,8 +48,8 @@
             variant="outlined"
             type="tel"></v-text-field>
 
-          <v-row>
-            <v-col cols="12" md="6">
+          <v-row class="py-2">
+            <v-col cols="6" class="py-0">
               <v-text-field
                 v-model="formData.country"
                 :label="$t('profile.personalInfo.country')"
@@ -57,7 +57,7 @@
                 placeholder="Ej: country"
                 variant="outlined"></v-text-field>
             </v-col>
-            <v-col cols="12" md="6">
+            <v-col cols="6" class="py-0">
               <v-text-field
                 v-model="formData.city"
                 :label="$t('profile.personalInfo.city')"
@@ -67,9 +67,9 @@
             </v-col>
           </v-row>
         </div>
-        <v-divider class="pa-2"></v-divider>
-        <v-col class="pa-0">
+        <div>
           <v-select
+            clearable
             :label="$t('profile.personalInfo.areaProfession')"
             variant="outlined"
             prepend-inner-icon="mdi-briefcase"
@@ -84,17 +84,27 @@
             :items="professions"
             v-model="formData.profession"
             autocomplete></v-select>
-        </v-col>
-
-        <v-row class="d-flex justify-end ga-4 pa-4">
-          <v-btn color="primary" rounded variant="outlined" class="px-8">
-            {{ $t('actions.cancel') }}
-          </v-btn>
-          <v-btn color="primary" rounded @click="submitForm" class="px-8">
-            {{ $t('actions.save') }}
-          </v-btn>
-        </v-row>
+        </div>
       </v-col>
+      <v-col>
+        <v-textarea
+          v-model="formData.summary"
+          rounded="md"
+          flat
+          prepend-inner-icon="mdi-file-document"
+          :label="$t('profile.personalInfo.summary')"
+          variant="outlined"
+          placeholder="Ej: A brief summary about yourself"
+          name="summary"></v-textarea>
+      </v-col>
+    </v-row>
+    <v-row class="d-flex justify-end ga-4 pa-4">
+      <v-btn color="primary" rounded variant="outlined" class="px-8">
+        {{ $t('actions.cancel') }}
+      </v-btn>
+      <v-btn color="primary" rounded @click="submitForm" class="px-8">
+        {{ $t('actions.save') }}
+      </v-btn>
     </v-row>
   </v-form>
 </template>
@@ -113,6 +123,7 @@ interface FormData {
   address: string
   country?: string
   city?: string
+  summary?: string
 }
 
 const formData = ref<FormData>({
@@ -123,7 +134,8 @@ const formData = ref<FormData>({
   phone: '',
   address: '',
   country: '',
-  city: ''
+  city: '',
+  summary: ''
 })
 
 const professions = ref<string[]>([])

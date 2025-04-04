@@ -39,7 +39,8 @@ export default {
     personalInfo: {
       title: 'Personal Information',
       fullname: 'Full Name',
-      professionalTitle: 'Professional Title',
+      areaProfession: 'Area of Profession',
+      profession: 'Profession',
       email: 'Email',
       phone: 'Phone',
       address: 'Address',

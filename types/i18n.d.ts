@@ -23,7 +23,8 @@ interface TranslationKeys {
     personalInfo: {
       title: string
       fullname: string
-      professionalTitle: string
+      areaProfession: string
+      profession: string
       email: string
       phone: string
       address: string

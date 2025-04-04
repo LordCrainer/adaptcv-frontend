@@ -33,17 +33,41 @@ export default {
     confirmPassword: 'Confirmar contraseña',
     signUp: 'Regístrate'
   },
-  cv: {
-    name: 'Nombre',
-    fullname: 'Nombre completo',
-    phone: 'Teléfono',
-    address: 'Dirección',
-    skills: 'Habilidades',
-    experience: 'Experiencia',
-    education: 'Educación',
-    languages: 'Idiomas',
-    projects: 'Proyectos',
-    certifications: 'Certificaciones',
-    summary: 'Resumen'
+  profile: {
+    education: {
+      title: 'Educación',
+      degree: 'Título',
+      institution: 'Institución',
+      startDate: 'Fecha de inicio',
+      endDate: 'Fecha de finalización'
+    },
+    experience: {
+      title: 'Experiencia',
+      jobTitle: 'Título del trabajo',
+      company: 'Compañía',
+      position: 'Posición',
+      startDate: 'Fecha de inicio',
+      endDate: 'Fecha de finalización',
+      description: 'Descripción'
+    },
+    personalInfo: {
+      title: 'Información personal',
+      fullname: 'Nombre completo',
+      areaProfession: 'Área de profesión',
+      profession: 'Profesión',
+      email: 'Correo electrónico',
+      phone: 'Teléfono',
+      address: 'Dirección',
+      description: 'Descripción'
+    },
+    skills: {
+      title: 'Habilidades',
+      skill: 'Habilidad'
+    },
+    languages: {
+      title: 'Idiomas',
+      language: 'Idioma',
+      level: 'Nivel'
+    }
   }
 } as TranslationKeys

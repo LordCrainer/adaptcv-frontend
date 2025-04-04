@@ -1,42 +1,37 @@
 <template>
   <v-row>
-    <v-col cols="12" md="6">
-      <CardDefault
-        :title="$t('profile.personalInfo.title')"
-        :icon="'mdi-account'"
-        :color="'primary'">
+    <v-col cols="12">
+      <CardDefault :title="$t('profile.personalInfo.title')">
         <UserProfile></UserProfile>
       </CardDefault>
     </v-col>
-    <v-col cols="12" md="6">
-      <CardDefault
-        :title="$t('profile.experience.title')"
-        :icon="'mdi-briefcase'"
-        :color="'primary'">
+
+    <v-col cols="12">
+      <CardDefault :title="$t('profile.personalInfo.aboutMe')">
+        <AboutMe></AboutMe>
+      </CardDefault>
+    </v-col>
+
+    <v-col cols="12">
+      <CardDefault :title="$t('profile.experience.title')">
         <WorkExperience></WorkExperience>
       </CardDefault>
     </v-col>
-    <v-col cols="12" md="6">
-      <CardDefault
-        :title="$t('cv.education')"
-        :icon="'mdi-school'"
-        :color="'primary'">
+
+    <v-col cols="12">
+      <CardDefault :title="$t('profile.education.title')">
         <Education></Education>
       </CardDefault>
     </v-col>
-    <v-col cols="12" md="6">
-      <CardDefault
-        :title="$t('cv.skills')"
-        :icon="'mdi-star'"
-        :color="'primary'">
+
+    <v-col cols="12">
+      <CardDefault :title="$t('profile.skills.title')">
         <Skills></Skills>
       </CardDefault>
     </v-col>
-    <v-col cols="12" md="6">
-      <CardDefault
-        :title="$t('cv.languages')"
-        :icon="'mdi-translate'"
-        :color="'primary'">
+
+    <v-col cols="12">
+      <CardDefault :title="$t('profile.languages.title')">
         <Languages></Languages>
       </CardDefault>
     </v-col>
@@ -48,12 +43,14 @@ import { ref } from 'vue'
 import CardDefault from '~/components/card/CardDefault.vue'
 import UserProfile from '~/views/profile/UserProfile.vue'
 import WorkExperience from '~/views/profile/WorkExperience.vue'
+
 import Education from '~/views/profile/Education.vue'
 import Skills from '~/views/profile/Skills.vue'
 import Languages from '~/views/profile/Languages.vue'
+import AboutMe from '~/views/profile/AboutMe.vue'
 const formData = ref({
   name: '',
-  professionalTitle: '',
+  profession: '',
   email: '',
   phone: '',
   address: '',

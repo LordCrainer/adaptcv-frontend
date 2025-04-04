@@ -1,3 +1,5 @@
+import { en as $vuetify } from 'vuetify/locale'
+
 export default {
   actions: {
     add: 'Add',
@@ -71,5 +73,7 @@ export default {
       language: 'Language',
       level: 'Level'
     }
-  }
-} as TranslationKeys
+  },
+  Tecnology: 'Tecnology',
+  ...$vuetify
+}

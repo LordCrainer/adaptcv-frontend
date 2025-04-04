@@ -1,3 +1,5 @@
+import { es as $vuetify } from 'vuetify/locale'
+
 export default {
   actions: {
     add: 'Agregar',
@@ -69,5 +71,6 @@ export default {
       language: 'Idioma',
       level: 'Nivel'
     }
-  }
-} as TranslationKeys
+  },
+  ...$vuetify
+}

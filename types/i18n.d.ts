@@ -28,7 +28,11 @@ interface TranslationKeys {
       email: string
       phone: string
       address: string
-      description: string
+      summary: string
+      city: string
+      country: string
+      fillInformation: string
+      aboutMe: string
     }
     experience: {
       title: string

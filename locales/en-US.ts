@@ -46,7 +46,11 @@ export default {
       email: 'Email',
       phone: 'Phone',
       address: 'Address',
-      description: 'Description'
+      summary: 'Summary',
+      city: 'City',
+      country: 'Country',
+      fillInformation: 'Fill Information',
+      aboutMe: 'About Me'
     },
     experience: {
       jobTitle: 'Job Title',
@@ -76,4 +80,4 @@ export default {
   },
   Tecnology: 'Tecnology',
   ...$vuetify
-}
+} as TranslationKeys

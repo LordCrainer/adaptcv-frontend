@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
     '@pinia/nuxt',
     'vuetify-nuxt-module',
-    '@nuxtjs/i18n'
+    '@nuxtjs/i18n',
+    'dragon-editor'
   ],
   vuetify: {
     vuetifyOptions: {

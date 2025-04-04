@@ -7,12 +7,6 @@
     </v-col>
 
     <v-col cols="12">
-      <CardDefault :title="$t('profile.personalInfo.aboutMe')">
-        <AboutMe></AboutMe>
-      </CardDefault>
-    </v-col>
-
-    <v-col cols="12">
       <CardDefault :title="$t('profile.experience.title')">
         <WorkExperience></WorkExperience>
       </CardDefault>
@@ -47,7 +41,6 @@ import WorkExperience from '~/views/profile/WorkExperience.vue'
 import Education from '~/views/profile/Education.vue'
 import Skills from '~/views/profile/Skills.vue'
 import Languages from '~/views/profile/Languages.vue'
-import AboutMe from '~/views/profile/AboutMe.vue'
 const formData = ref({
   name: '',
   profession: '',

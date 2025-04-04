@@ -1,5 +1,7 @@
 <template>
-  <v-app theme="light">
+  <v-app
+    :theme="global.name.value"
+    :class="global.name.value === 'dark' ? '' : 'bg-grey-lighten-3'">
     <Header />
     <v-main>
       <v-container>
@@ -11,8 +13,11 @@
 </template>
 
 <script lang="ts" setup>
+import { useTheme } from 'vuetify'
 import Header from '~/components/general/Header.vue'
 import Footer from '~/components/general/Footer.vue'
+
+const { global } = useTheme()
 </script>
 
 <style>

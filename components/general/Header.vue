@@ -11,3 +11,13 @@
     </template>
   </v-app-bar>
 </template>
+
+<script setup lang="ts">
+import { useTheme } from 'vuetify'
+
+const { global } = useTheme()
+
+const toggleTheme = () => {
+  global.name.value = global.name.value === 'dark' ? 'light' : 'dark'
+}
+</script>

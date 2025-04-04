@@ -1,3 +1,23 @@
+# [1.6.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.5.0...v1.6.0) (2025-04-04)
+
+
+### Bug Fixes
+
+* **card:** use raw title instead of translation for card title display ([6f2ac0c](https://github.com/LordCrainer/adaptcv-frontend/commit/6f2ac0c6a1b38bbb43c2b6423e3d3a9619a0e8d1))
+
+
+### Features
+
+* **deps:** add dragon-editor package and update related configurations ([4360892](https://github.com/LordCrainer/adaptcv-frontend/commit/43608924612bd2cb1bcc0e9be0056bbf20e67831))
+* **i18n:** integrate Vuetify locale support and add 'Tecnology' key in English and Spanish translations ([2a38659](https://github.com/LordCrainer/adaptcv-frontend/commit/2a38659de776b709660e7de52b626b0dc7369cec))
+* **i18n:** update English translations to include new keys and modify existing ones ([31ce307](https://github.com/LordCrainer/adaptcv-frontend/commit/31ce30717e36c495e21f9b35bba8e1b364ec7eaf))
+* **i18n:** update translation keys for personal info and restructure profile section in Spanish ([8c178af](https://github.com/LordCrainer/adaptcv-frontend/commit/8c178af489273a21c5b6547546462e792f12f299))
+* **layout:** create default layout with header and footer components ([5c80772](https://github.com/LordCrainer/adaptcv-frontend/commit/5c80772442c059357c38aaf0f836926ec3262007))
+* **profile:** add AboutMe component with summary textarea for user input ([c4f69d2](https://github.com/LordCrainer/adaptcv-frontend/commit/c4f69d211b7e22f8d4504009d186699a537fad32))
+* **profile:** enhance WorkExperience form layout and integrate DragonEditor for description input ([d43f6d8](https://github.com/LordCrainer/adaptcv-frontend/commit/d43f6d84838b968e62489adf1baced85c0cd018c))
+* **profile:** redesign UserProfile form with improved layout and dynamic profession selection ([13fc2b0](https://github.com/LordCrainer/adaptcv-frontend/commit/13fc2b05bf807fa55f9cfc522a1bbfa987522523))
+* **profile:** simplify layout by consolidating profile sections and updating titles ([c6b0979](https://github.com/LordCrainer/adaptcv-frontend/commit/c6b097914ce60075b8b3cffc85e6d11a81239133))
+
 # [1.5.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.4.0...v1.5.0) (2025-04-03)
 
 

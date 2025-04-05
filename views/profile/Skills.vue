@@ -40,17 +40,17 @@
     </v-col>
   </v-row>
 
-  <v-dialog v-model="openDialog" max-width="500">
+  <v-dialog v-model="state.openDialog" max-width="500">
     <v-card
-      :subtitle="`${isEditing ? 'Update' : 'Create'} your favorite skill`"
-      :title="`${isEditing ? 'Edit' : 'Add'} a Skill`">
+      :subtitle="`${state.isEditing ? 'Update' : 'Create'} your favorite skill`"
+      :title="`${state.isEditing ? 'Edit' : 'Add'} a Skill`">
       <template v-slot:text>
         <v-form @submit.prevent="submitForm">
           <v-row>
             <v-col cols="12">
               <v-combobox
                 flat
-                v-model="record.selectedSkills"
+                v-model="state.record.selectedSkills"
                 :items="skillList"
                 :label="$t('profile.skills.title')"
                 prepend-inner-icon="mdi-filter-variant"
@@ -58,7 +58,7 @@
                 chips
                 clearable
                 closable-chips
-                :multiple="isEditing ? false : true">
+                :multiple="state.isEditing ? false : true">
                 <template v-slot:chip="{ props, item }">
                   <v-chip v-bind="props">
                     <strong>{{ item.raw }}</strong>
@@ -69,7 +69,7 @@
 
             <v-col cols="12" md="6">
               <v-text-field
-                v-model="record.job"
+                v-model="state.record.job"
                 variant="outlined"
                 label="Job"
                 placeholder="Ej: My Proyect"
@@ -79,7 +79,7 @@
             <v-col cols="12" md="6">
               <v-select
                 variant="outlined"
-                v-model="record.year_experiences"
+                v-model="state.record.year_experiences"
                 :items="[
                   'less than 1 year',
                   '1 - 2 years',
@@ -101,7 +101,7 @@
         <v-btn
           text="Cancel"
           variant="plain"
-          @click="openDialog = false"></v-btn>
+          @click="state.openDialog = false"></v-btn>
 
         <v-spacer></v-spacer>
 
@@ -112,7 +112,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, shallowRef } from 'vue'
+import { reactive, ref } from 'vue'
 
 const skillList = ref([
   'JavaScript',
@@ -138,8 +138,6 @@ const skillList = ref([
   'Perl',
   'Shell Scripting'
 ])
-const isEditing = shallowRef(false)
-const openDialog = ref(false)
 
 type year_experiences =
   | 'less than 1 year'
@@ -152,20 +150,46 @@ type year_experiences =
 interface Skill {
   id: string
   skill: string
-  selectedSkills?: string[]
   job: string
   year_experiences: year_experiences | undefined
 }
 
-const DEFAULT_SKILL: Skill = {
+interface SkillForm extends Omit<Skill, 'skill'> {
+  selectedSkills?: string[]
+}
+
+const DEFAULT_SKILL: SkillForm = {
   id: '',
   selectedSkills: [],
-  skill: '',
   job: '',
   year_experiences: undefined
 }
 
-const record = ref<Skill>(DEFAULT_SKILL)
+interface State {
+  isEditing: boolean
+  openDialog: boolean
+  record: SkillForm
+  formData: Skill[]
+}
+
+const state = reactive<State>({
+  isEditing: false,
+  openDialog: false,
+  record: {
+    id: '',
+    selectedSkills: [],
+    job: '',
+    year_experiences: undefined
+  },
+  formData: [
+    {
+      id: '1',
+      skill: 'JavaScript',
+      job: 'Frontend Developer',
+      year_experiences: '3 - 5 years'
+    }
+  ]
+})
 
 const formData = ref<Skill[]>([
   {
@@ -189,12 +213,11 @@ const headers = <any>[
 ]
 
 function edit(id: string) {
-  openDialog.value = true
-  isEditing.value = true
+  state.openDialog = true
+  state.isEditing = true
   const item = formData.value.find((data) => data.id === id)
-  record.value = {
+  state.record = {
     id: item?.id || '',
-    skill: item?.skill || '',
     job: item?.job || '',
     year_experiences: item?.year_experiences || undefined,
     selectedSkills: [item?.skill || '']
@@ -211,48 +234,48 @@ function setFormData(value: Skill): Skill {
 }
 
 function save() {
-  record.value.selectedSkills = Array.isArray(record.value.selectedSkills)
-    ? record.value.selectedSkills
-    : [record.value.selectedSkills || '']
+  state.record.selectedSkills = Array.isArray(state.record.selectedSkills)
+    ? state.record.selectedSkills
+    : [state.record.selectedSkills || '']
 
-  record.value.selectedSkills?.forEach((skill) => {
+  state.record.selectedSkills?.forEach((skill) => {
     const foundIndex = formData.value.findIndex((data) => data?.skill === skill)
 
     if (foundIndex !== -1) {
       formData.value[foundIndex] = setFormData({
-        ...record.value,
+        ...state.record,
         skill: skill
       })
-    } else if (!isEditing.value) {
+    } else if (!state.isEditing) {
       formData.value.push(
         setFormData({
           id: Date.now().toString(),
           skill: skill,
-          job: record.value.job,
-          year_experiences: record.value.year_experiences
+          job: state.record.job,
+          year_experiences: state.record.year_experiences
         })
       )
     } else {
       const index = formData.value.findIndex(
-        (data) => data?.id === record.value.id
+        (data) => data?.id === state.record.id
       )
       if (index !== -1) {
         formData.value[index] = setFormData({
-          ...record.value,
+          ...state.record,
           skill: skill
         })
       }
     }
   })
-  record.value = DEFAULT_SKILL
-  openDialog.value = false
-  isEditing.value = false
+  state.record = DEFAULT_SKILL
+  state.openDialog = false
+  state.isEditing = false
 }
 
 function add() {
-  openDialog.value = true
-  isEditing.value = false
-  record.value = DEFAULT_SKILL
+  state.openDialog = true
+  state.isEditing = false
+  state.record = DEFAULT_SKILL
 }
 
 function remove(id: string) {

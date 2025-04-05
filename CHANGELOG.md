@@ -1,3 +1,12 @@
+# [1.8.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.7.0...v1.8.0) (2025-04-05)
+
+
+### Features
+
+* **i18n:** add 'noData' translation key to English locale ([46feeb0](https://github.com/LordCrainer/adaptcv-frontend/commit/46feeb0bb4169550d1da399010ed1bf6ca80120e))
+* **profile:** implement Skills component with add, edit, and delete functionality ([11d1db1](https://github.com/LordCrainer/adaptcv-frontend/commit/11d1db15020f513cbefa538efcd59075519e007f))
+* **profile:** update WorkExperience component to use localized description header ([cdaefd3](https://github.com/LordCrainer/adaptcv-frontend/commit/cdaefd3571bc3af3f7dd7adbf6414ca8fdddf8b4))
+
 # [1.7.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.6.0...v1.7.0) (2025-04-04)
 
 

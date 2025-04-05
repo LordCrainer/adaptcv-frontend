@@ -41,7 +41,7 @@
     </v-form>
     <v-sheet>
       <div class="py-4">
-        <h3>Redactar</h3>
+        <h3>{{ $t('profile.experience.description') }}</h3>
       </div>
       <ClientOnly>
         <DragonEditor ref="$editor" />

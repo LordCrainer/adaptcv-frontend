@@ -137,7 +137,7 @@ const skillList = ref([
   'Scala',
   'Perl',
   'Shell Scripting'
-])
+] as const)
 
 type year_experiences =
   | 'less than 1 year'
@@ -181,24 +181,10 @@ const state = reactive<State>({
     job: '',
     year_experiences: undefined
   },
-  formData: [
-    {
-      id: '1',
-      skill: 'JavaScript',
-      job: 'Frontend Developer',
-      year_experiences: '3 - 5 years'
-    }
-  ]
+  formData: []
 })
 
-const formData = ref<Skill[]>([
-  {
-    id: '1',
-    skill: 'JavaScript',
-    job: 'Frontend Developer',
-    year_experiences: '3 - 5 years'
-  }
-])
+const formData = ref<Skill[]>([])
 
 const headers = <any>[
   { title: 'Skill', key: 'skill', align: 'start' },
@@ -233,16 +219,23 @@ function setFormData(value: Skill): Skill {
   }
 }
 
+function findByIndex(prop: keyof Skill, value: string) {
+  return formData.value.findIndex((data) => data[prop] === value)
+}
+
 function save() {
-  state.record.selectedSkills = Array.isArray(state.record.selectedSkills)
+  const skills = Array.isArray(state.record.selectedSkills)
     ? state.record.selectedSkills
     : [state.record.selectedSkills || '']
 
-  state.record.selectedSkills?.forEach((skill) => {
-    const foundIndex = formData.value.findIndex((data) => data?.skill === skill)
+  skills?.forEach((skill) => {
+    if (!skill) return
+    const index = state.isEditing
+      ? findByIndex('id', state.record.id)
+      : findByIndex('skill', skill)
 
-    if (foundIndex !== -1) {
-      formData.value[foundIndex] = setFormData({
+    if (index !== -1) {
+      formData.value[index] = setFormData({
         ...state.record,
         skill: skill
       })
@@ -255,21 +248,21 @@ function save() {
           year_experiences: state.record.year_experiences
         })
       )
-    } else {
-      const index = formData.value.findIndex(
-        (data) => data?.id === state.record.id
-      )
-      if (index !== -1) {
-        formData.value[index] = setFormData({
-          ...state.record,
-          skill: skill
-        })
-      }
     }
   })
-  state.record = DEFAULT_SKILL
-  state.openDialog = false
+
+  resetForm()
+}
+
+function resetForm() {
+  state.record = {
+    id: '',
+    selectedSkills: [],
+    job: '',
+    year_experiences: undefined
+  }
   state.isEditing = false
+  state.openDialog = false
 }
 
 function add() {

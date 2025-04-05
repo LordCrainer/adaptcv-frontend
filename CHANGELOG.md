@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.9.0...v1.10.0) (2025-04-05)
+
+
+### Features
+
+* **profile:** refactor Skills component to improve state management and simplify form handling ([d2fc561](https://github.com/LordCrainer/adaptcv-frontend/commit/d2fc5615ad346af83a416fa393b307221c14bf33))
+
 # [1.9.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.8.0...v1.9.0) (2025-04-05)
 
 

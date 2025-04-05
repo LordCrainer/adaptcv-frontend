@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.8.0...v1.9.0) (2025-04-05)
+
+
+### Features
+
+* **profile:** refactor Skills component to use reactive state management ([a3cd827](https://github.com/LordCrainer/adaptcv-frontend/commit/a3cd82711171f58e1f95bc641c245cdee3537c57))
+
 # [1.8.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.7.0...v1.8.0) (2025-04-05)
 
 

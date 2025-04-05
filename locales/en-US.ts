@@ -19,7 +19,8 @@ export default {
     portfolio: 'Portfolio',
     privacyPolicy: 'Privacy Policy',
     termsOfService: 'Terms of Service',
-    email: 'Email'
+    email: 'Email',
+    noData: 'No data available'
   },
   login: {
     email: 'email',

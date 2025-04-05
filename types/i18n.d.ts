@@ -10,6 +10,7 @@ interface TranslationKeys {
     privacyPolicy: string
     termsOfService: string
     email: string
+    noData: string
   }
   actions: {
     add: string

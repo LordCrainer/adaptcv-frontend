@@ -92,6 +92,7 @@ const props = defineProps<{
   subtitle?: string
   title: string
 }>()
+
 const emit = defineEmits(['submit', 'cancel'])
 
 const submitForm = () => {

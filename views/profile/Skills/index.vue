@@ -81,7 +81,7 @@ const state = reactive<State>({
 const formData = ref<ISkill[]>([])
 
 const headers = <any>[
-  { title: 'ISkill', key: 'skill', align: 'start' },
+  { title: 'Skill', key: 'skill', align: 'start' },
   { title: 'Job', key: 'job', align: 'start' },
   {
     title: 'Year Experiences',

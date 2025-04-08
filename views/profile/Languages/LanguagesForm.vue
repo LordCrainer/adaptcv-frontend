@@ -6,12 +6,13 @@
 
     <v-card-text>
       <v-form @submit.prevent="submitForm">
-        <v-text-field
+        <v-autocomplete
           v-model="formData.language"
-          :label="$t('profile.languages.language')"
-          placeholder="Ej: English"
           variant="outlined"
-          required></v-text-field>
+          chips
+          clearable
+          :items="languages"
+          :label="$t('profile.languages.language')"></v-autocomplete>
 
         <v-select
           v-model="formData.proficiency"
@@ -41,6 +42,19 @@ const formData = ref({
 })
 
 const proficiencyLevels = ['Beginner', 'Intermediate', 'Advanced', 'Native']
+
+const languages = [
+  'English',
+  'Spanish',
+  'French',
+  'German',
+  'Italian',
+  'Portuguese',
+  'Chinese',
+  'Japanese',
+  'Russian',
+  'Arabic'
+]
 
 // Emit the form data to the parent component
 const emit = defineEmits(['submit', 'cancel'])

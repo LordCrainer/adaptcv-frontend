@@ -73,6 +73,12 @@ const state = ref({
   record: {}
 })
 
+const headers = [
+  { title: 'Language', key: 'language' },
+  { title: 'Proficiency', key: 'proficiency' },
+  { title: 'Actions', key: 'actions', sortable: false }
+]
+
 const add = () => {
   state.value.openDialog = true
   state.value.isEditing = false
@@ -92,12 +98,6 @@ const remove = (key: string) => {
   console.log('Remove language with key:', key)
   formData.value = formData.value.filter((item) => item.language !== key)
 }
-
-const headers = [
-  { text: 'Language', value: 'language' },
-  { text: 'Proficiency', value: 'proficiency' },
-  { text: 'Actions', value: 'actions', sortable: false }
-]
 
 const resetForm = () => {
   state.value.openDialog = false

@@ -40,7 +40,7 @@ import WorkExperience from '~/views/profile/WorkExperience.vue'
 
 import Education from '~/views/profile/Education.vue'
 import Skills from '~/views/profile/Skills/index.vue'
-import Languages from '~/views/profile/Languages.vue'
+import Languages from '~/views/profile/Languages/index.vue'
 const formData = ref({
   name: '',
   profession: '',

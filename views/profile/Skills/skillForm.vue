@@ -45,16 +45,13 @@
     </template>
     <slot name="actions">
       <v-card-actions class="">
-        <v-btn
-          text="Cancel"
-          variant="flat"
-          @click="$emit('cancel')"></v-btn>
+        <v-btn variant="flat" @click="$emit('cancel')">
+          {{ $t('actions.cancel') }}
+        </v-btn>
 
-        <v-btn
-          text="Save"
-          color="primary"
-          variant="tonal"
-          @click="submitForm"></v-btn>
+        <v-btn text="Save" color="primary" variant="tonal" @click="submitForm">
+          {{ $t('actions.save') }}
+        </v-btn>
       </v-card-actions>
     </slot>
   </v-card>

@@ -10,6 +10,7 @@
             <v-btn
               color="secondary"
               variant="outlined"
+              rounded
               prepend-icon="mdi-plus"
               text="Add a Skill"
               border
@@ -41,135 +42,28 @@
   </v-row>
 
   <v-dialog v-model="state.openDialog" max-width="500">
-    <v-card
+    <SkillForm
       :subtitle="`${state.isEditing ? 'Update' : 'Create'} your favorite skill`"
-      :title="`${state.isEditing ? 'Edit' : 'Add'} a Skill`">
-      <template v-slot:text>
-        <v-form @submit.prevent="submitForm">
-          <v-row>
-            <v-col cols="12">
-              <v-combobox
-                flat
-                v-model="state.record.selectedSkills"
-                :items="skillList"
-                :label="$t('profile.skills.title')"
-                prepend-inner-icon="mdi-filter-variant"
-                variant="outlined"
-                chips
-                clearable
-                closable-chips
-                :multiple="state.isEditing ? false : true">
-                <template v-slot:chip="{ props, item }">
-                  <v-chip v-bind="props">
-                    <strong>{{ item.raw }}</strong>
-                  </v-chip>
-                </template>
-              </v-combobox>
-            </v-col>
-
-            <v-col cols="12" md="6">
-              <v-text-field
-                v-model="state.record.job"
-                variant="outlined"
-                label="Job"
-                placeholder="Ej: My Proyect"
-                required></v-text-field>
-            </v-col>
-
-            <v-col cols="12" md="6">
-              <v-select
-                variant="outlined"
-                v-model="state.record.year_experiences"
-                :items="[
-                  'less than 1 year',
-                  '1 - 2 years',
-                  '2 - 3 years',
-                  '3 - 5 years',
-                  '5 - 10 years',
-                  '10+ years'
-                ]"
-                label="Year Experiences"
-                required></v-select>
-            </v-col>
-          </v-row>
-        </v-form>
-      </template>
-
-      <v-divider></v-divider>
-
-      <v-card-actions class="bg-surface-light">
-        <v-btn
-          text="Cancel"
-          variant="plain"
-          @click="state.openDialog = false"></v-btn>
-
-        <v-spacer></v-spacer>
-
-        <v-btn text="Save" @click="save"></v-btn>
-      </v-card-actions>
-    </v-card>
+      :title="`${state.isEditing ? 'Edit' : 'Add'} a Skill`"
+      :inputData="state.record"
+      :multiple="state.isEditing ? false : true"
+      @submit="save"
+      @cancel="resetForm"
+      @close="resetForm"
+      v-if="state.openDialog"></SkillForm>
   </v-dialog>
 </template>
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-
-const skillList = ref([
-  'JavaScript',
-  'Python',
-  'Java',
-  'C#',
-  'PHP',
-  'Ruby',
-  'Go',
-  'Swift',
-  'Kotlin',
-  'TypeScript',
-  'HTML',
-  'CSS',
-  'SQL',
-  'C++',
-  'C',
-  'R',
-  'MATLAB',
-  'Dart',
-  'Rust',
-  'Scala',
-  'Perl',
-  'Shell Scripting'
-] as const)
-
-type year_experiences =
-  | 'less than 1 year'
-  | '1 - 2 years'
-  | '2 - 3 years'
-  | '3 - 5 years'
-  | '5 - 10 years'
-  | '10+ years'
-
-interface Skill {
-  id: string
-  skill: string
-  job: string
-  year_experiences: year_experiences | undefined
-}
-
-interface SkillForm extends Omit<Skill, 'skill'> {
-  selectedSkills?: string[]
-}
-
-const DEFAULT_SKILL: SkillForm = {
-  id: '',
-  selectedSkills: [],
-  job: '',
-  year_experiences: undefined
-}
+import SkillForm from './skillForm.vue'
+import type { ISkill, ISkillForm } from '..'
 
 interface State {
   isEditing: boolean
   openDialog: boolean
-  record: SkillForm
-  formData: Skill[]
+  record: ISkillForm
+  formData: ISkill[]
 }
 
 const state = reactive<State>({
@@ -184,10 +78,10 @@ const state = reactive<State>({
   formData: []
 })
 
-const formData = ref<Skill[]>([])
+const formData = ref<ISkill[]>([])
 
 const headers = <any>[
-  { title: 'Skill', key: 'skill', align: 'start' },
+  { title: 'ISkill', key: 'skill', align: 'start' },
   { title: 'Job', key: 'job', align: 'start' },
   {
     title: 'Year Experiences',
@@ -210,7 +104,7 @@ function edit(id: string) {
   }
 }
 
-function setFormData(value: Skill): Skill {
+function setFormData(value: ISkill): ISkill {
   return {
     skill: value.skill || '',
     job: value.job || '',
@@ -219,7 +113,7 @@ function setFormData(value: Skill): Skill {
   }
 }
 
-function findByIndex(prop: keyof Skill, value: string) {
+function findByIndex(prop: keyof ISkill, value: string) {
   return formData.value.findIndex((data) => data[prop] === value)
 }
 
@@ -268,7 +162,6 @@ function resetForm() {
 function add() {
   state.openDialog = true
   state.isEditing = false
-  state.record = DEFAULT_SKILL
 }
 
 function remove(id: string) {
@@ -277,6 +170,6 @@ function remove(id: string) {
 }
 
 const submitForm = () => {
-  console.log('Skill submitted:', formData.value)
+  console.log('ISkill submitted:', formData.value)
 }
 </script>

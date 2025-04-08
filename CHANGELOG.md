@@ -1,3 +1,15 @@
+# [1.12.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.11.0...v1.12.0) (2025-04-08)
+
+
+### Bug Fixes
+
+* **import:** update Languages component import path and remove unused Languages.vue file ([5728ad7](https://github.com/LordCrainer/adaptcv-frontend/commit/5728ad710c49e87693680c0f29207ed0e2452eaa))
+
+
+### Features
+
+* **languages:** add LanguagesForm and index components for language management ([ab07883](https://github.com/LordCrainer/adaptcv-frontend/commit/ab07883fcb5a1b93e078e9dc2824575793ea5fae))
+
 # [1.11.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.10.0...v1.11.0) (2025-04-08)
 
 

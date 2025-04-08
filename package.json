@@ -41,6 +41,7 @@
     "semi": false,
     "singleQuote": true,
     "bracketSameLine": true,
+    "endOfLine": "auto",
     "htmlWhitespaceSensitivity": "ignore",
     "overrides": [
       {

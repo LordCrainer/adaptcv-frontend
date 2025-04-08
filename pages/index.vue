@@ -39,7 +39,7 @@ import UserProfile from '~/views/profile/UserProfile.vue'
 import WorkExperience from '~/views/profile/WorkExperience.vue'
 
 import Education from '~/views/profile/Education.vue'
-import Skills from '~/views/profile/Skills.vue'
+import Skills from '~/views/profile/Skills/index.vue'
 import Languages from '~/views/profile/Languages.vue'
 const formData = ref({
   name: '',

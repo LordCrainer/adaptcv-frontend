@@ -1,3 +1,17 @@
+# [1.11.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.10.0...v1.11.0) (2025-04-08)
+
+
+### Bug Fixes
+
+* **import:** update Skills component import path to use index.vue ([a430b19](https://github.com/LordCrainer/adaptcv-frontend/commit/a430b195852050454cba7e0a7f08db2cff8cd56a))
+
+
+### Features
+
+* **profile:** add skill form component with job, experience, and skills selection ([1dd503e](https://github.com/LordCrainer/adaptcv-frontend/commit/1dd503ed368b1594b865329a98a258464d1a203a))
+* **profile:** add Skills component with data table and form handling ([f9c1de3](https://github.com/LordCrainer/adaptcv-frontend/commit/f9c1de3dd61e85c6a7e61ddd17bdeb1be3946580))
+* **profile:** add TypeScript interfaces for Skill and SkillForm ([96d3057](https://github.com/LordCrainer/adaptcv-frontend/commit/96d30572af27c091a7d8d11bd5259db2a1490984))
+
 # [1.10.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.9.0...v1.10.0) (2025-04-05)
 
 

@@ -1,7 +1,7 @@
 <template>
-  <v-card :subtitle="subtitle" :title="title">
-    <template v-slot:text>
-      <v-form @submit.prevent="$emit('submit')">
+  <v-form @submit.prevent="submitForm">
+    <v-card :subtitle="subtitle" :title="title">
+      <template v-slot:text>
         <v-row>
           <v-col cols="12" md="6">
             <v-text-field
@@ -25,7 +25,7 @@
             <v-combobox
               flat
               v-model="inputData.selectedSkills"
-              :items="skillList"
+              :items="skillsList"
               label="Skills"
               prepend-inner-icon="mdi-filter-variant"
               variant="outlined"
@@ -41,41 +41,27 @@
             </v-combobox>
           </v-col>
         </v-row>
-      </v-form>
-    </template>
-    <slot name="actions">
-      <v-card-actions class="">
-        <v-btn variant="flat" @click="$emit('cancel')">
-          {{ $t('actions.cancel') }}
-        </v-btn>
+      </template>
+      <slot name="actions">
+        <v-card-actions class="">
+          <v-btn variant="flat" @click="$emit('cancel')">
+            {{ $t('actions.cancel') }}
+          </v-btn>
 
-        <v-btn text="Save" color="primary" variant="tonal" @click="submitForm">
-          {{ $t('actions.save') }}
-        </v-btn>
-      </v-card-actions>
-    </slot>
-  </v-card>
+          <v-btn text="Save" color="primary" variant="tonal" type="submit">
+            {{ $t('actions.save') }}
+          </v-btn>
+        </v-card-actions>
+      </slot>
+    </v-card>
+  </v-form>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import type { ISkillForm } from '..'
+import type { ISkill, ISkillForm } from '@/views/profile/index.d'
+import { useSkill } from './useSkill'
 
-const skillList = ref([
-  'JavaScript',
-  'Python',
-  'Java',
-  'C#',
-  'PHP',
-  'Ruby',
-  'Go',
-  'Swift',
-  'Kotlin',
-  'TypeScript',
-  'HTML',
-  'CSS',
-  'SQL'
-])
+const { skillsList, toSkill } = useSkill()
 
 const experienceOptions = [
   'less than 1 year',
@@ -93,17 +79,26 @@ const props = defineProps<{
   title: string
 }>()
 
-const emit = defineEmits(['submit', 'cancel'])
+const emit = defineEmits<{
+  (e: 'submit', payload: ISkill[]): void
+  (e: 'cancel'): void
+  (e: 'close'): void
+}>()
 
 const submitForm = () => {
-  const skills = Array.isArray(props.inputData.selectedSkills)
-    ? props.inputData.selectedSkills
-    : [props.inputData.selectedSkills]
-
-  const output = {
-    ...props.inputData,
-    selectedSkills: skills
+  if (!props.inputData.selectedSkills) {
+    emit('cancel')
+    return
   }
-  emit('submit', output)
+
+  emit('submit', toSkill(props.inputData.selectedSkills))
+  resetForm()
+  emit('close')
+}
+
+const resetForm = () => {
+  props.inputData.job = ''
+  props.inputData.year_experiences = undefined
+  props.inputData.selectedSkills = []
 }
 </script>

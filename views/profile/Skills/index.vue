@@ -12,9 +12,10 @@
               variant="outlined"
               rounded
               prepend-icon="mdi-plus"
-              text="Add a Skill"
               border
-              @click="add"></v-btn>
+              @click="add">
+              {{ $t('actions.add') }}
+            </v-btn>
           </div>
         </template>
 
@@ -24,13 +25,13 @@
               color="medium-emphasis"
               icon="mdi-pencil"
               size="small"
-              @click="edit(item.id)"></v-icon>
+              @click="edit(item.id)" />
 
             <v-icon
               color="medium-emphasis"
               icon="mdi-delete"
               size="small"
-              @click="remove(item.id)"></v-icon>
+              @click="remove(item.id)" />
           </div>
         </template>
 
@@ -48,8 +49,8 @@
       :inputData="state.record"
       :multiple="state.isEditing ? false : true"
       @submit="save"
-      @cancel="resetForm"
-      @close="resetForm"
+      @cancel="cancel"
+      @close="close"
       v-if="state.openDialog"></SkillForm>
   </v-dialog>
 </template>
@@ -71,7 +72,6 @@ const state = reactive<State>({
   openDialog: false,
   record: {
     id: '',
-    selectedSkills: [],
     job: '',
     year_experiences: undefined
   },
@@ -117,46 +117,38 @@ function findByIndex(prop: keyof ISkill, value: string) {
   return formData.value.findIndex((data) => data[prop] === value)
 }
 
-function save() {
-  const skills = Array.isArray(state.record.selectedSkills)
-    ? state.record.selectedSkills
-    : [state.record.selectedSkills || '']
-
-  skills?.forEach((skill) => {
-    if (!skill) return
+function save(data: ISkill[]) {
+  data?.forEach((d) => {
+    if (!d.skill) return
     const index = state.isEditing
       ? findByIndex('id', state.record.id)
-      : findByIndex('skill', skill)
+      : findByIndex('skill', d.skill)
 
     if (index !== -1) {
       formData.value[index] = setFormData({
         ...state.record,
-        skill: skill
+        skill: d.skill
       })
     } else if (!state.isEditing) {
       formData.value.push(
         setFormData({
           id: Date.now().toString(),
-          skill: skill,
+          skill: d.skill,
           job: state.record.job,
           year_experiences: state.record.year_experiences
         })
       )
     }
   })
-
-  resetForm()
 }
 
-function resetForm() {
-  state.record = {
-    id: '',
-    selectedSkills: [],
-    job: '',
-    year_experiences: undefined
-  }
-  state.isEditing = false
+function close() {
   state.openDialog = false
+  state.isEditing = false
+}
+
+function cancel() {
+  close()
 }
 
 function add() {
@@ -167,9 +159,5 @@ function add() {
 function remove(id: string) {
   const index = formData.value.findIndex((data) => data?.id === id)
   formData.value.splice(index, 1)
-}
-
-const submitForm = () => {
-  console.log('ISkill submitted:', formData.value)
 }
 </script>

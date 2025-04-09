@@ -1,3 +1,19 @@
+# [1.13.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.12.0...v1.13.0) (2025-04-09)
+
+
+### Bug Fixes
+
+* **pre-commit:** add missing newline at end of file ([a77811f](https://github.com/LordCrainer/adaptcv-frontend/commit/a77811f3e35eebad51b48986aa44bf6e62b23cfe))
+* **prettier:** add endOfLine option to Prettier configuration ([141fa4e](https://github.com/LordCrainer/adaptcv-frontend/commit/141fa4e16d1ceccf6f6ffc505e32c9e85c452761))
+
+
+### Features
+
+* **languages:** enhance language form with close event and improve dialog handling ([d511866](https://github.com/LordCrainer/adaptcv-frontend/commit/d51186653f03c3188f34b5b594eed8f5af403f3d))
+* **languages:** replace text field with autocomplete for language selection ([a23a467](https://github.com/LordCrainer/adaptcv-frontend/commit/a23a4671801f659c06d17a8d622caf6910f3c7d9))
+* **lint:** add lint and lint:fix scripts to package.json ([31c9298](https://github.com/LordCrainer/adaptcv-frontend/commit/31c92984f3ffbe7bf49ea3a4fd0606da3a963fb1))
+* **skills:** refactor skill form and add skills list management ([2b8bd35](https://github.com/LordCrainer/adaptcv-frontend/commit/2b8bd35713afbbe8d8e9f4d0a6e1486c52ff0e1d))
+
 # [1.12.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.11.0...v1.12.0) (2025-04-08)
 
 

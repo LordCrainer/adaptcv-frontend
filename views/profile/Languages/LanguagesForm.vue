@@ -56,14 +56,17 @@ const languages = [
   'Arabic'
 ]
 
-// Emit the form data to the parent component
-const emit = defineEmits(['submit', 'cancel'])
+const emit = defineEmits(['submit', 'cancel', 'close'])
 
 const submitForm = () => {
   console.log('Language submitted:', formData.value)
-  // Emit the form data to the parent component
-  emit('submit', formData.value)
 
+  emit('submit', formData.value)
+  resetForm()
+  emit('close')
+}
+
+const resetForm = () => {
   formData.value.language = ''
   formData.value.proficiency = ''
 }

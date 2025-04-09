@@ -11,9 +11,10 @@
             variant="outlined"
             rounded
             prepend-icon="mdi-plus"
-            text="Add a Language"
             border
-            @click="add"></v-btn>
+            @click="add">
+            {{ $t('actions.add') }}
+          </v-btn>
         </div>
       </template>
 
@@ -41,9 +42,6 @@
 
   <v-dialog
     v-model="state.openDialog"
-    :title="`${state.isEditing ? 'Update' : 'Create'} your favorite language`"
-    scrollable
-    :overlay="false"
     max-width="500px"
     transition="dialog-transition">
     <LanguagesForm
@@ -51,13 +49,13 @@
       :title="`${state.isEditing ? 'Edit' : 'Add'} a Language`"
       :inputData="state.record"
       @submit="save"
-      @cancel="resetForm"
-      @close="resetForm" />
+      @cancel="cancel"
+      @close="close" />
   </v-dialog>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import LanguagesForm from './LanguagesForm.vue'
 
 const formData = ref([
@@ -67,7 +65,7 @@ const formData = ref([
   }
 ])
 
-const state = ref({
+const state = reactive({
   openDialog: false,
   isEditing: false,
   record: {}
@@ -80,14 +78,14 @@ const headers = [
 ]
 
 const add = () => {
-  state.value.openDialog = true
-  state.value.isEditing = false
-  state.value.record = { ...formData.value }
+  state.openDialog = true
+  state.isEditing = false
+  state.record = { ...formData.value }
 }
 
 const edit = (key: string) => {
-  state.value.openDialog = true
-  state.value.isEditing = true
+  state.openDialog = true
+  state.isEditing = true
 }
 
 const save = () => {
@@ -99,7 +97,14 @@ const remove = (key: string) => {
   formData.value = formData.value.filter((item) => item.language !== key)
 }
 
-const resetForm = () => {
-  state.value.openDialog = false
+const resetForm = () => {}
+
+const close = () => {
+  state.openDialog = false
+}
+
+function cancel() {
+  resetForm()
+  close()
 }
 </script>

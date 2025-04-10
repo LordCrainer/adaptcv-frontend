@@ -7,7 +7,8 @@ export default {
     delete: 'Delete',
     save: 'Save',
     cancel: 'Cancel',
-    submit: 'Submit'
+    submit: 'Submit',
+    options: 'Options'
   },
   common: {
     home: 'Home',
@@ -64,6 +65,7 @@ export default {
     },
     education: {
       title: 'Education',
+      fieldOfStudy: 'Field of Study',
       degree: 'Degree',
       institution: 'Institution',
       startDate: 'Start Date',
@@ -83,7 +85,9 @@ export default {
       '1to2years': '1 to 2 years',
       '2to3years': '2 to 3 years',
       '5to10years': '5 to 10 years',
-      '10plusyears': '10+ years'
+      '10plusyears': '10+ years',
+      job: 'Job',
+      yearsOfExperience: 'Years of Experience'
     },
     languages: {
       title: 'Languages',

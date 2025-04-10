@@ -7,7 +7,8 @@ export default {
     delete: 'Eliminar',
     save: 'Guardar',
     cancel: 'Cancelar',
-    submit: 'Enviar'
+    submit: 'Enviar',
+    options: 'Opciones'
   },
   common: {
     home: 'Inicio',
@@ -62,6 +63,7 @@ export default {
     },
     education: {
       title: 'Educación',
+      fieldOfStudy: 'Campo de estudio',
       degree: 'Título',
       institution: 'Institución',
       startDate: 'Fecha de inicio',
@@ -81,7 +83,9 @@ export default {
       '1to2years': '1 a 2 años',
       '2to3years': '2 a 3 años',
       '5to10years': '5 a 10 años',
-      '10plusyears': 'Más de 10 años'
+      '10plusyears': 'Más de 10 años',
+      job: 'Trabajo',
+      yearsOfExperience: 'Años de experiencia'
     },
     languages: {
       title: 'Idiomas',

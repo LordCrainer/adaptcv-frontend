@@ -19,6 +19,7 @@ interface TranslationKeys {
     save: string
     cancel: string
     submit: string
+    options: string
   }
   profile: {
     personalInfo: {
@@ -48,6 +49,7 @@ interface TranslationKeys {
       title: string
       degree: string
       institution: string
+      fieldOfStudy: string
       startDate: string
       endDate: string
       secondary: string
@@ -61,6 +63,8 @@ interface TranslationKeys {
     skills: {
       title: string
       skill: string
+      job: string
+      yearsOfExperience: string
       less1year: string
       '1to2years': string
       '2to3years': string

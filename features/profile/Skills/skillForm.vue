@@ -1,7 +1,6 @@
 <template>
   <v-form @submit.prevent="submitForm">
     <v-card :title="title">
-      {{ inputData }}
       <template v-slot:text>
         <v-row>
           <v-col cols="12" md="6">
@@ -18,7 +17,7 @@
               variant="outlined"
               v-model="inputData.year_experiences"
               :items="experienceOptions"
-              :item-title="(i) => $t(`profile.experience.${i}`)"
+              :item-title="(i) => $t(`profile.skills.${i}`)"
               label="Year Experiences"
               required></v-select>
           </v-col>

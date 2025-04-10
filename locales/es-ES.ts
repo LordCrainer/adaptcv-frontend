@@ -58,12 +58,7 @@ export default {
       position: 'Posición',
       startDate: 'Fecha de inicio',
       endDate: 'Fecha de finalización',
-      description: 'Descripción',
-      less1year: 'Menos de 1 año',
-      '1to2years': '1 a 2 años',
-      '2to3years': '2 a 3 años',
-      '5to10years': '5 a 10 años',
-      '10plusyears': 'Más de 10 años'
+      description: 'Descripción'
     },
     education: {
       title: 'Educación',
@@ -74,12 +69,21 @@ export default {
     },
     skills: {
       title: 'Habilidades',
-      skill: 'Habilidad'
+      skill: 'Habilidad',
+      less1year: 'Menos de 1 año',
+      '1to2years': '1 a 2 años',
+      '2to3years': '2 a 3 años',
+      '5to10years': '5 a 10 años',
+      '10plusyears': 'Más de 10 años'
     },
     languages: {
       title: 'Idiomas',
       language: 'Idioma',
-      level: 'Nivel'
+      level: 'Nivel',
+      beginner: 'Principiante',
+      intermediate: 'Intermedio',
+      advanced: 'Avanzado',
+      native: 'Nativo'
     }
   },
   ...$vuetify

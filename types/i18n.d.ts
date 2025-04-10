@@ -43,11 +43,6 @@ interface TranslationKeys {
       startDate: string
       endDate: string
       description: string
-      less1year: string
-      '1to2years': string
-      '2to3years': string
-      '5to10years': string
-      '10plusyears': string
     }
     education: {
       title: string
@@ -59,11 +54,20 @@ interface TranslationKeys {
     skills: {
       title: string
       skill: string
+      less1year: string
+      '1to2years': string
+      '2to3years': string
+      '5to10years': string
+      '10plusyears': string
     }
     languages: {
       title: string
       language: string
       level: string
+      beginner: string
+      intermediate: string
+      advanced: string
+      native: string
     }
   }
   login: {

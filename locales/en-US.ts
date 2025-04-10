@@ -60,12 +60,7 @@ export default {
       position: 'Position',
       startDate: 'Start Date',
       endDate: 'End Date',
-      description: 'Description',
-      less1year: 'Less than 1 year',
-      '1to2years': '1 to 2 years',
-      '2to3years': '2 to 3 years',
-      '5to10years': '5 to 10 years',
-      '10plusyears': '10+ years'
+      description: 'Description'
     },
     education: {
       title: 'Education',
@@ -76,12 +71,21 @@ export default {
     },
     skills: {
       title: 'Skills',
-      skill: 'Skill'
+      skill: 'Skill',
+      less1year: 'Less than 1 year',
+      '1to2years': '1 to 2 years',
+      '2to3years': '2 to 3 years',
+      '5to10years': '5 to 10 years',
+      '10plusyears': '10+ years'
     },
     languages: {
       title: 'Languages',
       language: 'Language',
-      level: 'Level'
+      level: 'Level',
+      beginner: 'Beginner',
+      intermediate: 'Intermediate',
+      advanced: 'Advanced',
+      native: 'Native'
     }
   },
   ...$vuetify

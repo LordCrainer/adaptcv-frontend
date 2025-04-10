@@ -13,6 +13,7 @@
         v-model="select.proficiency"
         :items="proficiencyLevels"
         variant="outlined"
+        :item-title="(i) => $t(`profile.languages.${i}`)"
         :label="$t('profile.languages.level')"
         required></v-select>
 
@@ -30,12 +31,14 @@
 <script lang="ts" setup>
 import type { ILanguageItem } from '..'
 
-const select = ref<ILanguageItem>({
+const DEFAULT_LANGUAGE_ITEM: ILanguageItem = {
   name: undefined,
-  proficiency: 'Beginner'
-})
+  proficiency: 'beginner'
+}
 
-const proficiencyLevels = ['Beginner', 'Intermediate', 'Advanced', 'Native']
+const select = ref<ILanguageItem>(DEFAULT_LANGUAGE_ITEM)
+
+const proficiencyLevels = ['beginner', 'intermediate', 'advanced', 'native']
 
 const languages = ref(
   [
@@ -62,7 +65,6 @@ const submitForm = () => {
 }
 
 const _reset = () => {
-  select.value.name = undefined
-  select.value.proficiency = 'Beginner'
+  select.value = DEFAULT_LANGUAGE_ITEM
 }
 </script>

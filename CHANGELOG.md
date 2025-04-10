@@ -1,3 +1,10 @@
+# [1.21.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.20.0...v1.21.0) (2025-04-10)
+
+
+### Features
+
+* **locales:** add missing education degree translations in English and Spanish ([ff624cb](https://github.com/LordCrainer/adaptcv-frontend/commit/ff624cb54055e46b85b15a83de7b4f77beb7dd6b))
+
 # [1.20.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.19.0...v1.20.0) (2025-04-10)
 
 

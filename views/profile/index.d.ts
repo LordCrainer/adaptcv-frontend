@@ -8,3 +8,9 @@ export interface ISkill {
 export interface ISkillForm extends Omit<ISkill, 'skill'> {
   selectedSkills?: string[]
 }
+
+type LanguageProficiency = 'Beginner' | 'Intermediate' | 'Advanced' | 'Native'
+export interface ILanguages {
+  language: string | undefined
+  proficiency: LanguageProficiency
+}

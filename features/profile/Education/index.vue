@@ -44,7 +44,7 @@
       :title="`${state.isEditing ? 'Edit' : 'Add'} an Education`"
       :inputData="state.record"
       @submit="submitForm"
-      @cancel="cancel"
+      @cancel="reset"
       @close="close"
       v-if="state.openDialog"></EducationForm>
   </v-dialog>
@@ -54,6 +54,10 @@
 import { ref } from 'vue'
 import EducationForm from './EducationForm.vue'
 import type { IEducationItem } from '..'
+import useEducation from './useEducation'
+
+const { addEducation, findEducation, updateEducation, removeEducation } =
+  useEducation()
 
 const formData = ref<IEducationItem[]>([])
 
@@ -65,33 +69,50 @@ const headers = [
   { title: 'Actions', key: 'actions', sortable: false }
 ]
 
-const state = ref({
+const state = reactive({
   openDialog: false,
   isEditing: false,
   record: {} as IEducationItem
 })
 
 const add = () => {
-  state.value.openDialog = true
-  // Logic to add a new education item
+  state.openDialog = true
 }
 
 const edit = (id: string) => {
-  // Logic to edit an existing education item
+  const foundEducation = findEducation(id)
+
+  if (!foundEducation) {
+    return
+  }
+
+  state.openDialog = true
+  state.isEditing = true
+  state.record = foundEducation
 }
 
 const remove = (id: string) => {
-  formData.value = formData.value.filter((item) => item.id !== id)
+  removeEducation(id)
 }
 
 const close = () => {
-  state.value.openDialog = false
-}
-const cancel = () => {
-  state.value.openDialog = false
+  state.openDialog = false
 }
 
-const submitForm = () => {
-  console.log('Education submitted:', formData.value)
+const reset = () => {
+  state.openDialog = false
+  state.isEditing = false
+  state.record = {} as IEducationItem
+}
+
+const submitForm = (education: IEducationItem) => {
+  if (state.isEditing) {
+    updateEducation(education)
+  } else {
+    formData.value.push(education)
+    addEducation(education)
+  }
+
+  reset()
 }
 </script>

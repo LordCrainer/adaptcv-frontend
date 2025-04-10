@@ -16,8 +16,12 @@ const useEducation = () => {
       (item) => item.id === updatedItem.id
     )
     if (index !== -1) {
-      education.value[index] = updatedItem
+      education.value.splice(index, 1, updatedItem)
     }
+  }
+
+  const findEducation = (id: string): IEducationItem | undefined => {
+    return education.value.find((item) => item.id === id)
   }
 
   const clearEducation = () => {
@@ -30,6 +34,7 @@ const useEducation = () => {
 
   return {
     education,
+    findEducation,
     addEducation,
     removeEducation,
     updateEducation,

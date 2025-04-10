@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.21.0...v1.22.0) (2025-04-10)
+
+
+### Features
+
+* **Education:** refactor education management logic and improve dialog handling ([8a740d9](https://github.com/LordCrainer/adaptcv-frontend/commit/8a740d9d553d491b059df544270996d02828a753))
+
 # [1.21.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.20.0...v1.21.0) (2025-04-10)
 
 

@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.18.0...v1.19.0) (2025-04-10)
+
+
+### Features
+
+* **locales:** update profile translations for English and Spanish ([4ae6233](https://github.com/LordCrainer/adaptcv-frontend/commit/4ae623344fd6cbb1237183aa55873db93ce0974b))
+
 # [1.18.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.17.0...v1.18.0) (2025-04-10)
 
 

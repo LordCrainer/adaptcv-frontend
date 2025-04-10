@@ -17,9 +17,9 @@ export interface ILanguageItem {
 
 export interface IEducationItem {
   id: string
-  school: string
+  institution: string
   degree: string
-  field_of_study: string
-  start_date: string
-  end_date: string
+  fieldOfStudy: string
+  startDate: string
+  endDate: string
 }

@@ -3,7 +3,7 @@
     <v-card :title="title">
       <div class="d-flex flex-column px-4">
         <v-autocomplete
-          v-model="formData.degree"
+          v-model="inputData.degree"
           variant="outlined"
           :items="degreeOptions"
           clearable
@@ -12,20 +12,20 @@
           required></v-autocomplete>
 
         <v-text-field
-          v-model="formData.institution"
+          v-model="inputData.institution"
           :label="$t('profile.education.institution')"
           variant="outlined"
           required></v-text-field>
 
         <div class="d-flex flex-row ga-4">
           <v-text-field
-            v-model="formData.startDate"
+            v-model="inputData.startDate"
             :label="$t('profile.education.startDate')"
             variant="outlined"
             type="date"></v-text-field>
 
           <v-text-field
-            v-model="formData.endDate"
+            v-model="inputData.endDate"
             :label="$t('profile.education.endDate')"
             variant="outlined"
             type="date"></v-text-field>
@@ -48,16 +48,20 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import type { IEducationItem } from '..'
 
-defineProps<{
+const props = defineProps<{
   title: string
+  inputData: IEducationItem
 }>()
 
-const DEFAULT_ITEM = {
+const DEFAULT_ITEM: IEducationItem = {
+  id: '',
   degree: '',
   institution: '',
   startDate: '',
-  endDate: ''
+  endDate: '',
+  fieldOfStudy: ''
 }
 
 const emit = defineEmits(['submit', 'cancel', 'close'])
@@ -72,17 +76,15 @@ const degreeOptions = ref<string[]>([
   'doctorate'
 ])
 
-const formData = ref(DEFAULT_ITEM)
-
 const submitForm = () => {
-  if (formData.value.degree && formData.value.institution) {
-    emit('submit', { ...formData.value })
+  if (props.inputData.degree && props.inputData.institution) {
+    emit('submit', { ...props.inputData })
     resetForm()
     emit('close')
   }
 }
 
 const resetForm = () => {
-  formData.value = DEFAULT_ITEM
+  Object.assign(props.inputData, DEFAULT_ITEM)
 }
 </script>

@@ -14,8 +14,8 @@
       </div>
       <v-data-table
         :headers="headers"
-        :items="formData"
-        :hide-default-footer="formData.length < 11">
+        :items="education"
+        :hide-default-footer="education.length < 11">
         <template v-slot:item.actions="{ item }">
           <div class="d-flex ga-2 justify-end">
             <v-icon
@@ -51,15 +51,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import EducationForm from './EducationForm.vue'
-import type { IEducationItem } from '..'
+import type { IEducationItem } from '~/features/profile/index'
 import useEducation from './useEducation'
 
-const { addEducation, findEducation, updateEducation, removeEducation } =
-  useEducation()
-
-const formData = ref<IEducationItem[]>([])
+const {
+  addEducation,
+  findEducation,
+  updateEducation,
+  removeEducation,
+  education
+} = useEducation()
 
 const headers = [
   { title: 'Degree', key: 'degree' },
@@ -109,7 +111,6 @@ const submitForm = (education: IEducationItem) => {
   if (state.isEditing) {
     updateEducation(education)
   } else {
-    formData.value.push(education)
     addEducation(education)
   }
 

@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.13.0...v1.14.0) (2025-04-10)
+
+
+### Features
+
+* **languages:** refactor LanguagesForm and index to improve language management ([f8ebcc2](https://github.com/LordCrainer/adaptcv-frontend/commit/f8ebcc27feb2d71cf76325c84cd0224cfa6e4476))
+
 # [1.13.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.12.0...v1.13.0) (2025-04-09)
 
 

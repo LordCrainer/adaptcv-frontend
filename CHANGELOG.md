@@ -1,3 +1,10 @@
+# [1.23.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.22.0...v1.23.0) (2025-04-10)
+
+
+### Features
+
+* add initial launch configuration for debugging in VSCode ([30aa366](https://github.com/LordCrainer/adaptcv-frontend/commit/30aa36682af178ee985297b421be4ee331f6de71))
+
 # [1.22.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.21.0...v1.22.0) (2025-04-10)
 
 

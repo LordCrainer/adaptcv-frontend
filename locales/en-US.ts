@@ -1,52 +1,5 @@
 import { en as $vuetify } from 'vuetify/locale'
 
-const profile: TranslationKeys['profile'] = {
-  personalInfo: {
-    title: 'Personal Information',
-    fullname: 'Full Name',
-    areaProfession: 'Area of Profession',
-    profession: 'Profession',
-    email: 'Email',
-    phone: 'Phone',
-    address: 'Address',
-    summary: 'Summary',
-    city: 'City',
-    country: 'Country',
-    fillInformation: 'Fill Information',
-    aboutMe: 'About Me'
-  },
-  experience: {
-    title: 'Experience',
-    jobTitle: 'Job Title',
-    company: 'Company',
-    position: 'Position',
-    startDate: 'Start Date',
-    endDate: 'End Date',
-    description: 'Description',
-    less1year: 'Less than 1 year',
-    '1to2years': '1 to 2 years',
-    '2to3years': '2 to 3 years',
-    '5to10years': '5 to 10 years',
-    '10plusyears': '10+ years'
-  },
-  education: {
-    title: 'Education',
-    degree: 'Degree',
-    institution: 'Institution',
-    startDate: 'Start Date',
-    endDate: 'End Date'
-  },
-  skills: {
-    title: 'Skills',
-    skill: 'Skill'
-  },
-  languages: {
-    title: 'Languages',
-    language: 'Language',
-    level: 'Level'
-  }
-}
-
 export default {
   actions: {
     add: 'Add',
@@ -85,6 +38,51 @@ export default {
     confirmPassword: 'Confirm Password',
     signUp: 'Sign Up'
   },
-  profile,
+  profile: {
+    personalInfo: {
+      title: 'Personal Information',
+      fullname: 'Full Name',
+      areaProfession: 'Area of Profession',
+      profession: 'Profession',
+      email: 'Email',
+      phone: 'Phone',
+      address: 'Address',
+      summary: 'Summary',
+      city: 'City',
+      country: 'Country',
+      fillInformation: 'Fill Information',
+      aboutMe: 'About Me'
+    },
+    experience: {
+      title: 'Experience',
+      jobTitle: 'Job Title',
+      company: 'Company',
+      position: 'Position',
+      startDate: 'Start Date',
+      endDate: 'End Date',
+      description: 'Description',
+      less1year: 'Less than 1 year',
+      '1to2years': '1 to 2 years',
+      '2to3years': '2 to 3 years',
+      '5to10years': '5 to 10 years',
+      '10plusyears': '10+ years'
+    },
+    education: {
+      title: 'Education',
+      degree: 'Degree',
+      institution: 'Institution',
+      startDate: 'Start Date',
+      endDate: 'End Date'
+    },
+    skills: {
+      title: 'Skills',
+      skill: 'Skill'
+    },
+    languages: {
+      title: 'Languages',
+      language: 'Language',
+      level: 'Level'
+    }
+  },
   ...$vuetify
 } as TranslationKeys

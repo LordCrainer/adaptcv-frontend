@@ -1,3 +1,11 @@
+# [1.17.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.16.0...v1.17.0) (2025-04-10)
+
+
+### Features
+
+* **profile:** refactor education management with new EducationForm component and update user profile view ([f398163](https://github.com/LordCrainer/adaptcv-frontend/commit/f3981639cf52c41ff9a887d88e61f371147406e5))
+* **skills:** update skill form and localization for experience options ([78267f4](https://github.com/LordCrainer/adaptcv-frontend/commit/78267f4ca9cde8f1e33d015eb8153223ea19f8d8))
+
 # [1.16.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.15.0...v1.16.0) (2025-04-10)
 
 

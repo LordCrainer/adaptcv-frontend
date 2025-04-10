@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.17.0...v1.18.0) (2025-04-10)
+
+
+### Features
+
+* **profile:** add profile localization for English and Spanish ([e7bcba6](https://github.com/LordCrainer/adaptcv-frontend/commit/e7bcba66741c3a3cf0b991e940d08650fe98e3bd))
+
 # [1.17.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.16.0...v1.17.0) (2025-04-10)
 
 

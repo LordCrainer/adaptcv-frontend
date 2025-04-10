@@ -43,6 +43,11 @@ interface TranslationKeys {
       startDate: string
       endDate: string
       description: string
+      less1year: string
+      '1to2years': string
+      '2to3years': string
+      '5to10years': string
+      '10plusyears': string
     }
     education: {
       title: string

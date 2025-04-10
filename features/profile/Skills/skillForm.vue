@@ -1,6 +1,7 @@
 <template>
   <v-form @submit.prevent="submitForm">
     <v-card :title="title">
+      {{ inputData }}
       <template v-slot:text>
         <v-row>
           <v-col cols="12" md="6">
@@ -17,6 +18,7 @@
               variant="outlined"
               v-model="inputData.year_experiences"
               :items="experienceOptions"
+              :item-title="(i) => $t(`profile.experience.${i}`)"
               label="Year Experiences"
               required></v-select>
           </v-col>
@@ -64,18 +66,17 @@ import { useSkill } from './useSkill'
 const { skillsList, toSkill } = useSkill()
 
 const experienceOptions = [
-  'less than 1 year',
-  '1 - 2 years',
-  '2 - 3 years',
-  '3 - 5 years',
-  '5 - 10 years',
-  '10+ years'
+  'less1year',
+  '1to2years',
+  '2to3years',
+  '5to10years',
+  '10plusyears'
 ]
 
 const props = defineProps<{
   inputData: ISkillForm
   multiple?: boolean
-  subtitle?: string 
+  subtitle?: string
   title: string
 }>()
 

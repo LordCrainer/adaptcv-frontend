@@ -19,7 +19,8 @@ export default {
     portfolio: 'Portafolio',
     privacyPolicy: 'Política de privacidad',
     termsOfService: 'Términos de servicio',
-    email: 'Correo electrónico'
+    email: 'Correo electrónico',
+    noData: 'No hay datos disponibles'
   },
   login: {
     password: 'contraseña',
@@ -36,22 +37,6 @@ export default {
     signUp: 'Regístrate'
   },
   profile: {
-    education: {
-      title: 'Educación',
-      degree: 'Título',
-      institution: 'Institución',
-      startDate: 'Fecha de inicio',
-      endDate: 'Fecha de finalización'
-    },
-    experience: {
-      title: 'Experiencia',
-      jobTitle: 'Título del trabajo',
-      company: 'Compañía',
-      position: 'Posición',
-      startDate: 'Fecha de inicio',
-      endDate: 'Fecha de finalización',
-      description: 'Descripción'
-    },
     personalInfo: {
       title: 'Información personal',
       fullname: 'Nombre completo',
@@ -60,7 +45,32 @@ export default {
       email: 'Correo electrónico',
       phone: 'Teléfono',
       address: 'Dirección',
-      description: 'Descripción'
+      summary: 'Resumen',
+      city: 'Ciudad',
+      country: 'País',
+      fillInformation: 'Rellena la información',
+      aboutMe: 'Acerca de mí'
+    },
+    experience: {
+      title: 'Experiencia',
+      jobTitle: 'Título del trabajo',
+      company: 'Compañía',
+      position: 'Posición',
+      startDate: 'Fecha de inicio',
+      endDate: 'Fecha de finalización',
+      description: 'Descripción',
+      less1year: 'Menos de 1 año',
+      '1to2years': '1 a 2 años',
+      '2to3years': '2 a 3 años',
+      '5to10years': '5 a 10 años',
+      '10plusyears': 'Más de 10 años'
+    },
+    education: {
+      title: 'Educación',
+      degree: 'Título',
+      institution: 'Institución',
+      startDate: 'Fecha de inicio',
+      endDate: 'Fecha de finalización'
     },
     skills: {
       title: 'Habilidades',
@@ -73,4 +83,4 @@ export default {
     }
   },
   ...$vuetify
-}
+} as TranslationKeys

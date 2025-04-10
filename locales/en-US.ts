@@ -54,13 +54,18 @@ export default {
       aboutMe: 'About Me'
     },
     experience: {
-      jobTitle: 'Job Title',
       title: 'Experience',
+      jobTitle: 'Job Title',
       company: 'Company',
       position: 'Position',
       startDate: 'Start Date',
       endDate: 'End Date',
-      description: 'Description'
+      description: 'Description',
+      less1year: 'Less than 1 year',
+      '1to2years': '1 to 2 years',
+      '2to3years': '2 to 3 years',
+      '5to10years': '5 to 10 years',
+      '10plusyears': '10+ years'
     },
     education: {
       title: 'Education',
@@ -79,6 +84,5 @@ export default {
       level: 'Level'
     }
   },
-  Tecnology: 'Tecnology',
   ...$vuetify
 } as TranslationKeys

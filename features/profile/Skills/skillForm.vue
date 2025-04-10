@@ -15,7 +15,7 @@
           <v-col cols="12" md="6">
             <v-select
               variant="outlined"
-              v-model="inputData.year_experiences"
+              v-model="inputData.yearsOfExperience"
               :items="experienceOptions"
               :item-title="(i) => $t(`profile.skills.${i}`)"
               label="Year Experiences"
@@ -98,7 +98,7 @@ const submitForm = () => {
 
 const resetForm = () => {
   props.inputData.job = ''
-  props.inputData.year_experiences = undefined
+  props.inputData.yearsOfExperience = undefined
   props.inputData.selectedSkills = []
 }
 </script>

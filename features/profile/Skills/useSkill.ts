@@ -29,7 +29,7 @@ export const useSkill = () => {
       id: skill,
       skill,
       job: '',
-      year_experiences: undefined
+      yearsOfExperience: undefined
     }))
   }
 

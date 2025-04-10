@@ -57,6 +57,8 @@ import { reactive, ref } from 'vue'
 import SkillForm from './skillForm.vue'
 import type { ISkill, ISkillForm } from '..'
 
+const { t } = useI18n()
+
 interface State {
   isEditing: boolean
   openDialog: boolean
@@ -70,24 +72,26 @@ const state = reactive<State>({
   record: {
     id: '',
     job: '',
-    year_experiences: undefined
+    yearsOfExperience: undefined
   },
   formData: []
 })
 
 const formData = ref<ISkill[]>([])
 
-const headers = <any>[
-  { title: 'Skill', key: 'skill', align: 'start' },
-  { title: 'Job', key: 'job', align: 'start' },
+const headers = ref([
+  { title: t('profile.skills.skill'), key: 'skill' },
+  { title: t('profile.skills.job'), key: 'job' },
   {
-    title: 'Year Experiences',
-    key: 'year_experiences',
-    align: 'end',
-    sortable: false
+    title: t('profile.skills.yearsOfExperience'),
+    key: 'yearsOfExperience'
   },
-  { title: 'Actions', key: 'actions', align: 'end', sortable: false }
-]
+  {
+    title: t('actions.options'),
+    key: 'actions',
+    sortable: false
+  }
+])
 
 function edit(id: string) {
   state.openDialog = true
@@ -96,7 +100,7 @@ function edit(id: string) {
   state.record = {
     id: item?.id || '',
     job: item?.job || '',
-    year_experiences: item?.year_experiences || undefined,
+    yearsOfExperience: item?.yearsOfExperience || undefined,
     selectedSkills: [item?.skill || '']
   }
 }
@@ -105,7 +109,7 @@ function setFormData(value: ISkill): ISkill {
   return {
     skill: value.skill || '',
     job: value.job || '',
-    year_experiences: value.year_experiences || undefined,
+    yearsOfExperience: value.yearsOfExperience || undefined,
     id: value.id || ''
   }
 }
@@ -132,7 +136,7 @@ function save(data: ISkill[]) {
           id: Date.now().toString(),
           skill: d.skill,
           job: state.record.job,
-          year_experiences: state.record.year_experiences
+          yearsOfExperience: state.record.yearsOfExperience
         })
       )
     }

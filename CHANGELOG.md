@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.15.0...v1.16.0) (2025-04-10)
+
+
+### Features
+
+* **languages:** refactor language management to use useLanguages composable ([83279fa](https://github.com/LordCrainer/adaptcv-frontend/commit/83279fa3ec7cb603440d0a5f85ebd3642a442632))
+
 # [1.15.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.14.0...v1.15.0) (2025-04-10)
 
 

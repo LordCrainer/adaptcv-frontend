@@ -10,7 +10,7 @@ export interface ISkillForm extends Omit<ISkill, 'skill'> {
 }
 
 type LanguageProficiency = 'Beginner' | 'Intermediate' | 'Advanced' | 'Native'
-export interface ILanguages {
-  language: string | undefined
+export interface ILanguageItem {
+  name: string | undefined
   proficiency: LanguageProficiency
 }

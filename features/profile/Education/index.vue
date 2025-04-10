@@ -28,7 +28,7 @@
               color="medium-emphasis"
               icon="mdi-delete"
               size="small"
-              @click="remove(item.id)" />
+              @click="removeEducation(item.id)" />
           </div>
         </template>
 
@@ -90,11 +90,7 @@ const edit = (id: string) => {
 
   state.openDialog = true
   state.isEditing = true
-  state.record = foundEducation
-}
-
-const remove = (id: string) => {
-  removeEducation(id)
+  state.record = { ...foundEducation }
 }
 
 const close = () => {

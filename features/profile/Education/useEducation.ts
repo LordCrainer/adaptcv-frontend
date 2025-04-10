@@ -4,7 +4,7 @@ const useEducation = () => {
   const education = ref<IEducationItem[]>([])
 
   const addEducation = (educationItem: IEducationItem) => {
-    education.value.push(educationItem)
+    education.value.push({ ...educationItem, id: Date.now().toString() })
   }
 
   const removeEducation = (id: string) => {

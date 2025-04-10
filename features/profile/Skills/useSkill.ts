@@ -1,4 +1,4 @@
-import type { ISkill } from '@/views/profile/index.d'
+import type { ISkill } from '~/features/profile'
 
 const SKILLS_LIST = ref([
   'JavaScript',

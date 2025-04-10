@@ -35,12 +35,12 @@
 <script setup>
 import { ref } from 'vue'
 import CardDefault from '~/components/card/CardDefault.vue'
-import UserProfile from '~/views/profile/UserProfile.vue'
-import WorkExperience from '~/views/profile/WorkExperience.vue'
+import UserProfile from '@/features/profile/UserProfile.vue'
+import WorkExperience from '@/features/profile/WorkExperience.vue'
 
-import Education from '~/views/profile/Education.vue'
-import Skills from '~/views/profile/Skills/index.vue'
-import Languages from '~/views/profile/Languages/index.vue'
+import Education from '@/features/profile/Education.vue'
+import Skills from '@/features/profile/Skills/index.vue'
+import Languages from '@/features/profile/Languages/index.vue'
 const formData = ref({
   name: '',
   profession: '',

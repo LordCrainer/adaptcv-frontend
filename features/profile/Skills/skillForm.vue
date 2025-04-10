@@ -58,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ISkill, ISkillForm } from '@/views/profile/index.d'
+import type { ISkill, ISkillForm } from '~/features/profile'
 import { useSkill } from './useSkill'
 
 const { skillsList, toSkill } = useSkill()

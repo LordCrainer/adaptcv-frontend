@@ -3,7 +3,7 @@
     <v-card :title="title">
       <div class="d-flex flex-column px-4">
         <v-autocomplete
-          v-model="inputData.degree"
+          v-model="localEducation.degree"
           variant="outlined"
           :items="degreeOptions"
           clearable
@@ -12,20 +12,26 @@
           required></v-autocomplete>
 
         <v-text-field
-          v-model="inputData.institution"
+          v-model="localEducation.fieldOfStudy"
+          :label="$t('profile.education.fieldOfStudy')"
+          variant="outlined"
+          required></v-text-field>
+
+        <v-text-field
+          v-model="localEducation.institution"
           :label="$t('profile.education.institution')"
           variant="outlined"
           required></v-text-field>
 
         <div class="d-flex flex-row ga-4">
           <v-text-field
-            v-model="inputData.startDate"
+            v-model="localEducation.startDate"
             :label="$t('profile.education.startDate')"
             variant="outlined"
             type="date"></v-text-field>
 
           <v-text-field
-            v-model="inputData.endDate"
+            v-model="localEducation.endDate"
             :label="$t('profile.education.endDate')"
             variant="outlined"
             type="date"></v-text-field>
@@ -64,6 +70,16 @@ const DEFAULT_ITEM: IEducationItem = {
   fieldOfStudy: ''
 }
 
+const localEducation = ref<IEducationItem>({ ...props.inputData })
+
+watch(
+  () => props.inputData,
+  (newVal) => {
+    localEducation.value = { ...newVal }
+  },
+  { deep: true }
+)
+
 const emit = defineEmits(['submit', 'cancel', 'close'])
 
 const degreeOptions = ref<string[]>([
@@ -77,14 +93,14 @@ const degreeOptions = ref<string[]>([
 ])
 
 const submitForm = () => {
-  if (props.inputData.degree && props.inputData.institution) {
-    emit('submit', { ...props.inputData })
+  if (localEducation.value.degree && localEducation.value.institution) {
+    emit('submit', { ...localEducation.value })
     resetForm()
     emit('close')
   }
 }
 
 const resetForm = () => {
-  Object.assign(props.inputData, DEFAULT_ITEM)
+  Object.assign(localEducation.value, DEFAULT_ITEM)
 }
 </script>

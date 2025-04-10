@@ -1,6 +1,6 @@
 <template>
   <v-form @submit.prevent="submitForm">
-    <v-card :subtitle="subtitle" :title="title">
+    <v-card :title="title">
       <template v-slot:text>
         <v-row>
           <v-col cols="12" md="6">
@@ -75,7 +75,7 @@ const experienceOptions = [
 const props = defineProps<{
   inputData: ISkillForm
   multiple?: boolean
-  subtitle?: string
+  subtitle?: string 
   title: string
 }>()
 

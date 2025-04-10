@@ -1,24 +1,21 @@
 <template>
   <v-row>
     <v-col cols="12">
+      <div class="d-flex justify-end">
+        <v-btn
+          color="secondary"
+          variant="outlined"
+          rounded
+          prepend-icon="mdi-plus"
+          border
+          @click="add">
+          {{ $t('actions.add') }}
+        </v-btn>
+      </div>
       <v-data-table
         :headers="headers"
         :hide-default-footer="formData.length < 11"
         :items="formData">
-        <template v-slot:top>
-          <div class="d-flex justify-end">
-            <v-btn
-              color="secondary"
-              variant="outlined"
-              rounded
-              prepend-icon="mdi-plus"
-              border
-              @click="add">
-              {{ $t('actions.add') }}
-            </v-btn>
-          </div>
-        </template>
-
         <template v-slot:item.actions="{ item }">
           <div class="d-flex ga-2 justify-end">
             <v-icon

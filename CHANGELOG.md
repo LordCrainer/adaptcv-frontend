@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.19.0...v1.20.0) (2025-04-10)
+
+
+### Features
+
+* **locales:** update language proficiency terms and add missing translations for skills and languages ([0ea85e7](https://github.com/LordCrainer/adaptcv-frontend/commit/0ea85e7f1328ba372f31f3b9395e1ec7854f90bb))
+
 # [1.19.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.18.0...v1.19.0) (2025-04-10)
 
 

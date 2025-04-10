@@ -7,7 +7,6 @@
           variant="outlined"
           rounded
           prepend-icon="mdi-plus"
-          border
           @click="add">
           {{ $t('actions.add') }}
         </v-btn>
@@ -55,6 +54,8 @@ import EducationForm from './EducationForm.vue'
 import type { IEducationItem } from '~/features/profile/index'
 import useEducation from './useEducation'
 
+const { t } = useI18n()
+
 const {
   addEducation,
   findEducation,
@@ -63,13 +64,14 @@ const {
   education
 } = useEducation()
 
-const headers = [
-  { title: 'Degree', key: 'degree' },
-  { title: 'Institution', key: 'institution' },
-  { title: 'Start Date', key: 'startDate' },
-  { title: 'End Date', key: 'endDate' },
-  { title: 'Actions', key: 'actions', sortable: false }
-]
+const headers = ref([
+  { title: t('profile.education.degree'), key: 'degree' },
+  { title: t('profile.education.institution'), key: 'institution' },
+  { title: t('profile.education.fieldOfStudy'), key: 'fieldOfStudy' },
+  { title: t('profile.education.startDate'), key: 'startDate' },
+  { title: t('profile.education.endDate'), key: 'endDate' },
+  { title: t('actions.options'), key: 'actions', sortable: false }
+])
 
 const state = reactive({
   openDialog: false,

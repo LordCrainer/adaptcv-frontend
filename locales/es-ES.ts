@@ -65,7 +65,14 @@ export default {
       degree: 'Título',
       institution: 'Institución',
       startDate: 'Fecha de inicio',
-      endDate: 'Fecha de finalización'
+      endDate: 'Fecha de finalización',
+      secondary: 'Secundaria',
+      highSchool: 'Escuela secundaria',
+      technical: 'Técnica',
+      undergraduate: 'Licenciatura',
+      graduate: 'Posgrado',
+      masters: 'Maestría',
+      doctorate: 'Doctorado'
     },
     skills: {
       title: 'Habilidades',

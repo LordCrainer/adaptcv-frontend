@@ -50,6 +50,13 @@ interface TranslationKeys {
       institution: string
       startDate: string
       endDate: string
+      secondary: string
+      highSchool: string
+      technical: string
+      undergraduate: string
+      graduate: string
+      masters: string
+      doctorate: string
     }
     skills: {
       title: string

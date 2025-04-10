@@ -67,7 +67,14 @@ export default {
       degree: 'Degree',
       institution: 'Institution',
       startDate: 'Start Date',
-      endDate: 'End Date'
+      endDate: 'End Date',
+      secondary: 'Secondary',
+      highSchool: 'High School',
+      technical: 'Technical',
+      undergraduate: 'Undergraduate',
+      graduate: 'Graduate',
+      masters: 'Masters',
+      doctorate: 'Doctorate'
     },
     skills: {
       title: 'Skills',

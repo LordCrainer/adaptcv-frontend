@@ -99,5 +99,16 @@ export default {
       native: 'Native'
     }
   },
+  $vuetify: {
+    noDataText: 'No data available',
+    open: 'Open',
+    close: 'Close',
+    input: {
+      clear: 'Clear',
+      prependAction: 'Prepend Action',
+      appendAction: 'Append Action',
+      placeholder: 'Placeholder'
+    }
+  },
   ...$vuetify
 } as TranslationKeys

@@ -1,3 +1,5 @@
+import type { AreasProfession } from './constants'
+
 export type yearsOfExperience =
   | 'less1year'
   | '1to2years'
@@ -32,4 +34,16 @@ export interface IWorkExperience {
   startDate: string
   endDate: string
   description: DEContentData
+}
+
+export interface FormData {
+  name: string
+  profession: string
+  areaProfession: AreasProfession | undefined
+  email: string
+  phone: string
+  address: string
+  country?: string
+  city?: string
+  summary?: string
 }

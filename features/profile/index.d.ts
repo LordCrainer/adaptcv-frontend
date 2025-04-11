@@ -24,3 +24,12 @@ export interface IEducationItem {
   startDate: string
   endDate: string
 }
+
+export interface IWorkExperience {
+  id: string
+  jobTitle: string
+  company: string
+  startDate: string
+  endDate: string
+  description: DEContentData
+}

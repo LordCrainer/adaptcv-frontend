@@ -36,7 +36,7 @@
 import { ref } from 'vue'
 import CardDefault from '~/components/card/CardDefault.vue'
 import UserProfile from '@/features/profile/UserProfile.vue'
-import WorkExperience from '@/features/profile/WorkExperience.vue'
+import WorkExperience from '~/features/profile/WorkExperience/index.vue'
 
 import Education from '~/features/profile/Education/index.vue'
 import Skills from '@/features/profile/Skills/index.vue'

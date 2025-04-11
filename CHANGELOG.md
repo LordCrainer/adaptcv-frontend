@@ -1,3 +1,10 @@
+## [1.23.2](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.23.1...v1.23.2) (2025-04-11)
+
+
+### Bug Fixes
+
+* **Locales:** update locale files to use defineI18nLocale for better structure and maintainability ([f421e64](https://github.com/LordCrainer/adaptcv-frontend/commit/f421e64278b8d7f09c716fcd3d8c5529efe79e37))
+
 ## [1.23.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.23.0...v1.23.1) (2025-04-10)
 
 

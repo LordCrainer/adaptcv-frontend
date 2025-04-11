@@ -1,10 +1,10 @@
 import { ref } from 'vue'
 import type { ILanguageItem } from '..'
 
+const MAX_LANGUAGES = 5
+
 export const useLanguages = () => {
   const languages = ref<ILanguageItem[]>([])
-
-  const MAX_LANGUAGES = 5
 
   const upsertLanguage = (lang: ILanguageItem) => {
     if (languages.value.length >= MAX_LANGUAGES) {

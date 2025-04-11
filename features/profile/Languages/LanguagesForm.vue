@@ -2,7 +2,7 @@
   <v-form @submit.prevent="submitForm">
     <div class="d-flex ga-2 align-start pa-2">
       <v-autocomplete
-        v-model="select.name"
+        v-model="localLang.name"
         variant="outlined"
         class="flex-grow-1"
         clearable
@@ -10,7 +10,7 @@
         :label="$t('profile.languages.language')"></v-autocomplete>
 
       <v-select
-        v-model="select.proficiency"
+        v-model="localLang.proficiency"
         :items="proficiencyLevels"
         variant="outlined"
         :item-title="(i) => $t(`profile.languages.${i}`)"
@@ -36,7 +36,7 @@ const DEFAULT_LANGUAGE_ITEM: ILanguageItem = {
   proficiency: 'beginner'
 }
 
-const select = ref<ILanguageItem>(DEFAULT_LANGUAGE_ITEM)
+const localLang = ref<ILanguageItem>(DEFAULT_LANGUAGE_ITEM)
 
 const proficiencyLevels = ['beginner', 'intermediate', 'advanced', 'native']
 
@@ -58,13 +58,13 @@ const languages = ref(
 const emit = defineEmits(['submit'])
 
 const submitForm = () => {
-  if (select.value.name && select.value.proficiency) {
-    emit('submit', { ...select.value })
+  if (localLang.value.name && localLang.value.proficiency) {
+    emit('submit', { ...localLang.value })
     _reset()
   }
 }
 
 const _reset = () => {
-  select.value = DEFAULT_LANGUAGE_ITEM
+  localLang.value = DEFAULT_LANGUAGE_ITEM
 }
 </script>

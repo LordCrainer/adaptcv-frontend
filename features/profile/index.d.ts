@@ -1,18 +1,19 @@
+export type yearsOfExperience =
+  | 'less1year'
+  | '1to2years'
+  | '2to3years'
+  | '5to10years'
+  | '10plusyears'
+
 export interface ISkill {
-  id: string
   skill: string
-  job: string
   yearsOfExperience: yearsOfExperience | undefined
 }
 
-export interface ISkillForm extends Omit<ISkill, 'skill'> {
-  selectedSkills?: string[]
-}
-
-type LanguageProficiency = 'beginner' | 'intermediate' | 'advanced' | 'native'
+type Proficiency = 'beginner' | 'intermediate' | 'advanced' | 'native'
 export interface ILanguageItem {
   name: string | undefined
-  proficiency: LanguageProficiency
+  proficiency: Proficiency
 }
 
 export interface IEducationItem {

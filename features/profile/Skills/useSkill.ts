@@ -14,29 +14,35 @@ const SKILLS_LIST = ref([
   'HTML',
   'CSS',
   'SQL',
-  'Rust'
-])
+  'Rust',
+  'Node.js',
+].sort())
+
+const MAX_SKILLS = 10
 
 export const useSkill = () => {
-  const skillsList = computed(() => SKILLS_LIST.value.sort())
+  const skills = ref<ISkill[]>([])
 
-  function toSkill(selectedSkills: string[]): ISkill[] {
-    const skills = Array.isArray(selectedSkills)
-      ? selectedSkills
-      : [selectedSkills]
-
-    return skills.map((skill) => ({
-      id: skill,
-      skill,
-      job: '',
-      yearsOfExperience: undefined
-    }))
+  const upsertSkill = (data: ISkill) => {
+    if (skills.value.length >= MAX_SKILLS) {
+      return
+    }
+    const index = skills.value.findIndex((item) => item.skill === data.skill)
+    if (index !== -1) {
+      skills.value.splice(index, 1, data)
+    } else {
+      skills.value.push(data)
+    }
   }
 
-  
+  const removeSkill = (index: number) => {
+    skills.value.splice(index, 1)
+  }
 
   return {
-    toSkill,
-    skillsList
+    upsertSkill,
+    skills,
+    SKILLS_LIST,
+    removeSkill
   }
 }

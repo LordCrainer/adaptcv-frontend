@@ -1,70 +1,40 @@
 <template>
   <v-form @submit.prevent="submitForm">
-    <v-card :title="title">
-      <template v-slot:text>
-        <v-row>
-          <v-col cols="12" md="6">
-            <v-text-field
-              v-model="inputData.job"
-              variant="outlined"
-              label="Job"
-              placeholder="Ej: My Project"
-              required></v-text-field>
-          </v-col>
+    <div class="d-flex ga-2 align-start pa-2">
+      <v-autocomplete
+        v-model="localSkills.skill"
+        variant="outlined"
+        class="flex-grow-1"
+        clearable
+        :items="SKILLS_LIST"
+        :label="$t('profile.skills.skill')"></v-autocomplete>
 
-          <v-col cols="12" md="6">
-            <v-select
-              variant="outlined"
-              v-model="inputData.yearsOfExperience"
-              :items="experienceOptions"
-              :item-title="(i) => $t(`profile.skills.${i}`)"
-              label="Year Experiences"
-              required></v-select>
-          </v-col>
+      <v-select
+        v-model="localSkills.yearsOfExperience"
+        :items="experienceOptions"
+        variant="outlined"
+        :item-title="(i) => i && $t(`profile.skills.${i}`)"
+        :label="$t('profile.skills.yearsOfExperience')"
+        required></v-select>
 
-          <v-col cols="12">
-            <v-combobox
-              flat
-              v-model="inputData.selectedSkills"
-              :items="skillsList"
-              label="Skills"
-              prepend-inner-icon="mdi-filter-variant"
-              variant="outlined"
-              chips
-              clearable
-              closable-chips
-              :multiple="multiple">
-              <template v-slot:chip="{ props, item }">
-                <v-chip v-bind="props">
-                  <strong>{{ item.raw }}</strong>
-                </v-chip>
-              </template>
-            </v-combobox>
-          </v-col>
-        </v-row>
-      </template>
-      <slot name="actions">
-        <v-card-actions class="">
-          <v-btn variant="flat" @click="$emit('cancel')">
-            {{ $t('actions.cancel') }}
-          </v-btn>
-
-          <v-btn text="Save" color="primary" variant="tonal" type="submit">
-            {{ $t('actions.save') }}
-          </v-btn>
-        </v-card-actions>
-      </slot>
-    </v-card>
+      <v-btn
+        color="primary"
+        variant="tonal"
+        rounded
+        size="large"
+        icon="mdi-plus"
+        type="submit"></v-btn>
+    </div>
   </v-form>
 </template>
 
 <script setup lang="ts">
-import type { ISkill, ISkillForm } from '~/features/profile'
+import type { ISkill, yearsOfExperience } from '~/features/profile/index'
 import { useSkill } from './useSkill'
 
-const { skillsList, toSkill } = useSkill()
+const { SKILLS_LIST } = useSkill()
 
-const experienceOptions = [
+const experienceOptions: yearsOfExperience[] = [
   'less1year',
   '1to2years',
   '2to3years',
@@ -72,33 +42,23 @@ const experienceOptions = [
   '10plusyears'
 ]
 
-const props = defineProps<{
-  inputData: ISkillForm
-  multiple?: boolean
-  subtitle?: string
-  title: string
-}>()
-
-const emit = defineEmits<{
-  (e: 'submit', payload: ISkill[]): void
-  (e: 'cancel'): void
-  (e: 'close'): void
-}>()
-
-const submitForm = () => {
-  if (!props.inputData.selectedSkills) {
-    emit('cancel')
-    return
-  }
-
-  emit('submit', toSkill(props.inputData.selectedSkills))
-  resetForm()
-  emit('close')
+const DEFAULT_SKILL_ITEM: ISkill = {
+  skill: '',
+  yearsOfExperience: 'less1year'
 }
 
-const resetForm = () => {
-  props.inputData.job = ''
-  props.inputData.yearsOfExperience = undefined
-  props.inputData.selectedSkills = []
+const localSkills = ref<ISkill>(DEFAULT_SKILL_ITEM)
+
+const emit = defineEmits(['submit'])
+
+const submitForm = () => {
+  if (localSkills.value?.skill) {
+    emit('submit', { ...localSkills.value })
+    _reset()
+  }
+}
+
+const _reset = () => {
+  localSkills.value = DEFAULT_SKILL_ITEM
 }
 </script>

@@ -26,13 +26,13 @@
         <div class="d-flex flex-row ga-4">
           <v-text-field
             v-model="localEducation.startDate"
-            :label="$t('profile.education.startDate')"
+            :label="$t('profile.common.startDate')"
             variant="outlined"
             type="date"></v-text-field>
 
           <v-text-field
             v-model="localEducation.endDate"
-            :label="$t('profile.education.endDate')"
+            :label="$t('profile.common.endDate')"
             variant="outlined"
             type="date"></v-text-field>
         </div>

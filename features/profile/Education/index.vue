@@ -68,8 +68,8 @@ const headers = ref([
   { title: t('profile.education.degree'), key: 'degree' },
   { title: t('profile.education.institution'), key: 'institution' },
   { title: t('profile.education.fieldOfStudy'), key: 'fieldOfStudy' },
-  { title: t('profile.education.startDate'), key: 'startDate' },
-  { title: t('profile.education.endDate'), key: 'endDate' },
+  { title: t('common.startDate'), key: 'startDate' },
+  { title: t('common.endDate'), key: 'endDate' },
   { title: t('actions.options'), key: 'actions', sortable: false }
 ])
 

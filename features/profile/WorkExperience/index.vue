@@ -5,7 +5,6 @@
         <v-btn
           color="secondary"
           variant="outlined"
-          rounded
           prepend-icon="mdi-plus"
           @click="add">
           {{ $t('actions.add') }}

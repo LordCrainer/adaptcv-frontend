@@ -1,3 +1,10 @@
+## [1.23.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.23.0...v1.23.1) (2025-04-10)
+
+
+### Bug Fixes
+
+* correct property name for years of experience and update translations for education and skills ([9d8bd1b](https://github.com/LordCrainer/adaptcv-frontend/commit/9d8bd1bcb29ffa62a5f652245795073293cfdac9))
+
 # [1.23.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.22.0...v1.23.0) (2025-04-10)
 
 

@@ -20,8 +20,6 @@ const profile: TranslationKeys['profile'] = {
     jobTitle: 'Título del trabajo',
     company: 'Compañía',
     position: 'Posición',
-    startDate: 'Fecha de inicio',
-    endDate: 'Fecha de finalización',
     description: 'Descripción'
   },
   education: {
@@ -83,7 +81,9 @@ export default defineI18nLocale(async () => {
       privacyPolicy: 'Política de privacidad',
       termsOfService: 'Términos de servicio',
       email: 'Correo electrónico',
-      noData: 'No hay datos disponibles'
+      noData: 'No hay datos disponibles',
+      startDate: 'Fecha de inicio',
+      endDate: 'Fecha de finalización'
     },
     login: {
       password: 'contraseña',

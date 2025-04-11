@@ -11,6 +11,8 @@ interface TranslationKeys {
     termsOfService: string
     email: string
     noData: string
+    startDate: string
+    endDate: string
   }
   actions: {
     add: string
@@ -41,8 +43,6 @@ interface TranslationKeys {
       jobTitle: string
       company: string
       position: string
-      startDate: string
-      endDate: string
       description: string
     }
     education: {

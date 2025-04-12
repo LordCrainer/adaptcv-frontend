@@ -9,18 +9,21 @@
           clearable
           :item-title="(i) => i && $t(`profile.education.${i}`)"
           :label="$t('profile.education.degree')"
+          aria-label="Degree"
           required></v-autocomplete>
 
         <v-text-field
           v-model="localEducation.fieldOfStudy"
           :label="$t('profile.education.fieldOfStudy')"
           variant="outlined"
+          aria-label="Field of Study"
           required></v-text-field>
 
         <v-text-field
           v-model="localEducation.institution"
           :label="$t('profile.education.institution')"
           variant="outlined"
+          aria-label="Institution"
           required></v-text-field>
 
         <div class="d-flex flex-row ga-4">
@@ -28,13 +31,15 @@
             v-model="localEducation.startDate"
             :label="$t('profile.common.startDate')"
             variant="outlined"
-            type="date"></v-text-field>
+            type="date"
+            aria-label="Start Date"></v-text-field>
 
           <v-text-field
             v-model="localEducation.endDate"
             :label="$t('profile.common.endDate')"
             variant="outlined"
-            type="date"></v-text-field>
+            type="date"
+            aria-label="End Date"></v-text-field>
         </div>
       </div>
       <slot name="actions">

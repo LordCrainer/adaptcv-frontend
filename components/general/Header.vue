@@ -7,14 +7,13 @@
     <v-app-bar-title>AdaptCV</v-app-bar-title>
 
     <template v-slot:append>
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-      <HeaderSettingsMenu />
+      <HeaderActionItems />
+      <HeaderOverflowMenu />
     </template>
   </v-app-bar>
 </template>
 
 <script setup lang="ts">
-import HeaderSettingsMenu from './HeaderOverflow Menu.vue'
+import HeaderActionItems from './HeaderActionItems.vue'
+import HeaderOverflowMenu from './HeaderOverflowMenu.vue'
 </script>

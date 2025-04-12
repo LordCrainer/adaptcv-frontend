@@ -1,5 +1,9 @@
 <template>
-  <v-card rounded="lg" class="mx-auto" max-width="800" :color="color">
+  <v-card
+    rounded="lg"
+    class="mx-auto"
+    max-width="800"
+    :color="global.name.value === 'dark' ? 'grey-darken-4' : color">
     <template v-slot:title>
       <span class="font-weight-black text-primary">{{ title }}</span>
     </template>
@@ -11,6 +15,9 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue'
+import { useTheme } from 'vuetify'
+
+const { global } = useTheme()
 
 defineProps({
   title: {

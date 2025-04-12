@@ -7,17 +7,14 @@
     <v-app-bar-title>AdaptCV</v-app-bar-title>
 
     <template v-slot:append>
-      <v-btn icon="mdi-dots-vertical"></v-btn>
+      <v-btn icon>
+        <v-icon>mdi-heart</v-icon>
+      </v-btn>
+      <HeaderSettingsMenu />
     </template>
   </v-app-bar>
 </template>
 
 <script setup lang="ts">
-import { useTheme } from 'vuetify'
-
-const { global } = useTheme()
-
-const toggleTheme = () => {
-  global.name.value = global.name.value === 'dark' ? 'light' : 'dark'
-}
+import HeaderSettingsMenu from './HeaderOverflow Menu.vue'
 </script>

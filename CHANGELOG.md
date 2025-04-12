@@ -1,3 +1,10 @@
+# [1.27.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.26.0...v1.27.0) (2025-04-12)
+
+
+### Features
+
+* **profile:** add 'uploadPhoto' translation to Spanish locale ([7224bb6](https://github.com/LordCrainer/adaptcv-frontend/commit/7224bb6559b4215405cf23216485d5277b841cf1))
+
 # [1.26.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.25.0...v1.26.0) (2025-04-12)
 
 

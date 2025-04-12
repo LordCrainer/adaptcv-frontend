@@ -8,12 +8,12 @@
 
     <template v-slot:append>
       <HeaderActionItems />
-      <HeaderOverflowMenu />
+      <HeaderSettingsMenu />
     </template>
   </v-app-bar>
 </template>
 
 <script setup lang="ts">
 import HeaderActionItems from './HeaderActionItems.vue'
-import HeaderOverflowMenu from './HeaderOverflowMenu.vue'
+import HeaderSettingsMenu from './HeaderSettingsMenu.vue'
 </script>

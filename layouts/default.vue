@@ -14,7 +14,7 @@
 
 <script lang="ts" setup>
 import { useTheme } from 'vuetify'
-import Header from '~/components/general/Header.vue'
+import Header from '~/components/general/Header/Header.vue'
 import Footer from '~/components/general/Footer.vue'
 
 const { global } = useTheme()

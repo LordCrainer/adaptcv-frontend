@@ -13,7 +13,7 @@
           variant="outlined"
           class="profile-photo rounded-circle cursor-pointer"
           @click="open">
-          <v-img v-if="fileImage" :src="fileImage.src"></v-img>
+          <v-img v-if="fileImage?.src" :src="fileImage.src"></v-img>
           <v-sheet
             v-else
             class="profile-photo d-flex align-center justify-center flex-column">
@@ -41,7 +41,12 @@ import type { IFileImage } from '~/types/global'
 import UploadImage from '../../../components/img/UploadImage.vue'
 import UserInformationForm from './UserInformationForm.vue'
 
-const fileImage = ref<IFileImage>()
+const fileImage = ref<IFileImage>({
+  name: '',
+  type: '',
+  size: 0,
+  src: ''
+})
 
 const state = reactive({
   openDialog: false

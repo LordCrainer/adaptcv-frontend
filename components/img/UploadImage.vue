@@ -75,14 +75,16 @@ const props = defineProps({
   }
 })
 
-const selectedImageFile = ref<IFileImage>(props.image)
+const selectedImageFile = ref<IFileImage>({ ...props.image })
 
 const emit = defineEmits(['close', 'update:image'])
 
 watch(
   () => props.image,
   (newValue) => {
-    selectedImageFile.value = newValue
+    console.log('watch', newValue)
+
+    selectedImageFile.value = { ...newValue }
   },
   {
     deep: true
@@ -103,6 +105,7 @@ const removeImage = () => {
 
 const saveChanges = () => {
   const file = fileInput.value?.files?.[0]
+  console.log('Saving changes...', selectedImageFile.value), file
   if (fileInput.value && file) {
     const reader = new FileReader()
     reader.onload = () => {
@@ -117,6 +120,9 @@ const saveChanges = () => {
       emit('close')
     }
     reader.readAsDataURL(file)
+  } else {
+    emit('update:image', { ...selectedImageFile.value })
+    emit('close')
   }
 }
 

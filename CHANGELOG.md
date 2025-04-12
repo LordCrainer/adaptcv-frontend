@@ -1,3 +1,10 @@
+# [1.30.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.29.0...v1.30.0) (2025-04-12)
+
+
+### Features
+
+* **header:** implement header component with action items and settings menu ([407f082](https://github.com/LordCrainer/adaptcv-frontend/commit/407f082540cc9ff410d45b93a5031fcd64fcc9c9))
+
 # [1.29.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.28.0...v1.29.0) (2025-04-12)
 
 

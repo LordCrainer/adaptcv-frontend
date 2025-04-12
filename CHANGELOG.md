@@ -1,3 +1,17 @@
+# [1.28.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.27.0...v1.28.0) (2025-04-12)
+
+
+### Bug Fixes
+
+* **i18n:** correct syntax for Vuetify translations in Spanish locale ([be50c84](https://github.com/LordCrainer/adaptcv-frontend/commit/be50c8480aa1c036d93a6828619b9ea01b0626f3))
+
+
+### Features
+
+* **language:** add language toggle menu for English and Spanish ([4a42d51](https://github.com/LordCrainer/adaptcv-frontend/commit/4a42d51abe936f7eef3ab071538b1d559c8615cc))
+* **theme:** add HeaderOverflowMenu component for theme toggling ([9dc767e](https://github.com/LordCrainer/adaptcv-frontend/commit/9dc767e6daf551d941e071a38e28f9b210d8759f))
+* **theme:** implement theme toggle functionality in HeaderOverflow Menu ([ecd707c](https://github.com/LordCrainer/adaptcv-frontend/commit/ecd707c5c345769d8d458d4548e1fe3be46d77ef))
+
 # [1.27.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.26.0...v1.27.0) (2025-04-12)
 
 

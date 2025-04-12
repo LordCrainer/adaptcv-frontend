@@ -13,7 +13,8 @@ const profile: TranslationKeys['profile'] = {
     city: 'Ciudad',
     country: 'País',
     fillInformation: 'Rellena la información',
-    aboutMe: 'Acerca de mí'
+    aboutMe: 'Acerca de mí',
+    uploadPhoto: 'Subir foto'
   },
   experience: {
     title: 'Experiencia',

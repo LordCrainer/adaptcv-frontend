@@ -98,6 +98,7 @@ const removeImage = () => {
     size: 0,
     src: ''
   }
+  fileInput.value!.value = ''
 }
 
 const saveChanges = () => {

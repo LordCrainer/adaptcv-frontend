@@ -5,28 +5,26 @@
     </template>
     <v-list :selected="selected">
       <v-list-item
-        v-for="locale in availableLocales"
-        @click="toggleLanguage(locale)"
-        :key="locale">
-        <v-list-item-title>{{ localItems[locale] }}</v-list-item-title>
+        v-for="lang in locales"
+        @click="toggleLanguage(lang)"
+        :value="lang.code"
+        :key="lang.code">
+        <v-list-item-title>{{ lang.name }}</v-list-item-title>
       </v-list-item>
     </v-list>
   </v-menu>
 </template>
 
 <script setup lang="ts">
+import type { LocaleObject } from '@nuxtjs/i18n'
 import { useI18n } from 'vue-i18n'
 
-const { availableLocales, setLocale, locale } = useI18n()
+const { setLocale, locales, locale } = useI18n()
 
-const selected = ref(locale.value)
+const selected = shallowRef([locale.value])
 
-const localItems = {
-  en: 'English',
-  es: 'Spanish'
-}
-
-const toggleLanguage = (lang: any) => {
-  setLocale(lang)
+const toggleLanguage = (lang: LocaleObject) => {
+  setLocale(lang.code)
+  selected.value = [lang.code]
 }
 </script>

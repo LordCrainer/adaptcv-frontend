@@ -1,7 +1,7 @@
 <template>
   <v-col cols="12" md="8" class="d-flex flex-column ga-2">
     <div class="d-flex justify-end py-4">
-      <v-btn color="secondary" variant="outlined" @click="fillInformation">
+      <v-btn color="secondary" variant="outlined" @click="fillInformation" aria-label="Fill Information">
         {{ $t('profile.personalInfo.fillInformation') }}
       </v-btn>
     </div>

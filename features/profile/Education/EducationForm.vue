@@ -44,11 +44,11 @@
       </div>
       <slot name="actions">
         <v-card-actions>
-          <v-btn variant="flat" @click="$emit('cancel')">
+          <v-btn variant="flat" @click="$emit('cancel')" aria-label="Cancel">
             {{ $t('actions.cancel') }}
           </v-btn>
 
-          <v-btn text="Save" color="primary" variant="tonal" type="submit">
+          <v-btn text="Save" color="primary" variant="tonal" type="submit" aria-label="Save">
             {{ $t('actions.save') }}
           </v-btn>
         </v-card-actions>

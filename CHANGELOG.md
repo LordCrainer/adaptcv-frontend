@@ -1,3 +1,10 @@
+# [1.31.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.30.0...v1.31.0) (2025-04-12)
+
+
+### Features
+
+* **header:** add navigation drawer and toggle functionality in header ([10fd5ab](https://github.com/LordCrainer/adaptcv-frontend/commit/10fd5ab534d1334548a908051430b233f31399da))
+
 # [1.30.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.29.0...v1.30.0) (2025-04-12)
 
 

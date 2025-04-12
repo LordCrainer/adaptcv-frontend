@@ -8,38 +8,50 @@
   <v-form>
     <v-row>
       <v-col cols="12" md="4" class="d-flex flex-1-0 justify-center">
-        <v-card class="profile-photo rounded-circle">
-          <v-img
-            class="profile-photo"
-            aspect-ratio="1/1"
-            cover
-            src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"></v-img>
-          <input
-            type="file"
-            accept="image/*"
-            @change="onFileChange"
-            class="d-none"
-            ref="fileInput" />
+        <v-card
+          flat
+          variant="outlined"
+          class="profile-photo rounded-circle cursor-pointer"
+          @click="open">
+          <v-img v-if="fileImage" :src="fileImage.src"></v-img>
+          <v-sheet
+            v-else
+            class="profile-photo d-flex align-center justify-center flex-column">
+            <v-icon size="75" color="grey lighten-2">
+              mdi-cloud-upload-outline
+            </v-icon>
+            <span>Upload Photo</span>
+          </v-sheet>
         </v-card>
       </v-col>
-      <UserInformationForm />
+      <UserInformationForm @update:output-data="" />
     </v-row>
+    <v-dialog
+      v-model="state.openDialog"
+      max-width="500px"
+      transition="dialog-transition">
+      <UploadImage v-model:image="fileImage" @close="close" />
+    </v-dialog>
   </v-form>
 </template>
 
 <script setup lang="ts">
+import type { IFileImage } from '~/types/global'
+
+import UploadImage from '../../../components/img/UploadImage.vue'
 import UserInformationForm from './UserInformationForm.vue'
 
-function onFileChange(event: Event) {
-  const input = event.target as HTMLInputElement
-  if (input.files && input.files.length > 0) {
-    const file = input.files[0]
-    const reader = new FileReader()
-    reader.onload = (e) => {
-      // Handle the file data here
-      console.log(e.target?.result)
-    }
-    reader.readAsDataURL(file)
-  }
+const fileImage = ref<IFileImage>()
+
+const state = reactive({
+  openDialog: false
+})
+
+function close() {
+  state.openDialog = false
+}
+
+function open() {
+  state.openDialog = true
 }
 </script>

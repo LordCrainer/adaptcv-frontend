@@ -47,3 +47,12 @@ export interface FormData {
   city?: string
   summary?: string
 }
+
+export interface IUserProfile {
+  image: {
+    src: string
+    name: string
+    size: number
+    type: string
+  }
+}

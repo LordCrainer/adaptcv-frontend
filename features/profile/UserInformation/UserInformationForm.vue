@@ -100,7 +100,7 @@ const formData = ref<FormData>({
   summary: ''
 })
 
-const emit = defineEmits(['update:formData'])
+const emit = defineEmits(['update:outputData'])
 
 const professions = ref<string[]>([])
 
@@ -117,7 +117,7 @@ watch(
 watch(
   formData,
   (newFormData) => {
-    emit('update:formData', newFormData)
+    emit('update:outputData', newFormData)
   },
   { deep: true }
 )

@@ -1,6 +1,6 @@
 <template>
-  <v-card class="d-flex flex-column justify-center align-center">
-    <v-card-text>
+  <v-card>
+    <v-card-text class="d-flex flex-column align-center justify-center">
       <v-card flat variant="outlined" class="profile-photo rounded-circle">
         <input
           type="file"
@@ -48,15 +48,16 @@
           <v-icon size="75" color="grey lighten-2">
             mdi-cloud-upload-outline
           </v-icon>
-          <span>Upload Photo</span>
+          <span>{{ $t('profile.personalInfo.uploadPhoto') }}</span>
         </v-sheet>
       </v-card>
     </v-card-text>
-    <v-card-actions>
-      <v-btn variant="outlined" color="primary" @click="$emit('close')">
+
+    <v-card-actions class="d-flex justify-end">
+      <v-btn variant="outlined" rounded color="primary" @click="$emit('close')">
         {{ $t('actions.cancel') }}
       </v-btn>
-      <v-btn variant="flat" color="primary" @click="saveChanges">
+      <v-btn variant="flat" rounded color="primary" @click="saveChanges">
         {{ $t('actions.save') }}
       </v-btn>
     </v-card-actions>
@@ -65,7 +66,6 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { IUserProfile } from '../../features/profile'
 import type { IFileImage } from '~/types/global'
 
 const props = defineProps({
@@ -92,11 +92,12 @@ watch(
 const fileInput = ref<HTMLInputElement | null>(null)
 
 const removeImage = () => {
-  // selectedImageFile.value = {
-  //   name: '',
-  //   type: '',
-  //   size: 0,
-  // }
+  selectedImageFile.value = {
+    name: '',
+    type: '',
+    size: 0,
+    src: ''
+  }
 }
 
 const saveChanges = () => {
@@ -108,7 +109,7 @@ const saveChanges = () => {
         name: file.name,
         type: file.type,
         size: file.size,
-        src: reader.result?.toString() || '',
+        src: reader.result?.toString() || ''
       }
 
       emit('update:image', { ...selectedImageFile.value })
@@ -125,16 +126,4 @@ const previewImage = (event: Event) => {
     selectedImageFile.value.src = URL.createObjectURL(file)
   }
 }
-
-// const previewImage = (event: Event) => {
-//   const file = (event.target as HTMLInputElement).files?.[0]
-//   if (file) {
-//     const reader = new FileReader()
-//     reader.onload = () => {
-//       selectedImageFile.value.src = reader.result?.toString() || ''
-//       emit('update:image', selectedImageFile.value)
-//     }
-//     reader.readAsDataURL(file)
-//   }
-// }
 </script>

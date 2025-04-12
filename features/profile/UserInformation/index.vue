@@ -28,7 +28,7 @@
     </v-row>
     <v-dialog
       v-model="state.openDialog"
-      max-width="500px"
+      max-width="350px"
       transition="dialog-transition">
       <UploadImage v-model:image="fileImage" @close="close" />
     </v-dialog>

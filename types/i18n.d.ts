@@ -37,6 +37,7 @@ interface TranslationKeys {
       country: string
       fillInformation: string
       aboutMe: string
+      uploadPhoto: string
     }
     experience: {
       title: string

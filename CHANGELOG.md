@@ -1,3 +1,10 @@
+# [1.29.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.28.0...v1.29.0) (2025-04-12)
+
+
+### Features
+
+* **i18n:** add strategy configuration for internationalization ([780d947](https://github.com/LordCrainer/adaptcv-frontend/commit/780d947c477a7feb4966a18dd97beb6624b5cbf0))
+
 # [1.28.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.27.0...v1.28.0) (2025-04-12)
 
 

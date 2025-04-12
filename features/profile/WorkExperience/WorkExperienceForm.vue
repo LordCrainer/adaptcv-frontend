@@ -9,7 +9,8 @@
             :label="$t('profile.experience.jobTitle')"
             placeholder="Ej: Software Engineer"
             aria-label="Job Title"
-            required></v-text-field>
+            required>
+          </v-text-field>
         </v-col>
         <v-col md="6" class="py-1">
           <v-text-field
@@ -18,7 +19,8 @@
             variant="outlined"
             placeholder="Ej: Tech Company"
             aria-label="Company"
-            required></v-text-field>
+            required>
+          </v-text-field>
         </v-col>
         <v-col cols="12">
           <v-row>

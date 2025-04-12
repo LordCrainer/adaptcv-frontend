@@ -14,7 +14,8 @@
         variant="outlined"
         :rules="[rules.required($t('profile.personalInfo.fullname'))]"
         aria-label="Full Name"
-        required></v-text-field>
+        required>
+      </v-text-field>
       <v-text-field
         v-model="formData.email"
         prepend-inner-icon="mdi-email"
@@ -23,7 +24,8 @@
         variant="outlined"
         type="email"
         aria-label="Email"
-        required></v-text-field>
+        required>
+      </v-text-field>
 
       <v-text-field
         v-model="formData.phone"

@@ -7,7 +7,7 @@
     <v-app-bar-title>AdaptCV</v-app-bar-title>
 
     <template v-slot:append>
-      <HeaderActionItems />
+      <HeaderActionItems :tabs="items" />
       <HeaderSettingsMenu />
     </template>
   </v-app-bar>
@@ -26,7 +26,12 @@ const toggleDrawer = () => {
 }
 
 const items = ref([
-  { title: 'Fill Information', path: '/', icon: 'mdi-information' },
+  {
+    title: 'Fill Information',
+    path: '/',
+    icon: 'mdi-information',
+    id: 'fill-information'
+  }
   // { title: 'Templates', path: '/templates', icon: 'mdi-note-multiple' }
 ])
 </script>

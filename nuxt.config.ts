@@ -2,6 +2,22 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
+  app: {
+    head: {
+      title: 'AdaptCV',
+      htmlAttrs: {
+        lang: 'en'
+      },
+      viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+      meta: [
+        {
+          name: 'description',
+          content: 'AdaptCV is a generator app to create personalized CVs.'
+        }
+      ]
+    }
+  },
 
   modules: [
     '@nuxt/eslint',

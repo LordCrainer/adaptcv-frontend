@@ -1,4 +1,9 @@
 <template>
+  <v-tabs aria-label="Example Tabs">
+    <v-tab v-for="tab in tabs" :key="tab.id" :value="tab.id">
+      {{ tab.title }}
+    </v-tab>
+  </v-tabs>
   <v-menu>
     <template v-slot:activator="{ props }">
       <v-btn icon="mdi-translate" v-bind="props"></v-btn>
@@ -20,6 +25,18 @@ import type { LocaleObject } from '@nuxtjs/i18n'
 import { useI18n } from 'vue-i18n'
 
 const { setLocale, locales, locale } = useI18n()
+
+const props = defineProps({
+  tabs: {
+    type: Array as () => Array<{
+      id: string
+      title: string
+      path: string
+      icon: string
+    }>,
+    default: () => []
+  }
+})
 
 const selected = shallowRef([locale.value])
 

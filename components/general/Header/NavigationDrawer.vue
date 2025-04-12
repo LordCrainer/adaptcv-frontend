@@ -1,8 +1,8 @@
 <template>
-  <v-card style="height: 100px"></v-card>
   <v-navigation-drawer
     :model-value="modelValue"
     @update:model-value="emit('update:modelValue', $event)">
+    {{ modelValue }}
     <v-list>
       <v-list-item v-for="(item, index) in items" :key="index" :to="item.path">
         <template v-slot:prepend>
@@ -24,6 +24,7 @@ const props = defineProps({
   },
   modelValue: {
     type: Boolean,
+    default: false,
     required: true
   }
 })

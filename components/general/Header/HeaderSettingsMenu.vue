@@ -18,7 +18,6 @@
 
 <script setup lang="ts">
 import { useTheme } from 'vuetify'
-import { ref } from 'vue'
 
 const { global } = useTheme()
 
@@ -38,10 +37,9 @@ const themeMode: Record<string, IThemeMode> = {
   }
 }
 
-const selectedTheme = ref<IThemeMode>(themeMode[global.name.value])
+const selectedTheme = computed(() => themeMode[global.name.value])
 
 const toggleTheme = () => {
   global.name.value = global.name.value === 'dark' ? 'light' : 'dark'
-  selectedTheme.value = themeMode[global.name.value]
 }
 </script>

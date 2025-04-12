@@ -1,12 +1,10 @@
 <template>
   <v-card style="height: 100px"></v-card>
-  <v-navigation-drawer v-model="localDrawer">
+  <v-navigation-drawer
+    :model-value="modelValue"
+    @update:model-value="emit('update:modelValue', $event)">
     <v-list>
-      <v-list-item
-        v-for="(item, index) in items"
-        :key="index"
-        :value="item.path"
-        :to="item.path">
+      <v-list-item v-for="(item, index) in items" :key="index" :to="item.path">
         <template v-slot:prepend>
           <v-icon :icon="item.icon"></v-icon>
         </template>
@@ -19,27 +17,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-
 const props = defineProps({
   items: {
     type: Object as () => Array<{ title: string; path: string; icon: string }>,
     default: () => []
   },
-  drawer: {
+  modelValue: {
     type: Boolean,
-    default: false
+    required: true
   }
 })
 
-const localDrawer = ref(props.drawer)
-
-const emit = defineEmits(['update:drawer'])
-
-watch(
-  () => props.drawer,
-  (val) => {
-    localDrawer.value = val
-  }
-)
+const emit = defineEmits(['update:modelValue'])
 </script>

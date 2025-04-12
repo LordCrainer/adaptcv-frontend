@@ -1,7 +1,7 @@
 <template>
   <v-app-bar color="primary" density="compact">
     <template v-slot:prepend>
-      <v-app-bar-nav-icon @click="toogleDrawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
     </template>
 
     <v-app-bar-title>AdaptCV</v-app-bar-title>
@@ -11,7 +11,7 @@
       <HeaderSettingsMenu />
     </template>
   </v-app-bar>
-  <NavigationDrawer :drawer="drawer" :items="items" />
+  <NavigationDrawer v-model="drawer" :items="items" />
 </template>
 
 <script setup lang="ts">
@@ -21,12 +21,12 @@ import HeaderSettingsMenu from './HeaderSettingsMenu.vue'
 
 const drawer = ref(false)
 
-const toogleDrawer = () => {
+const toggleDrawer = () => {
   drawer.value = !drawer.value
 }
 
 const items = ref([
   { title: 'Fill Information', path: '/', icon: 'mdi-information' },
-  { title: 'Templates', path: '/templates', icon: 'mdi-note-multiple' }
+  // { title: 'Templates', path: '/templates', icon: 'mdi-note-multiple' }
 ])
 </script>

@@ -101,6 +101,6 @@ export default defineI18nLocale(async () => {
       signUp: 'Regístrate'
     },
     profile: profile,
-    ...$vuetify
+    $vuetify: $vuetify
   } as TranslationKeys
 })

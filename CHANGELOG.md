@@ -1,3 +1,10 @@
+# [1.26.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.25.0...v1.26.0) (2025-04-12)
+
+
+### Features
+
+* **profile:** enhance UploadImage component with localization and styling improvements ([6dc98cc](https://github.com/LordCrainer/adaptcv-frontend/commit/6dc98ccf4e0dc6cc3426f0a8cbe1edc24978b335))
+
 # [1.25.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.24.0...v1.25.0) (2025-04-12)
 
 

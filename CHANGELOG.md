@@ -1,3 +1,11 @@
+# [1.24.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.23.2...v1.24.0) (2025-04-11)
+
+
+### Features
+
+* **profile:** add areasProfession constant and update FormData interface ([e30d231](https://github.com/LordCrainer/adaptcv-frontend/commit/e30d231394d40bfe65d00ba0369604995e08feb8))
+* **profile:** add UserInformationForm component for user profile input ([34ce986](https://github.com/LordCrainer/adaptcv-frontend/commit/34ce986f61e9c09932fd7216c8d3496afff155ad))
+
 ## [1.23.2](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.23.1...v1.23.2) (2025-04-11)
 
 

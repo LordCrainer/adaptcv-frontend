@@ -5,7 +5,8 @@
       <v-list-item
         v-for="(item, index) in items"
         :key="index"
-        :value="item.value">
+        :value="item.path"
+        :to="item.path">
         <template v-slot:prepend>
           <v-icon :icon="item.icon"></v-icon>
         </template>
@@ -22,7 +23,7 @@ import { ref } from 'vue'
 
 const props = defineProps({
   items: {
-    type: Object as () => Array<{ title: string; value: string; icon: string }>,
+    type: Object as () => Array<{ title: string; path: string; icon: string }>,
     default: () => []
   },
   drawer: {

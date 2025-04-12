@@ -26,8 +26,7 @@ const toogleDrawer = () => {
 }
 
 const items = ref([
-  { title: 'Item 1', value: 'item3', icon: 'mdi-help-circle' },
-  { title: 'Item 2', value: 'item4', icon: 'mdi-account' },
-  { title: 'Item 3', value: 'item5', icon: 'mdi-information' }
+  { title: 'Fill Information', path: '/', icon: 'mdi-information' },
+  { title: 'Templates', path: '/templates', icon: 'mdi-note-multiple' }
 ])
 </script>

@@ -1,3 +1,10 @@
+# [1.25.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.24.0...v1.25.0) (2025-04-12)
+
+
+### Features
+
+* **profile:** implement UploadImage component and update UserInformationForm for image handling ([e1ab3bb](https://github.com/LordCrainer/adaptcv-frontend/commit/e1ab3bb518abecb179e6ba4681e7b01ad32864c8))
+
 # [1.24.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.23.2...v1.24.0) (2025-04-11)
 
 

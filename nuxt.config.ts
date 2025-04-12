@@ -8,7 +8,7 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en'
       },
-      viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+      viewport: 'width=device-width, initial-scale=1',
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
       meta: [
         {

@@ -14,7 +14,10 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content: 'AdaptCV is a generator app to create personalized CVs.'
-        }
+        },
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'robots', content: 'index, follow' }
       ]
     }
   },

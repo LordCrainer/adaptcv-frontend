@@ -1,3 +1,15 @@
+# [1.32.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.31.0...v1.32.0) (2025-04-12)
+
+
+### Bug Fixes
+
+* **header:** correct toggleDrawer function name and update NavigationDrawer binding ([f2821b8](https://github.com/LordCrainer/adaptcv-frontend/commit/f2821b828281d3afa144670df34cea1c189c73e7))
+
+
+### Features
+
+* **navigation:** update NavigationDrawer items to use path instead of value ([2d3b620](https://github.com/LordCrainer/adaptcv-frontend/commit/2d3b620064d2010b1b83e9b9fecd7b275e602135))
+
 # [1.31.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.30.0...v1.31.0) (2025-04-12)
 
 

@@ -1,3 +1,10 @@
+# [1.33.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.32.0...v1.33.0) (2025-04-12)
+
+
+### Features
+
+* **header:** enhance HeaderActionItems with tab titles and update NavigationDrawer structure ([c6ab9f3](https://github.com/LordCrainer/adaptcv-frontend/commit/c6ab9f3c6b0f3e432bf52a24b660b0e5b394d7e0))
+
 # [1.32.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.31.0...v1.32.0) (2025-04-12)
 
 

@@ -27,8 +27,8 @@ export function useImageUploader() {
   const saveChanges = () => {
     const file = fileInput.value?.files?.[0]
     if (file) {
-      const reader = new FileReader()
       return new Promise((resolve) => {
+        const reader = new FileReader()
         reader.onload = () => {
           selectedImageFile.value = {
             name: file.name,
@@ -40,9 +40,8 @@ export function useImageUploader() {
         }
         reader.readAsDataURL(file)
       })
-    } else {
-      return Promise.resolve({ ...selectedImageFile.value })
     }
+    return { ...selectedImageFile.value }
   }
 
   const previewImage = (event: Event) => {

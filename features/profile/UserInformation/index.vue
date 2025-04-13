@@ -30,7 +30,7 @@
       v-model="state.openDialog"
       max-width="350px"
       transition="dialog-transition">
-      <UploadImage v-model:image="fileImage" @close="close" />
+      <UserPhoto v-model:image="fileImage" @close="close" />
     </v-dialog>
   </v-form>
 </template>
@@ -38,7 +38,7 @@
 <script setup lang="ts">
 import type { IFileImage } from '~/types/global'
 
-import UploadImage from '../../../components/img/UploadImage.vue'
+import UserPhoto from './UserPhoto.vue'
 import UserInformationForm from './UserInformationForm.vue'
 
 const fileImage = ref<IFileImage>({

@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-text class="d-flex flex-column align-center justify-center">
-      <v-card flat variant="outlined" class="profile-photo rounded-circle">
+      <v-card flat variant="outlined" link class="profile-photo rounded-circle">
         <input
           type="file"
           accept="image/*"
@@ -59,8 +59,20 @@
       <v-btn variant="outlined" rounded color="primary" @click="$emit('close')">
         {{ $t('actions.cancel') }}
       </v-btn>
-      <v-btn variant="flat" rounded color="primary" @click="handleSaveChanges">
+      <v-btn
+        :loading="state.loading"
+        variant="flat"
+        rounded
+        color="primary"
+        @click="handleSaveChanges">
         {{ $t('actions.save') }}
+        <template v-slot:loader v-if="state.loading">
+          <v-progress-circular
+            indeterminate
+            color="white"
+            size="20"
+            width="2"></v-progress-circular>
+        </template>
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -82,8 +94,12 @@ const {
 const props = defineProps({
   image: {
     type: Object as () => IFileImage,
-    default: () => ({})
+    required: true
   }
+})
+
+const state = reactive({
+  loading: false
 })
 
 const emit = defineEmits(['close', 'update:image'])
@@ -102,8 +118,15 @@ watch(
 )
 
 const handleSaveChanges = async () => {
-  const selected = await saveChanges()
-  emit('update:image', selected)
-  emit('close')
+  state.loading = true
+  try {
+    const selected = await saveChanges()
+    emit('update:image', selected)
+    emit('close')
+  } catch (error) {
+    console.error('Error saving image:', error)
+  } finally {
+    state.loading = false
+  }
 }
 </script>

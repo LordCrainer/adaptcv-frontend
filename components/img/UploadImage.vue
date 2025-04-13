@@ -7,13 +7,15 @@
           accept="image/*"
           @change="previewImage"
           class="d-none"
+          aria-label="File Input"
           ref="fileInput" />
         <v-img
-          v-if="selectedImageFile.src"
+          v-if="selectedImageFile?.src"
           :src="selectedImageFile.src"
           min-width="100%"
           class="profile-photo d-flex"
           aspect-ratio="1/1"
+          alt="Profile Photo"
           cover>
           <v-hover>
             <template v-slot:default="{ isHovering, props }">
@@ -57,7 +59,7 @@
       <v-btn variant="outlined" rounded color="primary" @click="$emit('close')">
         {{ $t('actions.cancel') }}
       </v-btn>
-      <v-btn variant="flat" rounded color="primary" @click="saveChanges">
+      <v-btn variant="flat" rounded color="primary" @click="handleSaveChanges">
         {{ $t('actions.save') }}
       </v-btn>
     </v-card-actions>
@@ -65,8 +67,17 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
 import type { IFileImage } from '~/types/global'
+import { useImageUploader } from '~/composables/useImageUploader'
+
+const {
+  selectedImageFile,
+  fileInput,
+  removeImage,
+  saveChanges,
+  previewImage,
+  setImageFile
+} = useImageUploader()
 
 const props = defineProps({
   image: {
@@ -75,62 +86,24 @@ const props = defineProps({
   }
 })
 
-const selectedImageFile = ref<IFileImage>({ ...props.image })
-
 const emit = defineEmits(['close', 'update:image'])
 
 watch(
   () => props.image,
   (newValue) => {
-    console.log('watch', newValue)
-
-    selectedImageFile.value = { ...newValue }
+    if (newValue) {
+      setImageFile(newValue)
+    }
   },
   {
-    deep: true
+    deep: true,
+    immediate: true
   }
 )
 
-const fileInput = ref<HTMLInputElement | null>(null)
-
-const removeImage = () => {
-  selectedImageFile.value = {
-    name: '',
-    type: '',
-    size: 0,
-    src: ''
-  }
-  fileInput.value!.value = ''
-}
-
-const saveChanges = () => {
-  const file = fileInput.value?.files?.[0]
-  console.log('Saving changes...', selectedImageFile.value), file
-  if (fileInput.value && file) {
-    const reader = new FileReader()
-    reader.onload = () => {
-      selectedImageFile.value = {
-        name: file.name,
-        type: file.type,
-        size: file.size,
-        src: reader.result?.toString() || ''
-      }
-
-      emit('update:image', { ...selectedImageFile.value })
-      emit('close')
-    }
-    reader.readAsDataURL(file)
-  } else {
-    emit('update:image', { ...selectedImageFile.value })
-    emit('close')
-  }
-}
-
-const previewImage = (event: Event) => {
-  const file = (event.target as HTMLInputElement).files?.[0]
-
-  if (file) {
-    selectedImageFile.value.src = URL.createObjectURL(file)
-  }
+const handleSaveChanges = async () => {
+  const selected = await saveChanges()
+  emit('update:image', selected)
+  emit('close')
 }
 </script>

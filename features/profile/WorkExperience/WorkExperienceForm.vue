@@ -8,7 +8,9 @@
             variant="outlined"
             :label="$t('profile.experience.jobTitle')"
             placeholder="Ej: Software Engineer"
-            required></v-text-field>
+            aria-label="Job Title"
+            required>
+          </v-text-field>
         </v-col>
         <v-col md="6" class="py-1">
           <v-text-field
@@ -16,7 +18,9 @@
             :label="$t('profile.experience.company')"
             variant="outlined"
             placeholder="Ej: Tech Company"
-            required></v-text-field>
+            aria-label="Company"
+            required>
+          </v-text-field>
         </v-col>
         <v-col cols="12">
           <v-row>
@@ -25,14 +29,16 @@
                 v-model="localExperiencie.startDate"
                 :label="$t('common.startDate')"
                 variant="outlined"
-                type="date"></v-text-field>
+                type="date"
+                aria-label="Start Date"></v-text-field>
             </v-col>
             <v-col md="6">
               <v-text-field
                 v-model="localExperiencie.endDate"
                 :label="$t('common.endDate')"
                 variant="outlined"
-                type="date"></v-text-field>
+                type="date"
+                aria-label="End Date"></v-text-field>
             </v-col>
           </v-row>
         </v-col>
@@ -47,11 +53,11 @@
       </v-row>
       <slot name="actions">
         <v-card-actions class="pb-4 px-4">
-          <v-btn variant="flat" @click="$emit('cancel')">
+          <v-btn variant="flat" @click="$emit('cancel')" aria-label="Cancel">
             {{ $t('actions.cancel') }}
           </v-btn>
 
-          <v-btn text="Save" color="primary" variant="tonal" type="submit">
+          <v-btn text="Save" color="primary" variant="tonal" type="submit" aria-label="Save">
             {{ $t('actions.save') }}
           </v-btn>
         </v-card-actions>

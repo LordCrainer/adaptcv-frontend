@@ -1,9 +1,3 @@
-<style>
-.profile-photo {
-  width: 175px;
-  height: 175px;
-}
-</style>
 <template>
   <v-form>
     <v-row>
@@ -13,14 +7,14 @@
           variant="outlined"
           class="profile-photo rounded-circle cursor-pointer"
           @click="open">
-          <v-img v-if="fileImage" :src="fileImage.src"></v-img>
+          <v-img v-if="fileImage?.src" :src="fileImage.src"></v-img>
           <v-sheet
             v-else
             class="profile-photo d-flex align-center justify-center flex-column">
-            <v-icon size="75" color="grey lighten-2">
-              mdi-cloud-upload-outline
+            <v-icon size="100" color="grey lighten-2">
+              mdi-account-arrow-up-outline
             </v-icon>
-            <span>Upload Photo</span>
+            <span>{{ $t('profile.personalInfo.uploadPhoto') }}</span>
           </v-sheet>
         </v-card>
       </v-col>
@@ -30,7 +24,7 @@
       v-model="state.openDialog"
       max-width="350px"
       transition="dialog-transition">
-      <UploadImage v-model:image="fileImage" @close="close" />
+      <UserPhoto v-model:image="fileImage" @close="close" />
     </v-dialog>
   </v-form>
 </template>
@@ -38,10 +32,15 @@
 <script setup lang="ts">
 import type { IFileImage } from '~/types/global'
 
-import UploadImage from '../../../components/img/UploadImage.vue'
+import UserPhoto from './UserPhoto.vue'
 import UserInformationForm from './UserInformationForm.vue'
 
-const fileImage = ref<IFileImage>()
+const fileImage = ref<IFileImage>({
+  name: '',
+  type: '',
+  size: 0,
+  src: ''
+})
 
 const state = reactive({
   openDialog: false

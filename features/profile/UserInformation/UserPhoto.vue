@@ -1,19 +1,24 @@
 <template>
   <v-card>
+    <template v-slot:title>
+      {{ $t('profile.personalInfo.uploadPhoto') }}
+    </template>
     <v-card-text class="d-flex flex-column align-center justify-center">
-      <v-card flat variant="outlined" class="profile-photo rounded-circle">
+      <v-card flat variant="outlined" link class="profile-photo rounded-circle">
         <input
           type="file"
           accept="image/*"
           @change="previewImage"
           class="d-none"
+          aria-label="File Input"
           ref="fileInput" />
         <v-img
-          v-if="selectedImageFile.src"
+          v-if="selectedImageFile?.src"
           :src="selectedImageFile.src"
           min-width="100%"
           class="profile-photo d-flex"
           aspect-ratio="1/1"
+          alt="Profile Photo"
           cover>
           <v-hover>
             <template v-slot:default="{ isHovering, props }">
@@ -48,7 +53,7 @@
           <v-icon size="75" color="grey lighten-2">
             mdi-cloud-upload-outline
           </v-icon>
-          <span>{{ $t('profile.personalInfo.uploadPhoto') }}</span>
+          <span>{{ $t('actions.uploadImage') }}</span>
         </v-sheet>
       </v-card>
     </v-card-text>
@@ -57,74 +62,74 @@
       <v-btn variant="outlined" rounded color="primary" @click="$emit('close')">
         {{ $t('actions.cancel') }}
       </v-btn>
-      <v-btn variant="flat" rounded color="primary" @click="saveChanges">
+      <v-btn
+        :loading="state.loading"
+        variant="flat"
+        rounded
+        color="primary"
+        @click="handleSaveChanges">
         {{ $t('actions.save') }}
+        <template v-slot:loader v-if="state.loading">
+          <v-progress-circular
+            indeterminate
+            color="white"
+            size="20"
+            width="2"></v-progress-circular>
+        </template>
       </v-btn>
     </v-card-actions>
   </v-card>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
 import type { IFileImage } from '~/types/global'
+import { useImageUploader } from '~/composables/useImageUploader'
+
+const {
+  selectedImageFile,
+  fileInput,
+  removeImage,
+  saveChanges,
+  previewImage,
+  setImageFile
+} = useImageUploader()
 
 const props = defineProps({
   image: {
     type: Object as () => IFileImage,
-    default: () => ({})
+    required: true
   }
 })
 
-const selectedImageFile = ref<IFileImage>(props.image)
+const state = reactive({
+  loading: false
+})
 
 const emit = defineEmits(['close', 'update:image'])
 
 watch(
   () => props.image,
   (newValue) => {
-    selectedImageFile.value = newValue
+    if (newValue) {
+      setImageFile(newValue)
+    }
   },
   {
-    deep: true
+    deep: true,
+    immediate: true
   }
 )
 
-const fileInput = ref<HTMLInputElement | null>(null)
-
-const removeImage = () => {
-  selectedImageFile.value = {
-    name: '',
-    type: '',
-    size: 0,
-    src: ''
-  }
-  fileInput.value!.value = ''
-}
-
-const saveChanges = () => {
-  const file = fileInput.value?.files?.[0]
-  if (fileInput.value && file) {
-    const reader = new FileReader()
-    reader.onload = () => {
-      selectedImageFile.value = {
-        name: file.name,
-        type: file.type,
-        size: file.size,
-        src: reader.result?.toString() || ''
-      }
-
-      emit('update:image', { ...selectedImageFile.value })
-      emit('close')
-    }
-    reader.readAsDataURL(file)
-  }
-}
-
-const previewImage = (event: Event) => {
-  const file = (event.target as HTMLInputElement).files?.[0]
-
-  if (file) {
-    selectedImageFile.value.src = URL.createObjectURL(file)
+const handleSaveChanges = async () => {
+  state.loading = true
+  try {
+    const selected = await saveChanges()
+    emit('update:image', selected)
+    emit('close')
+  } catch (error) {
+    console.error('Error saving image:', error)
+  } finally {
+    state.loading = false
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <v-col cols="12" md="8" class="d-flex flex-column ga-2">
     <div class="d-flex justify-end py-4">
-      <v-btn color="secondary" variant="outlined" @click="fillInformation">
+      <v-btn color="secondary" variant="outlined" @click="fillInformation" aria-label="Fill Information">
         {{ $t('profile.personalInfo.fillInformation') }}
       </v-btn>
     </div>
@@ -13,7 +13,9 @@
         placeholder="Ej: John Doe"
         variant="outlined"
         :rules="[rules.required($t('profile.personalInfo.fullname'))]"
-        required></v-text-field>
+        aria-label="Full Name"
+        required>
+      </v-text-field>
       <v-text-field
         v-model="formData.email"
         prepend-inner-icon="mdi-email"
@@ -21,7 +23,9 @@
         placeholder="Ej: example@example.com"
         variant="outlined"
         type="email"
-        required></v-text-field>
+        aria-label="Email"
+        required>
+      </v-text-field>
 
       <v-text-field
         v-model="formData.phone"
@@ -29,7 +33,8 @@
         :label="$t('profile.personalInfo.phone')"
         placeholder="Ej: +1234567890"
         variant="outlined"
-        type="tel"></v-text-field>
+        type="tel"
+        aria-label="Phone"></v-text-field>
 
       <v-row class="py-2">
         <v-col cols="6" class="py-0">
@@ -38,6 +43,7 @@
             :label="$t('profile.personalInfo.country')"
             prepend-inner-icon="mdi-map"
             placeholder="Ej: country"
+            aria-label="Country"
             variant="outlined"></v-text-field>
         </v-col>
         <v-col cols="6" class="py-0">
@@ -46,6 +52,7 @@
             :label="$t('profile.personalInfo.city')"
             prepend-inner-icon="mdi-city"
             placeholder="Ej: city"
+            aria-label="City"
             variant="outlined"></v-text-field>
         </v-col>
       </v-row>
@@ -58,7 +65,8 @@
         prepend-inner-icon="mdi-briefcase"
         :items="Object.keys(areasProfession)"
         v-model="formData.areaProfession"
-        autocomplete></v-select>
+        autocomplete
+        aria-label="Area of Profession"></v-select>
       <v-select
         v-if="formData.areaProfession"
         prepend-inner-icon="mdi-account-hard-hat"
@@ -66,7 +74,8 @@
         variant="outlined"
         :items="professions"
         v-model="formData.profession"
-        autocomplete></v-select>
+        autocomplete
+        aria-label="Profession"></v-select>
     </div>
   </v-col>
   <v-col>

@@ -2,7 +2,6 @@
   <v-navigation-drawer
     :model-value="modelValue"
     @update:model-value="emit('update:modelValue', $event)">
-    {{ modelValue }}
     <v-list>
       <v-list-item v-for="(item, index) in items" :key="index" :to="item.path">
         <template v-slot:prepend>

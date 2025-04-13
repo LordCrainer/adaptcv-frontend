@@ -22,6 +22,8 @@ interface TranslationKeys {
     cancel: string
     submit: string
     options: string
+    upload: string
+    uploadImage: string
   }
   profile: {
     personalInfo: {

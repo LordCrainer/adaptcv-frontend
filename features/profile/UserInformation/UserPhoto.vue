@@ -1,5 +1,8 @@
 <template>
   <v-card>
+    <template v-slot:title>
+      {{ $t('profile.personalInfo.uploadPhoto') }}
+    </template>
     <v-card-text class="d-flex flex-column align-center justify-center">
       <v-card flat variant="outlined" link class="profile-photo rounded-circle">
         <input
@@ -50,7 +53,7 @@
           <v-icon size="75" color="grey lighten-2">
             mdi-cloud-upload-outline
           </v-icon>
-          <span>{{ $t('profile.personalInfo.uploadPhoto') }}</span>
+          <span>{{ $t('actions.uploadImage') }}</span>
         </v-sheet>
       </v-card>
     </v-card-text>

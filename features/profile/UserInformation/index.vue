@@ -11,10 +11,10 @@
           <v-sheet
             v-else
             class="profile-photo d-flex align-center justify-center flex-column">
-            <v-icon size="75" color="grey lighten-2">
-              mdi-cloud-upload-outline
+            <v-icon size="100" color="grey lighten-2">
+              mdi-account-arrow-up-outline
             </v-icon>
-            <span>Upload Photo</span>
+            <span>{{ $t('profile.personalInfo.uploadPhoto') }}</span>
           </v-sheet>
         </v-card>
       </v-col>

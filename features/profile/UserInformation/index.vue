@@ -1,9 +1,3 @@
-<style>
-.profile-photo {
-  width: 175px;
-  height: 175px;
-}
-</style>
 <template>
   <v-form>
     <v-row>

@@ -1,3 +1,4 @@
+import type { BaseEntity } from '~/types/global'
 import type { AreasProfession } from './constants'
 
 export type yearsOfExperience =
@@ -36,7 +37,7 @@ export interface IWorkExperience {
   description: DEContentData
 }
 
-export interface FormData {
+export interface IUserProfile {
   name: string
   profession: string
   areaProfession: AreasProfession | undefined
@@ -46,13 +47,14 @@ export interface FormData {
   country?: string
   city?: string
   summary?: string
+  image?: IFileImage
 }
 
-export interface IUserProfile {
-  image: {
-    src: string
-    name: string
-    size: number
-    type: string
-  }
+export interface ICV extends BaseEntity {
+  userProfile: IUserProfile
+  skills: ISkill[]
+  languages: ILanguageItem[]
+  education: IEducationItem[]
+  workExperience: IWorkExperience[]
+  status: 'draft' | 'published'
 }

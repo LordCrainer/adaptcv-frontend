@@ -1,7 +1,11 @@
 <template>
   <v-col cols="12" md="8" class="d-flex flex-column ga-2">
     <div class="d-flex justify-end py-4">
-      <v-btn color="secondary" variant="outlined" @click="fillInformation" aria-label="Fill Information">
+      <v-btn
+        color="secondary"
+        variant="outlined"
+        @click="fillInformation"
+        aria-label="Fill Information">
         {{ $t('profile.personalInfo.fillInformation') }}
       </v-btn>
     </div>
@@ -14,8 +18,7 @@
         variant="outlined"
         :rules="[rules.required($t('profile.personalInfo.fullname'))]"
         aria-label="Full Name"
-        required>
-      </v-text-field>
+        required></v-text-field>
       <v-text-field
         v-model="formData.email"
         prepend-inner-icon="mdi-email"
@@ -24,8 +27,7 @@
         variant="outlined"
         type="email"
         aria-label="Email"
-        required>
-      </v-text-field>
+        required></v-text-field>
 
       <v-text-field
         v-model="formData.phone"
@@ -92,12 +94,12 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { FormData } from '..'
+import type { IUserProfile } from '..'
 import { areasProfession } from '../constants'
 
 const { rules } = useRules()
 
-const formData = ref<FormData>({
+const formData = ref<IUserProfile>({
   name: '',
   profession: '',
   areaProfession: undefined,

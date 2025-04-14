@@ -24,6 +24,7 @@ interface TranslationKeys {
     options: string
     upload: string
     uploadImage: string
+    saveImage: string
   }
   profile: {
     personalInfo: {

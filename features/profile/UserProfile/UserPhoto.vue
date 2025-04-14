@@ -68,7 +68,7 @@
         rounded
         color="primary"
         @click="handleSaveChanges">
-        {{ $t('actions.save') }}
+        {{ $t('actions.saveImage') }}
         <template v-slot:loader v-if="state.loading">
           <v-progress-circular
             indeterminate

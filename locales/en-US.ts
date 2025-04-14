@@ -72,6 +72,7 @@ export default defineI18nLocale(async () => {
       options: 'Options',
       upload: 'Upload',
       uploadImage: 'Upload Image',
+      saveImage: 'Save Image',
     },
     common: {
       home: 'Home',

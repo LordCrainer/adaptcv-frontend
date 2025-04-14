@@ -1,4 +1,4 @@
-import type { BaseEntity } from '~/types/global'
+import type { BaseEntity, IFileImage } from '~/types/global'
 import type { AreasProfession } from './constants'
 
 export type yearsOfExperience =

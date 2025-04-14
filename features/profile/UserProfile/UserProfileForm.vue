@@ -99,19 +99,13 @@ import { areasProfession } from '../constants'
 
 const { rules } = useRules()
 
-const formData = ref<IUserProfile>({
-  name: '',
-  profession: '',
-  areaProfession: undefined,
-  email: '',
-  phone: '',
-  address: '',
-  country: '',
-  city: '',
-  summary: ''
-})
+const emit = defineEmits(['submit', 'update:modelValue'])
 
-const emit = defineEmits(['submit'])
+const props = defineProps<{
+  modelValue: IUserProfile
+}>()
+
+const formData = ref<IUserProfile>({ ...props.modelValue })
 
 const professions = ref<string[]>([])
 
@@ -128,7 +122,7 @@ watch(
 watch(
   formData,
   (newFormData) => {
-    emit('submit', newFormData)
+    emit('update:modelValue', newFormData)
   },
   { deep: true }
 )

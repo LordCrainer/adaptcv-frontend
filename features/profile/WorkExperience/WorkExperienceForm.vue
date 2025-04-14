@@ -9,8 +9,7 @@
             :label="$t('profile.experience.jobTitle')"
             placeholder="Ej: Software Engineer"
             aria-label="Job Title"
-            required>
-          </v-text-field>
+            required></v-text-field>
         </v-col>
         <v-col md="6" class="py-1">
           <v-text-field
@@ -19,8 +18,7 @@
             variant="outlined"
             placeholder="Ej: Tech Company"
             aria-label="Company"
-            required>
-          </v-text-field>
+            required></v-text-field>
         </v-col>
         <v-col cols="12">
           <v-row>
@@ -57,7 +55,12 @@
             {{ $t('actions.cancel') }}
           </v-btn>
 
-          <v-btn text="Save" color="primary" variant="tonal" type="submit" aria-label="Save">
+          <v-btn
+            text="Save"
+            color="primary"
+            variant="tonal"
+            type="submit"
+            aria-label="Save">
             {{ $t('actions.save') }}
           </v-btn>
         </v-card-actions>
@@ -72,7 +75,7 @@ import type { IWorkExperience } from '..'
 
 const props = defineProps<{
   title: string
-  inputData: IWorkExperience
+  modelValue: IWorkExperience | null
 }>()
 
 const $editor = ref<DragonEditor>()
@@ -86,15 +89,17 @@ const DEFAULT_ITEM: IWorkExperience = {
   description: {} as DEContentData
 }
 
-const localExperiencie = ref<IWorkExperience>({ ...props.inputData })
+const localExperiencie = ref<IWorkExperience>(DEFAULT_ITEM)
 
 watch(
-  () => props.inputData,
+  () => props.modelValue,
   (newVal) => {
-    localExperiencie.value = { ...newVal }
-    $editor.value?.setContentData(props.inputData.description)
+    if (newVal) {
+      localExperiencie.value = { ...newVal }
+      $editor.value?.setContentData(newVal.description)
+    }
   },
-  { deep: true }
+  { deep: true, immediate: true }
 )
 
 const emit = defineEmits(['submit', 'cancel', 'close'])
@@ -105,12 +110,7 @@ const submitForm = () => {
       ...localExperiencie.value,
       description: $editor.value?.getContentData()
     })
-    resetForm()
     emit('close')
   }
-}
-
-const resetForm = () => {
-  Object.assign(localExperiencie.value, DEFAULT_ITEM)
 }
 </script>

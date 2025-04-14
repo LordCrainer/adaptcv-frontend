@@ -6,7 +6,8 @@
           color="secondary"
           variant="outlined"
           prepend-icon="mdi-plus"
-          @click="add">
+          aria-label="Add Work Experience"
+          @click="openForm()">
           {{ $t('actions.add') }}
         </v-btn>
       </div>
@@ -26,7 +27,7 @@
               color="medium-emphasis"
               icon="mdi-delete"
               size="small"
-              @click="removeWorkExperience(item.id)" />
+              @click="remove(item.id)" />
           </div>
         </template>
 
@@ -43,10 +44,9 @@
     transition="dialog-transition">
     <WorkExperienceForm
       :title="`${state.isEditing ? 'Edit' : 'Add'} an Experience`"
-      :inputData="state.record"
+      v-model="state.selected"
       @submit="submitForm"
-      @cancel="reset"
-      @close="close"
+      @cancel="closeForm"
       v-if="state.openDialog"></WorkExperienceForm>
   </v-dialog>
 </template>
@@ -77,12 +77,13 @@ const headers = [
 const state = reactive({
   openDialog: false,
   isEditing: false,
-  record: {} as IWorkExperience
+  selected: {} as IWorkExperience | null
 })
 
-const add = () => {
+const openForm = (experience: IWorkExperience | null = null) => {
+  state.selected = experience
+  state.isEditing = !!experience
   state.openDialog = true
-  state.isEditing = false
 }
 
 const edit = (id: string) => {
@@ -91,27 +92,26 @@ const edit = (id: string) => {
   if (!foundWorkExperience) {
     return
   }
-  state.openDialog = true
-  state.isEditing = true
-  state.record = foundWorkExperience
+  openForm(foundWorkExperience)
 }
 
-const close = () => {
-  state.openDialog = false
-}
-
-const reset = () => {
+const closeForm = () => {
   state.openDialog = false
   state.isEditing = false
-  state.record = {} as IWorkExperience
+  state.selected = null
 }
 
-const submitForm = (data: IWorkExperience) => {
-  if (state.isEditing) {
-    updateWorkExperience(data.id, data)
+const remove = (id: string) => {
+  removeWorkExperience(id)
+}
+
+const submitForm = async (data: IWorkExperience) => {
+  if (state.isEditing && data.id) {
+    await updateWorkExperience(data.id, data)
   } else {
-    addWorkExperience(data)
+    await addWorkExperience(data)
   }
+  closeForm()
 }
 </script>
 

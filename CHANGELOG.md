@@ -1,3 +1,10 @@
+# [1.34.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.33.1...v1.34.0) (2025-04-14)
+
+
+### Features
+
+* **profile:** refactor IUserProfile interface and add cvStore for managing CV data ([1d1fd08](https://github.com/LordCrainer/adaptcv-frontend/commit/1d1fd08e4a19dd9131f27e35a2659150bae855ee))
+
 ## [1.33.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.33.0...v1.33.1) (2025-04-13)
 
 

@@ -1,3 +1,10 @@
+## [1.33.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.33.0...v1.33.1) (2025-04-13)
+
+
+### Bug Fixes
+
+* **navigation-drawer:** remove unnecessary modelValue display in NavigationDrawer template ([#1](https://github.com/LordCrainer/adaptcv-frontend/issues/1)) ([5cfe298](https://github.com/LordCrainer/adaptcv-frontend/commit/5cfe29858177e6ffaac9abe2fc4c1a919af83c2d))
+
 # [1.33.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.32.0...v1.33.0) (2025-04-12)
 
 

@@ -52,7 +52,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import type { IWorkExperience } from '..'
 import useWorkExperience from './useWorkExperience'
 import WorkExperienceForm from './WorkExperienceForm.vue'
@@ -66,10 +65,6 @@ const {
   updateWorkExperience,
   addWorkExperience
 } = useWorkExperience()
-
-const $editor = ref<DragonEditor>()
-
-const formData = ref<IWorkExperience>()
 
 const headers = [
   { title: t('profile.experience.jobTitle'), key: 'jobTitle' },

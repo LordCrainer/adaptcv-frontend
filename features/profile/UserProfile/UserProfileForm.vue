@@ -111,7 +111,7 @@ const formData = ref<IUserProfile>({
   summary: ''
 })
 
-const emit = defineEmits(['update:outputData'])
+const emit = defineEmits(['submit'])
 
 const professions = ref<string[]>([])
 
@@ -128,7 +128,7 @@ watch(
 watch(
   formData,
   (newFormData) => {
-    emit('update:outputData', newFormData)
+    emit('submit', newFormData)
   },
   { deep: true }
 )

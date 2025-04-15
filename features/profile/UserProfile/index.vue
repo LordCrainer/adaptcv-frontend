@@ -50,7 +50,8 @@ watch(
 )
 
 const state = reactive({
-  openDialog: false
+  openDialog: false,
+  isEditing: false
 })
 
 function close() {

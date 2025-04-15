@@ -7,3 +7,15 @@
     height: 150px;
   }
 }
+
+.flex-container {
+  display: flex !important;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.flex-card {
+  flex-grow: 1;
+  overflow-y: auto;
+}

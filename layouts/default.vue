@@ -4,9 +4,9 @@
     :class="global.name.value === 'dark' ? '' : 'bg-grey-lighten-3'">
     <Header />
     <v-main>
-      <v-container>
+      <div class="pa-2 flex-container">
         <slot />
-      </v-container>
+      </div>
     </v-main>
     <Footer />
   </v-app>

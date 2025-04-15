@@ -24,14 +24,14 @@
       v-model="state.openDialog"
       max-width="350px"
       transition="dialog-transition">
-      <UserPhoto v-model:image="fileImage" @close="close" />
+      <UserPreviewPhoto v-model:image="fileImage" @close="close" />
     </v-dialog>
   </v-form>
 </template>
 
 <script setup lang="ts">
 import type { IFileImage } from '~/types/global'
-import UserPhoto from './UserPhoto.vue'
+import UserPreviewPhoto from './UserPreviewPhoto.vue'
 import UserInformationForm from './UserProfileForm.vue'
 import useUserProfile from './useUserProfile'
 

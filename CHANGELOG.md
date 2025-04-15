@@ -1,3 +1,10 @@
+# [1.36.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.35.0...v1.36.0) (2025-04-15)
+
+
+### Features
+
+* **profile:** implement dynamic tabs for user profile sections ([c14f61e](https://github.com/LordCrainer/adaptcv-frontend/commit/c14f61e83ab677720998e4250e26a93172e6ecc6))
+
 # [1.35.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.34.0...v1.35.0) (2025-04-15)
 
 

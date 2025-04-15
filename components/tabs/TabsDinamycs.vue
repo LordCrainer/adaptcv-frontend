@@ -1,7 +1,7 @@
 <template>
   <v-card max-width="800" width="100%" class="mx-auto flex-card flex-container">
     <v-tabs
-      v-model="tab"
+      v-model="selectedTab"
       align-tabs="center"
       color="deep-purple-accent-4"
       class="mb-4">
@@ -13,7 +13,7 @@
       <v-progress-linear color="primary" model-value="20"></v-progress-linear>
     </div>
 
-    <v-tabs-window v-model="tab">
+    <v-tabs-window v-model="selectedTab">
       <v-tabs-window-item
         v-for="(content, index) in processedItems"
         :key="index"
@@ -27,8 +27,8 @@
     <v-spacer></v-spacer>
 
     <v-card-actions class="justify-end">
-      <v-btn @click="previousTab">Previous</v-btn>
-      <v-btn color="success" @click="nextTab">Next</v-btn>
+      <v-btn @click="previousTab">{{ $t('actions.previous') }}</v-btn>
+      <v-btn color="success" @click="nextTab">{{ $t('actions.next') }}</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -50,7 +50,7 @@ const props = defineProps({
   }
 })
 
-const tab = ref(props.items[1]?.value || null)
+const selectedTab = ref(props.items[0]?.value || null)
 
 const processedItems = computed(() => {
   return props.items.map((item) => ({
@@ -61,19 +61,19 @@ const processedItems = computed(() => {
 
 function previousTab() {
   const currentIndex = processedItems.value.findIndex(
-    (item) => item.value === tab.value
+    (item) => item.value === selectedTab.value
   )
   if (currentIndex > 0) {
-    tab.value = processedItems.value[currentIndex - 1].value
+    selectedTab.value = processedItems.value[currentIndex - 1].value
   }
 }
 
 function nextTab() {
   const currentIndex = processedItems.value.findIndex(
-    (item) => item.value === tab.value
+    (item) => item.value === selectedTab.value
   )
   if (currentIndex < processedItems.value.length - 1) {
-    tab.value = processedItems.value[currentIndex + 1].value
+    selectedTab.value = processedItems.value[currentIndex + 1].value
   }
 }
 </script>

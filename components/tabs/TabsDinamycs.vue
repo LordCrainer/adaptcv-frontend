@@ -1,5 +1,5 @@
 <template>
-  <v-card max-width="800" class="mx-auto flex-card flex-container">
+  <v-card max-width="800" width="100%" class="mx-auto flex-card flex-container">
     <v-tabs
       v-model="tab"
       align-tabs="center"
@@ -18,9 +18,9 @@
         v-for="(content, index) in processedItems"
         :key="index"
         :value="content.value">
-        <div class="mx-auto pa-4">
+        <v-container style="height: 70dvh; overflow-y: auto">
           <component :is="content.component" v-bind="content.props" />
-        </div>
+        </v-container>
       </v-tabs-window-item>
     </v-tabs-window>
 

@@ -1,3 +1,21 @@
+# [1.35.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.34.0...v1.35.0) (2025-04-15)
+
+
+### Bug Fixes
+
+* **profile:** correct import path for UserProfile component in index.vue ([430b788](https://github.com/LordCrainer/adaptcv-frontend/commit/430b788bd0668bd9ba5d7030abd624178c1fb7e5))
+
+
+### Features
+
+* **cvStore:** refactor CV store to use state and actions for better data management ([65d5a63](https://github.com/LordCrainer/adaptcv-frontend/commit/65d5a63e2815c97b85381a03236b8fa7ca51e30b))
+* **i18n:** update translation keys for saving images in English and Spanish ([89452f8](https://github.com/LordCrainer/adaptcv-frontend/commit/89452f8b27d0329f5c3f954713bc335db24642d5))
+* **profile:** add IFileImage import to user profile type definitions ([6f63f5f](https://github.com/LordCrainer/adaptcv-frontend/commit/6f63f5f89979a2a3c84ed4e3002a8f62defaa6ab))
+* **profile:** add UserPreviewPhoto component for image upload and preview functionality ([7016fb4](https://github.com/LordCrainer/adaptcv-frontend/commit/7016fb443d6ee4af5e47011452d51fbb2044361e))
+* **profile:** implement user profile management and image upload functionality ([17400f5](https://github.com/LordCrainer/adaptcv-frontend/commit/17400f5ac594d408f60f90540dc44496d1ef1447))
+* **profile:** refactor WorkExperienceForm and index components for improved data handling and UI consistency ([5ed71ba](https://github.com/LordCrainer/adaptcv-frontend/commit/5ed71ba60e50e7b2fa1907f0b75fa72fde04dc74))
+* **profile:** restructure user profile components and add user profile management functionality ([f55afc3](https://github.com/LordCrainer/adaptcv-frontend/commit/f55afc382414fb6616bfb7c3538587d506cfbc1d))
+
 # [1.34.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.33.1...v1.34.0) (2025-04-14)
 
 

@@ -16,31 +16,31 @@ const tabs = ref([
   {
     title: 'Profile',
     value: 'profile',
-    component: UserProfile,
+    component: markRaw(UserProfile),
     props: {}
   },
   {
     title: 'Experience',
     value: 'experience',
-    component: WorkExperience,
+    component: markRaw(WorkExperience),
     props: {}
   },
   {
     title: 'Education',
     value: 'education',
-    component: Education,
+    component: markRaw(Education),
     props: {}
   },
   {
     title: 'Skills',
     value: 'skills',
-    component: Skills,
+    component: markRaw(Skills),
     props: {}
   },
   {
     title: 'Languages',
     value: 'languages',
-    component: Languages,
+    component: markRaw(Languages),
     props: {}
   }
 ])

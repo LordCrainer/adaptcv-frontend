@@ -27,7 +27,7 @@
     <v-spacer></v-spacer>
 
     <v-card-actions class="justify-end">
-      <v-btn @click="previousTab" :disabled="selectedTab === 0">
+      <v-btn @click="previousTab" :disabled="selectedTab === 'profile'">
         {{ $t('actions.previous') }}
       </v-btn>
       <v-btn color="success" @click="nextTab">{{ $t('actions.next') }}</v-btn>
@@ -47,12 +47,12 @@ type TabItem = {
 
 const props = defineProps({
   items: {
-    type: Array<TabItem>,
+    type: Array as () => TabItem[],
     default: () => []
   }
 })
 
-const selectedTab = ref<number>(0)
+const selectedTab = ref<string>('Profile')
 
 const processedItems = computed(() => {
   return props.items.map((item) => ({
@@ -61,14 +61,20 @@ const processedItems = computed(() => {
 })
 
 function previousTab() {
-  if (selectedTab.value > 0) {
-    selectedTab.value += -1
+  const currentIndex = processedItems.value.findIndex(
+    (item) => item.value === selectedTab.value
+  )
+  if (currentIndex > 0) {
+    selectedTab.value = processedItems.value[currentIndex - 1].value
   }
 }
 
 function nextTab() {
-  if (selectedTab.value < processedItems.value.length - 1) {
-    selectedTab.value += 1
+  const currentIndex = processedItems.value.findIndex(
+    (item) => item.value === selectedTab.value
+  )
+  if (currentIndex < processedItems.value.length - 1) {
+    selectedTab.value = processedItems.value[currentIndex + 1].value
   }
 }
 </script>

@@ -1,3 +1,16 @@
+# [1.39.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.38.0...v1.39.0) (2025-04-20)
+
+
+### Bug Fixes
+
+* **HeaderActionItems:** update tab component to include navigation paths ([b94cd7b](https://github.com/LordCrainer/adaptcv-frontend/commit/b94cd7bb162d6a30c0cc360ad1a0a2b00e04aaf2))
+
+
+### Features
+
+* **i18n:** add routes translations for English and Spanish locales ([350e4da](https://github.com/LordCrainer/adaptcv-frontend/commit/350e4dacf70cf2f9017b7913fdf35e8573c2ba3e))
+* **i18n:** implement route translations in Header and Tabs components ([53bf5f5](https://github.com/LordCrainer/adaptcv-frontend/commit/53bf5f507440a58f3e04fb2a2569acfae633212a))
+
 # [1.38.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.37.0...v1.38.0) (2025-04-20)
 
 

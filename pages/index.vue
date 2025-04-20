@@ -15,31 +15,31 @@ import TabsDinamycs from '~/components/tabs/TabsDinamycs.vue'
 const tabs = ref([
   {
     title: 'Profile',
-    value: 'profile',
+    label: 'personalInfo',
     component: markRaw(UserProfile),
     props: {}
   },
   {
     title: 'Experience',
-    value: 'experience',
+    label: 'experience',
     component: markRaw(WorkExperience),
     props: {}
   },
   {
     title: 'Education',
-    value: 'education',
+    label: 'education',
     component: markRaw(Education),
     props: {}
   },
   {
     title: 'Skills',
-    value: 'skills',
+    label: 'skills',
     component: markRaw(Skills),
     props: {}
   },
   {
     title: 'Languages',
-    value: 'languages',
+    label: 'languages',
     component: markRaw(Languages),
     props: {}
   }

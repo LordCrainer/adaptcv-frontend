@@ -1,3 +1,17 @@
+# [1.38.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.37.0...v1.38.0) (2025-04-20)
+
+
+### Bug Fixes
+
+* **profile:** adjust text styling for upload photo label in user profile ([e738838](https://github.com/LordCrainer/adaptcv-frontend/commit/e7388385fa22bf0ec32aa16e668f32e68fdad17d))
+* **tabs:** update tab navigation logic to use string values and improve component registration ([06560e2](https://github.com/LordCrainer/adaptcv-frontend/commit/06560e245095e95ba4aebfb17823f128307c9e02))
+
+
+### Features
+
+* **layout:** pass APP_ROUTES to Header component for dynamic navigation ([4688f96](https://github.com/LordCrainer/adaptcv-frontend/commit/4688f96714701fbed3c7fb67776e99c205d46647))
+* **tabs:** implement dynamic tab navigation with previous and next functionality ([3f71c2d](https://github.com/LordCrainer/adaptcv-frontend/commit/3f71c2d88a312344b1163e8131030a889928289c))
+
 # [1.37.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.36.0...v1.37.0) (2025-04-15)
 
 

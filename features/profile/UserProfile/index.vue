@@ -14,7 +14,9 @@
             <v-icon size="100" color="grey lighten-2">
               mdi-account-arrow-up-outline
             </v-icon>
-            <span class="text-caption text-sm-subtitle-1">{{ $t('profile.personalInfo.uploadPhoto') }}</span>
+            <span class="text-caption text-sm-subtitle-1">
+              {{ $t('profile.personalInfo.uploadPhoto') }}
+            </span>
           </v-sheet>
         </v-card>
       </v-col>

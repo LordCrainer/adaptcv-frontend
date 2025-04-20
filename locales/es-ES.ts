@@ -77,7 +77,7 @@ export default defineI18nLocale(async () => {
       next: 'Siguiente',
       previous: 'Anterior',
       continue: 'Continuar',
-      finish: 'Finalizar',
+      finish: 'Finalizar'
     },
     common: {
       home: 'Inicio',
@@ -107,6 +107,15 @@ export default defineI18nLocale(async () => {
       password: 'Contraseña',
       confirmPassword: 'Confirmar contraseña',
       signUp: 'Regístrate'
+    },
+    routes: {
+      fillInformation: 'Rellenar información',
+      preview: 'Vista previa',
+      templates: 'Plantillas',
+      settings: 'Configuraciones',
+      profile: 'Perfil',
+      dashboard: 'Tablero',
+      logout: 'Cerrar sesión'
     },
     profile: profile,
     $vuetify: $vuetify

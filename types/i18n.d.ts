@@ -104,4 +104,12 @@ interface TranslationKeys {
     confirmPassword: string
     signUp: string
   }
+  routes: {
+    fillInformation: string
+    templates: string
+    settings: string
+    profile: string
+    dashboard: string
+    logout: string
+  }
 }

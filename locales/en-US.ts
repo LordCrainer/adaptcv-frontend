@@ -110,6 +110,15 @@ export default defineI18nLocale(async () => {
       confirmPassword: 'Confirm Password',
       signUp: 'Sign Up'
     },
+    routes: {
+      fillInformation: 'Fill Information',
+      preview: 'Preview',
+      templates: 'Templates',
+      settings: 'Settings',
+      profile: 'Profile',
+      dashboard: 'Dashboard',
+      logout: 'Logout'
+    },
     profile: profile,
     $vuetify: $vuetify
   } as TranslationKeys

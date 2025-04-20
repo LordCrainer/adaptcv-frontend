@@ -1,3 +1,10 @@
+# [1.40.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.39.0...v1.40.0) (2025-04-20)
+
+
+### Features
+
+* **Preview:** enhance profile display with work experience and education details ([6ac8f62](https://github.com/LordCrainer/adaptcv-frontend/commit/6ac8f621ec736e152eeca6e63fac06745b39a295))
+
 # [1.39.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.38.0...v1.39.0) (2025-04-20)
 
 

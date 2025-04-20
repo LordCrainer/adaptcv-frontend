@@ -1,7 +1,7 @@
 <template>
-  <v-tabs aria-label="Tabs">
+  <v-tabs aria-label="Tabs" class="d-none d-md-inline-block">
     <v-tab v-for="tab in tabs" :key="tab.id" :value="tab.id" :to="tab.path">
-      {{ tab.title }}
+      {{ $t(`routes.${tab.title}`) }}
     </v-tab>
   </v-tabs>
   <v-menu>
@@ -27,7 +27,7 @@ import type { IRoutes } from '~/types/global'
 
 const { setLocale, locales, locale } = useI18n()
 
-const props = defineProps({
+defineProps({
   tabs: {
     type: Array as () => IRoutes[],
     default: () => []

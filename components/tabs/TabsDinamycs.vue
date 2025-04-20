@@ -1,6 +1,8 @@
 <template>
   <v-card max-width="800" width="100%" class="mx-auto flex-card flex-container">
-    <div class="pa-4 text-h5 font-weight-bold"> Llenar Información</div>
+    <div class="pa-4 text-h5 font-weight-bold">
+      {{ $t('routes.fillInformation') }}
+    </div>
     <div class="pa-4">
       <v-progress-linear color="primary" model-value="20"></v-progress-linear>
     </div>

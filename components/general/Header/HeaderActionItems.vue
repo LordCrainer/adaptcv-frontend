@@ -1,6 +1,6 @@
 <template>
-  <v-tabs aria-label="Example Tabs">
-    <v-tab v-for="tab in tabs" :key="tab.id" :value="tab.id">
+  <v-tabs aria-label="Tabs">
+    <v-tab v-for="tab in tabs" :key="tab.id" :value="tab.id" :to="tab.path">
       {{ tab.title }}
     </v-tab>
   </v-tabs>

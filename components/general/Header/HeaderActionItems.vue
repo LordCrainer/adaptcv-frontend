@@ -23,17 +23,13 @@
 <script setup lang="ts">
 import type { LocaleObject } from '@nuxtjs/i18n'
 import { useI18n } from 'vue-i18n'
+import type { IRoutes } from '~/types/global'
 
 const { setLocale, locales, locale } = useI18n()
 
 const props = defineProps({
   tabs: {
-    type: Array as () => Array<{
-      id: string
-      title: string
-      path: string
-      icon: string
-    }>,
+    type: Array as () => IRoutes[],
     default: () => []
   }
 })

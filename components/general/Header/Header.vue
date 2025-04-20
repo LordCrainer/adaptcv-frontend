@@ -18,6 +18,7 @@
 import HeaderActionItems from './HeaderActionItems.vue'
 import NavigationDrawer from './NavigationDrawer.vue'
 import HeaderSettingsMenu from './HeaderSettingsMenu.vue'
+import type { IRoutes } from '~/types/global'
 
 const drawer = ref(false)
 
@@ -25,13 +26,10 @@ const toggleDrawer = () => {
   drawer.value = !drawer.value
 }
 
-const items = ref([
-  {
-    title: 'Fill Information',
-    path: '/',
-    icon: 'mdi-information',
-    id: 'fill-information'
+defineProps({
+  items: {
+    type: Object as () => IRoutes[],
+    default: () => []
   }
-  // { title: 'Templates', path: '/templates', icon: 'mdi-note-multiple' }
-])
+})
 </script>

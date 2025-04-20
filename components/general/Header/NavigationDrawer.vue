@@ -16,9 +16,11 @@
 </template>
 
 <script setup lang="ts">
+import type { IRoutes } from '~/types/global';
+
 const props = defineProps({
   items: {
-    type: Object as () => Array<{ title: string; path: string; icon: string }>,
+    type: Object as () => IRoutes[],
     default: () => []
   },
   modelValue: {

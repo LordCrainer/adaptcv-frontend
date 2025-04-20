@@ -7,3 +7,10 @@ export interface BaseEntity {
   createdAt?: Date
   updatedAt?: Date
 }
+
+export interface IRoutes {
+  path: string
+  title: string
+  icon?: string
+  id?: string
+}

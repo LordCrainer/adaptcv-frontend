@@ -59,7 +59,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { IEducationItem } from '..'
+import type { Degree, IEducationItem } from '..'
 
 const props = defineProps<{
   title: string
@@ -68,7 +68,7 @@ const props = defineProps<{
 
 const DEFAULT_ITEM: IEducationItem = {
   id: '',
-  degree: '',
+  degree: undefined,
   institution: '',
   startDate: '',
   endDate: '',
@@ -87,7 +87,7 @@ watch(
 
 const emit = defineEmits(['submit', 'cancel', 'close'])
 
-const degreeOptions = ref<string[]>([
+const degreeOptions = ref<Degree[]>([
   'secondary',
   'highSchool',
   'technical',

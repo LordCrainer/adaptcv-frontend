@@ -8,6 +8,15 @@ export type yearsOfExperience =
   | '5to10years'
   | '10plusyears'
 
+export type Degree =
+  | 'secondary'
+  | 'highSchool'
+  | 'technical'
+  | 'undergraduate'
+  | 'graduate'
+  | 'masters'
+  | 'doctorate'
+
 export interface ISkill {
   skill: string
   yearsOfExperience: yearsOfExperience | undefined
@@ -22,10 +31,12 @@ export interface ILanguageItem {
 export interface IEducationItem {
   id: string
   institution: string
-  degree: string
+  degree: Degree | undefined
   fieldOfStudy: string
   startDate: string
   endDate: string
+  city?: string
+  country?: string
 }
 
 export interface IWorkExperience {
@@ -35,8 +46,15 @@ export interface IWorkExperience {
   startDate: string
   endDate: string
   description: DEContentData
+  city?: string
+  country?: string
 }
 
+export interface SocialMedia {
+  linkedin?: string
+  github?: string
+  website?: string
+}
 export interface IUserProfile {
   name: string
   profession: string
@@ -48,6 +66,7 @@ export interface IUserProfile {
   city?: string
   summary?: string
   image?: IFileImage
+  socialMedia?: SocialMedia
 }
 
 export interface ICV extends BaseEntity {

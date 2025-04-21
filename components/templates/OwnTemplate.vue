@@ -109,9 +109,12 @@
             v-for="lang in languages"
             :key="lang.name"
             class="d-flex ga-2 align-center pa-2">
-            <div
-              class="pa-3 rounded-circle"
-              style="border: 5px solid orange"></div>
+            <v-progress-circular
+              :model-value="
+                getProficiencyLevel(lang.proficiency, proficiencyLevels)
+              "
+              color="orange-darken-1"
+              :width="6"></v-progress-circular>
             <p>
               {{ lang.name }} ({{
                 $t(`profile.languages.${lang.proficiency}`)
@@ -130,9 +133,17 @@
 </template>
 
 <script lang="ts" setup>
+import { useLanguages } from '~/features/profile/Languages/useLanguages'
+
 import { useCVStore } from '~/stores/cvStore'
+const { proficiencyLevels } = useLanguages()
 const { education, languages, userProfile, skills, workExperience } =
   useCVStore()
+
+function getProficiencyLevel(prop: string, options: string[]) {
+  const index = options.findIndex((s) => s === prop) + 1
+  return (100 / options.length) * index
+}
 
 function getUserProfile(text: string) {
   const word = text.split('/').slice(-1)[0]

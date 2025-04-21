@@ -19,7 +19,7 @@
     </v-toolbar>
 
     <div class="d-flex flex-row">
-      <div style="width: 275px" class="ga-4 text-white d-flex flex-column pa-2">
+      <div style="width: 275px; min-width: 275px;" class="ga-4 text-white d-flex flex-column pa-2">
         <div class="d-flex flex-column align-center pa-4">
           <div class="border-radius-circle">
             <v-img
@@ -39,7 +39,7 @@
         </div>
 
         <div class="text-body-2">
-          <p class="text-center pa-2 font-weight-bold">Slogan</p>
+          <p class="text-body-1 text-center pa-2 font-weight-bold">Slogan</p>
           <v-divider
             class="border-opacity-75 py-2"
             thickness="2"
@@ -55,7 +55,7 @@
         </div>
 
         <div class="text-body-2">
-          <p class="text-center pa-2 font-weight-bold">Contact</p>
+          <p class="text-body-1 text-center pa-2 font-weight-bold">Contact</p>
           <v-divider
             class="border-opacity-75 py-2"
             thickness="2"
@@ -77,7 +77,7 @@
         </div>
 
         <div class="text-body-2">
-          <p class="text-center pa-2 font-weight-bold">
+          <p class="text-body-1 text-center pa-2 font-weight-bold">
             {{ $t('profile.skills.title') }}
           </p>
           <v-divider
@@ -98,7 +98,7 @@
         </div>
 
         <div class="text-body-2">
-          <p class="text-center pa-2 font-weight-bold">
+          <p class="text-body-1 text-center pa-2 font-weight-bold">
             {{ $t('profile.languages.title') }}
           </p>
           <v-divider
@@ -124,10 +124,43 @@
         </div>
       </div>
 
-      <v-col class="bg-white container-information">
-        <v-card-title>Skills</v-card-title>
-        <v-card-subtitle>{{ skills.join(', ') }}</v-card-subtitle>
-      </v-col>
+      <div class="bg-white container-information pa-4 ga-4 d-flex flex-column">
+        <div class="d-flex flex-column ga-4">
+          <div class="d-flex ga-4 align-center">
+            <v-icon size="32" icon="mdi-account-circle" color=""></v-icon>
+            <p class="text-h6">{{ $t('profile.personalInfo.aboutMe') }}</p>
+          </div>
+          <div class="d-flex ga-4 align-center">
+            <v-divider
+              thickness="5"
+              color="blue-darken-2"
+              class="border-opacity-100 pl-4"
+              vertical
+              inset></v-divider>
+            <p class="text-caption">
+              {{ userProfile.summary }}
+            </p>
+          </div>
+        </div>
+
+        <div class="d-flex flex-column ga-4">
+          <div class="d-flex ga-4 align-center">
+            <v-icon size="32" icon="mdi-account-circle" color=""></v-icon>
+            <p class="text-h6">{{ $t('profile.experience.title') }}</p>
+          </div>
+          <div class="d-flex ga-4 align-center" v-for="work in workExperience">
+            <v-divider
+              thickness="5"
+              color="blue-darken-2"
+              class="border-opacity-100 pl-4"
+              vertical
+              inset></v-divider>
+            <div class="text-caption">
+              {{ workExperience[0].company }}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </v-card>
 </template>

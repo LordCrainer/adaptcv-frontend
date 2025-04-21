@@ -134,7 +134,7 @@
           </div>
           <div class="d-flex ga-4 align-center">
             <div class="rounded-divider ml-3"></div>
-            <p class="text-caption">
+            <p class="text-caption" style="width: 100%">
               {{ userProfile.summary }}
             </p>
           </div>

@@ -30,6 +30,9 @@
 
 <script lang="ts" setup>
 import type { ILanguageItem } from '..'
+import { useLanguages } from './useLanguages'
+
+const { proficiencyLevels } = useLanguages()
 
 const DEFAULT_LANGUAGE_ITEM: ILanguageItem = {
   name: undefined,
@@ -37,8 +40,6 @@ const DEFAULT_LANGUAGE_ITEM: ILanguageItem = {
 }
 
 const localLang = ref<ILanguageItem>(DEFAULT_LANGUAGE_ITEM)
-
-const proficiencyLevels = ['beginner', 'intermediate', 'advanced', 'native']
 
 const languages = ref(
   [

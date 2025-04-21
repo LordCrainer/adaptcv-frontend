@@ -6,6 +6,8 @@ const MAX_LANGUAGES = 5
 export const useLanguages = () => {
   const languages = ref<ILanguageItem[]>([])
 
+  const proficiencyLevels = ['beginner', 'intermediate', 'advanced', 'native']
+
   const upsertLanguage = (lang: ILanguageItem) => {
     if (languages.value.length >= MAX_LANGUAGES) {
       return
@@ -26,6 +28,7 @@ export const useLanguages = () => {
   return {
     languages,
     upsertLanguage,
-    removeLanguage
+    removeLanguage,
+    proficiencyLevels
   }
 }

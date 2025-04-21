@@ -1,22 +1,32 @@
-import type { ISkill } from '~/features/profile'
+import type { ISkill, yearsOfExperience } from '~/features/profile'
 
-const SKILLS_LIST = ref([
-  'JavaScript',
-  'Python',
-  'Java',
-  'C#',
-  'PHP',
-  'Ruby',
-  'Go',
-  'Swift',
-  'Kotlin',
-  'TypeScript',
-  'HTML',
-  'CSS',
-  'SQL',
-  'Rust',
-  'Node.js',
-].sort())
+const SKILLS_LIST = ref(
+  [
+    'JavaScript',
+    'Python',
+    'Java',
+    'C#',
+    'PHP',
+    'Ruby',
+    'Go',
+    'Swift',
+    'Kotlin',
+    'TypeScript',
+    'HTML',
+    'CSS',
+    'SQL',
+    'Rust',
+    'Node.js'
+  ].sort()
+)
+
+const experienceOptions: yearsOfExperience[] = [
+  'less1year',
+  '1to2years',
+  '2to3years',
+  '5to10years',
+  '10plusyears'
+]
 
 const MAX_SKILLS = 10
 
@@ -43,6 +53,7 @@ export const useSkill = () => {
     upsertSkill,
     skills,
     SKILLS_LIST,
+    experienceOptions,
     removeSkill
   }
 }

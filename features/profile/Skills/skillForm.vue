@@ -29,18 +29,10 @@
 </template>
 
 <script setup lang="ts">
-import type { ISkill, yearsOfExperience } from '~/features/profile/index'
+import type { ISkill } from '~/features/profile/index'
 import { useSkill } from './useSkill'
 
-const { SKILLS_LIST } = useSkill()
-
-const experienceOptions: yearsOfExperience[] = [
-  'less1year',
-  '1to2years',
-  '2to3years',
-  '5to10years',
-  '10plusyears'
-]
+const { SKILLS_LIST, experienceOptions } = useSkill()
 
 const DEFAULT_SKILL_ITEM: ISkill = {
   skill: '',

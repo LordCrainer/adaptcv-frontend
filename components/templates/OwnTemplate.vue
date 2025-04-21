@@ -33,10 +33,10 @@
           </div>
 
           <v-card-title class="text-h6 font-weight-bold">
-            {{ userProfile.name }}
+            {{ userProfile?.name }}
           </v-card-title>
           <p class="text-body-1 font-weight-bold">
-            {{ userProfile.profession }}
+            {{ userProfile?.profession }}
           </p>
         </div>
 
@@ -51,7 +51,7 @@
               <v-icon size="large" color="orange" icon="mdi-bullhorn"></v-icon>
             </v-avatar>
             <p>
-              {{ userProfile.slogan }}
+              {{ userProfile?.slogan }}
             </p>
           </div>
         </div>
@@ -135,7 +135,7 @@
           <div class="d-flex ga-4 align-center">
             <div class="rounded-divider ml-3"></div>
             <p class="text-caption" style="width: 100%">
-              {{ userProfile.summary }}
+              {{ userProfile?.summary }}
             </p>
           </div>
         </div>
@@ -243,25 +243,25 @@ interface IContact {
 const contacts = ref<IContact[]>([
   {
     icon: 'mdi-email',
-    link: `mailto:${userProfile.email}`,
-    label: userProfile.email
+    link: `mailto:${userProfile?.email}`,
+    label: userProfile?.email
   },
   {
     icon: 'mdi-phone',
-    link: `https://wa.me/${userProfile.phone}`,
+    link: `https://wa.me/${userProfile?.phone}`,
     label: 'phone',
     hasUserProfile: true
   },
   {
     icon: 'mdi-github',
-    link: userProfile.socialMedia?.github,
+    link: userProfile?.socialMedia?.github,
     label: 'github',
     hasUserProfile: true
   },
   {
     icon: 'mdi-linkedin',
-    link: userProfile.socialMedia?.linkedin,
-    label: userProfile.socialMedia?.linkedin,
+    link: userProfile?.socialMedia?.linkedin,
+    label: userProfile?.socialMedia?.linkedin,
     hasUserProfile: true
   }
 ])

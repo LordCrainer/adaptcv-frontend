@@ -67,6 +67,7 @@ export interface IUserProfile {
   summary?: string
   image?: IFileImage
   socialMedia?: SocialMedia
+  slogan?: string
 }
 
 export interface ICV extends BaseEntity {

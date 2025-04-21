@@ -6,6 +6,7 @@
 import { ref } from 'vue'
 import UserProfile from '~/features/profile/UserProfile/index.vue'
 import WorkExperience from '~/features/profile/WorkExperience/index.vue'
+import AboutMe from '~/features/profile/AboutMe/index.vue'
 
 import Education from '~/features/profile/Education/index.vue'
 import Skills from '@/features/profile/Skills/index.vue'
@@ -17,6 +18,12 @@ const tabs = ref([
     title: 'Profile',
     label: 'personalInfo',
     component: markRaw(UserProfile),
+    props: {}
+  },
+  {
+    title: 'About Me',
+    label: 'aboutMe',
+    component: markRaw(AboutMe),
     props: {}
   },
   {

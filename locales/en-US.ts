@@ -16,6 +16,13 @@ const profile: TranslationKeys['profile'] = {
     aboutMe: 'About Me',
     uploadPhoto: 'Upload Photo'
   },
+  aboutMe: {
+    title: 'About Me',
+    summary: 'Summary',
+    slogan: 'Slogan',
+    logo: 'Logo',
+    uploadLogo: 'Upload Logo'
+  },
   experience: {
     title: 'Experience',
     jobTitle: 'Job Title',

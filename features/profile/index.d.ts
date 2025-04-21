@@ -70,6 +70,12 @@ export interface IUserProfile {
   slogan?: string
 }
 
+export interface IAboutMe {
+  summary: string
+  logo: IFileImage
+  slogan: string
+}
+
 export interface ICV extends BaseEntity {
   userProfile: IUserProfile
   skills: ISkill[]

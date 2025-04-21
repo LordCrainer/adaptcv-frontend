@@ -47,6 +47,13 @@ interface TranslationKeys {
       aboutMe: string
       uploadPhoto: string
     }
+    aboutMe: {
+      title: string
+      summary: string
+      slogan: string
+      logo: string
+      uploadLogo: string
+    }
     experience: {
       title: string
       jobTitle: string

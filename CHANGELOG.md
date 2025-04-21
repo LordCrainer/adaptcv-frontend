@@ -1,3 +1,11 @@
+# [1.42.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.41.0...v1.42.0) (2025-04-21)
+
+
+### Features
+
+* **OwnTemplate:** adjust user profile summary width for better layout ([5bb339f](https://github.com/LordCrainer/adaptcv-frontend/commit/5bb339f29b02847c5789fb8aa7399e4a6ae866d3))
+* **OwnTemplate:** enhance layout with rounded dividers and improved experience/education sections ([490066f](https://github.com/LordCrainer/adaptcv-frontend/commit/490066fcaed3032143d6c09509be3f074567e9b8))
+
 # [1.41.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.40.0...v1.41.0) (2025-04-21)
 
 

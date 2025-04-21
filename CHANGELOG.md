@@ -1,3 +1,19 @@
+# [1.41.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.40.0...v1.41.0) (2025-04-21)
+
+
+### Features
+
+* **CVStore:** add user profile management and skill/language handling functions ([3e1a966](https://github.com/LordCrainer/adaptcv-frontend/commit/3e1a96688e81d2ff631e35defc5f9567517ba64b))
+* **DateFormatting:** add utility functions for standard date formatting and date range formatting ([9114698](https://github.com/LordCrainer/adaptcv-frontend/commit/911469817136c4fa5b7e0d2aaa074c6887ca319e))
+* **HarvardTemplate:** add new template for displaying user profiles with education, work experience, skills, and languages ([7817651](https://github.com/LordCrainer/adaptcv-frontend/commit/78176517280dc426e73beea4a126e8ab10326f17))
+* **Languages:** integrate proficiency levels into LanguagesForm and useLanguages ([c6935c4](https://github.com/LordCrainer/adaptcv-frontend/commit/c6935c40e5140a4ef607dbd4067081cd97ecabca))
+* **OwnTemplate:** add proficiency level indicators for languages using progress circulars ([658d193](https://github.com/LordCrainer/adaptcv-frontend/commit/658d193c96a85b0b4fd0c4876ff8129b71d25456))
+* **OwnTemplate:** create new template for user profiles with contact, skills, and languages sections ([7db9484](https://github.com/LordCrainer/adaptcv-frontend/commit/7db9484cc6fc00b3ee5ea4acf2100a94d502cbb5))
+* **OwnTemplate:** enhance user profile layout with additional personal info and experience sections ([e0e1310](https://github.com/LordCrainer/adaptcv-frontend/commit/e0e13106ea29a5a0d7f83a7537680be8b17e5e58))
+* **Preview:** remove unused data fetching logic and enhance profile display with skills and languages ([7b93ba3](https://github.com/LordCrainer/adaptcv-frontend/commit/7b93ba31a9434cd1f5b7481fad0dfbc1ee20c80a))
+* **Preview:** simplify profile display by removing unused data and integrating template selection ([e850dae](https://github.com/LordCrainer/adaptcv-frontend/commit/e850dae506b8882434641c54480753d023adb28e))
+* **Profile:** add slogan field to user profile interface and include logo asset ([27eb2e2](https://github.com/LordCrainer/adaptcv-frontend/commit/27eb2e2ed9e73007c2ef73d2ba0c6041123b3d65))
+
 # [1.40.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.39.0...v1.40.0) (2025-04-20)
 
 

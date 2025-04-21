@@ -19,7 +19,9 @@
     </v-toolbar>
 
     <div class="d-flex flex-row">
-      <div style="width: 275px; min-width: 275px;" class="ga-4 text-white d-flex flex-column pa-2">
+      <div
+        style="width: 275px; min-width: 275px"
+        class="ga-4 text-white d-flex flex-column pa-2">
         <div class="d-flex flex-column align-center pa-4">
           <div class="border-radius-circle">
             <v-img
@@ -124,19 +126,14 @@
         </div>
       </div>
 
-      <div class="bg-white container-information pa-4 ga-4 d-flex flex-column">
+      <div class="bg-white rounded-bt-24 pa-4 ga-4 d-flex flex-column">
         <div class="d-flex flex-column ga-4">
           <div class="d-flex ga-4 align-center">
             <v-icon size="32" icon="mdi-account-circle" color=""></v-icon>
             <p class="text-h6">{{ $t('profile.personalInfo.aboutMe') }}</p>
           </div>
           <div class="d-flex ga-4 align-center">
-            <v-divider
-              thickness="5"
-              color="blue-darken-2"
-              class="border-opacity-100 pl-4"
-              vertical
-              inset></v-divider>
+            <div class="rounded-divider ml-3"></div>
             <p class="text-caption">
               {{ userProfile.summary }}
             </p>
@@ -148,15 +145,61 @@
             <v-icon size="32" icon="mdi-account-circle" color=""></v-icon>
             <p class="text-h6">{{ $t('profile.experience.title') }}</p>
           </div>
-          <div class="d-flex ga-4 align-center" v-for="work in workExperience">
-            <v-divider
-              thickness="5"
-              color="blue-darken-2"
-              class="border-opacity-100 pl-4"
-              vertical
-              inset></v-divider>
-            <div class="text-caption">
-              {{ workExperience[0].company }}
+          <div class="d-flex ga-4 align-center" v-for="exp in workExperience">
+            <div class="rounded-divider ml-3"></div>
+            <div class="text-caption" style="width: 100%">
+              <div class="d-flex ga-1 flex-column">
+                <div class="d-flex justify-space-between">
+                  <div class="d-flex align-center ga-2">
+                    <p class="font-weight-bold">
+                      {{ exp.jobTitle }}
+                    </p>
+                    | {{ exp.company }}
+                  </div>
+                  <div>
+                    {{
+                      formatDateRange({
+                        startDate: exp.startDate,
+                        endDate: exp.endDate
+                      })
+                    }}
+                  </div>
+                </div>
+                <div>
+                  <DragonEditorViewer :content="exp.description" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex flex-column ga-4">
+          <div class="d-flex ga-4 align-center">
+            <v-icon size="32" icon="mdi-account-circle" color=""></v-icon>
+            <p class="text-h6">{{ $t('profile.education.title') }}</p>
+          </div>
+          <div
+            class="d-flex ga-4 align-center"
+            v-for="edu in education"
+            :key="edu.institution + edu.fieldOfStudy">
+            <div class="ml-3 rounded-divider"></div>
+            <div class="d-flex flex-column" style="width: 100%">
+              <div class="d-flex justify-space-between">
+                <p class="text-caption">
+                  {{ edu.institution }}
+                </p>
+                <div>
+                  {{
+                    formatDateRange({
+                      startDate: edu.startDate,
+                      endDate: edu.endDate
+                    })
+                  }}
+                </div>
+              </div>
+              <div>
+                <p>{{ edu.fieldOfStudy }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -167,8 +210,9 @@
 
 <script lang="ts" setup>
 import { useLanguages } from '~/features/profile/Languages/useLanguages'
-
 import { useCVStore } from '~/stores/cvStore'
+
+const { formatDateRange } = useFormatDate()
 const { proficiencyLevels } = useLanguages()
 const { education, languages, userProfile, skills, workExperience } =
   useCVStore()
@@ -234,9 +278,17 @@ const contacts = ref<IContact[]>([
   }
 }
 
-.container-information {
+.own-rounded-bt-24 {
   border-top-left-radius: 24px;
   border-bottom-left-radius: 24px;
   background-color: white;
+}
+
+.rounded-divider {
+  width: 5px;
+  height: 80%;
+  background-color: #333;
+  border-radius: 5px;
+  margin: 20px auto;
 }
 </style>

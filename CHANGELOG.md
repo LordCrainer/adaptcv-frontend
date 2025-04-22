@@ -1,3 +1,10 @@
+# [1.45.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.44.0...v1.45.0) (2025-04-22)
+
+
+### Features
+
+* **Login:** update password validation and enhance form styling with rounded inputs ([9e434e6](https://github.com/LordCrainer/adaptcv-frontend/commit/9e434e6b367ce9482bb3f0666b3cbf237bb2b1c6))
+
 # [1.44.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.43.0...v1.44.0) (2025-04-22)
 
 

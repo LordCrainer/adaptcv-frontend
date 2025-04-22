@@ -40,7 +40,6 @@ interface TranslationKeys {
       email: string
       phone: string
       address: string
-      summary: string
       city: string
       country: string
       fillInformation: string

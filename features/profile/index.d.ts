@@ -64,10 +64,8 @@ export interface IUserProfile {
   address: string
   country?: string
   city?: string
-  summary?: string
   image?: IFileImage
   socialMedia?: SocialMedia
-  slogan?: string
 }
 
 export interface IAboutMe {

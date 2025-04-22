@@ -80,17 +80,6 @@
         aria-label="Profession"></v-select>
     </div>
   </v-col>
-  <v-col>
-    <v-textarea
-      v-model="formData.summary"
-      rounded="md"
-      flat
-      prepend-inner-icon="mdi-file-document"
-      :label="$t('profile.personalInfo.summary')"
-      variant="outlined"
-      placeholder="Ej: A brief summary about yourself"
-      name="summary"></v-textarea>
-  </v-col>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'

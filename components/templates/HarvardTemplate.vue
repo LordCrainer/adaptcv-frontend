@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { useCVStore } from '~/stores/cvStore'
-const { education, languages, userProfile, skills, workExperience } =
+const { education, languages, userProfile, skills, workExperience, aboutMe } =
   useCVStore()
 import { computed } from 'vue'
 
 const { formatDateRange } = useFormatDate()
 
 const location = computed(() => {
-  return getLocation(userProfile.city, userProfile.country)
+  return getLocation(userProfile?.city, userProfile?.country)
 })
 
 function getLocation(...args: (string | undefined)[]) {
@@ -21,23 +21,23 @@ function getLocation(...args: (string | undefined)[]) {
     width="100%"
     class="mx-auto flex-card flex-container pa-4 text-caption">
     <v-card-title class="text-h5 font-weight-bold text-center pb-0">
-      {{ userProfile.name }}
+      {{ userProfile?.name }}
     </v-card-title>
 
     <v-card-item class="text-center">
       {{ location }} -
       <a
-        :href="userProfile.socialMedia?.linkedin"
+        :href="userProfile?.socialMedia?.linkedin"
         target="_blank"
         rel="noopener noreferrer">
-        {{ userProfile.socialMedia?.linkedin }}
+        {{ userProfile?.socialMedia?.linkedin }}
       </a>
-      - {{ userProfile.phone }} -
-      {{ userProfile.email }}
+      - {{ userProfile?.phone }} -
+      {{ userProfile?.email }}
     </v-card-item>
     <v-divider></v-divider>
     <v-card-item>
-      {{ userProfile.summary }}
+      {{ aboutMe?.summary }}
     </v-card-item>
 
     <v-card-item>

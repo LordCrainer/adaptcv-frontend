@@ -9,7 +9,6 @@ const profile: TranslationKeys['profile'] = {
     email: 'Email',
     phone: 'Phone',
     address: 'Address',
-    summary: 'Summary',
     city: 'City',
     country: 'Country',
     fillInformation: 'Fill Information',

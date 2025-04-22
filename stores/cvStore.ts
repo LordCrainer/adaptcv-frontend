@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import type {
+  IAboutMe,
   ICV,
   IEducationItem,
   ILanguageItem,
@@ -14,6 +15,7 @@ export const useCVStore = defineStore('cv', () => {
   const languages = ref<ILanguageItem[]>([])
   const education = ref<IEducationItem[]>([])
   const workExperience = ref<IWorkExperience[]>([])
+  const aboutMe = ref<IAboutMe>()
 
   const status = ref<ICV['status']>('draft')
 
@@ -52,6 +54,7 @@ export const useCVStore = defineStore('cv', () => {
     education,
     workExperience,
     status,
+    aboutMe,
     updateUserProfile,
     addSkill,
     removeSkill,

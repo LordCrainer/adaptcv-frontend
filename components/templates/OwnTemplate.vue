@@ -51,7 +51,7 @@
               <v-icon size="large" color="orange" icon="mdi-bullhorn"></v-icon>
             </v-avatar>
             <p>
-              {{ userProfile?.slogan }}
+              {{ aboutMe?.slogan }}
             </p>
           </div>
         </div>
@@ -135,7 +135,7 @@
           <div class="d-flex ga-4 align-center">
             <div class="rounded-divider ml-3"></div>
             <p class="text-caption" style="width: 100%">
-              {{ userProfile?.summary }}
+              {{ aboutMe?.summary }}
             </p>
           </div>
         </div>
@@ -214,7 +214,7 @@ import { useCVStore } from '~/stores/cvStore'
 
 const { formatDateRange } = useFormatDate()
 const { proficiencyLevels } = useLanguages()
-const { education, languages, userProfile, skills, workExperience } =
+const { education, languages, userProfile, skills, workExperience, aboutMe } =
   useCVStore()
 
 function getProficiencyLevel(prop: string, options: string[]) {

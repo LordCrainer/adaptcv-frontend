@@ -1,3 +1,22 @@
+# [1.43.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.42.0...v1.43.0) (2025-04-22)
+
+
+### Bug Fixes
+
+* **OwnTemplate:** add optional chaining to userProfile properties for safety ([deacfca](https://github.com/LordCrainer/adaptcv-frontend/commit/deacfca005322fabc29e537891c1bd9c703ac8a1))
+* **UserProfile:** update validation rules to use required function directly ([be2ea77](https://github.com/LordCrainer/adaptcv-frontend/commit/be2ea7733447b90dc5c3d4c1c6d46457fbc1aac9))
+
+
+### Features
+
+* **AboutMe:** implement About Me section with form and localization support ([0c47ab0](https://github.com/LordCrainer/adaptcv-frontend/commit/0c47ab0176fc08692eff87d9e48a674ca93effec))
+* **i18n:** add 'forgotPassword' translation key for English and Spanish locales ([9eab00f](https://github.com/LordCrainer/adaptcv-frontend/commit/9eab00fb7d62dd50cb7657318f84c14c12a1c44c))
+* **i18n:** add new translation keys for 'dontHaveAccount' and 'signInWithGoogle' in English and Spanish locales ([c7c69ff](https://github.com/LordCrainer/adaptcv-frontend/commit/c7c69ff0209291319af7a5b212411935174eca22))
+* **i18n:** add new translation keys for registration and update login title ([4b1b3a3](https://github.com/LordCrainer/adaptcv-frontend/commit/4b1b3a3b419c3361cc07e8f5d64a105b0aa4e100))
+* **Login:** create login component with form validation and actions ([cb88723](https://github.com/LordCrainer/adaptcv-frontend/commit/cb88723b828c1e43102462882694455a76ecbfc5))
+* **Login:** enhance login form with improved layout, validation, and password visibility toggle ([47c3aec](https://github.com/LordCrainer/adaptcv-frontend/commit/47c3aec83af464402cad97abc2ca33e36096bdce))
+* **Profile:** integrate About Me section and update userProfile references ([41d0387](https://github.com/LordCrainer/adaptcv-frontend/commit/41d0387aaa024ab7699944029be9e0fe556c76b0))
+
 # [1.42.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.41.0...v1.42.0) (2025-04-21)
 
 

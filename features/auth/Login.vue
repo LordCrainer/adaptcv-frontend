@@ -1,29 +1,41 @@
+<style lang="scss" scoped>
+.background-opacity {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+}
+</style>
 <template>
-  <v-form ref="form" lazy-validation>
-    <v-card class="pa-4 d-flex flex-column ga-4">
+  <v-form ref="form" lazy-validation @submit.prevent="submit">
+    <v-card
+      theme="dark"
+      class="pa-4 d-flex flex-column ga-4 rounded-xl background-opacity"
+      elevation="10">
       <v-card-title class="text-h5 font-weight-bold">
-        {{ $t('login.title') }}
+        {{ $t('website.welcome') }} {{ $t('website.title') }}
       </v-card-title>
       <v-card-text class="d-flex flex-column">
-        <div class="d-flex flex-column ga-2">
+        <div class="d-flex flex-column ga-4">
           <v-text-field
             v-model="formData.email"
             prepend-inner-icon="mdi-email"
             :rules="[rules.email()]"
             label="Email"
             type="email"
+            placeholder="Email address"
             variant="outlined"
             aria-label="Email"
             autocomplete="email"
             aria-required="true"
             required></v-text-field>
+
           <v-text-field
             v-model="formData.password"
             prepend-inner-icon="mdi-lock"
             :rules="[rules.required(), rules.minLength()]"
             :type="showPassword ? 'text' : 'password'"
-            label="Password"
             variant="outlined"
+            label="Password"
+            placeholder="Enter your password"
             aria-label="Password"
             aria-required="true"
             required
@@ -54,8 +66,9 @@
       </v-card-text>
       <v-card-actions class="d-flex flex-column ga-4">
         <v-btn
-          @click="login"
+          :loading="state.loading"
           color="primary"
+          type="submit"
           variant="flat"
           style="width: 100%">
           {{ $t('actions.signIn') }}
@@ -81,6 +94,11 @@ const rules = useRules()
 
 const form = ref()
 
+const state = ref({
+  loading: false,
+  error: null
+})
+
 const formData = ref({
   email: '',
   password: '',
@@ -94,13 +112,14 @@ function forgotPassword() {
   console.log('Forgot password clicked')
 }
 
-function login() {
-  console.log('Logging in with:', form.value)
-  // if (form.) {
-  //   // Perform login action
-  // } else {
-  //   console.error('Form is invalid')
-  // }
+function submit() {
+  console.log('Logging in with:', form.value.isValid)
+  if (form.value?.isValid) {
+    state.value.loading = true
+  } else {
+    console.error('Form is invalid')
+  }
+  state.value.loading = false
 }
 
 function togglePasswordVisibility() {

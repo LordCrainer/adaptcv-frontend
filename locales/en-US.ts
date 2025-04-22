@@ -70,7 +70,7 @@ export default defineI18nLocale(async () => {
   return {
     website: {
       description: 'AdaptCV is a free online CV builder that helps you create a professional CV in minutes. Choose from a variety of templates and customize your CV to suit your needs.',
-      title: 'AdaptCV - Free Online CV Builder',
+      title: 'AdaptCV',
       keywords: 'CV, Resume, Builder, Online, Free, Templates',
       welcome: 'Welcome to',
     },

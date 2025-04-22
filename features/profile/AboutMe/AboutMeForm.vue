@@ -11,13 +11,14 @@
         required></v-text-field>
 
       <v-textarea
+        prepend-inner-icon="mdi-text-box"
         v-model="formData.summary"
         :label="$t('profile.aboutMe.summary')"
         placeholder="Ej: Your summary here"
         variant="outlined"
         rows="5"
         aria-label="Summary"
-        required></v-textarea>
+        required></v-textarea>  
     </div>
   </v-col>
 </template>

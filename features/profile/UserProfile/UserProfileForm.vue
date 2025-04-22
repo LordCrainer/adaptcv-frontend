@@ -16,7 +16,7 @@
         :label="$t('profile.personalInfo.fullname')"
         placeholder="Ej: John Doe"
         variant="outlined"
-        :rules="[rules.required($t('profile.personalInfo.fullname'))]"
+        :rules="[required($t('profile.personalInfo.fullname'))]"
         aria-label="Full Name"
         required></v-text-field>
       <v-text-field
@@ -86,7 +86,7 @@ import { ref } from 'vue'
 import type { IUserProfile } from '..'
 import { areasProfession } from '../constants'
 
-const { rules } = useRules()
+const { required } = useRules()
 
 const emit = defineEmits(['submit', 'update:modelValue'])
 

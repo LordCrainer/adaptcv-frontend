@@ -1,15 +1,14 @@
 <style lang="scss" scoped>
 .background-opacity {
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0);
 }
 </style>
 <template>
   <v-form ref="form" lazy-validation @submit.prevent="submit">
     <v-card
+      flat
       theme="dark"
-      class="pa-4 d-flex flex-column ga-4 rounded-xl background-opacity"
-      elevation="10">
+      class="pa-4 d-flex flex-column ga-4 rounded-xl background-opacity">
       <v-card-title class="text-h5 font-weight-bold">
         {{ $t('website.welcome') }} {{ $t('website.title') }}
       </v-card-title>
@@ -17,6 +16,7 @@
         <div class="d-flex flex-column ga-4">
           <v-text-field
             v-model="formData.email"
+            rounded
             prepend-inner-icon="mdi-email"
             :rules="[rules.email()]"
             label="Email"
@@ -30,8 +30,9 @@
 
           <v-text-field
             v-model="formData.password"
+            rounded
             prepend-inner-icon="mdi-lock"
-            :rules="[rules.required(), rules.minLength()]"
+            :rules="[rules.required(), rules.minLength(), rules.password()]"
             :type="showPassword ? 'text' : 'password'"
             variant="outlined"
             label="Password"
@@ -66,6 +67,8 @@
       </v-card-text>
       <v-card-actions class="d-flex flex-column ga-4">
         <v-btn
+          rounded
+          size="large"
           :loading="state.loading"
           color="primary"
           type="submit"

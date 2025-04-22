@@ -1,3 +1,11 @@
+# [1.44.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.43.0...v1.44.0) (2025-04-22)
+
+
+### Features
+
+* **i18n:** add website translation keys for English and Spanish locales ([d770830](https://github.com/LordCrainer/adaptcv-frontend/commit/d770830b5bfb6a1b1004570bf4ae7591d0f2cb13))
+* **Login:** enhance login form with improved layout, validation, and loading state ([3cc5073](https://github.com/LordCrainer/adaptcv-frontend/commit/3cc50731ddfb8e93b1aada920200944ca6ec9936))
+
 # [1.43.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.42.0...v1.43.0) (2025-04-22)
 
 

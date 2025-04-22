@@ -33,6 +33,7 @@ interface TranslationKeys {
     register: string
     signIn: string
     signOut: string
+    forgotPassword: string
   }
   profile: {
     personalInfo: {

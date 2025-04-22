@@ -7,6 +7,7 @@
   <v-form ref="form" lazy-validation @submit.prevent="submit">
     <v-card
       flat
+      border
       theme="dark"
       class="pa-4 d-flex flex-column ga-4 rounded-xl background-opacity">
       <v-card-title class="text-h5 font-weight-bold">

@@ -30,6 +30,9 @@ interface TranslationKeys {
     continue: string
     finish: string
     back: string
+    register: string
+    signIn: string
+    signOut: string
   }
   profile: {
     personalInfo: {
@@ -98,7 +101,7 @@ interface TranslationKeys {
   }
   login: {
     password: string
-    login: string
+    title: string
     forgotPassword: string
     rememberMe: string
     signUp: string

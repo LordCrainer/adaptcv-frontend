@@ -83,7 +83,11 @@ export default defineI18nLocale(async () => {
       continue: 'Continue',
       next: 'Next',
       previous: 'Previous',
-      finish: 'Finish'
+      finish: 'Finish',
+      register: 'Register',
+      signIn: 'Sign In',
+      signUp: 'Sign Up',
+      signOut: 'Sign Out',
     },
     common: {
       home: 'Home',
@@ -103,7 +107,7 @@ export default defineI18nLocale(async () => {
     login: {
       email: 'email',
       password: 'password',
-      login: 'Login',
+      title: 'Login',
       forgotPassword: 'Forgot Password?',
       rememberMe: 'Remember Me',
       signUp: 'Sign Up',

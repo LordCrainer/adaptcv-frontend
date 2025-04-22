@@ -112,7 +112,9 @@ export default defineI18nLocale(async () => {
       forgotPassword: 'Forgot Password?',
       rememberMe: 'Remember Me',
       signUp: 'Sign Up',
-      signIn: 'Sign In'
+      signIn: 'Sign In',
+      dontHaveAccount: "Don't have an account?",
+      signInWithGoogle: 'Sign In with Google',
     },
     registration: {
       username: 'Username',

@@ -107,6 +107,8 @@ interface TranslationKeys {
     rememberMe: string
     signUp: string
     signIn: string
+    signInWithGoogle: string
+    dontHaveAccount: string
   }
   registration: {
     username: string

@@ -1,4 +1,10 @@
 interface TranslationKeys {
+  website: {
+    title: string
+    description: string
+    keywords: string
+    welcome: string
+  }
   common: {
     home: string
     about: string

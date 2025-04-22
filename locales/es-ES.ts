@@ -68,6 +68,12 @@ const profile: TranslationKeys['profile'] = {
 
 export default defineI18nLocale(async () => {
   return {
+    website: {
+      title: 'AdaptCV',
+      description: 'Generador de currículum en línea',
+      keywords: 'cv, currículum, plantillas, generador de currículum',
+      welcome: 'Bienvenido a'
+    },
     actions: {
       add: 'Agregar',
       edit: 'Editar',
@@ -87,7 +93,7 @@ export default defineI18nLocale(async () => {
       register: 'Registrar',
       signIn: 'Iniciar sesión',
       signOut: 'Cerrar sesión',
-      forgotPassword: 'Olvidé mi contraseña?',
+      forgotPassword: 'Olvidé mi contraseña?'
     },
     common: {
       home: 'Inicio',
@@ -112,7 +118,7 @@ export default defineI18nLocale(async () => {
       signUp: 'Regístrate',
       signIn: 'Iniciar sesión',
       dontHaveAccount: '¿No tienes una cuenta?',
-      signInWithGoogle: 'Iniciar sesión con Google',
+      signInWithGoogle: 'Iniciar sesión con Google'
     },
     registration: {
       username: 'Nombre de usuario',

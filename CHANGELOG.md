@@ -1,3 +1,10 @@
+## [1.45.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.45.0...v1.45.1) (2025-04-22)
+
+
+### Bug Fixes
+
+* **Login:** add missing border property to card component ([c4bac08](https://github.com/LordCrainer/adaptcv-frontend/commit/c4bac0865fb18bddd3377d8a5c4eca9c2f20f9d4))
+
 # [1.45.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.44.0...v1.45.0) (2025-04-22)
 
 

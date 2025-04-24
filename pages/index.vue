@@ -1,8 +1,8 @@
 <template>
-  <TabsDinamycs :items="tabs"></TabsDinamycs>
+  <TabsDinamycs :tabs="tabs"></TabsDinamycs>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import UserProfile from '~/features/profile/UserProfile/index.vue'
 import WorkExperience from '~/features/profile/WorkExperience/index.vue'
@@ -12,8 +12,9 @@ import Education from '~/features/profile/Education/index.vue'
 import Skills from '@/features/profile/Skills/index.vue'
 import Languages from '@/features/profile/Languages/index.vue'
 import TabsDinamycs from '~/components/tabs/TabsDinamycs.vue'
+import type { TabItem } from '~/types/global'
 
-const tabs = ref([
+const tabs = ref<TabItem[]>([
   {
     title: 'Profile',
     label: 'personalInfo',

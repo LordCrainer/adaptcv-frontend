@@ -1,3 +1,10 @@
+# [1.46.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.45.1...v1.46.0) (2025-04-24)
+
+
+### Features
+
+* **TabsDinamycs:** update tab handling and progress calculation logic ([a521e9b](https://github.com/LordCrainer/adaptcv-frontend/commit/a521e9b7c2e80a44be9d69bd5231a07d51223fc0))
+
 ## [1.45.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.45.0...v1.45.1) (2025-04-22)
 
 

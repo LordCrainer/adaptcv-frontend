@@ -1,3 +1,10 @@
+# [1.47.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.46.0...v1.47.0) (2025-04-26)
+
+
+### Features
+
+* **styles:** add base styles for profile photo and flex layout ([9e9f9fc](https://github.com/LordCrainer/adaptcv-frontend/commit/9e9f9fca47dd9632bc40dea1c01c443c7b975ca8))
+
 # [1.46.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.45.1...v1.46.0) (2025-04-24)
 
 

@@ -18,8 +18,8 @@ export interface IRoutes {
 }
 
 export type TabItem = {
-  label?: string
-  title: string
+  translationKey: string
+  title?: string
   component: Component
   props?: Record<string, any>
 }

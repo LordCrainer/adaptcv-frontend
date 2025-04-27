@@ -40,6 +40,7 @@ interface TranslationKeys {
     signIn: string
     signOut: string
     forgotPassword: string
+    publish: string
   }
   profile: {
     personalInfo: {

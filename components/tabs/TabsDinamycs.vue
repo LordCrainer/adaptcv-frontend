@@ -17,15 +17,15 @@
       <v-tab
         v-for="(tab, index) in processedItems"
         :value="index"
-        :key="tab.label">
-        {{ $t(`profile.${tab.label}.title`) }}
+        :key="tab.translationKey">
+        {{ $t(`profile.${tab.translationKey}.title`) }}
       </v-tab>
     </v-tabs>
 
     <v-tabs-window v-model="selectedTab">
       <v-tabs-window-item
         v-for="(content, index) in processedItems"
-        :key="content.title + index"
+        :key="content?.translationKey + index"
         :value="index">
         <v-container class="adaptable-container">
           <component :is="content.component" v-bind="content.props" />

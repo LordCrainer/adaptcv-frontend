@@ -15,6 +15,14 @@ const useUserProfile = () => {
     address: ''
   })
 
+  async function saveToServer() {
+    try {
+      
+    } catch (error) {
+      
+    }
+  }
+
   const setUserProfile = (data: IUserProfile) => {
     userProfile.value = data
   }

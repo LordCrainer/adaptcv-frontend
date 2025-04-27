@@ -39,17 +39,14 @@ import useUserProfile from './useUserProfile'
 
 const { setUserProfileImage, userProfile } = useUserProfile()
 
-const fileImage = ref<IFileImage>(userProfile.value?.image as IFileImage)
-
-watch(
-  () => fileImage,
-  (newFileImage) => {
-    if (newFileImage.value?.src) {
-      setUserProfileImage({ ...fileImage.value })
-    }
+const fileImage = computed({
+  get() {
+    return userProfile.value.image as IFileImage
   },
-  { deep: true }
-)
+  set(img: IFileImage) {
+    setUserProfileImage(img)
+  }
+})
 
 const state = reactive({
   openDialog: false,

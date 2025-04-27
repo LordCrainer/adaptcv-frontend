@@ -2,10 +2,10 @@
   <v-card
     rounded="lg"
     class="mx-auto"
-    max-width="800"
+    width="100%"
     :color="global.name.value === 'dark' ? 'grey-darken-4' : color">
     <template v-slot:title>
-      <span class="font-weight-black text-primary">{{ title }}</span>
+      <span class="font-weight-black text-primary">{{ $t(title) }}</span>
     </template>
     <v-card-text class="pt-4">
       <slot></slot>

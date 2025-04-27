@@ -93,7 +93,8 @@ export default defineI18nLocale(async () => {
       register: 'Registrar',
       signIn: 'Iniciar sesión',
       signOut: 'Cerrar sesión',
-      forgotPassword: 'Olvidé mi contraseña?'
+      forgotPassword: 'Olvidé mi contraseña?',
+      publish: 'Publicar'
     },
     common: {
       home: 'Inicio',

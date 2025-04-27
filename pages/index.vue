@@ -39,37 +39,37 @@ import CardDefault from '~/components/card/CardDefault.vue'
 const tabs = ref<TabItem[]>([
   {
     title: 'Profile',
-    translationKey: 'personalInfo',
+    translationKey: 'profile.personalInfo.title',
     component: markRaw(UserProfile),
     props: {}
   },
   {
     title: 'About Me',
-    translationKey: 'aboutMe',
+    translationKey: 'profile.aboutMe.title',
     component: markRaw(AboutMe),
     props: {}
   },
   {
     title: 'Experience',
-    translationKey: 'experience',
+    translationKey: 'profile.experience.title',
     component: markRaw(WorkExperience),
     props: {}
   },
   {
     title: 'Education',
-    translationKey: 'education',
+    translationKey: 'profile.education.title',
     component: markRaw(Education),
     props: {}
   },
   {
     title: 'Skills',
-    translationKey: 'skills',
+    translationKey: 'profile.skills.title',
     component: markRaw(Skills),
     props: {}
   },
   {
     title: 'Languages',
-    translationKey: 'languages',
+    translationKey: 'profile.languages.title',
     component: markRaw(Languages),
     props: {}
   }

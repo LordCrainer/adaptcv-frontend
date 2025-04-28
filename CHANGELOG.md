@@ -1,3 +1,12 @@
+# [1.48.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.47.0...v1.48.0) (2025-04-28)
+
+
+### Features
+
+* **profile:** add About Me, Education, Languages, Skills, Work Experience sections with forms and management logic ([2439653](https://github.com/LordCrainer/adaptcv-frontend/commit/24396538dd2ac23215dec5e135cc12c08e358881))
+* **profile:** update user profile handling and add publish action ([dfae81b](https://github.com/LordCrainer/adaptcv-frontend/commit/dfae81bd1f03a941b4a7fbc41a115792282928a8))
+* **tabs:** update translation keys for profile tabs ([e82de46](https://github.com/LordCrainer/adaptcv-frontend/commit/e82de4699c8a6d9edd8f2d436dad4723f014bf89))
+
 # [1.47.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.46.0...v1.47.0) (2025-04-26)
 
 

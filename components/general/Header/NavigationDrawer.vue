@@ -1,6 +1,7 @@
 <template>
   <v-navigation-drawer
     :model-value="modelValue"
+    temporary
     @update:model-value="emit('update:modelValue', $event)">
     <v-list>
       <v-list-item

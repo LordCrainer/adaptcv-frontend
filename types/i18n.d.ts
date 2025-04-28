@@ -41,6 +41,7 @@ interface TranslationKeys {
     signOut: string
     forgotPassword: string
     publish: string
+    preview: string
   }
   profile: {
     personalInfo: {

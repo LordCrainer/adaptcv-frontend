@@ -1,8 +1,8 @@
 <template>
   <v-card
-    rounded="lg"
     class="mx-auto"
     width="100%"
+    min-width="400px"
     :color="global.name.value === 'dark' ? 'grey-darken-4' : color">
     <template v-slot:title>
       <span class="font-weight-black text-primary">{{ $t(title) }}</span>

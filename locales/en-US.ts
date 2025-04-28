@@ -95,7 +95,8 @@ export default defineI18nLocale(async () => {
       signUp: 'Sign Up',
       signOut: 'Sign Out',
       forgotPassword: 'Forgot Password?',
-      publish: 'Publish'
+      publish: 'Publish',
+      preview: 'Preview',
     },
     common: {
       home: 'Home',

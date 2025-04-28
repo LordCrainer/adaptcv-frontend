@@ -1,26 +1,56 @@
 <template>
   <div class="d-flex flex-column ga-4 justify-center align-center">
-    <v-card width="100%" color="red" style="max-width: 800px">
-      <v-toolbar color="white">
-        <v-toolbar-title class="text-h5 font-weight-bold">
-          {{ $t('routes.fillInformation') }}
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-btn @click="$router.push({ name: 'home' })" class="text-secondary">
-          <v-icon>mdi-close</v-icon>
-          {{ $t('actions.publish') }}
+    <v-app-bar flat app color="white" class="sticky-toolbar">
+      <v-toolbar-title class="text-h5 font-weight-bold">
+        {{ $t('routes.fillInformation') }}
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <div class="d-flex ga-2 pa-2">
+        <v-btn
+          icon
+          size="small"
+          v-tooltip:start="$t('actions.preview')"
+          class="text-grey-darken-1"
+          @click="$router.push({ name: 'home' })"
+          variant="outlined">
+          <v-icon>mdi-eye</v-icon>
         </v-btn>
-      </v-toolbar>
-    </v-card>
-    <CardDefault
-      style="max-width: 800px"
-      flat
-      v-for="tab in tabs"
-      :key="tab.translationKey"
-      :is="tab.component"
-      :title="tab.translationKey">
-      <component :is="tab.component" v-bind="tab.props" />
-    </CardDefault>
+        <v-btn
+          icon
+          size="small"
+          v-tooltip:start="$t('actions.save')"
+          class="text-success"
+          @click="$router.push({ name: 'home' })"
+          variant="outlined">
+          <v-icon>mdi-content-save</v-icon>
+        </v-btn>
+        <v-btn
+          icon
+          size="small"
+          v-tooltip:start="$t('actions.publish')"
+          variant="outlined"
+          @click="$router.push({ name: 'home' })"
+          class="text-primary">
+          <v-icon>mdi-publish</v-icon>
+        </v-btn>
+      </div>
+    </v-app-bar>
+    <div style="max-width: 800px" class="d-flex flex-column ga-4">
+      <!-- <v-toolbar color="primary" class="">
+        <v-tabs>
+          <v-tab density="comfortable">Informacion</v-tab>
+          <v-tab density="comfortable">Visualizar</v-tab>
+        </v-tabs>
+      </v-toolbar> -->
+      <CardDefault
+        flat
+        v-for="tab in tabs"
+        :key="tab.translationKey"
+        :is="tab.component"
+        :title="tab.translationKey">
+        <component :is="tab.component" v-bind="tab.props" />
+      </CardDefault>
+    </div>
   </div>
 </template>
 
@@ -75,3 +105,11 @@ const tabs = ref<TabItem[]>([
   }
 ])
 </script>
+
+<style scoped>
+.sticky-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+</style>

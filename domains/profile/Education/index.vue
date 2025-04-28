@@ -5,7 +5,6 @@
         <v-btn
           color="secondary"
           variant="outlined"
-          rounded
           prepend-icon="mdi-plus"
           @click="add">
           {{ $t('actions.add') }}
@@ -51,7 +50,7 @@
 
 <script setup lang="ts">
 import EducationForm from './EducationForm.vue'
-import type { IEducationItem } from '~/features/profile/index'
+import type { IEducationItem } from '~/domains/profile/index'
 import useEducation from './useEducation'
 
 const { t } = useI18n()

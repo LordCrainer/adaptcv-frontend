@@ -4,7 +4,7 @@
     :class="global.name.value === 'dark' ? '' : 'bg-grey-lighten-3'">
     <Header :items="APP_ROUTES" />
     <v-main>
-      <div class="pa-2 flex-container">
+      <div class="pa-2 flex-container position-relative">
         <slot />
       </div>
     </v-main>

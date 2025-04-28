@@ -7,7 +7,7 @@ import type {
   ISkill,
   IUserProfile,
   IWorkExperience
-} from '~/features/profile'
+} from '~/domains/profile'
 
 export const useCVStore = defineStore('cv', () => {
   const userProfile = ref<IUserProfile>()

@@ -26,13 +26,13 @@
 
 <script setup lang="ts">
 import { ref, markRaw } from 'vue'
-import UserProfile from '~/features/profile/UserProfile/index.vue'
-import WorkExperience from '~/features/profile/WorkExperience/index.vue'
-import AboutMe from '~/features/profile/AboutMe/index.vue'
+import UserProfile from '~/domains/profile/UserProfile/index.vue'
+import WorkExperience from '~/domains/profile/WorkExperience/index.vue'
+import AboutMe from '~/domains/profile/AboutMe/index.vue'
 
-import Education from '~/features/profile/Education/index.vue'
-import Skills from '@/features/profile/Skills/index.vue'
-import Languages from '@/features/profile/Languages/index.vue'
+import Education from '~/domains/profile/Education/index.vue'
+import Skills from '~/domains/profile/Skills/index.vue'
+import Languages from '~/domains/profile/Languages/index.vue'
 import type { TabItem } from '~/types/global'
 import CardDefault from '~/components/card/CardDefault.vue'
 

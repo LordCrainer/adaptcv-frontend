@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import Login from '~/features/auth/Login.vue'
+import Login from '~/domains/auth/Login.vue'
 
 definePageMeta({
   layout: 'auth'

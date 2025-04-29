@@ -1,3 +1,10 @@
+# [1.51.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.50.0...v1.51.0) (2025-04-29)
+
+
+### Features
+
+* **ui:** remove builder button and associated method from UserProfileForm ([a7b14db](https://github.com/LordCrainer/adaptcv-frontend/commit/a7b14db37d4d1cb99a82da251ecccd408a29b192))
+
 # [1.50.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.49.0...v1.50.0) (2025-04-29)
 
 

@@ -1,14 +1,5 @@
 <template>
   <v-col cols="12" md="8" class="d-flex flex-column ga-2">
-    <div class="d-flex justify-end py-4">
-      <v-btn
-        color="secondary"
-        variant="outlined"
-        @click="builder"
-        aria-label="Builder">
-        {{ $t('profile.personalInfo.builder') }}
-      </v-btn>
-    </div>
     <div class="d-flex flex-column ga-2">
       <v-text-field
         prepend-inner-icon="mdi-account"
@@ -115,8 +106,4 @@ watch(
   },
   { deep: true }
 )
-
-const builder = () => {
-  console.log('Filling information...')
-}
 </script>

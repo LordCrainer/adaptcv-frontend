@@ -1,3 +1,10 @@
+# [1.49.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.48.0...v1.49.0) (2025-04-28)
+
+
+### Features
+
+* **ui:** enhance CardDefault and NavigationDrawer components, add preview action and translations ([4dda124](https://github.com/LordCrainer/adaptcv-frontend/commit/4dda1240d8244b0b90e6bf1a601053e7ab5320cd))
+
 # [1.48.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.47.0...v1.48.0) (2025-04-28)
 
 

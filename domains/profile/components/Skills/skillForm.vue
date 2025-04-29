@@ -30,7 +30,7 @@
 
 <script setup lang="ts">
 import type { ISkill } from '~/domains/profile/index'
-import { useSkill } from '../../composables/useSkill'
+import { useSkill } from './useSkill'
 
 const { SKILLS_LIST, experienceOptions } = useSkill()
 

@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import type { IAboutMe } from '../..'
+import type { IAboutMe } from '~/domains/profile'
 import type { IFileImage } from '~/types/global'
 
 const DEFAULT_ABOUT_ME: IAboutMe = {

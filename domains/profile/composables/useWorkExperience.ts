@@ -1,4 +1,4 @@
-import type { IWorkExperience } from '../..'
+import type { IWorkExperience } from '~/domains/profile'
 
 const useWorkExperience = () => {
   const workExperiences = ref<IWorkExperience[]>([])

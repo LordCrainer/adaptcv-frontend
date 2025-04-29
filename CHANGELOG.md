@@ -1,3 +1,10 @@
+## [1.52.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.52.0...v1.52.1) (2025-04-29)
+
+
+### Bug Fixes
+
+* **toolbar:** update button color logic based on preview state ([9ee0524](https://github.com/LordCrainer/adaptcv-frontend/commit/9ee0524e8be4d7542260f586b3f40bfcc6a6c2d5))
+
 # [1.52.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.51.0...v1.52.0) (2025-04-29)
 
 

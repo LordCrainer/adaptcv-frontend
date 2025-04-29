@@ -10,16 +10,16 @@ export const APP_ROUTES: RouteExtended[] = [
     component: () => import('~/pages/index.vue')
   },
   {
-    path: '/builder',
+    path: '/profile',
     props: {
-      title: 'builder',
-      icon: 'mdi-file-document-edit-outline'
+      title: 'profile',
+      icon: 'mdi-account'
     },
-    component: () => import('~/layouts/builder.vue'),
+    component: () => import('~/layouts/profileBuilder.vue'),
     children: [
       {
         path: '/',
-        component: () => import('~/pages/builder/index.vue'),
+        component: () => import('~/pages/profile/index.vue'),
         props: {
           title: 'builder',
           icon: 'mdi-file-document-edit-outline'
@@ -27,7 +27,7 @@ export const APP_ROUTES: RouteExtended[] = [
       },
       {
         path: 'preview',
-        component: () => import('~/pages/builder/preview.vue'),
+        component: () => import('~/pages/profile/preview.vue'),
         props: {
           title: 'preview',
           icon: 'mdi-eye-outline'

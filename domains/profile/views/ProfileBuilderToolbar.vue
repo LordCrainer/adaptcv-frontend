@@ -34,21 +34,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
-const route = useRoute();
-const router = useRouter();
-const isPreview = ref(route.path.includes('preview'));
+const route = useRoute()
+const router = useRouter()
+const isPreview = ref(route.path.includes('preview'))
 
 const toggleView = () => {
   if (isPreview.value) {
-    router.push({ path: '/builder' });
+    router.push({ path: '/profile' })
   } else {
-    router.push({ path: '/builder/preview' });
+    router.push({ path: '/profile/preview' })
   }
-  isPreview.value = !isPreview.value;
-};
+  isPreview.value = !isPreview.value
+}
 </script>
 
 <style scoped>

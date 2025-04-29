@@ -6,6 +6,7 @@
 import ProfileRenderComponents from '~/domains/profile/views/ProfileRenderComponents.vue'
 
 definePageMeta({
-  layout: 'builder'
+  layout: 'profile-builder',
+  name: 'profile-index'
 })
 </script>

@@ -24,7 +24,8 @@ import OwnTemplate from '~/components/templates/OwnTemplate.vue'
 import type { Component } from 'vue'
 
 definePageMeta({
-  layout: 'builder'
+  layout: 'profile-builder',
+  name: 'profile-preview'
 })
 
 interface IItem {

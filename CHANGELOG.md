@@ -1,3 +1,18 @@
+# [1.52.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.51.0...v1.52.0) (2025-04-29)
+
+
+### Bug Fixes
+
+* **routes:** correct component import path for builder route ([cf8cdb9](https://github.com/LordCrainer/adaptcv-frontend/commit/cf8cdb9766e3ec5f1b8a6fc8f0ab339b23784067))
+
+
+### Features
+
+* **builder:** refactor builder page structure and add ProfileBuilderToolbar component ([9f10d19](https://github.com/LordCrainer/adaptcv-frontend/commit/9f10d19cb6b61a9375b20aa55ecb4c05cece6602))
+* **routes:** update builder route icon and id for consistency ([f773a25](https://github.com/LordCrainer/adaptcv-frontend/commit/f773a259cbb61a7581c34cd0c115a3705313c8c3))
+* **routes:** update route structure to use RouteExtended type and enhance props handling ([c7fe6c8](https://github.com/LordCrainer/adaptcv-frontend/commit/c7fe6c81ca06356816b63f626843820006e8c6b6))
+* **toolbar:** add dynamic color to toolbar button based on preview state ([7e502fd](https://github.com/LordCrainer/adaptcv-frontend/commit/7e502fdf7fa044ea37f6e5a6388fe92fe39f33c7))
+
 # [1.51.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.50.0...v1.51.0) (2025-04-29)
 
 

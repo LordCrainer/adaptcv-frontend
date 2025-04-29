@@ -1,3 +1,10 @@
+## [1.53.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.53.0...v1.53.1) (2025-04-29)
+
+
+### Bug Fixes
+
+* update import paths for profile-related types to use absolute paths ([dfe7567](https://github.com/LordCrainer/adaptcv-frontend/commit/dfe7567c3b1af0fb38ee19ea3dc1c4c84bc4069f))
+
 # [1.53.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.52.1...v1.53.0) (2025-04-29)
 
 

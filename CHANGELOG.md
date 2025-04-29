@@ -1,3 +1,16 @@
+# [1.53.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.52.1...v1.53.0) (2025-04-29)
+
+
+### Bug Fixes
+
+* **Header:** set drawer initial state to false; update route props for builder and preview ([b57eec9](https://github.com/LordCrainer/adaptcv-frontend/commit/b57eec974d0cd1b43224f610e57b53cc0298dfa9))
+
+
+### Features
+
+* add profile management components including Education, Languages, Skills, and Work Experience ([ad3e993](https://github.com/LordCrainer/adaptcv-frontend/commit/ad3e9932d3ed164c3191e5e54d0336e1bfdb2a7c))
+* **profile:** restructure profile routes and components; add profile builder and preview pages ([6c71e3f](https://github.com/LordCrainer/adaptcv-frontend/commit/6c71e3f0310540cd053c4bdd491412a561208268))
+
 ## [1.52.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.52.0...v1.52.1) (2025-04-29)
 
 

@@ -20,7 +20,7 @@ import NavigationDrawer from './NavigationDrawer.vue'
 import HeaderSettingsMenu from './HeaderSettingsMenu.vue'
 import type { RouteExtended } from '~/types/global'
 
-const drawer = ref(true)
+const drawer = ref(false)
 
 const toggleDrawer = () => {
   drawer.value = !drawer.value

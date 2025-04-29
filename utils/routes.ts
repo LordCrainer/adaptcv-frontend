@@ -18,12 +18,20 @@ export const APP_ROUTES: RouteExtended[] = [
     component: () => import('~/layouts/builder.vue'),
     children: [
       {
-        path: '',
-        component: () => import('~/pages/builder/index.vue')
+        path: '/',
+        component: () => import('~/pages/builder/index.vue'),
+        props: {
+          title: 'builder',
+          icon: 'mdi-file-document-edit-outline'
+        }
       },
       {
         path: 'preview',
-        component: () => import('~/pages/builder/preview.vue')
+        component: () => import('~/pages/builder/preview.vue'),
+        props: {
+          title: 'preview',
+          icon: 'mdi-eye-outline'
+        }
       }
     ]
   }

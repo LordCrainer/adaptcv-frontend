@@ -1,5 +1,6 @@
 <template>
   <v-navigation-drawer
+    persistent
     :model-value="modelValue"
     @update:model-value="emit('update:modelValue', $event)">
     <v-list>
@@ -11,15 +12,16 @@
         <template v-slot:prepend>
           <v-icon :icon="item.props?.icon"></v-icon>
         </template>
-        <v-list-item-title>{{ $t(`routes.${item.props?.title}`) }}</v-list-item-title>
+        <v-list-item-title>
+          {{ $t(`routes.${item.props?.title}`) }}
+        </v-list-item-title>
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script setup lang="ts">
-import type { RouteExtended } from '~/types/global';
-
+import type { RouteExtended } from '~/types/global'
 
 defineProps({
   items: {

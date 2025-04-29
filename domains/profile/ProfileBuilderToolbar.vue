@@ -7,11 +7,11 @@
     <div class="d-flex ga-2 pa-2 align-center">
       <v-btn
         size="small"
-        v-tooltip:start="$t('actions.preview')"
+        v-tooltip:start="$t(isPreview ? 'actions.edit' : 'actions.preview')"
         class="text-grey-darken-1"
-        @click="$router.push({ name: 'preview' })"
+        @click="toggleView"
         variant="tonal">
-        <v-icon>mdi-eye</v-icon>
+        <v-icon>{{ isPreview ? 'mdi-pencil' : 'mdi-eye' }}</v-icon>
       </v-btn>
       <v-btn
         size="small"
@@ -32,6 +32,24 @@
     </div>
   </v-app-bar>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+
+const route = useRoute();
+const router = useRouter();
+const isPreview = ref(route.path.includes('preview'));
+
+const toggleView = () => {
+  if (isPreview.value) {
+    router.push({ path: '/builder' });
+  } else {
+    router.push({ path: '/builder/preview' });
+  }
+  isPreview.value = !isPreview.value;
+};
+</script>
 
 <style scoped>
 .sticky-toolbar {

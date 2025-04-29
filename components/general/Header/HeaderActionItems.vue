@@ -1,7 +1,7 @@
 <template>
   <v-tabs aria-label="Tabs" class="d-none d-md-inline-block">
-    <v-tab v-for="tab in tabs" :key="tab.id" :value="tab.id" :to="tab.path">
-      {{ $t(`routes.${tab.title}`) }}
+    <v-tab v-for="tab in tabs" :key="tab.props?.title" :value="tab.props?.title" :to="tab.path">
+      {{ $t(`routes.${tab.props?.title}`) }}
     </v-tab>
   </v-tabs>
   <v-menu>
@@ -23,13 +23,13 @@
 <script setup lang="ts">
 import type { LocaleObject } from '@nuxtjs/i18n'
 import { useI18n } from 'vue-i18n'
-import type { IRoutes } from '~/types/global'
+import type { RouteExtended } from '~/types/global'
 
 const { setLocale, locales, locale } = useI18n()
 
 defineProps({
   tabs: {
-    type: Array as () => IRoutes[],
+    type: Array as () => RouteExtended[],
     default: () => []
   }
 })

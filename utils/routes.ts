@@ -1,16 +1,30 @@
-import type { IRoutes } from '~/types/global'
+import type { RouteExtended } from '~/types/global'
 
-export const APP_ROUTES: IRoutes[] = [
+export const APP_ROUTES: RouteExtended[] = [
   {
-    title: 'home',
     path: '/',
-    icon: 'mdi-home',
-    id: 'home'
+    props: {
+      title: 'home',
+      icon: 'mdi-home'
+    },
+    component: () => import('~/pages/index.vue')
   },
   {
-    title: 'builder',
     path: '/builder',
-    icon: 'mdi-file-document-edit-outline',
-    id: 'builder'
-  },
+    props: {
+      title: 'builder',
+      icon: 'mdi-file-document-edit-outline'
+    },
+    component: () => import('~/layouts/BuilderLayout.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('~/pages/builder/index.vue')
+      },
+      {
+        path: 'preview',
+        component: () => import('~/pages/builder/preview.vue')
+      }
+    ]
+  }
 ]

@@ -1,4 +1,5 @@
-import type { Component } from "vue"
+import type { Component } from 'vue'
+import type { RouteRecordRaw } from 'vue-router'
 
 export interface IFileImage extends Partial<File> {
   src: string
@@ -10,11 +11,20 @@ export interface BaseEntity {
   updatedAt?: Date
 }
 
-export interface IRoutes {
-  path: string
+interface Props {
   title: string
-  icon?: string
-  id?: string
+  path: string
+  icon: string
+}
+
+type RouteChildren = RouteRecordRaw['children'][0] & {
+  props: Partial<Props>
+  children?: RouteChildren[]
+}
+
+export type RouteExtended = Omit<RouteRecordRaw, 'children'> & {
+  props?: Partial<Props>
+  children?: RouteExtended[]
 }
 
 export type TabItem = {

@@ -18,7 +18,7 @@
 import HeaderActionItems from './HeaderActionItems.vue'
 import NavigationDrawer from './NavigationDrawer.vue'
 import HeaderSettingsMenu from './HeaderSettingsMenu.vue'
-import type { IRoutes } from '~/types/global'
+import type { RouteExtended } from '~/types/global'
 
 const drawer = ref(true)
 
@@ -28,7 +28,7 @@ const toggleDrawer = () => {
 
 defineProps({
   items: {
-    type: Object as () => IRoutes[],
+    type: Object as () => RouteExtended[],
     default: () => []
   }
 })

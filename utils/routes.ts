@@ -10,9 +10,7 @@ export const APP_ROUTES: IRoutes[] = [
   {
     title: 'builder',
     path: '/builder',
-    icon: 'mdi-information',
-    id: 'fill-information'
+    icon: 'mdi-file-document-edit-outline',
+    id: 'builder'
   },
-  // { title: 'templates', path: '/templates', icon: 'mdi-note-multiple' },
-  // { title: 'preview', path: '/preview', icon: 'mdi-eye' }
 ]

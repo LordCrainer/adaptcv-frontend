@@ -1,18 +1,14 @@
 <template>
-  <div class="d-flex flex-column ga-4 justify-center align-center">
-    <ProfileBuilderToolbar />
-
-    <CardDefault
-      class="d-flex flex-column ga-4"
-      style="max-width: 800px"
-      flat
-      v-for="tab in tabs"
-      :key="tab.translationKey"
-      :is="tab.component"
-      :title="tab.translationKey">
-      <component :is="tab.component" v-bind="tab.props" />
-    </CardDefault>
-  </div>
+  <CardDefault
+    class="d-flex flex-column ga-4"
+    style="max-width: 800px"
+    flat
+    v-for="tab in tabs"
+    :key="tab.translationKey"
+    :is="tab.component"
+    :title="tab.translationKey">
+    <component :is="tab.component" v-bind="tab.props" />
+  </CardDefault>
 </template>
 
 <script setup lang="ts">
@@ -26,7 +22,10 @@ import Skills from '~/domains/profile/Skills/index.vue'
 import Languages from '~/domains/profile/Languages/index.vue'
 import type { TabItem } from '~/types/global'
 import CardDefault from '~/components/card/CardDefault.vue'
-import ProfileBuilderToolbar from '~/domains/profile/ProfileBuilderToolbar.vue'
+
+definePageMeta({
+  layout: 'builder',
+})
 
 const tabs = ref<TabItem[]>([
   {

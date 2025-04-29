@@ -1,7 +1,31 @@
+<template>
+  <v-card max-width="800" width="100%" class="mx-auto pa-4 text-caption">
+    <v-card-title>
+      <div class="text-h5 font-weight-bold text-center pb-0">
+        {{ $t('routes.preview') }}
+      </div>
+    </v-card-title>
+    <v-card-item>
+      <v-select
+        :items="selectItems"
+        v-model="selectedTemplate"
+        item-title="title"
+        item-value="value"></v-select>
+    </v-card-item>
+  </v-card>
+  <div class="mt-4">
+    <component :is="templates[selectedTemplate].component"></component>
+  </div>
+</template>
+
 <script lang="ts" setup>
 import HarvardTemplate from '~/components/templates/HarvardTemplate.vue'
 import OwnTemplate from '~/components/templates/OwnTemplate.vue'
 import type { Component } from 'vue'
+
+definePageMeta({
+  layout: 'builder'
+})
 
 interface IItem {
   label: string
@@ -39,23 +63,3 @@ const selectItems = Object.entries(templates.value).map(
   })
 )
 </script>
-
-<template>
-  <v-card max-width="800" width="100%" class="mx-auto pa-4 text-caption">
-    <v-card-title>
-      <div class="text-h5 font-weight-bold text-center pb-0">
-        {{ $t('routes.preview') }}
-      </div>
-    </v-card-title>
-    <v-card-item>
-      <v-select
-        :items="selectItems"
-        v-model="selectedTemplate"
-        item-title="title"
-        item-value="value"></v-select>
-    </v-card-item>
-  </v-card>
-  <div class="mt-4">
-    <component :is="templates[selectedTemplate].component"></component>
-  </div>
-</template>

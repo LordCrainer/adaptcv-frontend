@@ -1,4 +1,4 @@
-import type { IWorkExperience } from '..'
+import type { IWorkExperience } from '../..'
 
 const useWorkExperience = () => {
   const workExperiences = ref<IWorkExperience[]>([])

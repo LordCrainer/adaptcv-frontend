@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import SkillForm from './skillForm.vue'
-import { useSkill } from './useSkill'
+import { useSkill } from '~/domains/profile/composables/useSkill'
 
 const { upsertSkill, skills, removeSkill } = useSkill()
 </script>

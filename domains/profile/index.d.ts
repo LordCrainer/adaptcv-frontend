@@ -1,5 +1,5 @@
 import type { BaseEntity, IFileImage } from '~/types/global'
-import type { AreasProfession } from './constants'
+import type { AreasProfession } from './constants/profesionArea'
 
 export type yearsOfExperience =
   | 'less1year'

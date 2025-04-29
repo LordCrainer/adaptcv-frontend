@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import type { IUserProfile } from '..'
+import type { IUserProfile } from '../..'
 import type { IFileImage } from '~/types/global'
 
 const useUserProfile = () => {

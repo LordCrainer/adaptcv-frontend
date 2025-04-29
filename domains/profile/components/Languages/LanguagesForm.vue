@@ -29,8 +29,8 @@
 </template>
 
 <script lang="ts" setup>
-import type { ILanguageItem } from '..'
-import { useLanguages } from './useLanguages'
+import type { ILanguageItem } from '~/domains/profile'
+import { useLanguages } from '~/domains/profile/composables/useLanguages'
 
 const { proficiencyLevels } = useLanguages()
 

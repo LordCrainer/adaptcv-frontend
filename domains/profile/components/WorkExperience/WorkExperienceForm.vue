@@ -71,7 +71,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { IWorkExperience } from '..'
+import type { IWorkExperience } from '../..'
 
 const props = defineProps<{
   title: string

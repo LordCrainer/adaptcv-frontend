@@ -52,8 +52,8 @@
 </template>
 
 <script setup lang="ts">
-import type { IWorkExperience } from '..'
-import useWorkExperience from './useWorkExperience'
+import type { IWorkExperience } from '../..'
+import useWorkExperience from '~/domains/profile/composables/useWorkExperience'
 import WorkExperienceForm from './WorkExperienceForm.vue'
 
 const { t } = useI18n()

@@ -59,7 +59,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { Degree, IEducationItem } from '..'
+import type { Degree, IEducationItem } from '../..'
 
 const props = defineProps<{
   title: string

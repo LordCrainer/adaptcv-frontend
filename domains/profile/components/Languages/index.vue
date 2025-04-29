@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import LanguagesForm from './LanguagesForm.vue'
-import { useLanguages } from './useLanguages'
+import { useLanguages } from '~/domains/profile/composables/useLanguages'
 
 const { languages, upsertLanguage, removeLanguage } = useLanguages()
 </script>

@@ -1,3 +1,11 @@
+# [1.50.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.49.0...v1.50.0) (2025-04-29)
+
+
+### Features
+
+* **i18n:** rename 'fillInformation' to 'builder' in UI and translations ([a1fb791](https://github.com/LordCrainer/adaptcv-frontend/commit/a1fb791d6a157f204377b888bdceb87183998cab))
+* **ui:** update NavigationDrawer default state and create builder page layout ([3f2fde2](https://github.com/LordCrainer/adaptcv-frontend/commit/3f2fde2291d80f8e829391f8f060d4cb877473da))
+
 # [1.49.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.48.0...v1.49.0) (2025-04-28)
 
 

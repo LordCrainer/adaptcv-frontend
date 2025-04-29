@@ -54,7 +54,7 @@ interface TranslationKeys {
       address: string
       city: string
       country: string
-      fillInformation: string
+      builder: string
       aboutMe: string
       uploadPhoto: string
     }
@@ -125,7 +125,8 @@ interface TranslationKeys {
     signUp: string
   }
   routes: {
-    fillInformation: string
+    home: string
+    builder: string
     templates: string
     settings: string
     profile: string

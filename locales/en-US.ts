@@ -11,7 +11,7 @@ const profile: TranslationKeys['profile'] = {
     address: 'Address',
     city: 'City',
     country: 'Country',
-    fillInformation: 'Fill Information',
+    builder: 'Builder',
     aboutMe: 'About Me',
     uploadPhoto: 'Upload Photo'
   },
@@ -132,7 +132,8 @@ export default defineI18nLocale(async () => {
       signUp: 'Sign Up'
     },
     routes: {
-      fillInformation: 'Fill Information',
+      home: 'Home',
+      builder: 'Builder',
       preview: 'Preview',
       templates: 'Templates',
       settings: 'Settings',

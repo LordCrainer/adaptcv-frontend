@@ -4,9 +4,9 @@
       <v-btn
         color="secondary"
         variant="outlined"
-        @click="fillInformation"
-        aria-label="Fill Information">
-        {{ $t('profile.personalInfo.fillInformation') }}
+        @click="builder"
+        aria-label="Builder">
+        {{ $t('profile.personalInfo.builder') }}
       </v-btn>
     </div>
     <div class="d-flex flex-column ga-2">
@@ -116,7 +116,7 @@ watch(
   { deep: true }
 )
 
-const fillInformation = () => {
+const builder = () => {
   console.log('Filling information...')
 }
 </script>

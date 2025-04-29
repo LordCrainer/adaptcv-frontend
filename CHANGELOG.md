@@ -1,3 +1,11 @@
+# [1.54.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.53.1...v1.54.0) (2025-04-29)
+
+
+### Features
+
+* **profile:** reorganize component structure and implement new profile features including user profile, work experience, and about me sections ([4bb9f4f](https://github.com/LordCrainer/adaptcv-frontend/commit/4bb9f4fe30034432688e054e62eb2f85a30e021f))
+* **profile:** restructure profile components and implement work experience management ([e72b9cd](https://github.com/LordCrainer/adaptcv-frontend/commit/e72b9cd1fdda276f0f40632dad31a304447fe2e3))
+
 ## [1.53.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.53.0...v1.53.1) (2025-04-29)
 
 

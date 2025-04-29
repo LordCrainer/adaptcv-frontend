@@ -8,8 +8,7 @@
       <v-btn
         size="small"
         v-tooltip:start="$t(isPreview ? 'actions.edit' : 'actions.preview')"
-        class="text-grey-darken-1"
-        :color="isPreview ? 'grey' : 'primary'"
+        :color="isPreview ? 'warning' : 'grey'"
         @click="toggleView"
         variant="tonal">
         <v-icon>{{ isPreview ? 'mdi-pencil' : 'mdi-eye' }}</v-icon>

@@ -94,6 +94,15 @@
 import { ref } from 'vue'
 import { useRules } from '~/composables/useRules'
 
+definePageMeta({
+  title: 'Login',
+  layout: 'auth',
+  meta: {
+    title: 'Login',
+    description: 'Login to your account'
+  }
+})
+
 const rules = useRules()
 
 const form = ref()

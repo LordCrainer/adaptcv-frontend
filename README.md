@@ -4,6 +4,15 @@ Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduct
 
 ## Setup
 
+Before installing dependencies, make sure to add a `.npmrc` file with the following content:
+
+```text
+@lordcrainer:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
+```
+
+Replace `YOUR_GITHUB_TOKEN` with your actual GitHub token.
+
 Make sure to install dependencies:
 
 ```bash

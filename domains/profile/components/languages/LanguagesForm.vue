@@ -30,7 +30,7 @@
 
 <script lang="ts" setup>
 import type { ILanguageItem } from '~/domains/profile/shared'
-import { useLanguages } from '~/domains/profile/languages/useLanguages'
+import { useLanguages } from '~/domains/profile/components/languages/useLanguages'
 
 const { proficiencyLevels } = useLanguages()
 

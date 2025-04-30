@@ -209,7 +209,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useLanguages } from '~/domains/profile/languages/useLanguages'
+import { useLanguages } from '~/domains/profile/components/languages/useLanguages'
 import { useCVStore } from '~/domains/profile/shared/cv.store'
 
 const { formatDateRange } = useFormatDate()

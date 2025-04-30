@@ -51,7 +51,7 @@
 <script setup lang="ts">
 import EducationForm from './EducationForm.vue'
 import type { IEducationItem } from '~/domains/profile/shared/index'
-import useEducation from '~/domains/profile/education/useEducation'
+import useEducation from '~/domains/profile/components/education/useEducation'
 
 const { t } = useI18n()
 

@@ -24,14 +24,11 @@ export const useCVStore = defineStore('cv', () => {
     status.value = newStatus
   }
 
-  function saveSection(section: keyof ICV, data: typeof keyof ICV) {
-    
-
-  }
+  function saveSection(section: keyof ICV, data: ICV[keyof ICV]) {}
 
   function saveAll() {
     // Save all data to local storage or API
-    const cvData: ICV = {
+    const cvData = <ICV>{
       userProfile: userProfile.value,
       skills: skills.value,
       languages: languages.value,

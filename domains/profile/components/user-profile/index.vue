@@ -3,6 +3,7 @@
     <v-row>
       <v-col cols="12" md="4" class="d-flex flex-1-0 justify-center">
         <v-card
+          flat
           variant="outlined"
           class="profile-photo rounded-circle cursor-pointer"
           @click="open">
@@ -14,14 +15,13 @@
               mdi-account-arrow-up-outline
             </v-icon>
             <span class="text-caption text-sm-subtitle-1">
-              {{ $t('profile.aboutMe.uploadLogo') }}
+              {{ $t('profile.personalInfo.uploadPhoto') }}
             </span>
           </v-sheet>
         </v-card>
       </v-col>
-      <AboutMeForm v-model="aboutMe" />
+      <UserInformationForm v-model="userProfile" />
     </v-row>
-
     <v-dialog
       v-model="state.openDialog"
       max-width="350px"
@@ -31,36 +31,33 @@
   </v-form>
 </template>
 
-<script lang="ts" setup>
-import { ref } from 'vue'
+<script setup lang="ts">
 import type { IFileImage } from '~/types/global'
-import { useAboutMe } from '~/domains/profile/about-me/useAboutMe'
-import UserPreviewPhoto from '~/domains/profile/user-profile/UserPreviewPhoto.vue'
-import AboutMeForm from './AboutMeForm.vue'
+import UserPreviewPhoto from './UserPreviewPhoto.vue'
+import UserInformationForm from './UserProfileForm.vue'
+import useUserProfile from '~/domains/profile/components/user-profile/useUserProfile'
 
-const { aboutMe, setAboutMeLogo } = useAboutMe()
+const { setUserProfileImage, userProfile } = useUserProfile()
 
-const fileImage = ref<IFileImage>(aboutMe.value?.logo as IFileImage)
-
-watch(
-  () => fileImage,
-  (newFileImage) => {
-    if (newFileImage.value?.src) {
-      setAboutMeLogo({ ...fileImage.value })
-    }
+const fileImage = computed({
+  get() {
+    return userProfile.value.image as IFileImage
   },
-  { deep: true }
-)
-
-const state = ref({
-  openDialog: false
+  set(img: IFileImage) {
+    setUserProfileImage(img)
+  }
 })
 
-const open = () => {
-  state.value.openDialog = true
+const state = reactive({
+  openDialog: false,
+  isEditing: false
+})
+
+function close() {
+  state.openDialog = false
 }
 
-const close = () => {
-  state.value.openDialog = false
+function open() {
+  state.openDialog = true
 }
 </script>

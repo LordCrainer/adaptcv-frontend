@@ -210,7 +210,7 @@
 
 <script lang="ts" setup>
 import { useLanguages } from '~/domains/profile/languages/useLanguages'
-import { useCVStore } from '~/stores/cvStore'
+import { useCVStore } from '~/stores/cv.store'
 
 const { formatDateRange } = useFormatDate()
 const { proficiencyLevels } = useLanguages()

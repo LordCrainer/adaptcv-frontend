@@ -30,6 +30,7 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
     '@pinia/nuxt',
     'vuetify-nuxt-module',
+    'pinia-plugin-persistedstate',
     '@nuxtjs/i18n',
     'dragon-editor'
   ],

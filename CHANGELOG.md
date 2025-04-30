@@ -1,3 +1,15 @@
+# [1.55.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.54.0...v1.55.0) (2025-04-30)
+
+
+### Bug Fixes
+
+* correct import path for CV store in OwnTemplate.vue ([7fa3e1c](https://github.com/LordCrainer/adaptcv-frontend/commit/7fa3e1c49b99cf7bb1b1130df94c93e50de6ae00))
+
+
+### Features
+
+* **dependencies:** add pinia-plugin-persistedstate for state persistence ([9e0b25c](https://github.com/LordCrainer/adaptcv-frontend/commit/9e0b25c0c67b3df7452aa391a5bed4c572fe50c4))
+
 # [1.54.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.53.1...v1.54.0) (2025-04-29)
 
 

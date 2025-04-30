@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useCVStore } from '~/stores/cvStore'
+import { useCVStore } from '~/domains/profile/shared/cv.store'
 const { education, languages, userProfile, skills, workExperience, aboutMe } =
   useCVStore()
 import { computed } from 'vue'

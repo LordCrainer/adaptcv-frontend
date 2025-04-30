@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import type { ILanguageItem } from '~/domains/profile'
+import type { ILanguageItem } from '~/domains/profile/shared'
 
 const MAX_LANGUAGES = 5
 

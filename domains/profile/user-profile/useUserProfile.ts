@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import type { IUserProfile } from '~/domains/profile'
+import type { IUserProfile } from '~/domains/profile/shared'
 import type { IFileImage } from '~/types/global'
 
 const useUserProfile = () => {

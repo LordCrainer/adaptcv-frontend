@@ -52,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import type { IWorkExperience } from '..'
+import type { IWorkExperience } from '../shared'
 import useWorkExperience from '~/domains/profile/work-experience/useWorkExperience'
 import WorkExperienceForm from './WorkExperienceForm.vue'
 

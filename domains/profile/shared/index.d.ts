@@ -39,13 +39,13 @@ export interface IEducationItem {
   country?: string
 }
 
-export interface IWorkExperience {
+export interface IWorkExperience<T = any> {
   id: string
   jobTitle: string
   company: string
   startDate: string
   endDate: string
-  description: DEContentData
+  description: T
   city?: string
   country?: string
 }
@@ -75,6 +75,9 @@ export interface IAboutMe {
 }
 
 export interface ICV extends BaseEntity {
+  _id?: string
+  userId: string
+  name: string
   userProfile: IUserProfile
   skills: ISkill[]
   languages: ILanguageItem[]

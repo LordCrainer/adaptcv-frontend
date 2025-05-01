@@ -23,7 +23,11 @@ export default defineNuxtConfig({
       ]
     }
   },
-
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.VITE_API_URL || 'http://localhost:3000'
+    }
+  },
   modules: [
     '@nuxt/eslint',
     '@nuxt/icon',

@@ -1,13 +1,14 @@
-import { api } from '@/config/axios'
-import { useAuthStore } from '@/stores/auth.store'
+const { $api } = useNuxtApp()
+import { useAuthStore } from '@/domains/auth/store/auth.store'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 import { AuthService } from '../services/auth.service'
+import type { RequestUserData } from '@lordcrainer/adaptcv-shared-types'
 
 export function useAuth() {
-  const authService = new AuthService(api)
-  const { setUserData, setToken, clearUserData, getUserData, removeToken } =
+  const authService = new AuthService($api)
+  const { setUserData, setToken, clearAllAuthData, getUserData, removeToken } =
     useAuthStore()
   const router = useRouter()
   const loading = ref(false)
@@ -27,8 +28,11 @@ export function useAuth() {
     }
   }
 
-  const register = async (user) => {
+  const register = async (user: RequestUserData) => {
     try {
+      if (!user) {
+        throw new Error('User not found')
+      }
       const data = await authService.register(user)
       return data
     } catch (error) {
@@ -40,6 +44,9 @@ export function useAuth() {
     try {
       loading.value = true
       const user = getUserData()
+      if (!user) {
+        throw new Error('User not found')
+      }
       await router.push({ name: 'login' })
       const data = await authService.logout(user._id)
       return data
@@ -48,7 +55,7 @@ export function useAuth() {
       throw new Error('useAuth.logout: logging out')
     } finally {
       loading.value = false
-      clearUserData()
+      clearAllAuthData()
     }
   }
 

@@ -81,4 +81,5 @@ export interface ICV extends BaseEntity {
   education: IEducationItem[]
   workExperience: IWorkExperience[]
   status: 'draft' | 'published'
+  aboutMe: IAboutMe
 }

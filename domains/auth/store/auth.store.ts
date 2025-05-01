@@ -67,7 +67,7 @@ export const useAuthStore = () => {
     authStorageStrategy.remove('userData')
   }
 
-  const clearUserData = () => {
+  const clearAllAuthData = () => {
     removeUserData()
     removeToken()
   }
@@ -79,6 +79,6 @@ export const useAuthStore = () => {
     setToken,
     removeToken,
     removeUserData,
-    clearUserData
+    clearAllAuthData
   }
 }

@@ -1,11 +1,13 @@
-import type { RequestUserData } from '@lanubetv/sed-share-types'
-import type { Axios } from 'axios'
+import type { RequestUserData } from '@lordcrainer/adaptcv-shared-types'
+import type { Axios, AxiosInstance } from 'axios'
 
 export class AuthService {
   url: string = 'auth'
-  constructor(private api: Axios) {}
+  constructor(private api: AxiosInstance) {}
 
-  async login(credentials: any): Promise<{user: RequestUserData, token: string}> {
+  async login(
+    credentials: any
+  ): Promise<{ user: RequestUserData; token: string }> {
     try {
       const response = await this.api.post(`/v1/${this.url}/login`, credentials)
 
@@ -31,7 +33,9 @@ export class AuthService {
 
   async logout(userId: string): Promise<any> {
     try {
-      const { data = {} } = await this.api.post(`/v1/${this.url}/logout`, { userId })
+      const { data = {} } = await this.api.post(`/v1/${this.url}/logout`, {
+        userId
+      })
       return data
     } catch (error) {
       console.error('Error logging out:', error)

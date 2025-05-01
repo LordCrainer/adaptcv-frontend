@@ -1,14 +1,19 @@
-import { useAuthStore } from '@/domains/auth/store/auth.store';
-import axios from 'axios'
+import { useAuthStore } from '@/domains/auth/store/auth.store'
+import axios, { type AxiosInstance } from 'axios'
+
+const { getToken, clearAllAuthData } = useAuthStore()
+
 export default defineNuxtPlugin((nuxtApp) => {
   const runtimeConfig = useRuntimeConfig()
-  const axiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
+
+  const api: AxiosInstance = axios.create({
+    baseURL: runtimeConfig.public.apiBase
   })
-  axiosInstance.interceptors.request.use(
+
+  api.interceptors.request.use(
     (config) => {
       // Modify request config before sending the request
-      const token = useAuthStore().token
+      const token = getToken()
       if (token) {
         config.headers.Authorization = `Bearer ${token}`
       }
@@ -19,7 +24,8 @@ export default defineNuxtPlugin((nuxtApp) => {
       return Promise.reject(error)
     }
   )
-  axiosInstance.interceptors.response.use(
+
+  api.interceptors.response.use(
     (response) => {
       // Handle successful response
       return response
@@ -27,12 +33,11 @@ export default defineNuxtPlugin((nuxtApp) => {
     (error) => {
       // Handle response error
       if (error.response && error.response.status === 401) {
-        useAuthStore().logout()
+        clearAllAuthData()
       }
       return Promise.reject(error)
     }
   )
-  return {
-    provide: { axios: axiosInstance }
-  }
+
+  nuxtApp.provide('api', api)
 })

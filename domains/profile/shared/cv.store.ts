@@ -9,6 +9,18 @@ import type {
   IWorkExperience
 } from '~/domains/profile/shared'
 
+type Sections = Pick<ICV, 'userProfile' | 'skills' | 'languages' | 'education' | 'workExperience' | 'aboutMe'>
+
+const CvSections = (curriculumVitae: ICV): Record<keyof Sections, () => ICV[keyof Sections]> => ({
+  userProfile: () => curriculumVitae.userProfile,
+  skills: () => curriculumVitae.skills,
+  languages: () => curriculumVitae.languages,
+  education: () => curriculumVitae.education,
+  workExperience: () => curriculumVitae.workExperience,
+  aboutMe: () => curriculumVitae.aboutMe,
+
+})
+
 export const useCVStore = defineStore('cv', () => {
   const curriculumVitae = ref<ICV>()
   const userProfile = ref<IUserProfile>()
@@ -24,20 +36,24 @@ export const useCVStore = defineStore('cv', () => {
     status.value = newStatus
   }
 
-  function saveSection(section: keyof ICV, data: ICV[keyof ICV]) {}
-
-  function saveAll() {
-    // Save all data to local storage or API
-    const cvData = <ICV>{
-      userProfile: userProfile.value,
-      skills: skills.value,
-      languages: languages.value,
-      education: education.value,
-      workExperience: workExperience.value,
-      aboutMe: aboutMe.value,
-      status: status.value
+  function saveSection(section: keyof Sections, data: ICV[keyof ICV]) {
+    if (!data) {
+      console.error(`Error: ${section} data is undefined or null`)
+      return
     }
-    localStorage.setItem('cvData', JSON.stringify(cvData))
+    if (curriculumVitae.value) {
+      CvSections(curriculumVitae.value)[section]
+    } else {
+      console.error('Error: curriculumVitae is undefined')
+    }
+  }
+
+  function saveAll(cvData: ICV) {
+    try {
+      localStorage.setItem('cvData', JSON.stringify(cvData))
+    } catch (error) {
+      console.error('Error saving CV data to localStorage:', error)
+    }
   }
 
   return {

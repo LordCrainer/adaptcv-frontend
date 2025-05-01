@@ -12,5 +12,6 @@
         "./domains/*"
       ],
     }
-  }
+  },
+  "include": ["types/**/*.d.ts", "nuxt.config.ts", "app.config.ts", "app/**/*.vue", "app/**/*.ts", "app/**/*.js"],
 }

@@ -1,3 +1,12 @@
+# [1.56.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.55.0...v1.56.0) (2025-04-30)
+
+
+### Features
+
+* add axios plugin with request and response interceptors for authentication ([5c5a723](https://github.com/LordCrainer/adaptcv-frontend/commit/5c5a72350f3603b800c2f2c1077208aa5ee9eb4f))
+* implement authentication functionality with login, registration, and logout features; add auth service and store ([0224825](https://github.com/LordCrainer/adaptcv-frontend/commit/02248253f1517230d347626af276b6f793aa636e))
+* **profile:** add components for user profile management including About Me, Education, Languages, Skills, and Work Experience ([d8484fa](https://github.com/LordCrainer/adaptcv-frontend/commit/d8484fab0571ac497e8fb83d9884ef12b88d12cf))
+
 # [1.55.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.54.0...v1.55.0) (2025-04-30)
 
 

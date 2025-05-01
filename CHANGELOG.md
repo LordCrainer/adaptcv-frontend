@@ -1,3 +1,10 @@
+# [1.58.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.57.0...v1.58.0) (2025-05-01)
+
+
+### Features
+
+* **cv:** implement CV service and update shared types to support new structure ([e92bc75](https://github.com/LordCrainer/adaptcv-frontend/commit/e92bc7534ce27626bcb640e1cbed1e55027165fa))
+
 # [1.57.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.56.0...v1.57.0) (2025-05-01)
 
 

@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "adaptcv-frontend",
   "version": "1.57.0",
   "private": true,
   "type": "module",
@@ -47,31 +47,6 @@
     ],
     "*.{json,md}": [
       "prettier --write"
-    ]
-  },
-  "prettier": {
-    "trailingComma": "none",
-    "tabWidth": 2,
-    "semi": false,
-    "singleQuote": true,
-    "bracketSameLine": true,
-    "endOfLine": "auto",
-    "htmlWhitespaceSensitivity": "ignore",
-    "overrides": [
-      {
-        "files": "CHANGELOG.md",
-        "options": {
-          "tabWidth": 2,
-          "parser": "markdown"
-        }
-      },
-      {
-        "files": "*.json",
-        "options": {
-          "tabWidth": 2,
-          "parser": "json-stringify"
-        }
-      }
     ]
   }
 }

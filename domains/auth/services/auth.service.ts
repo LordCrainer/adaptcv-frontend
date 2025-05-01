@@ -1,12 +1,15 @@
-import type { RequestUserData } from '@lordcrainer/adaptcv-shared-types'
-import type { Axios, AxiosInstance } from 'axios'
+import type {
+  LoginParams,
+  RequestUserData
+} from '@lordcrainer/adaptcv-shared-types'
+import type { AxiosInstance } from 'axios'
 
 export class AuthService {
   url: string = 'auth'
   constructor(private api: AxiosInstance) {}
 
   async login(
-    credentials: any
+    credentials: LoginParams
   ): Promise<{ user: RequestUserData; token: string }> {
     try {
       const response = await this.api.post(`/v1/${this.url}/login`, credentials)

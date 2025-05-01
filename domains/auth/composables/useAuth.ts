@@ -1,10 +1,10 @@
 const { $api } = useNuxtApp()
-import { useAuthStore } from '@/domains/auth/store/auth.store'
+import { useAuthStore } from '~/domains/auth/store/auth.store'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-import { AuthService } from '../services/auth.service'
-import type { RequestUserData } from '@lordcrainer/adaptcv-shared-types'
+import { AuthService } from '~/domains/auth/services/auth.service'
+import type { LoginParams, RequestUserData } from '@lordcrainer/adaptcv-shared-types'
 
 export function useAuth() {
   const authService = new AuthService($api)
@@ -13,7 +13,7 @@ export function useAuth() {
   const router = useRouter()
   const loading = ref(false)
 
-  const login = async (credentials) => {
+  const login = async (credentials: LoginParams) => {
     try {
       loading.value = true
       const data = await authService.login(credentials)

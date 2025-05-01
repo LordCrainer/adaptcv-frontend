@@ -1,3 +1,11 @@
+# [1.57.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.56.0...v1.57.0) (2025-05-01)
+
+
+### Features
+
+* **auth:** refactor authentication logic and improve error handling; update auth service and store methods ([f37424a](https://github.com/LordCrainer/adaptcv-frontend/commit/f37424a1eb22ba755ddc00fffe94b4c15226e504))
+* update axios plugin to provide Axios instance and add tsconfig.app.json for path resolution ([d8000f7](https://github.com/LordCrainer/adaptcv-frontend/commit/d8000f716da840f04e9cfb2424d8505d2324301b))
+
 # [1.56.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.55.0...v1.56.0) (2025-04-30)
 
 

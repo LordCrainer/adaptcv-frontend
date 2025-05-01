@@ -22,14 +22,16 @@ type RouteChildren = RouteRecordRaw['children'][0] & {
   children?: RouteChildren[]
 }
 
-export type RouteExtended = Omit<RouteRecordRaw, 'children'> & {
-  props?: Partial<Props>
-  children?: RouteExtended[]
-}
-
 export type TabItem = {
   translationKey: string
   title?: string
   component: Component
   props?: Record<string, any>
+}
+
+declare global {
+  type RouteExtended = Omit<RouteRecordRaw, 'children'> & {
+    props?: Partial<Props>
+    children?: RouteExtended[]
+  }
 }

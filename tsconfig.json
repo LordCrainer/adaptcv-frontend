@@ -1,11 +1,3 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./.nuxt/tsconfig.json"
-    },
-    {
-      "path": "./tsconfig.app.json"
-    }
-  ]
+  "extends": "./.nuxt/tsconfig.json",
 }

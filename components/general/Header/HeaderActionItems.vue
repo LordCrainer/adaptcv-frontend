@@ -23,7 +23,6 @@
 <script setup lang="ts">
 import type { LocaleObject } from '@nuxtjs/i18n'
 import { useI18n } from 'vue-i18n'
-import type { RouteExtended } from '~/types/global'
 
 const { setLocale, locales, locale } = useI18n()
 

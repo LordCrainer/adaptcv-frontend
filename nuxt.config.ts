@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   debug: true,
   app: {
+    baseURL: '/app/',
     head: {
       title: 'AdaptCV',
       htmlAttrs: {
@@ -28,6 +29,7 @@ export default defineNuxtConfig({
       apiBase: import.meta?.env?.VITE_API_URL || 'http://localhost:3000'
     }
   },
+  
   modules: [
     '@nuxt/eslint',
     '@nuxt/icon',
@@ -43,16 +45,6 @@ export default defineNuxtConfig({
     vuetifyOptions: {
       icons: {
         defaultSet: 'mdi',
-        sets: [
-          {
-            name: 'mdi',
-            cdn: 'https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css'
-          },
-          {
-            name: 'fa',
-            cdn: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css'
-          }
-        ]
       }
     }
   },
@@ -66,5 +58,6 @@ export default defineNuxtConfig({
     restructureDir: './',
     strategy: 'prefix_and_default',
     lazy: true
-  }
+  },
+  
 })

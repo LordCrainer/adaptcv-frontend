@@ -21,8 +21,6 @@
 </template>
 
 <script setup lang="ts">
-import type { RouteExtended } from '~/types/global'
-
 defineProps({
   items: {
     type: Object as () => RouteExtended[],

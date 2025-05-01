@@ -18,7 +18,6 @@
 import HeaderActionItems from './HeaderActionItems.vue'
 import NavigationDrawer from './NavigationDrawer.vue'
 import HeaderSettingsMenu from './HeaderSettingsMenu.vue'
-import type { RouteExtended } from '~/types/global'
 
 const drawer = ref(false)
 

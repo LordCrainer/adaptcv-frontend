@@ -3,7 +3,7 @@ import axios, { type AxiosInstance } from 'axios'
 
 const { getToken, clearAllAuthData } = useAuthStore()
 
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(() => {
   const runtimeConfig = useRuntimeConfig()
 
   const api: AxiosInstance = axios.create({

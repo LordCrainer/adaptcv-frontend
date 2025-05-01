@@ -1,5 +1,3 @@
-import type { RouteExtended } from '~/types/global'
-
 export const APP_ROUTES: RouteExtended[] = [
   {
     path: '/',

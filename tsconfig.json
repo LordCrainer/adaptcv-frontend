@@ -1,17 +1,11 @@
 {
-  "extends": "./.nuxt/tsconfig.json",
-  "compilerOptions": {
-    "paths": {
-      "~/*": [
-        "./*"
-      ],
-      "@/*": [
-        "./*"
-      ],
-      "@domains/*": [
-        "./domains/*"
-      ],
+  "files": [],
+  "references": [
+    {
+      "path": "./.nuxt/tsconfig.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
     }
-  },
-  "include": ["types/**/*.d.ts", "nuxt.config.ts", "app.config.ts", "app/**/*.vue", "app/**/*.ts", "app/**/*.js"],
+  ]
 }

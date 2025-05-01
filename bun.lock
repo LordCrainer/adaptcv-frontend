@@ -4,6 +4,7 @@
     "": {
       "name": "nuxt-app",
       "dependencies": {
+        "@lordcrainer/adaptcv-shared-types": "^1.4.0",
         "@nuxt/eslint": "1.3.0",
         "@nuxt/icon": "1.11.0",
         "@nuxt/image": "1.10.0",
@@ -20,7 +21,6 @@
         "vuetify-nuxt-module": "0.18.5",
       },
       "devDependencies": {
-        "@lordcrainer/adaptcv-shared-types": "^1.3.5",
         "@nuxtjs/i18n": "^9.4.0",
         "@semantic-release/changelog": "^6.0.3",
         "@semantic-release/git": "^10.0.1",
@@ -239,7 +239,7 @@
 
     "@kwsites/promise-deferred": ["@kwsites/promise-deferred@1.1.1", "", {}, "sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw=="],
 
-    "@lordcrainer/adaptcv-shared-types": ["@lordcrainer/adaptcv-shared-types@1.3.5", "https://npm.pkg.github.com/download/@lordcrainer/adaptcv-shared-types/1.3.5/3b328577d9c9082495ade185d6a948a9cec5c474", {}, "sha512-gD05dhZF/be/xGKfynDw7YDE2OqWQUnO9s2rgWTWbHol34mptQkXh31KZiiKUBkz9E3/c1a1yJ9zzpWIEP+WwQ=="],
+    "@lordcrainer/adaptcv-shared-types": ["@lordcrainer/adaptcv-shared-types@1.4.0", "https://npm.pkg.github.com/download/@lordcrainer/adaptcv-shared-types/1.4.0/45be1c41a3d0e670dae8b41dbd3ea212e1a21875", {}, "sha512-aWe0O+L1Vdyv8GAwdEmTQNQ0LjNMRanUauOeuyRytGEgC4ZUzuyGNl43i3WUPlHucIKhnJYyIZCtMfVh2sI1Qg=="],
 
     "@mapbox/node-pre-gyp": ["@mapbox/node-pre-gyp@2.0.0", "", { "dependencies": { "consola": "^3.2.3", "detect-libc": "^2.0.0", "https-proxy-agent": "^7.0.5", "node-fetch": "^2.6.7", "nopt": "^8.0.0", "semver": "^7.5.3", "tar": "^7.4.0" }, "bin": { "node-pre-gyp": "bin/node-pre-gyp" } }, "sha512-llMXd39jtP0HpQLVI37Bf1m2ADlEb35GYSh1SDSLsBhR+5iCxiNGlT31yqbNtVHygHAtMy6dWFERpU2JgufhPg=="],
 

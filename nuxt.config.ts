@@ -25,7 +25,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBase: process.env.VITE_API_URL || 'http://localhost:3000'
+      apiBase: import.meta?.env?.VITE_API_URL || 'http://localhost:3000'
     }
   },
   modules: [

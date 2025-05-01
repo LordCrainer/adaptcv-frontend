@@ -39,5 +39,9 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
   )
 
-  nuxtApp.provide('api', api)
+  return {
+    provide: {
+      api
+    }
+  }
 })

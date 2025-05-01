@@ -1,16 +1,9 @@
+import type { BaseEntity as BaseEntityGlobal } from '@lordcrainer/adaptcv-shared-types'
 import type { Component } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
-
 export interface IFileImage extends Partial<File> {
   src: string
 }
-
-export interface BaseEntity {
-  id?: string
-  createdAt?: Date
-  updatedAt?: Date
-}
-
 interface Props {
   title: string
   path: string
@@ -34,4 +27,6 @@ declare global {
     props?: Partial<Props>
     children?: RouteExtended[]
   }
+
+  type BaseEntity = BaseEntityGlobal
 }

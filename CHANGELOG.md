@@ -1,3 +1,10 @@
+# [1.59.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.58.0...v1.59.0) (2025-05-02)
+
+
+### Features
+
+* **builder:** implement builder pages and update routing, localization, and types ([71e6f7d](https://github.com/LordCrainer/adaptcv-frontend/commit/71e6f7d298de420d64420553355f1045073b1e66))
+
 # [1.58.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.57.0...v1.58.0) (2025-05-01)
 
 

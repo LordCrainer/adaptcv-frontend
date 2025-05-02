@@ -42,10 +42,11 @@ const router = useRouter()
 const isPreview = ref(route.path.includes('preview'))
 
 const toggleView = () => {
+  const builderId = route.params.builderId
   if (isPreview.value) {
-    router.push({ path: '/profile' })
+    router.push({ path: `/builder/${builderId}` })
   } else {
-    router.push({ path: '/profile/preview' })
+    router.push({ path: `/builder/${builderId}/preview` })
   }
   isPreview.value = !isPreview.value
 }

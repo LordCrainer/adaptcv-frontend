@@ -8,29 +8,21 @@ export const APP_ROUTES: RouteExtended[] = [
     component: () => import('~/pages/index.vue')
   },
   {
-    path: '/profile',
+    path: '/builder',
     props: {
-      title: 'profile',
-      icon: 'mdi-account'
+      title: 'builder',
+      icon: 'mdi-file-document-edit-outline'
     },
     component: () => import('~/layouts/profileBuilder.vue'),
     children: [
       {
         path: '/',
-        component: () => import('~/pages/profile/index.vue'),
+        component: () => import('~/pages/builder/index.vue'),
         props: {
           title: 'builder',
           icon: 'mdi-file-document-edit-outline'
         }
-      },
-      {
-        path: 'preview',
-        component: () => import('~/pages/profile/preview.vue'),
-        props: {
-          title: 'preview',
-          icon: 'mdi-eye-outline'
-        }
       }
     ]
-  }
+  },
 ]

@@ -66,6 +66,23 @@ const profile: TranslationKeys['profile'] = {
   }
 }
 
+const builder: TranslationKeys['builder'] = {
+  title: 'Constructor',
+  name: 'Nombre',
+  status: 'Estado',
+  description: 'Descripción',
+  template: 'Plantilla',
+  id: 'ID'
+}
+
+const baseEntity: TranslationKeys['baseEntity'] = {
+  createdAt: 'Creado',
+  updatedAt: 'Actualizado',
+  createdBy: 'Creado por',
+  updatedBy: 'Actualizado por',
+  deletedAt: 'Eliminado',
+}
+
 export default defineI18nLocale(async () => {
   return {
     website: {
@@ -95,7 +112,7 @@ export default defineI18nLocale(async () => {
       signOut: 'Cerrar sesión',
       forgotPassword: 'Olvidé mi contraseña?',
       publish: 'Publicar',
-      preview: 'Visualizar',
+      preview: 'Visualizar'
     },
     common: {
       home: 'Inicio',
@@ -138,6 +155,8 @@ export default defineI18nLocale(async () => {
       dashboard: 'Tablero',
       logout: 'Cerrar sesión'
     },
+    baseEntity: baseEntity,
+    builder: builder,
     profile: profile,
     $vuetify: $vuetify
   } as TranslationKeys

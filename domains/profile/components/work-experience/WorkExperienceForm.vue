@@ -71,7 +71,8 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { IWorkExperience } from '../shared'
+import type { IWorkExperience } from '@/domains/profile/shared';
+
 
 const props = defineProps<{
   title: string

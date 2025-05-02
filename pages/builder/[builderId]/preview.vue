@@ -25,7 +25,7 @@ import type { Component } from 'vue'
 
 definePageMeta({
   layout: 'profile-builder',
-  name: 'profile-preview'
+  name: 'builder-builderId-preview'
 })
 
 interface IItem {

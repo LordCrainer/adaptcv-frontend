@@ -66,6 +66,23 @@ const profile: TranslationKeys['profile'] = {
   }
 }
 
+const builder: TranslationKeys['builder'] = {
+  title: 'Builder',
+  name: 'Name',
+  status: 'Status',
+  description: 'Description',
+  template: 'Template',
+  id: 'ID',
+}
+
+const baseEntity: TranslationKeys['baseEntity'] = {
+  createdAt: 'Created',
+  updatedAt: 'Updated',
+  createdBy: 'Created by',
+  updatedBy: 'Updated by',
+  deletedAt: 'Deleted',
+}
+
 export default defineI18nLocale(async () => {
   return {
     website: {
@@ -141,6 +158,8 @@ export default defineI18nLocale(async () => {
       dashboard: 'Dashboard',
       logout: 'Logout'
     },
+    baseEntity: baseEntity,
+    builder: builder,
     profile: profile,
     $vuetify: $vuetify
   } as TranslationKeys

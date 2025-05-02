@@ -43,6 +43,21 @@ interface TranslationKeys {
     publish: string
     preview: string
   }
+  baseEntity: {
+    createdAt: string
+    updatedAt: string
+    createdBy: string
+    updatedBy: string
+    deletedAt: string
+  }
+  builder: {
+    id: string
+    title: string
+    name: string
+    description: string
+    status: string
+    template: string
+  }
   profile: {
     personalInfo: {
       title: string

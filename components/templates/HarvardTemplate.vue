@@ -1,10 +1,12 @@
 <script lang="ts" setup>
 import { useCVStore } from '~/domains/profile/shared/cv.store'
-const { education, languages, userProfile, skills, workExperience, aboutMe } =
-  useCVStore()
+const { curriculumVitae } = useCVStore()
+
 import { computed } from 'vue'
 
 const { formatDateRange } = useFormatDate()
+const { education, languages, userProfile, skills, workExperience, aboutMe } =
+  curriculumVitae
 
 const location = computed(() => {
   return getLocation(userProfile?.city, userProfile?.country)

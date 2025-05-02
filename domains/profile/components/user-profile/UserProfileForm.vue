@@ -79,31 +79,25 @@ import { areasProfession } from '~/domains/profile/shared/constants/profesionAre
 
 const { required } = useRules()
 
-const emit = defineEmits(['submit', 'update:modelValue'])
+const emit = defineEmits(['update:modelValue'])
 
 const props = defineProps<{
   modelValue: IUserProfile
 }>()
 
-const formData = ref<IUserProfile>({ ...props.modelValue })
-
 const professions = ref<string[]>([])
+
+const formData = computed({
+  get: () => props.modelValue,
+  set: (value) => emit('update:modelValue', value)
+})
 
 watch(
   () => formData.value.areaProfession,
   (newArea) => {
-    if (newArea) {
-      formData.value.profession = ''
-      professions.value = areasProfession[newArea]
-    }
-  }
-)
-
-watch(
-  formData,
-  (newFormData) => {
-    emit('update:modelValue', newFormData)
+    professions.value = newArea ? areasProfession[newArea] : []
+    formData.value.profession = ''
   },
-  { deep: true }
+  { immediate: true }
 )
 </script>

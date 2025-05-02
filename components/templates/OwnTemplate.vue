@@ -214,8 +214,10 @@ import { useCVStore } from '~/domains/profile/shared/cv.store'
 
 const { formatDateRange } = useFormatDate()
 const { proficiencyLevels } = useLanguages()
+const { curriculumVitae } = useCVStore()
+
 const { education, languages, userProfile, skills, workExperience, aboutMe } =
-  useCVStore()
+  curriculumVitae
 
 function getProficiencyLevel(prop: string, options: string[]) {
   const index = options.findIndex((s) => s === prop) + 1

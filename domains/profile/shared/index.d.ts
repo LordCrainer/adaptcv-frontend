@@ -73,16 +73,3 @@ export interface IAboutMe {
   logo: IFileImage
   slogan: string
 }
-
-export interface ICV extends BaseEntity {
-  _id?: string
-  userId: string
-  name: string
-  userProfile: IUserProfile
-  skills: ISkill[]
-  languages: ILanguageItem[]
-  education: IEducationItem[]
-  workExperience: IWorkExperience[]
-  status: 'draft' | 'published'
-  aboutMe: IAboutMe
-}

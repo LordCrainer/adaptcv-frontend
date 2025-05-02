@@ -1,8 +1,11 @@
 import { ref } from 'vue'
 import type { IUserProfile } from '~/domains/profile/shared'
 import type { IFileImage } from '~/types/global'
+import { useCVStore } from '~/domains/profile/shared/cv.store'
 
 const useUserProfile = () => {
+  const { saveSection, curriculumVitae } = useCVStore()
+
   const userProfile = ref<IUserProfile>({
     image: {
       src: ''
@@ -15,13 +18,21 @@ const useUserProfile = () => {
     address: ''
   })
 
-  async function saveToServer() {
-    try {
-      
-    } catch (error) {
-      
+  watch(
+    () => userProfile.value,
+    (newValue) => {
+      if (newValue) {
+        saveSection('userProfile', newValue)
+      }
+    },
+    { deep: true }
+  )
+
+  onMounted(() => {
+    if (curriculumVitae.userProfile) {
+      setUserProfile(curriculumVitae.userProfile)
     }
-  }
+  })
 
   const setUserProfile = (data: IUserProfile) => {
     userProfile.value = data

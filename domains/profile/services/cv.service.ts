@@ -1,4 +1,4 @@
-import type { ICV } from '../shared'
+import type { ICV } from '@lordcrainer/adaptcv-shared-types'
 
 const { $api } = useNuxtApp()
 
@@ -19,14 +19,6 @@ export const cvService = async () => {
     return null
   }
 
-  const upsertCV = async (cv: ICV) => {
-    const { data } = await $api.put('cv', cv)
-    if (data) {
-      return JSON.parse(data)
-    }
-    return null
-  }
-
   const deleteCV = async (id: string) => {
     const { data } = await $api.delete('cv', { params: { id } })
     return data
@@ -34,6 +26,7 @@ export const cvService = async () => {
 
   return {
     getCV,
-    deleteCV
+    deleteCV,
+    createCV
   }
 }

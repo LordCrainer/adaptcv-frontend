@@ -1,3 +1,10 @@
+## [1.59.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.59.0...v1.59.1) (2025-05-02)
+
+
+### Bug Fixes
+
+* adjust styling for OwnTemplate and ensure proper layout in preview page ([ad93e70](https://github.com/LordCrainer/adaptcv-frontend/commit/ad93e7068b4cb3097ee1453213d6ef305d6a7ba9))
+
 # [1.59.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.58.0...v1.59.0) (2025-05-02)
 
 

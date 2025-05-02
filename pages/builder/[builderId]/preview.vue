@@ -13,7 +13,7 @@
         item-value="value"></v-select>
     </v-card-item>
   </v-card>
-  <div class="mt-4">
+  <div class="mt-4" style="min-width: 800px;">
     <component :is="templates[selectedTemplate].component"></component>
   </div>
 </template>

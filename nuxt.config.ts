@@ -29,7 +29,6 @@ export default defineNuxtConfig({
       apiBase: import.meta?.env?.VITE_API_URL || 'http://localhost:3000'
     }
   },
-  
   modules: [
     '@nuxt/eslint',
     '@nuxt/icon',
@@ -64,6 +63,5 @@ export default defineNuxtConfig({
     restructureDir: './',
     strategy: 'prefix_and_default',
     lazy: true
-  },
-  
+  }
 })

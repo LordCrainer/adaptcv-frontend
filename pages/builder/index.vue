@@ -70,7 +70,6 @@ function edit(builderId: string) {
 }
 function remove(builderId: string) {
   console.log('Remove item with id:', builderId)
-  router.push({ path: `/builder/${builderId}/preview` })
 }
 </script>
 

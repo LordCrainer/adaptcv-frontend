@@ -34,20 +34,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { ref, nextTick } from 'vue'
+import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const router = useRouter()
 const isPreview = ref(route.path.includes('preview'))
 
-const toggleView = () => {
+const toggleView = async () => {
+  await nextTick()
   const builderId = route.params.builderId
-  if (isPreview.value) {
-    router.push({ path: `/builder/${builderId}` })
-  } else {
-    router.push({ path: `/builder/${builderId}/preview` })
+  if (!builderId) {
+    console.error('Builder ID is not defined')
+    return
   }
+  const targetPath = isPreview.value
+    ? `/builder/${builderId}`
+    : `/builder/${builderId}/preview`
+
+  await navigateTo(targetPath)
   isPreview.value = !isPreview.value
 }
 </script>

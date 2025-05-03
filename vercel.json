@@ -1,7 +1,5 @@
 {
-  "build": {
-    "env": {
-      "NPM_TOKEN": "ACV_TOKEN_READ"
-    }
-  }
+  "routes": [
+    { "src": "/.well-known/.*", "dest": "/404" }
+  ]
 }

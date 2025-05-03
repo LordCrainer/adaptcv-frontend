@@ -1,3 +1,10 @@
+## [1.59.3](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.59.2...v1.59.3) (2025-05-03)
+
+
+### Bug Fixes
+
+* add authentication token to .npmrc for GitHub package registry ([b49ed03](https://github.com/LordCrainer/adaptcv-frontend/commit/b49ed032d276b2375fd1ec0898dcba33163a1416))
+
 ## [1.59.2](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.59.1...v1.59.2) (2025-05-03)
 
 

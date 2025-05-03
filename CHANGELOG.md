@@ -1,3 +1,10 @@
+## [1.60.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.60.0...v1.60.1) (2025-05-03)
+
+
+### Bug Fixes
+
+* update footer link to open in a new tab and adjust class names ([278644d](https://github.com/LordCrainer/adaptcv-frontend/commit/278644d243fb81e3b14a8437e9fe42f1a752df3f))
+
 # [1.60.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.59.3...v1.60.0) (2025-05-03)
 
 

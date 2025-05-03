@@ -1,3 +1,10 @@
+# [1.61.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.60.1...v1.61.0) (2025-05-03)
+
+
+### Features
+
+* **i18n:** add bundle configuration to optimize translation directive ([309654e](https://github.com/LordCrainer/adaptcv-frontend/commit/309654e59a474c033830b6d470e31dd8ca1f9e81))
+
 ## [1.60.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.60.0...v1.60.1) (2025-05-03)
 
 

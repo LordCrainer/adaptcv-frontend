@@ -1,3 +1,11 @@
+## [1.59.2](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.59.1...v1.59.2) (2025-05-03)
+
+
+### Bug Fixes
+
+* remove .npmrc from .gitignore and add it as a new file ([07bc82d](https://github.com/LordCrainer/adaptcv-frontend/commit/07bc82d9107ec58c4669efa8375d2f45ba50705d))
+* update @lordcrainer/adaptcv-shared-types dependency to version 1.8.1 ([a681740](https://github.com/LordCrainer/adaptcv-frontend/commit/a681740a22c1ddbcdfdc862920ad017469996df7))
+
 ## [1.59.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.59.0...v1.59.1) (2025-05-02)
 
 

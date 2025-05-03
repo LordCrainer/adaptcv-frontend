@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   css: ['@/assets/css/base.scss'],
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  debug: true,
   app: {
     baseURL: '/app/',
     head: {

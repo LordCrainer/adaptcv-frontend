@@ -53,6 +53,9 @@ export default defineNuxtConfig({
     }
   },
   i18n: {
+    bundle: {
+      optimizeTranslationDirective: false
+    },
     locales: [
       { code: 'en', name: 'English', iso: 'en-US', file: 'en-US.ts' },
       { code: 'es', name: 'Spanish', iso: 'es-ES', file: 'es-ES.ts' }

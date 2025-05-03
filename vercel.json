@@ -1,7 +1,7 @@
 {
   "build": {
     "env": {
-      "NPM_TOKEN": "NPM_TOKEN"
+      "NPM_TOKEN": "ACV_TOKEN_READ"
     }
   }
 }

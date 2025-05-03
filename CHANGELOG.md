@@ -1,3 +1,15 @@
+# [1.60.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.59.3...v1.60.0) (2025-05-03)
+
+
+### Bug Fixes
+
+* update NPM_TOKEN value in vercel configuration ([d64535b](https://github.com/LordCrainer/adaptcv-frontend/commit/d64535bc6a562772abcf050436e4205a8b9f9e64))
+
+
+### Features
+
+* add vercel configuration with NPM_TOKEN environment variable ([621b728](https://github.com/LordCrainer/adaptcv-frontend/commit/621b72876df278c4f377e6b2b7a67fd40a5847c5))
+
 ## [1.59.3](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.59.2...v1.59.3) (2025-05-03)
 
 

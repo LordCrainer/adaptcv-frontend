@@ -1,3 +1,15 @@
+# [1.63.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.62.0...v1.63.0) (2025-05-04)
+
+
+### Bug Fixes
+
+* **card:** adjust padding and remove unnecessary v-card-text wrapper ([13fff33](https://github.com/LordCrainer/adaptcv-frontend/commit/13fff33913b79c12101f58e95a45b2a3c7a2573d))
+
+
+### Features
+
+* **profile:** refactor tabs structure to include section IDs for better component management ([3a713fb](https://github.com/LordCrainer/adaptcv-frontend/commit/3a713fb1283a41bd92a9d779753aa00a6cef9c4e))
+
 # [1.62.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.61.0...v1.62.0) (2025-05-04)
 
 

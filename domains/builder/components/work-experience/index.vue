@@ -1,17 +1,17 @@
 <template>
-  <CardDefault title="profile.experience.title"> 
+  <CardDefault title="profile.experience.title">
+    <template #right-items>
+      <v-btn
+        color="secondary"
+        variant="outlined"
+        prepend-icon="mdi-plus"
+        aria-label="Add Work Experience"
+        @click="add()">
+        {{ $t('actions.add') }}
+      </v-btn>
+    </template>
     <v-row>
       <v-col cols="12">
-        <div class="d-flex justify-end pb-2">
-          <v-btn
-            color="secondary"
-            variant="outlined"
-            prepend-icon="mdi-plus"
-            aria-label="Add Work Experience"
-            @click="openForm()">
-            {{ $t('actions.add') }}
-          </v-btn>
-        </div>
         <v-data-table
           :headers="headers"
           :items="workExperiences"
@@ -83,7 +83,7 @@ const state = reactive({
   selected: {} as IWorkExperience | null
 })
 
-const openForm = (experience: IWorkExperience | null = null) => {
+const add = (experience: IWorkExperience | null = null) => {
   state.selected = experience
   state.isEditing = !!experience
   state.openDialog = true
@@ -95,7 +95,7 @@ const edit = (id: string) => {
   if (!foundWorkExperience) {
     return
   }
-  openForm(foundWorkExperience)
+  add(foundWorkExperience)
 }
 
 const closeForm = () => {

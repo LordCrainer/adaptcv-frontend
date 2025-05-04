@@ -209,8 +209,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useLanguages } from '~/domains/profile/components/languages/useLanguages'
-import { useCVStore } from '~/domains/profile/shared/cv.store'
+import { useLanguages } from '~/domains/builder/components/languages/useLanguages'
+import { useCVStore } from '~/domains/builder/shared/cv.store'
 
 const { formatDateRange } = useFormatDate()
 const { proficiencyLevels } = useLanguages()

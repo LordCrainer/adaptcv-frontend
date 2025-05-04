@@ -1,4 +1,4 @@
-import type { IEducationItem } from '~/domains/profile/shared/index'
+import type { IEducationItem } from '~/domains/builder/shared/index'
 
 const useEducation = () => {
   const education = ref<IEducationItem[]>([])

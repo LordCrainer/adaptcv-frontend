@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ISkill } from '~/domains/profile/shared/index'
+import type { ISkill } from '~/domains/builder/shared/index'
 import { useSkill } from './useSkill'
 
 const { SKILLS_LIST, experienceOptions } = useSkill()

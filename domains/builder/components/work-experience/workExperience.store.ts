@@ -1,4 +1,4 @@
-import type { IWorkExperience } from '~/domains/profile/shared'
+import type { IWorkExperience } from '~/domains/builder/shared'
 
 export const useWorkExperienceStore = defineStore(
   'workExperience',

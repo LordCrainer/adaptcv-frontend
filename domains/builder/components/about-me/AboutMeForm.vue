@@ -25,7 +25,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { IAboutMe } from '@/domains/profile/shared'
+import type { IAboutMe } from '~/domains/builder/shared'
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: IAboutMe): void

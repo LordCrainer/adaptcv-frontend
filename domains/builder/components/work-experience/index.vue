@@ -54,8 +54,8 @@
 </template>
 
 <script setup lang="ts">
-import type { IWorkExperience } from '~/domains/profile/shared'
-import useWorkExperience from '~/domains/profile/components/work-experience/useWorkExperience'
+import type { IWorkExperience } from '~/domains/builder/shared'
+import useWorkExperience from '~/domains/builder/components/work-experience/useWorkExperience'
 import WorkExperienceForm from './WorkExperienceForm.vue'
 import CardDefault from '~/components/card/CardDefault.vue'
 

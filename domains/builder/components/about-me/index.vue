@@ -1,10 +1,9 @@
 <template>
-  <CardDefault title="profile.personalInfo.title">
+  <CardDefault title="profile.aboutMe.title">
     <v-form>
       <v-row>
         <v-col cols="12" md="4" class="d-flex flex-1-0 justify-center">
           <v-card
-            flat
             variant="outlined"
             class="profile-photo rounded-circle cursor-pointer"
             @click="open">
@@ -16,13 +15,14 @@
                 mdi-account-arrow-up-outline
               </v-icon>
               <span class="text-caption text-sm-subtitle-1">
-                {{ $t('profile.personalInfo.uploadPhoto') }}
+                {{ $t('profile.aboutMe.uploadLogo') }}
               </span>
             </v-sheet>
           </v-card>
         </v-col>
-        <UserInformationForm v-model="userProfile" />
+        <AboutMeForm v-model="aboutMe" />
       </v-row>
+
       <v-dialog
         v-model="state.openDialog"
         max-width="350px"
@@ -33,35 +33,37 @@
   </CardDefault>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
+import { ref } from 'vue'
 import type { IFileImage } from '~/types/global'
-import UserPreviewPhoto from './UserPreviewPhoto.vue'
-import UserInformationForm from './UserProfileForm.vue'
-import useUserProfile from '~/domains/profile/components/user-profile/useUserProfile'
-
+import { useAboutMe } from '~/domains/builder/components/about-me/useAboutMe'
+import UserPreviewPhoto from '~/domains/builder/components/user-profile/UserPreviewPhoto.vue'
+import AboutMeForm from './AboutMeForm.vue'
 import CardDefault from '~/components/card/CardDefault.vue'
 
-const { setUserProfileImage, userProfile } = useUserProfile()
+const { aboutMe, setAboutMeLogo } = useAboutMe()
 
-const fileImage = computed({
-  get() {
-    return userProfile.value.image as IFileImage
+const fileImage = ref<IFileImage>(aboutMe.value?.logo as IFileImage)
+
+watch(
+  () => fileImage,
+  (newFileImage) => {
+    if (newFileImage.value?.src) {
+      setAboutMeLogo({ ...fileImage.value })
+    }
   },
-  set(img: IFileImage) {
-    setUserProfileImage(img)
-  }
+  { deep: true }
+)
+
+const state = ref({
+  openDialog: false
 })
 
-const state = reactive({
-  openDialog: false,
-  isEditing: false
-})
-
-function close() {
-  state.openDialog = false
+const open = () => {
+  state.value.openDialog = true
 }
 
-function open() {
-  state.openDialog = true
+const close = () => {
+  state.value.openDialog = false
 }
 </script>

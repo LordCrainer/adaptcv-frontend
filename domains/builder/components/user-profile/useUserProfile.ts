@@ -1,7 +1,7 @@
 import { ref } from 'vue'
-import type { IUserProfile } from '~/domains/profile/shared'
+import type { IUserProfile } from '~/domains/builder/shared'
 import type { IFileImage } from '~/types/global'
-import { useCVStore } from '~/domains/profile/shared/cv.store'
+import { useCVStore } from '~/domains/builder/shared/cv.store'
 
 const useUserProfile = () => {
   const { saveSection, curriculumVitae } = useCVStore()

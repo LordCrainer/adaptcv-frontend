@@ -74,8 +74,8 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { IUserProfile } from '~/domains/profile/shared'
-import { areasProfession } from '~/domains/profile/shared/constants/profesionArea'
+import type { IUserProfile } from '~/domains/builder/shared'
+import { areasProfession } from '~/domains/builder/shared/constants/profesionArea'
 
 const { required } = useRules()
 

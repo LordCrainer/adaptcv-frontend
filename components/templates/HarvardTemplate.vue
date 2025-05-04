@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useCVStore } from '~/domains/profile/shared/cv.store'
+import { useCVStore } from '~/domains/builder/shared/cv.store'
 const { curriculumVitae } = useCVStore()
 
 import { computed } from 'vue'

@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import LanguagesForm from './LanguagesForm.vue'
-import { useLanguages } from '~/domains/profile/components/languages/useLanguages'
+import { useLanguages } from '~/domains/builder/components/languages/useLanguages'
 import CardDefault from '~/components/card/CardDefault.vue'
 
 const { languages, upsertLanguage, removeLanguage } = useLanguages()

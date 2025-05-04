@@ -8,13 +8,13 @@
 
 <script setup lang="ts">
 import { ref, markRaw } from 'vue'
-import UserProfile from '~/domains/profile/components/user-profile/index.vue'
-import WorkExperience from '~/domains/profile/components/work-experience/index.vue'
-import AboutMe from '~/domains/profile/components/about-me/index.vue'
+import UserProfile from '~/domains/builder/components/user-profile/index.vue'
+import WorkExperience from '~/domains/builder/components/work-experience/index.vue'
+import AboutMe from '~/domains/builder/components/about-me/index.vue'
 
-import Education from '~/domains/profile/components/education/index.vue'
-import Skills from '~/domains/profile/components/skills/index.vue'
-import Languages from '~/domains/profile/components/languages/index.vue'
+import Education from '~/domains/builder/components/education/index.vue'
+import Skills from '~/domains/builder/components/skills/index.vue'
+import Languages from '~/domains/builder/components/languages/index.vue'
 import type { TabItem } from '~/types/global'
 
 type Sections =

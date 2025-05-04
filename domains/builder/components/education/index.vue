@@ -52,8 +52,8 @@
 
 <script setup lang="ts">
 import EducationForm from './EducationForm.vue'
-import type { IEducationItem } from '~/domains/profile/shared/index'
-import useEducation from '~/domains/profile/components/education/useEducation'
+import type { IEducationItem } from '~/domains/builder/shared/index'
+import useEducation from '~/domains/builder/components/education/useEducation'
 import CardDefault from '~/components/card/CardDefault.vue'
 
 const { t } = useI18n()

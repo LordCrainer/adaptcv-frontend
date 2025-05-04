@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import ProfileBuilderComponents from '~/domains/profile/views/ProfileBuilderComponents.vue'
+import ProfileBuilderComponents from '~/domains/builder/views/ProfileBuilderComponents.vue'
 
 definePageMeta({
   layout: 'profile-builder',

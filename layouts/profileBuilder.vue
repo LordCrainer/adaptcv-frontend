@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import ProfileBuilderToolbar from '~/domains/profile/components/ProfileBuilderToolbar.vue'
+import ProfileBuilderToolbar from '~/domains/builder/components/ProfileBuilderToolbar.vue'
 import DefaultLayout from './default.vue'
 </script>
 

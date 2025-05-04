@@ -1,4 +1,4 @@
-import type { ISkill, yearsOfExperience } from '~/domains/profile/shared'
+import type { ISkill, yearsOfExperience } from '~/domains/builder/shared'
 
 const SKILLS_LIST = ref(
   [

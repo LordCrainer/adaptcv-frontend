@@ -49,38 +49,54 @@ import Languages from '~/domains/profile/components/languages/index.vue'
 import type { TabItem } from '~/types/global'
 import CardDefault from '~/components/card/CardDefault.vue'
 
-const tabs = ref<TabItem[]>([
+const selectedSection = ref<Sections[]>(['user-profile'])
+
+type Sections =
+  | 'user-profile'
+  | 'about-me'
+  | 'work-experience'
+  | 'education'
+  | 'skills'
+  | 'languages'
+
+const tabs = ref<TabItem<Sections>[]>([
   {
+    id: 'user-profile',
     title: 'Profile',
     translationKey: 'profile.personalInfo.title',
     component: markRaw(UserProfile),
     props: {}
   },
   {
+    id: 'about-me',
     title: 'About Me',
     translationKey: 'profile.aboutMe.title',
     component: markRaw(AboutMe),
     props: {}
   },
   {
+    id: 'work-experience',
     title: 'Experience',
     translationKey: 'profile.experience.title',
     component: markRaw(WorkExperience),
     props: {}
   },
   {
+    id: 'education',
     title: 'Education',
     translationKey: 'profile.education.title',
     component: markRaw(Education),
     props: {}
   },
   {
+    id: 'skills',
     title: 'Skills',
     translationKey: 'profile.skills.title',
     component: markRaw(Skills),
     props: {}
   },
   {
+    id: 'languages',
     title: 'Languages',
     translationKey: 'profile.languages.title',
     component: markRaw(Languages),

@@ -1,3 +1,12 @@
+# [1.62.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.61.0...v1.62.0) (2025-05-04)
+
+
+### Features
+
+* **i18n:** add 'sections' key to builder translations in English and Spanish ([b416276](https://github.com/LordCrainer/adaptcv-frontend/commit/b416276bc16dbb69c6f4ebdb199f70207fda3fd1))
+* **profile:** implement ProfileBuilderComponents and update toolbar slots ([5f3a345](https://github.com/LordCrainer/adaptcv-frontend/commit/5f3a345bea3d845820995ff1610fb2e77a65c64c))
+* update @nuxtjs/i18n to version 9.5.4 and adjust dependencies ([32315cf](https://github.com/LordCrainer/adaptcv-frontend/commit/32315cfdb6cf23e010ad9cf159ed51c284ae9660))
+
 # [1.61.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.60.1...v1.61.0) (2025-05-03)
 
 

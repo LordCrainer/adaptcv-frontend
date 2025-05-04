@@ -3,16 +3,14 @@
     class="mx-auto"
     width="100%"
     :color="global.name.value === 'dark' ? 'grey-darken-4' : color">
-    <div class="pa-4 d-flex">
+    <div class="px-4 py-2 d-flex">
       <slot name="card-title">
         <span class="text-h6 font-weight-black text-primary">
           {{ $t(title) }}
         </span>
       </slot>
     </div>
-    <v-card-text class="pt-4">
-      <slot></slot>
-    </v-card-text>
+    <slot></slot>
   </v-card>
 </template>
 

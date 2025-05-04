@@ -65,7 +65,9 @@ const items = [
 ]
 
 function edit(builderId: string) {
-  router.push({ path: `/builder/${builderId}` })
+  if (builderId) {
+    router.push(`/builder/${builderId}`)
+  }
 }
 function remove(builderId: string) {
   console.log('Remove item with id:', builderId)

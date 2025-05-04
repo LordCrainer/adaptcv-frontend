@@ -15,7 +15,8 @@ type RouteChildren = RouteRecordRaw['children'][0] & {
   children?: RouteChildren[]
 }
 
-export type TabItem = {
+export type TabItem<T = string> = {
+  id: T
   translationKey: string
   title?: string
   component: Component

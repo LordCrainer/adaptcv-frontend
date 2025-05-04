@@ -1,12 +1,12 @@
 <template>
-  <ProfileBuilderComponents />
+  <BuilderByBuilderId />
 </template>
 
 <script lang="ts" setup>
-import ProfileBuilderComponents from '~/domains/builder/views/ProfileBuilderComponents.vue'
+import BuilderByBuilderId from '~/domains/builder/views/BuilderByBuilderId.vue'
 
 definePageMeta({
-  layout: 'profile-builder',
+  layout: 'builder',
   name: 'builder-builderId'
 })
 </script>

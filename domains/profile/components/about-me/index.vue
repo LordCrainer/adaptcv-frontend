@@ -1,34 +1,36 @@
 <template>
-  <v-form>
-    <v-row>
-      <v-col cols="12" md="4" class="d-flex flex-1-0 justify-center">
-        <v-card
-          variant="outlined"
-          class="profile-photo rounded-circle cursor-pointer"
-          @click="open">
-          <v-img v-if="fileImage?.src" :src="fileImage.src"></v-img>
-          <v-sheet
-            v-else
-            class="profile-photo d-flex align-center justify-center flex-column">
-            <v-icon size="100" color="grey lighten-2">
-              mdi-account-arrow-up-outline
-            </v-icon>
-            <span class="text-caption text-sm-subtitle-1">
-              {{ $t('profile.aboutMe.uploadLogo') }}
-            </span>
-          </v-sheet>
-        </v-card>
-      </v-col>
-      <AboutMeForm v-model="aboutMe" />
-    </v-row>
+  <CardDefault title="profile.aboutMe.title">
+    <v-form>
+      <v-row>
+        <v-col cols="12" md="4" class="d-flex flex-1-0 justify-center">
+          <v-card
+            variant="outlined"
+            class="profile-photo rounded-circle cursor-pointer"
+            @click="open">
+            <v-img v-if="fileImage?.src" :src="fileImage.src"></v-img>
+            <v-sheet
+              v-else
+              class="profile-photo d-flex align-center justify-center flex-column">
+              <v-icon size="100" color="grey lighten-2">
+                mdi-account-arrow-up-outline
+              </v-icon>
+              <span class="text-caption text-sm-subtitle-1">
+                {{ $t('profile.aboutMe.uploadLogo') }}
+              </span>
+            </v-sheet>
+          </v-card>
+        </v-col>
+        <AboutMeForm v-model="aboutMe" />
+      </v-row>
 
-    <v-dialog
-      v-model="state.openDialog"
-      max-width="350px"
-      transition="dialog-transition">
-      <UserPreviewPhoto v-model:image="fileImage" @close="close" />
-    </v-dialog>
-  </v-form>
+      <v-dialog
+        v-model="state.openDialog"
+        max-width="350px"
+        transition="dialog-transition">
+        <UserPreviewPhoto v-model:image="fileImage" @close="close" />
+      </v-dialog>
+    </v-form>
+  </CardDefault>
 </template>
 
 <script lang="ts" setup>
@@ -37,6 +39,7 @@ import type { IFileImage } from '~/types/global'
 import { useAboutMe } from '~/domains/profile/components/about-me/useAboutMe'
 import UserPreviewPhoto from '~/domains/profile/components/user-profile/UserPreviewPhoto.vue'
 import AboutMeForm from './AboutMeForm.vue'
+import CardDefault from '~/components/card/CardDefault.vue'
 
 const { aboutMe, setAboutMeLogo } = useAboutMe()
 

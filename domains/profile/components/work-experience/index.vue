@@ -1,60 +1,63 @@
 <template>
-  <v-row>
-    <v-col cols="12">
-      <div class="d-flex justify-end pb-2">
-        <v-btn
-          color="secondary"
-          variant="outlined"
-          prepend-icon="mdi-plus"
-          aria-label="Add Work Experience"
-          @click="openForm()">
-          {{ $t('actions.add') }}
-        </v-btn>
-      </div>
-      <v-data-table
-        :headers="headers"
-        :items="workExperiences"
-        :hide-default-footer="workExperiences.length < 11">
-        <template v-slot:item.actions="{ item, index }">
-          <div class="d-flex ga-2 justify-end">
-            <v-icon
-              color="medium-emphasis"
-              icon="mdi-pencil"
-              size="small"
-              @click="edit(item.id)" />
+  <CardDefault title="profile.experience.title"> 
+    <v-row>
+      <v-col cols="12">
+        <div class="d-flex justify-end pb-2">
+          <v-btn
+            color="secondary"
+            variant="outlined"
+            prepend-icon="mdi-plus"
+            aria-label="Add Work Experience"
+            @click="openForm()">
+            {{ $t('actions.add') }}
+          </v-btn>
+        </div>
+        <v-data-table
+          :headers="headers"
+          :items="workExperiences"
+          :hide-default-footer="workExperiences.length < 11">
+          <template v-slot:item.actions="{ item, index }">
+            <div class="d-flex ga-2 justify-end">
+              <v-icon
+                color="medium-emphasis"
+                icon="mdi-pencil"
+                size="small"
+                @click="edit(item.id)" />
 
-            <v-icon
-              color="medium-emphasis"
-              icon="mdi-delete"
-              size="small"
-              @click="remove(item.id)" />
-          </div>
-        </template>
+              <v-icon
+                color="medium-emphasis"
+                icon="mdi-delete"
+                size="small"
+                @click="remove(item.id)" />
+            </div>
+          </template>
 
-        <template v-slot:no-data>
-          {{ $t('common.noData') }}
-        </template>
-      </v-data-table>
-    </v-col>
-  </v-row>
+          <template v-slot:no-data>
+            {{ $t('common.noData') }}
+          </template>
+        </v-data-table>
+      </v-col>
+    </v-row>
 
-  <v-dialog
-    v-model="state.openDialog"
-    max-width="650px"
-    transition="dialog-transition">
-    <WorkExperienceForm
-      :title="`${state.isEditing ? 'Edit' : 'Add'} an Experience`"
-      v-model="state.selected"
-      @submit="submitForm"
-      @cancel="closeForm"
-      v-if="state.openDialog"></WorkExperienceForm>
-  </v-dialog>
+    <v-dialog
+      v-model="state.openDialog"
+      max-width="650px"
+      transition="dialog-transition">
+      <WorkExperienceForm
+        :title="`${state.isEditing ? 'Edit' : 'Add'} an Experience`"
+        v-model="state.selected"
+        @submit="submitForm"
+        @cancel="closeForm"
+        v-if="state.openDialog"></WorkExperienceForm>
+    </v-dialog>
+  </CardDefault>
 </template>
 
 <script setup lang="ts">
 import type { IWorkExperience } from '~/domains/profile/shared'
 import useWorkExperience from '~/domains/profile/components/work-experience/useWorkExperience'
 import WorkExperienceForm from './WorkExperienceForm.vue'
+import CardDefault from '~/components/card/CardDefault.vue'
 
 const { t } = useI18n()
 

@@ -1,18 +1,8 @@
 <template>
   <div class="d-flex flex-column ga-4">
-    <CardDefault
-      flat
-      v-for="tab in tabs"
-      :key="tab.translationKey"
-      :is="tab.component"
-      :title="tab.translationKey">
-      <div class="d-flex flex-column pa-4">
-        <component
-          :key="tab.translationKey"
-          :is="tab.component"
-          v-bind="tab.props" />
-      </div>
-    </CardDefault>
+    <div v-for="tab in tabs" :key="tab.translationKey">
+      <component :is="tab.component" v-bind="tab.props"></component>
+    </div>
   </div>
 </template>
 
@@ -26,7 +16,6 @@ import Education from '~/domains/profile/components/education/index.vue'
 import Skills from '~/domains/profile/components/skills/index.vue'
 import Languages from '~/domains/profile/components/languages/index.vue'
 import type { TabItem } from '~/types/global'
-import CardDefault from '~/components/card/CardDefault.vue'
 
 type Sections =
   | 'user-profile'

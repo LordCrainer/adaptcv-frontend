@@ -4,13 +4,15 @@
     width="100%"
     :color="global.name.value === 'dark' ? 'grey-darken-4' : color">
     <div class="px-4 py-2 d-flex">
-      <slot name="card-title">
+      <slot name="card-toolbar">
         <span class="text-h6 font-weight-black text-primary">
           {{ $t(title) }}
         </span>
       </slot>
     </div>
-    <slot></slot>
+    <div class="pa-4">
+      <slot></slot>
+    </div>
   </v-card>
 </template>
 

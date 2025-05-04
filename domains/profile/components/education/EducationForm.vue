@@ -7,7 +7,7 @@
           variant="outlined"
           :items="degreeOptions"
           clearable
-          :item-title="(i) => i && $t(`profile.education.${i}`)"
+          :item-title="(i: string) => i && $t(`profile.education.${i}`)"
           :label="$t('profile.education.degree')"
           aria-label="Degree"
           required></v-autocomplete>

@@ -1,3 +1,15 @@
+# [1.64.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.63.0...v1.64.0) (2025-05-04)
+
+
+### Bug Fixes
+
+* **builder:** replace v-icon with v-btn for edit and remove actions ([683cb8b](https://github.com/LordCrainer/adaptcv-frontend/commit/683cb8b573f6bc573193239856dc5429200f46cb))
+
+
+### Features
+
+* **profile:** wrap profile sections in CardDefault component for consistent styling ([fd8ac49](https://github.com/LordCrainer/adaptcv-frontend/commit/fd8ac498bf29484d9c1d205391bf9eb339fe1f07))
+
 # [1.63.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.62.0...v1.63.0) (2025-05-04)
 
 

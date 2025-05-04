@@ -1,3 +1,10 @@
+# [1.65.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.64.0...v1.65.0) (2025-05-04)
+
+
+### Features
+
+* **toolbar:** create ProfileBuilderToolbar component for enhanced toolbar functionality ([7339f82](https://github.com/LordCrainer/adaptcv-frontend/commit/7339f82a3e9bf19e82498863a62425387467dc88))
+
 # [1.64.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.63.0...v1.64.0) (2025-05-04)
 
 

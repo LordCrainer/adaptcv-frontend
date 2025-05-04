@@ -1,3 +1,10 @@
+# [1.66.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.65.0...v1.66.0) (2025-05-04)
+
+
+### Features
+
+* Implement user profile, work experience, education, skills, and languages components for profile builder ([be1a393](https://github.com/LordCrainer/adaptcv-frontend/commit/be1a393631024c8b165a9a19e8e0b50e6bcb8ccd))
+
 # [1.65.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.64.0...v1.65.0) (2025-05-04)
 
 

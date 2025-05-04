@@ -52,6 +52,7 @@ interface TranslationKeys {
   }
   builder: {
     id: string
+    sections: string
     title: string
     name: string
     description: string

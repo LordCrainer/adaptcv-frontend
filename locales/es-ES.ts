@@ -72,7 +72,8 @@ const builder: TranslationKeys['builder'] = {
   status: 'Estado',
   description: 'Descripción',
   template: 'Plantilla',
-  id: 'ID'
+  id: 'ID',
+  sections: 'Secciones',
 }
 
 const baseEntity: TranslationKeys['baseEntity'] = {

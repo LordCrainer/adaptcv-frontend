@@ -1,14 +1,40 @@
 <template>
-  <CardDefault
-    class="d-flex flex-column ga-4"
-    style="max-width: 800px"
-    flat
-    v-for="tab in tabs"
-    :key="tab.translationKey"
-    :is="tab.component"
-    :title="tab.translationKey">
-    <component :is="tab.component" v-bind="tab.props" />
-  </CardDefault>
+  <div class="d-flex flex-row ga-4">
+    <!-- <div>
+      <CardDefault class="sticky-toolbar" flat>
+        <template #card-title>
+          <span class="text-h6 font-weight-black text-primary">
+            {{ $t('builder.sections') }}
+          </span>
+        </template>
+        <v-list>
+          <v-list-item-group
+            v-for="tab in tabs"
+            :key="tab.translationKey"
+            v-model="tab.active">
+            <v-list-item :value="tab.translationKey">
+              <v-list-item-title>
+                {{ $t(tab.translationKey) }}
+              </v-list-item-title>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </CardDefault>
+    </div> -->
+
+    <div class="d-flex flex-column ga-4">
+      <CardDefault
+        class="d-flex flex-column"
+        style="max-width: 800px"
+        flat
+        v-for="tab in tabs"
+        :key="tab.translationKey"
+        :is="tab.component"
+        :title="tab.translationKey">
+        <component :is="tab.component" v-bind="tab.props" />
+      </CardDefault>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">

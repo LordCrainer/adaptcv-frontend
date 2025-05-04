@@ -2,11 +2,14 @@
   <v-card
     class="mx-auto"
     width="100%"
-    min-width="400px"
     :color="global.name.value === 'dark' ? 'grey-darken-4' : color">
-    <template v-slot:title>
-      <span class="font-weight-black text-primary">{{ $t(title) }}</span>
-    </template>
+    <div class="pa-4 d-flex">
+      <slot name="card-title">
+        <span class="text-h6 font-weight-black text-primary">
+          {{ $t(title) }}
+        </span>
+      </slot>
+    </div>
     <v-card-text class="pt-4">
       <slot></slot>
     </v-card-text>

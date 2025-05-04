@@ -1,9 +1,9 @@
 <template>
-  <ProfileRenderComponents />
+  <ProfileBuilderComponents />
 </template>
 
 <script lang="ts" setup>
-import ProfileRenderComponents from '~/domains/profile/views/ProfileRenderComponents.vue'
+import ProfileBuilderComponents from '~/domains/profile/views/ProfileBuilderComponents.vue'
 
 definePageMeta({
   layout: 'profile-builder',

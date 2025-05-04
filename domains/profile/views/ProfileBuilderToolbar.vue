@@ -1,36 +1,41 @@
 <template>
   <v-app-bar density="compact" flat app color="white" class="sticky-toolbar">
-    <v-toolbar-title class="text-h5 font-weight-bold">
-      {{ $t('routes.builder') }}
-    </v-toolbar-title>
+    <slot name="toolbar-title">
+      <v-toolbar-title class="text-h5 font-weight-bold">
+        {{ $t('routes.builder') }}
+      </v-toolbar-title>
+    </slot>
     <v-spacer></v-spacer>
-    <div class="d-flex ga-2 pa-2 align-center">
-      <v-btn
-        size="small"
-        v-tooltip:start="$t(isPreview ? 'actions.edit' : 'actions.preview')"
-        :color="isPreview ? 'warning' : 'grey'"
-        @click="toggleView"
-        variant="tonal">
-        <v-icon>{{ isPreview ? 'mdi-pencil' : 'mdi-eye' }}</v-icon>
-      </v-btn>
-      <v-btn
-        size="small"
-        v-tooltip:start="$t('actions.save')"
-        class="text-success"
-        @click="$router.push({ name: 'home' })"
-        variant="tonal">
-        <v-icon>mdi-content-save</v-icon>
-      </v-btn>
-      <v-btn
-        size="small"
-        v-tooltip:start="$t('actions.publish')"
-        variant="tonal"
-        @click="$router.push({ name: 'home' })"
-        class="text-primary">
-        <v-icon>mdi-publish</v-icon>
-      </v-btn>
-    </div>
+    <slot name="toolbar-items">
+      <div class="d-flex ga-2 pa-2 align-center">
+        <v-btn
+          size="small"
+          v-tooltip:start="$t(isPreview ? 'actions.edit' : 'actions.preview')"
+          :color="isPreview ? 'warning' : 'grey'"
+          @click="toggleView"
+          variant="tonal">
+          <v-icon>{{ isPreview ? 'mdi-pencil' : 'mdi-eye' }}</v-icon>
+        </v-btn>
+        <v-btn
+          size="small"
+          v-tooltip:start="$t('actions.save')"
+          class="text-success"
+          @click="$router.push({ name: 'home' })"
+          variant="tonal">
+          <v-icon>mdi-content-save</v-icon>
+        </v-btn>
+        <v-btn
+          size="small"
+          v-tooltip:start="$t('actions.publish')"
+          variant="tonal"
+          @click="$router.push({ name: 'home' })"
+          class="text-primary">
+          <v-icon>mdi-publish</v-icon>
+        </v-btn>
+      </div>
+    </slot>
   </v-app-bar>
+  <slot></slot>
 </template>
 
 <script setup lang="ts">

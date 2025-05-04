@@ -8,17 +8,12 @@
     item-value="id">
     <template v-slot:item.options="{ item }">
       <div class="d-flex ga-2 justify-end">
-        <v-icon
-          color="primary"
-          icon="mdi-pencil"
-          size="small"
-          @click="() => edit(item.id)" />
-
-        <v-icon
-          color="error"
-          icon="mdi-delete"
-          size="small"
-          @click="() => remove(item.id)" />
+        <v-btn size="small" variant="text" icon @click="edit(item.id)">
+          <v-icon color="primary">mdi-pencil</v-icon>
+        </v-btn>
+        <v-btn size="small" variant="text" icon color="error" @click="remove(item.id)">
+          <v-icon color="error">mdi-delete</v-icon>
+        </v-btn>
       </div>
     </template>
   </v-data-table>

@@ -18,7 +18,7 @@ export type Degree =
   | 'doctorate'
 
 export interface ISkill {
-  skill: string
+  skill: string | undefined
   yearsOfExperience: yearsOfExperience | undefined
 }
 

@@ -6,6 +6,9 @@ export const useFormatDate = () => {
     return res.toString()
   }
   function standardDate(date: Date | string): string {
+    if (!date) {
+      return ''
+    }
     const fechaFormateada = new Date(date).toLocaleDateString('es-EC', {
       month: 'short',
       year: 'numeric'
@@ -18,6 +21,9 @@ export const useFormatDate = () => {
   }
 
   function standardFormatDate(date: Date | string): string {
+    if (!date) {
+      return ''
+    }
     const fechaFormateada = new Date(date).toLocaleDateString('es-EC', {
       year: 'numeric',
       month: '2-digit',

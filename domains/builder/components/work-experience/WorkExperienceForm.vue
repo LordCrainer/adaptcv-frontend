@@ -27,12 +27,16 @@
         <v-col cols="12">
           <v-row>
             <v-col md="6">
-              <v-menu>
+              <v-menu
+                v-model="stateMenu.startDate"
+                :close-on-content-click="false">
                 <template v-slot:activator="{ props }">
                   <v-text-field
                     icon-color="primary"
                     prepend-inner-icon="mdi-calendar"
-                    :value="localExperiencie.startDate"
+                    :value="standardFormatDate(localExperiencie.startDate)"
+                    :label="$t('common.startDate')"
+                    :active="true"
                     :placeholder="standardFormatDate(new Date())"
                     variant="outlined"
                     v-bind="props"
@@ -40,16 +44,21 @@
                 </template>
                 <v-date-picker
                   v-model="localExperiencie.startDate"
+                  @update:modelValue="stateMenu.startDate = false"
                   show-adjacent-months></v-date-picker>
               </v-menu>
             </v-col>
             <v-col md="6">
-              <v-menu>
+              <v-menu
+                v-model="stateMenu.endDate"
+                :close-on-content-click="false">
                 <template v-slot:activator="{ props }">
                   <v-text-field
                     icon-color="primary"
                     prepend-inner-icon="mdi-calendar"
-                    :value="localExperiencie.endDate"
+                    :value="standardFormatDate(localExperiencie.endDate)"
+                    :label="$t('common.endDate')"
+                    :active="true"
                     :placeholder="standardFormatDate(addYearToDate(new Date()))"
                     variant="outlined"
                     v-bind="props"
@@ -57,6 +66,8 @@
                 </template>
                 <v-date-picker
                   v-model="localExperiencie.endDate"
+                  :allowed-dates="allowedDates"
+                  @update:modelValue="stateMenu.endDate = false"
                   show-adjacent-months></v-date-picker>
               </v-menu>
             </v-col>
@@ -114,14 +125,15 @@ const DEFAULT_ITEM: IWorkExperience = {
   description: {} as DEContentData
 }
 
+const stateMenu = ref({
+  startDate: false,
+  endDate: false
+})
+
 const localExperiencie = computed({
   get: () => props.modelValue || { ...DEFAULT_ITEM },
   set: (value) => {
-    localExperiencie.value = {
-      ...localExperiencie.value,
-      startDate: standardFormatDate(value.startDate),
-      endDate: standardFormatDate(value.endDate)
-    }
+    localExperiencie.value = value
   }
 })
 
@@ -129,18 +141,16 @@ watch(
   () => props.modelValue,
   (newVal) => {
     if (newVal) {
-      localExperiencie.value = {
-        ...newVal,
-        startDate: standardFormatDate(newVal.startDate),
-        endDate: standardFormatDate(newVal.endDate)
-      }
-      $editor.value?.setContentData(newVal.description)
+      localExperiencie.value = newVal
     }
   },
   { deep: true, immediate: true }
 )
 
 const emit = defineEmits(['submit', 'cancel', 'close'])
+
+const allowedDates = (date: unknown) =>
+  date instanceof Date && date >= new Date(localExperiencie.value.startDate)
 
 const submitForm = () => {
   if (localExperiencie.value.company && localExperiencie.value.jobTitle) {

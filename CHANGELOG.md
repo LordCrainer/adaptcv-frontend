@@ -1,3 +1,13 @@
+# [1.67.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.66.0...v1.67.0) (2025-05-05)
+
+
+### Features
+
+* Enhance user profile and work experience components with improved date handling and UI updates ([53c23b3](https://github.com/LordCrainer/adaptcv-frontend/commit/53c23b3eb9df1bbefc680668748ff1933ee11f63))
+* Refactor builder layout and components for improved structure and functionality ([10fda16](https://github.com/LordCrainer/adaptcv-frontend/commit/10fda161d27b708c8d1ec80bbdf02aa871020778))
+* Refactor user profile and builder components with improved toolbar integration and UI enhancements ([9230e5b](https://github.com/LordCrainer/adaptcv-frontend/commit/9230e5be2d98e5238fe8a2850dd5516ae39e32af))
+* Update CardDefault component to support slot-based toolbar and refactor add button implementation in education and work experience components ([5f4a59e](https://github.com/LordCrainer/adaptcv-frontend/commit/5f4a59e9634113c2728624b90fd87b4ff6268e33))
+
 # [1.66.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.65.0...v1.66.0) (2025-05-04)
 
 

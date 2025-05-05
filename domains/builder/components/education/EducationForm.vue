@@ -1,12 +1,14 @@
 <template>
   <v-form @submit.prevent="submitForm">
     <v-card :title="title">
-      <div class="d-flex flex-column px-4">
+      <div class="d-flex flex-column pa-4 ga-4">
         <v-autocomplete
           v-model="localEducation.degree"
           variant="outlined"
           :items="degreeOptions"
+          :placeholder="$t('profile.education.degreePlaceholder')"
           clearable
+          active
           :item-title="(i: string) => i && $t(`profile.education.${i}`)"
           :label="$t('profile.education.degree')"
           aria-label="Degree"
@@ -15,8 +17,9 @@
         <v-text-field
           v-model="localEducation.fieldOfStudy"
           :label="$t('profile.education.fieldOfStudy')"
-          placeholder="Ej: Computer Science"
+          placeholder="Computer Science"
           variant="outlined"
+          active
           aria-label="Field of Study"
           required></v-text-field>
 
@@ -24,7 +27,8 @@
           v-model="localEducation.institution"
           :label="$t('profile.education.institution')"
           variant="outlined"
-          placeholder="Ej: University of Example"
+          active
+          placeholder="University of Example"
           aria-label="Institution"
           required></v-text-field>
 
@@ -36,9 +40,9 @@
                 prepend-inner-icon="mdi-calendar"
                 :value="standardFormatDate(localEducation.startDate)"
                 :label="$t('common.startDate')"
-                active
                 :placeholder="standardFormatDate(new Date())"
                 variant="outlined"
+                active
                 v-bind="props"
                 aria-label="Start Date"></v-text-field>
             </template>
@@ -55,10 +59,10 @@
                 prepend-inner-icon="mdi-calendar"
                 :value="standardFormatDate(localEducation.endDate)"
                 :label="$t('common.endDate')"
-                active
                 :placeholder="standardFormatDate(addYearToDate(new Date()))"
                 variant="outlined"
                 v-bind="props"
+                active
                 aria-label="End Date"></v-text-field>
             </template>
             <v-date-picker
@@ -124,7 +128,7 @@ watch(
   (newVal) => {
     localEducation.value = { ...newVal }
   },
-  { deep: true }
+  { deep: true, immediate: true }
 )
 
 const emit = defineEmits(['submit', 'cancel', 'close'])

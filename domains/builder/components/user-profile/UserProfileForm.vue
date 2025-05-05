@@ -6,9 +6,9 @@
       icon-color="primary"
       v-model="formData.name"
       :label="$t('profile.personalInfo.fullname')"
-      placeholder="Ej: John Doe"
+      placeholder="John Doe"
       active
-      variant="underlined"
+      variant="outlined"
       :rules="[required($t('profile.personalInfo.fullname'))]"
       :aria-label="$t('profile.personalInfo.fullname')"
       required></v-text-field>
@@ -18,9 +18,9 @@
       icon-color="primary"
       prepend-icon="mdi-email"
       :label="$t('profile.personalInfo.email')"
-      placeholder="Ej: example@example.com"
+      placeholder="example@example.com"
       active
-      variant="underlined"
+      variant="outlined"
       type="email"
       aria-label="Email"
       required></v-text-field>
@@ -31,9 +31,9 @@
       icon-color="primary"
       prepend-icon="mdi-phone"
       :label="$t('profile.personalInfo.phone')"
-      placeholder="Ej: +1234567890"
+      placeholder="+1234567890"
       active
-      variant="underlined"
+      variant="outlined"
       type="tel"
       aria-label="Phone"></v-text-field>
 
@@ -43,26 +43,26 @@
       icon-color="primary"
       :label="$t('profile.personalInfo.country')"
       prepend-icon="mdi-map"
-      placeholder="Ej: country"
+      placeholder="My country"
       active
       aria-label="Country"
-      variant="underlined"></v-text-field>
+      variant="outlined"></v-text-field>
     <v-text-field
       density="comfortable"
       v-model="formData.city"
       icon-color="primary"
       :label="$t('profile.personalInfo.city')"
       prepend-icon="mdi-city"
-      placeholder="Ej: city"
+      placeholder="My city"
       active
       aria-label="City"
-      variant="underlined"></v-text-field>
+      variant="outlined"></v-text-field>
     <v-select
       density="comfortable"
       clearable
       :label="$t('profile.personalInfo.areaProfession')"
       :placeholder="$t('profile.personalInfo.areaProfessionPlaceholder')"
-      variant="underlined"
+      variant="outlined"
       active
       icon-color="primary"
       prepend-icon="mdi-briefcase"
@@ -78,7 +78,7 @@
       icon-color="primary"
       :label="$t('profile.personalInfo.profession')"
       :placeholder="$t('profile.personalInfo.professionPlaceholder')"
-      variant="underlined"
+      variant="outlined"
       :items="professions"
       v-model="formData.profession"
       autocomplete

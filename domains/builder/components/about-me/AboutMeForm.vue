@@ -6,8 +6,8 @@
         v-model="formData.slogan"
         :label="$t('profile.aboutMe.slogan')"
         active
-        placeholder="Ej: Your slogan here"
-        variant="underlined"
+        placeholder="Your slogan here"
+        variant="outlined"
         aria-label="Slogan"
         required></v-text-field>
 
@@ -16,8 +16,8 @@
         v-model="formData.summary"
         :label="$t('profile.aboutMe.summary')"
         active
-        placeholder="Ej: Your summary here"
-        variant="underlined"
+        placeholder="Your summary here"
+        variant="outlined"
         rows="5"
         aria-label="Summary"
         required></v-textarea>  

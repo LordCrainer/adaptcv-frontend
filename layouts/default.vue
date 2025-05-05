@@ -5,7 +5,7 @@
     <Header :items="APP_ROUTES" />
     <v-main>
       <div class="pa-4 flex-container position-relative">
-        <slot />
+        <NuxtPage />
       </div>
     </v-main>
     <Footer />

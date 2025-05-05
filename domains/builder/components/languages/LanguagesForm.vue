@@ -7,7 +7,7 @@
           icon-color="primary"
           prepend-icon="mdi-magnify"
           density="comfortable"
-          variant="underlined"
+          variant="outlined"
           :aria-label="$t('profile.languages.language')"
           :placeholder="$t('profile.languages.placeholderLanguage')"
           class="flex-grow-1"
@@ -29,7 +29,7 @@
         icon-color="primary"
         v-model="localLang.proficiency"
         :items="proficiencyLevels"
-        variant="underlined"
+        variant="outlined"
         active
         :item-title="(i) => $t(`profile.languages.${i}`)"
         :label="$t('profile.languages.level')"

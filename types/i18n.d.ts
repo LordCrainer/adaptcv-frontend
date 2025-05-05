@@ -93,6 +93,7 @@ interface TranslationKeys {
     education: {
       title: string
       degree: string
+      degreePlaceholder: string
       institution: string
       fieldOfStudy: string
       startDate: string

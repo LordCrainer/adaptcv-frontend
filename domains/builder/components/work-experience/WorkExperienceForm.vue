@@ -7,20 +7,22 @@
             icon-color="primary"
             prepend-inner-icon="mdi-briefcase"
             v-model="localExperiencie.jobTitle"
+            active
             variant="outlined"
             :label="$t('profile.experience.jobTitle')"
-            placeholder="Ej: Software Engineer"
+            placeholder="Software Engineer"
             aria-label="Job Title"
             required></v-text-field>
         </v-col>
         <v-col md="6" class="py-1">
           <v-text-field
             icon-color="primary"
+            active
             prepend-inner-icon="mdi-office-building"
             v-model="localExperiencie.company"
             :label="$t('profile.experience.company')"
             variant="outlined"
-            placeholder="Ej: Tech Company"
+            placeholder="Tech Company"
             aria-label="Company"
             required></v-text-field>
         </v-col>

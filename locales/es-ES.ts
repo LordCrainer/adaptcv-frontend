@@ -35,6 +35,7 @@ const profile: TranslationKeys['profile'] = {
     title: 'Educación',
     fieldOfStudy: 'Campo de estudio',
     degree: 'Título',
+    degreePlaceholder: 'Selecciona un título',
     institution: 'Institución',
     startDate: 'Fecha de inicio',
     endDate: 'Fecha de finalización',

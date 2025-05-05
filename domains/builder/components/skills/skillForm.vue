@@ -7,7 +7,7 @@
           icon-color="primary"
           density="comfortable"
           v-model="localSkills.skill"
-          variant="underlined"
+          variant="outlined"
           class="flex-grow-1"
           clearable
           :items="SKILLS_LIST"
@@ -30,7 +30,7 @@
         density="comfortable"
         v-model="localSkills.yearsOfExperience"
         :items="experienceOptions"
-        variant="underlined"
+        variant="outlined"
         :item-title="(i) => i && $t(`profile.skills.${i}`)"
         :label="$t('profile.skills.yearsOfExperience')"
         :aria-label="$t('profile.skills.yearsOfExperience')"

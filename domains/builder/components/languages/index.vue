@@ -1,8 +1,5 @@
 <template>
   <div class="d-flex flex-column ga-4">
-    <div>
-      <LanguagesForm @submit="upsertLanguage" />
-    </div>
     <div class="d-flex flex-wrap">
       <v-chip
         v-for="(item, index) in languages"
@@ -13,6 +10,9 @@
         @click:close="removeLanguage(index)">
         {{ item.name }} ({{ item.proficiency }})
       </v-chip>
+    </div>
+    <div>
+      <LanguagesForm @submit="upsertLanguage" />
     </div>
   </div>
 </template>

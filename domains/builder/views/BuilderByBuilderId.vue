@@ -38,7 +38,7 @@
     </template>
   </BuilderToolbar>
   <div class="d-flex flex-wrap ga-4">
-    <div class="d-flex flex-grow-1">
+    <div class="d-flex flex-grow-0">
       <UserProfile />
     </div>
     <div class="d-flex flex-grow-1 flex-column ga-4">

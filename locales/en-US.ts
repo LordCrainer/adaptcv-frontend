@@ -35,6 +35,7 @@ const profile: TranslationKeys['profile'] = {
     title: 'Education',
     fieldOfStudy: 'Field of Study',
     degree: 'Degree',
+    degreePlaceholder: 'Select a degree',
     institution: 'Institution',
     startDate: 'Start Date',
     endDate: 'End Date',

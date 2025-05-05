@@ -1,8 +1,5 @@
 <template>
   <div class="d-flex flex-column ga-4">
-    <div>
-      <SkillForm @submit="upsertSkill" />
-    </div>
     <div class="d-flex flex-wrap">
       <v-chip
         v-for="(item, index) in skills"
@@ -13,6 +10,9 @@
         @click:close="removeSkill(index)">
         {{ item.skill }} ({{ item.yearsOfExperience }})
       </v-chip>
+    </div>
+    <div>
+      <SkillForm @submit="upsertSkill" />
     </div>
   </div>
 </template>

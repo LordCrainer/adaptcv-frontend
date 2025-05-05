@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="primary" density="compact" scroll-behavior="hide">
+  <v-app-bar color="primary" density="compact" app>
     <template v-slot:prepend>
       <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
     </template>
@@ -19,7 +19,7 @@ import HeaderActionItems from './HeaderActionItems.vue'
 import NavigationDrawer from './NavigationDrawer.vue'
 import HeaderSettingsMenu from './HeaderSettingsMenu.vue'
 
-const drawer = ref(false)
+const drawer = ref(true)
 
 const toggleDrawer = () => {
   drawer.value = !drawer.value

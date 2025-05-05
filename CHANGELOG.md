@@ -1,3 +1,10 @@
+# [1.73.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.72.0...v1.73.0) (2025-05-05)
+
+
+### Features
+
+* Enhance UserProfileForm with active states and placeholders; update IUserProfile interface for optional profession ([dc87750](https://github.com/LordCrainer/adaptcv-frontend/commit/dc877506a8a08a2962df5dc6df7d00248eec66d3))
+
 # [1.72.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.71.0...v1.72.0) (2025-05-05)
 
 

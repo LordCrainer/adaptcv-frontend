@@ -66,7 +66,9 @@
                 </template>
                 <v-date-picker
                   v-model="localExperiencie.endDate"
-                  :allowed-dates="allowedDates"
+                  :allowed-dates="
+                    (date) => allowedDates(date, localExperiencie.startDate)
+                  "
                   @update:modelValue="stateMenu.endDate = false"
                   show-adjacent-months></v-date-picker>
               </v-menu>
@@ -107,7 +109,7 @@ import { ref } from 'vue'
 import type { IWorkExperience } from '~/domains/builder/shared'
 import { useFormatDate } from '~/composables/useFormatDate'
 
-const { standardFormatDate, addYearToDate } = useFormatDate()
+const { standardFormatDate, addYearToDate, allowedDates } = useFormatDate()
 
 const props = defineProps<{
   title: string
@@ -148,9 +150,6 @@ watch(
 )
 
 const emit = defineEmits(['submit', 'cancel', 'close'])
-
-const allowedDates = (date: unknown) =>
-  date instanceof Date && date >= new Date(localExperiencie.value.startDate)
 
 const submitForm = () => {
   if (localExperiencie.value.company && localExperiencie.value.jobTitle) {

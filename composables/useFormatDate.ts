@@ -46,5 +46,14 @@ export const useFormatDate = () => {
     return `${fn(startDate)} - ${fn(endDate)}`
   }
 
-  return { standardDate, formatDateRange, addYearToDate, standardFormatDate }
+  const allowedDates = (currentDate: unknown, startDate: Date | string) =>
+    currentDate instanceof Date && currentDate >= new Date(startDate)
+
+  return {
+    standardDate,
+    formatDateRange,
+    addYearToDate,
+    standardFormatDate,
+    allowedDates
+  }
 }

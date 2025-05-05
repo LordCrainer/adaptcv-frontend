@@ -1,3 +1,10 @@
+# [1.74.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.73.0...v1.74.0) (2025-05-05)
+
+
+### Features
+
+* Update form components with outlined variants and improved placeholders; adjust layout and translations ([878720a](https://github.com/LordCrainer/adaptcv-frontend/commit/878720ae372af992c1f0438ce135d6f4fab80144))
+
 # [1.73.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.72.0...v1.73.0) (2025-05-05)
 
 

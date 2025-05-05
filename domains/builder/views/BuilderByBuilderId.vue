@@ -47,10 +47,6 @@
       <Education />
     </v-col>
   </v-row>
-  <!-- <div class="d-flexflex-grow-1 flex-shrink-1">
-    </div>
-    <div class="d-flex flex-grow-0 flex-column ga-4">
-    </div> -->
 </template>
 
 <script setup lang="ts">

@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column" style="width: 100%">
+  <div class="d-flex flex-column ga-2" style="width: 100%">
     <v-text-field
       density="comfortable"
       prepend-icon="mdi-account"
@@ -7,7 +7,7 @@
       v-model="formData.name"
       :label="$t('profile.personalInfo.fullname')"
       placeholder="Ej: John Doe"
-      variant="outlined"
+      variant="underlined"
       :rules="[required($t('profile.personalInfo.fullname'))]"
       :aria-label="$t('profile.personalInfo.fullname')"
       required></v-text-field>
@@ -18,7 +18,7 @@
       prepend-icon="mdi-email"
       :label="$t('profile.personalInfo.email')"
       placeholder="Ej: example@example.com"
-      variant="outlined"
+      variant="underlined"
       type="email"
       aria-label="Email"
       required></v-text-field>
@@ -30,7 +30,7 @@
       prepend-icon="mdi-phone"
       :label="$t('profile.personalInfo.phone')"
       placeholder="Ej: +1234567890"
-      variant="outlined"
+      variant="underlined"
       type="tel"
       aria-label="Phone"></v-text-field>
 
@@ -42,7 +42,7 @@
       prepend-icon="mdi-map"
       placeholder="Ej: country"
       aria-label="Country"
-      variant="outlined"></v-text-field>
+      variant="underlined"></v-text-field>
     <v-text-field
       density="comfortable"
       v-model="formData.city"
@@ -51,12 +51,12 @@
       prepend-icon="mdi-city"
       placeholder="Ej: city"
       aria-label="City"
-      variant="outlined"></v-text-field>
+      variant="underlined"></v-text-field>
     <v-select
       density="comfortable"
       clearable
       :label="$t('profile.personalInfo.areaProfession')"
-      variant="outlined"
+      variant="underlined"
       icon-color="primary"
       prepend-icon="mdi-briefcase"
       :items="Object.keys(areasProfession)"
@@ -69,7 +69,7 @@
       prepend-icon="mdi-account-hard-hat"
       icon-color="primary"
       :label="$t('profile.personalInfo.profession')"
-      variant="outlined"
+      variant="underlined"
       :items="professions"
       v-model="formData.profession"
       autocomplete

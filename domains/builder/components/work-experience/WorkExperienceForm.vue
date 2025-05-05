@@ -36,7 +36,7 @@
                     prepend-inner-icon="mdi-calendar"
                     :value="standardFormatDate(localExperiencie.startDate)"
                     :label="$t('common.startDate')"
-                    :active="true"
+                    active
                     :placeholder="standardFormatDate(new Date())"
                     variant="outlined"
                     v-bind="props"
@@ -58,7 +58,7 @@
                     prepend-inner-icon="mdi-calendar"
                     :value="standardFormatDate(localExperiencie.endDate)"
                     :label="$t('common.endDate')"
-                    :active="true"
+                    active
                     :placeholder="standardFormatDate(addYearToDate(new Date()))"
                     variant="outlined"
                     v-bind="props"

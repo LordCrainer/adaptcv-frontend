@@ -5,8 +5,9 @@
         prepend-inner-icon="mdi-watermark"
         v-model="formData.slogan"
         :label="$t('profile.aboutMe.slogan')"
+        active
         placeholder="Ej: Your slogan here"
-        variant="outlined"
+        variant="underlined"
         aria-label="Slogan"
         required></v-text-field>
 
@@ -14,8 +15,9 @@
         prepend-inner-icon="mdi-text-box"
         v-model="formData.summary"
         :label="$t('profile.aboutMe.summary')"
+        active
         placeholder="Ej: Your summary here"
-        variant="outlined"
+        variant="underlined"
         rows="5"
         aria-label="Summary"
         required></v-textarea>  

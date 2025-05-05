@@ -7,8 +7,11 @@
           icon-color="primary"
           prepend-icon="mdi-magnify"
           density="comfortable"
-          variant="outlined"
+          variant="underlined"
+          :aria-label="$t('profile.languages.language')"
+          :placeholder="$t('profile.languages.placeholderLanguage')"
           class="flex-grow-1"
+          active
           clearable
           :items="languages"
           :label="$t('profile.languages.language')"></v-autocomplete>
@@ -26,7 +29,8 @@
         icon-color="primary"
         v-model="localLang.proficiency"
         :items="proficiencyLevels"
-        variant="outlined"
+        variant="underlined"
+        active
         :item-title="(i) => $t(`profile.languages.${i}`)"
         :label="$t('profile.languages.level')"
         required></v-select>
@@ -45,7 +49,7 @@ const DEFAULT_LANGUAGE_ITEM: ILanguageItem = {
   proficiency: 'beginner'
 }
 
-const localLang = ref<ILanguageItem>(DEFAULT_LANGUAGE_ITEM)
+const localLang = ref<ILanguageItem>({ ...DEFAULT_LANGUAGE_ITEM })
 
 const languages = ref(
   [

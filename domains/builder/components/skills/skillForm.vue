@@ -7,10 +7,12 @@
           icon-color="primary"
           density="comfortable"
           v-model="localSkills.skill"
-          variant="outlined"
+          variant="underlined"
           class="flex-grow-1"
           clearable
           :items="SKILLS_LIST"
+          active
+          :placeholder="$t('profile.skills.placeholderSkill')"
           :label="$t('profile.skills.skill')"
           :aria-label="$t('profile.skills.skill')"></v-autocomplete>
 
@@ -44,7 +46,7 @@ import { useSkill } from './useSkill'
 const { SKILLS_LIST, experienceOptions } = useSkill()
 
 const DEFAULT_SKILL_ITEM: ISkill = {
-  skill: '',
+  skill: undefined,
   yearsOfExperience: 'less1year'
 }
 

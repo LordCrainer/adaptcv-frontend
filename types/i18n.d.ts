@@ -64,6 +64,8 @@ interface TranslationKeys {
       title: string
       fullname: string
       areaProfession: string
+      areaProfessionPlaceholder: string
+      professionPlaceholder: string
       profession: string
       email: string
       phone: string

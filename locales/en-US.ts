@@ -5,6 +5,8 @@ const profile: TranslationKeys['profile'] = {
     title: 'Personal Information',
     fullname: 'Full Name',
     areaProfession: 'Area of Profession',
+    areaProfessionPlaceholder: 'Select an area of profession',
+    professionPlaceholder: 'Select a profession',
     profession: 'Profession',
     email: 'Email',
     phone: 'Phone',

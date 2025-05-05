@@ -1,3 +1,17 @@
+# [1.72.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.71.0...v1.72.0) (2025-05-05)
+
+
+### Bug Fixes
+
+* Update ISkill and ILanguageItem interfaces to allow optional properties for skill and name ([44fe3df](https://github.com/LordCrainer/adaptcv-frontend/commit/44fe3df2168193d221fff282dc7146d6bbd451cd))
+* Update ISkill interface to allow skill to be undefined; adjust padding in default layout for better spacing ([30b01e0](https://github.com/LordCrainer/adaptcv-frontend/commit/30b01e0111d876de1a3d72a079012718436b593c))
+
+
+### Features
+
+* Add placeholder text for skill and language selection in translations ([b709b27](https://github.com/LordCrainer/adaptcv-frontend/commit/b709b279d96950d9772114a2cc601db319a506ac))
+* Update form components to use 'underlined' variant and improve accessibility with active states and placeholders ([2c81343](https://github.com/LordCrainer/adaptcv-frontend/commit/2c8134385d1553e14ff002e70c3de8b2ae966eb3))
+
 # [1.71.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.70.0...v1.71.0) (2025-05-05)
 
 

@@ -1,3 +1,10 @@
+# [1.71.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.70.0...v1.71.0) (2025-05-05)
+
+
+### Features
+
+* Update BuilderToolbar to include toolbar-left and toolbar-title slots for enhanced navigation and title display ([53c2dd1](https://github.com/LordCrainer/adaptcv-frontend/commit/53c2dd137112e664f741aef3246137b883552302))
+
 # [1.70.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.69.0...v1.70.0) (2025-05-05)
 
 

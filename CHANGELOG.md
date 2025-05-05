@@ -1,3 +1,10 @@
+# [1.70.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.69.0...v1.70.0) (2025-05-05)
+
+
+### Features
+
+* Refactor LanguagesForm and UserProfileForm for improved layout and styling; update index components for better organization ([55e8ca3](https://github.com/LordCrainer/adaptcv-frontend/commit/55e8ca34a285665c78bd995d72cf7036b2a6375e))
+
 # [1.69.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.68.0...v1.69.0) (2025-05-05)
 
 

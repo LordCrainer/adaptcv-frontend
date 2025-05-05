@@ -1,6 +1,36 @@
 <template>
-  <div class="d-flex ga-4">
-    <div class="d-flex flex-grow-0">
+  <BuilderToolbar>
+    <template #toolbar-items>
+      <div class="d-flex ga-2 pa-2 align-center">
+        <v-btn
+          size="small"
+          v-tooltip:start="$t('actions.preview')"
+          color="grey"
+          @click="toggleView"
+          variant="tonal">
+          <v-icon>mdi-eye</v-icon>
+        </v-btn>
+        <v-btn
+          size="small"
+          v-tooltip:start="$t('actions.save')"
+          class="text-success"
+          @click="$router.push({ name: 'home' })"
+          variant="tonal">
+          <v-icon>mdi-content-save</v-icon>
+        </v-btn>
+        <v-btn
+          size="small"
+          v-tooltip:start="$t('actions.publish')"
+          variant="tonal"
+          @click="$router.push({ name: 'home' })"
+          class="text-primary">
+          <v-icon>mdi-publish</v-icon>
+        </v-btn>
+      </div>
+    </template>
+  </BuilderToolbar>
+  <div class="d-flex flex-wrap ga-4">
+    <div class="d-flex flex-grow-1">
       <UserProfile />
     </div>
     <div class="d-flex flex-grow-1 flex-column ga-4">
@@ -10,15 +40,6 @@
       <Skills />
       <Languages />
     </div>
-    <!-- <div v-for="section in sections" :key="section.translationKey">
-      <component
-        :is="section.component"
-        v-bind="section.props"
-        :data="cvStore.curriculumVitae[section.id]"
-        @update="
-          (newData: any) => handleUpdate(section.id, newData)
-        "></component>
-    </div> -->
   </div>
 </template>
 
@@ -34,63 +55,17 @@ import Languages from '~/domains/builder/components/languages/index.vue'
 import type { TabItem } from '~/types/global'
 import { useCVStore } from '../shared/cv.store'
 import type { Sections } from '../shared'
+import BuilderToolbar from '../components/BuilderToolbar.vue'
 
 const cvStore = useCVStore()
+const route = useRoute()
 
 function handleUpdate(section: Sections, newData: any) {
   cvStore.updateSection(section, newData)
 }
 
-const sections = ref<TabItem<Sections>[]>([
-  {
-    id: 'userProfile',
-    title: 'Profile',
-    translationKey: 'profile.personalInfo.title',
-    component: markRaw(UserProfile),
-    props: {}
-  },
-  {
-    id: 'aboutMe',
-    title: 'About Me',
-    translationKey: 'profile.aboutMe.title',
-    component: markRaw(AboutMe),
-    props: {}
-  },
-  {
-    id: 'workExperience',
-    title: 'Experience',
-    translationKey: 'profile.experience.title',
-    component: markRaw(WorkExperience),
-    props: {}
-  },
-  {
-    id: 'education',
-    title: 'Education',
-    translationKey: 'profile.education.title',
-    component: markRaw(Education),
-    props: {}
-  },
-  {
-    id: 'skills',
-    title: 'Skills',
-    translationKey: 'profile.skills.title',
-    component: markRaw(Skills),
-    props: {}
-  },
-  {
-    id: 'languages',
-    title: 'Languages',
-    translationKey: 'profile.languages.title',
-    component: markRaw(Languages),
-    props: {}
-  }
-])
-</script>
-
-<style scoped>
-.sticky-toolbar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
+function toggleView() {
+  const builderId = route.params.builderId
+  navigateTo(`/builder/${builderId}/preview`)
 }
-</style>
+</script>

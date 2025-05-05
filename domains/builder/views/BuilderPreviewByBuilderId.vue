@@ -1,4 +1,34 @@
 <template>
+  <BuilderToolbar>
+    <template #toolbar-items>
+      <div class="d-flex ga-2 pa-2 align-center">
+        <v-btn
+          size="small"
+          v-tooltip:start="$t('actions.preview')"
+          color="grey"
+          @click="toggleView"
+          variant="tonal">
+          <v-icon>mdi-eye</v-icon>
+        </v-btn>
+        <v-btn
+          size="small"
+          v-tooltip:start="$t('actions.save')"
+          class="text-success"
+          @click="$router.push({ name: 'home' })"
+          variant="tonal">
+          <v-icon>mdi-content-save</v-icon>
+        </v-btn>
+        <v-btn
+          size="small"
+          v-tooltip:start="$t('actions.publish')"
+          variant="tonal"
+          @click="$router.push({ name: 'home' })"
+          class="text-primary">
+          <v-icon>mdi-publish</v-icon>
+        </v-btn>
+      </div>
+    </template>
+  </BuilderToolbar>
   <v-card max-width="800" width="100%" class="mx-auto pa-4 text-caption">
     <v-card-title>
       <div class="text-h5 font-weight-bold text-center pb-0">
@@ -58,4 +88,15 @@ const selectItems = Object.entries(templates.value).map(
     title: attributes.title
   })
 )
+
+const route = useRoute()
+
+function toggleView() {
+  const builderId = route.params.builderId
+  if (!builderId) {
+    console.error('Builder ID is not defined')
+    return
+  }
+  navigateTo(`/builder/${builderId}`)
+}
 </script>

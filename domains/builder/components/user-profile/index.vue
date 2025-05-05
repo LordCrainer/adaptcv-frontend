@@ -5,7 +5,7 @@
         <v-card
           flat
           variant="outlined"
-          class="profile-photo rounded-circle cursor-pointer"
+          class="rounded-circle cursor-pointer"
           @click="open">
           <v-img v-if="fileImage?.src" :src="fileImage.src"></v-img>
           <v-sheet
@@ -19,10 +19,11 @@
             </span>
           </v-sheet>
         </v-card>
-        <div class="d-flex flex-column ga-2" style="width: 100%">
+        <div class="d-flex flex-column ga-4" style="width: 100%">
           <span class="text-body-1 font-weight-bold">
             Information de Contacto
           </span>
+          <v-divider></v-divider>
           <UserInformationForm v-model="userProfile" />
         </div>
       </div>

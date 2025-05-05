@@ -1,6 +1,7 @@
 <template>
   <div class="d-flex flex-column" style="width: 100%">
     <v-text-field
+      density="comfortable"
       prepend-icon="mdi-account"
       icon-color="primary"
       v-model="formData.name"
@@ -8,9 +9,10 @@
       placeholder="Ej: John Doe"
       variant="underlined"
       :rules="[required($t('profile.personalInfo.fullname'))]"
-      aria-label="Full Name"
+      :aria-label="$t('profile.personalInfo.fullname')"
       required></v-text-field>
     <v-text-field
+      density="comfortable"
       v-model="formData.email"
       icon-color="primary"
       prepend-icon="mdi-email"
@@ -22,6 +24,7 @@
       required></v-text-field>
 
     <v-text-field
+      density="comfortable"
       v-model="formData.phone"
       icon-color="primary"
       prepend-icon="mdi-phone"
@@ -32,6 +35,7 @@
       aria-label="Phone"></v-text-field>
 
     <v-text-field
+      density="comfortable"
       v-model="formData.country"
       icon-color="primary"
       :label="$t('profile.personalInfo.country')"
@@ -40,6 +44,7 @@
       aria-label="Country"
       variant="underlined"></v-text-field>
     <v-text-field
+      density="comfortable"
       v-model="formData.city"
       icon-color="primary"
       :label="$t('profile.personalInfo.city')"
@@ -48,6 +53,7 @@
       aria-label="City"
       variant="underlined"></v-text-field>
     <v-select
+      density="comfortable"
       clearable
       :label="$t('profile.personalInfo.areaProfession')"
       variant="underlined"
@@ -58,6 +64,7 @@
       autocomplete
       aria-label="Area of Profession"></v-select>
     <v-select
+      density="comfortable"
       v-if="formData.areaProfession"
       prepend-icon="mdi-account-hard-hat"
       icon-color="primary"

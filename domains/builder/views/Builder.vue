@@ -1,4 +1,15 @@
 <template>
+  <BuilderToolbar>
+    <template #toolbar-items>
+      <v-btn
+        prepend-icon="mdi-plus"
+        variant="outlined"
+        @click="addNewItem"
+        color="primary">
+        {{ t('actions.add') }}
+      </v-btn>
+    </template>
+  </BuilderToolbar>
   <v-data-table
     :headers="headers"
     :items="items"
@@ -25,6 +36,7 @@
 </template>
 
 <script lang="ts" setup>
+import BuilderToolbar from '~/domains/builder/components/BuilderToolbar.vue'
 const router = useRouter()
 const { t } = useI18n()
 
@@ -66,6 +78,10 @@ function edit(builderId: string) {
 }
 function remove(builderId: string) {
   console.log('Remove item with id:', builderId)
+}
+
+function addNewItem() {
+  // router.push('/builder/new')
 }
 </script>
 

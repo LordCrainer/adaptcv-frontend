@@ -13,7 +13,6 @@ export const APP_ROUTES: RouteExtended[] = [
       title: 'builder',
       icon: 'mdi-file-document-edit-outline'
     },
-    component: () => import('~/layouts/builder.vue'),
     children: [
       {
         path: '/',
@@ -24,5 +23,5 @@ export const APP_ROUTES: RouteExtended[] = [
         }
       }
     ]
-  },
+  }
 ]

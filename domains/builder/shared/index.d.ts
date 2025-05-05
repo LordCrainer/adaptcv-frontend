@@ -18,20 +18,20 @@ export type Degree =
   | 'doctorate'
 
 export interface ISkill {
-  skill: string | undefined
+  skill?: string
   yearsOfExperience: yearsOfExperience | undefined
 }
 
 type Proficiency = 'beginner' | 'intermediate' | 'advanced' | 'native'
 export interface ILanguageItem {
-  name: string | undefined
+  name?: string
   proficiency: Proficiency
 }
 
 export interface IEducationItem {
   id: string
   institution: string
-  degree: Degree | undefined
+  degree?: Degree
   fieldOfStudy: string
   startDate: string
   endDate: string

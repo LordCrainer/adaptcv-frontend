@@ -1,28 +1,31 @@
 <template>
-  <CardDefault title="profile.personalInfo.title">
+  <CardDefault title="profile.personalInfo.title" style="min-width: 350px">
     <v-form>
-      <v-row>
-        <v-col cols="12" md="4" class="d-flex flex-1-0 justify-center">
-          <v-card
-            flat
-            variant="outlined"
-            class="profile-photo rounded-circle cursor-pointer"
-            @click="open">
-            <v-img v-if="fileImage?.src" :src="fileImage.src"></v-img>
-            <v-sheet
-              v-else
-              class="profile-photo d-flex align-center justify-center flex-column">
-              <v-icon size="100" color="grey lighten-2">
-                mdi-account-arrow-up-outline
-              </v-icon>
-              <span class="text-caption text-sm-subtitle-1">
-                {{ $t('profile.personalInfo.uploadPhoto') }}
-              </span>
-            </v-sheet>
-          </v-card>
-        </v-col>
-        <UserInformationForm v-model="userProfile" />
-      </v-row>
+      <div class="d-flex flex-column ga-4 justify-center align-center">
+        <v-card
+          flat
+          variant="outlined"
+          class="profile-photo rounded-circle cursor-pointer"
+          @click="open">
+          <v-img v-if="fileImage?.src" :src="fileImage.src"></v-img>
+          <v-sheet
+            v-else
+            class="profile-photo d-flex align-center justify-center flex-column">
+            <v-icon size="100" color="grey lighten-2">
+              mdi-account-arrow-up-outline
+            </v-icon>
+            <span class="text-caption text-sm-subtitle-1">
+              {{ $t('profile.personalInfo.uploadPhoto') }}
+            </span>
+          </v-sheet>
+        </v-card>
+        <div class="d-flex flex-column ga-2" style="width: 100%">
+          <span class="text-body-1 font-weight-bold">
+            Information de Contacto
+          </span>
+          <UserInformationForm v-model="userProfile" />
+        </div>
+      </div>
       <v-dialog
         v-model="state.openDialog"
         max-width="350px"

@@ -4,7 +4,7 @@ import type { IFileImage } from '~/types/global'
 import { useCVStore } from '~/domains/builder/shared/cv.store'
 
 const useUserProfile = () => {
-  const { saveSection, curriculumVitae } = useCVStore()
+  const { updateSection, curriculumVitae } = useCVStore()
 
   const userProfile = ref<IUserProfile>({
     image: {
@@ -22,7 +22,7 @@ const useUserProfile = () => {
     () => userProfile.value,
     (newValue) => {
       if (newValue) {
-        saveSection('userProfile', newValue)
+        updateSection('userProfile', newValue)
       }
     },
     { deep: true }

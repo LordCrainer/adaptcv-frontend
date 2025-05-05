@@ -1,76 +1,73 @@
 <template>
-  <v-col cols="12" md="8" class="d-flex flex-column ga-2">
-    <div class="d-flex flex-column ga-2">
-      <v-text-field
-        prepend-inner-icon="mdi-account"
-        v-model="formData.name"
-        :label="$t('profile.personalInfo.fullname')"
-        placeholder="Ej: John Doe"
-        variant="outlined"
-        :rules="[required($t('profile.personalInfo.fullname'))]"
-        aria-label="Full Name"
-        required></v-text-field>
-      <v-text-field
-        v-model="formData.email"
-        prepend-inner-icon="mdi-email"
-        :label="$t('profile.personalInfo.email')"
-        placeholder="Ej: example@example.com"
-        variant="outlined"
-        type="email"
-        aria-label="Email"
-        required></v-text-field>
+  <div class="d-flex flex-column" style="width: 100%">
+    <v-text-field
+      prepend-icon="mdi-account"
+      icon-color="primary"
+      v-model="formData.name"
+      :label="$t('profile.personalInfo.fullname')"
+      placeholder="Ej: John Doe"
+      variant="underlined"
+      :rules="[required($t('profile.personalInfo.fullname'))]"
+      aria-label="Full Name"
+      required></v-text-field>
+    <v-text-field
+      v-model="formData.email"
+      icon-color="primary"
+      prepend-icon="mdi-email"
+      :label="$t('profile.personalInfo.email')"
+      placeholder="Ej: example@example.com"
+      variant="underlined"
+      type="email"
+      aria-label="Email"
+      required></v-text-field>
 
-      <v-text-field
-        v-model="formData.phone"
-        prepend-inner-icon="mdi-phone"
-        :label="$t('profile.personalInfo.phone')"
-        placeholder="Ej: +1234567890"
-        variant="outlined"
-        type="tel"
-        aria-label="Phone"></v-text-field>
+    <v-text-field
+      v-model="formData.phone"
+      icon-color="primary"
+      prepend-icon="mdi-phone"
+      :label="$t('profile.personalInfo.phone')"
+      placeholder="Ej: +1234567890"
+      variant="underlined"
+      type="tel"
+      aria-label="Phone"></v-text-field>
 
-      <v-row class="py-2">
-        <v-col cols="6" class="py-0">
-          <v-text-field
-            v-model="formData.country"
-            :label="$t('profile.personalInfo.country')"
-            prepend-inner-icon="mdi-map"
-            placeholder="Ej: country"
-            aria-label="Country"
-            variant="outlined"></v-text-field>
-        </v-col>
-        <v-col cols="6" class="py-0">
-          <v-text-field
-            v-model="formData.city"
-            :label="$t('profile.personalInfo.city')"
-            prepend-inner-icon="mdi-city"
-            placeholder="Ej: city"
-            aria-label="City"
-            variant="outlined"></v-text-field>
-        </v-col>
-      </v-row>
-    </div>
-    <div>
-      <v-select
-        clearable
-        :label="$t('profile.personalInfo.areaProfession')"
-        variant="outlined"
-        prepend-inner-icon="mdi-briefcase"
-        :items="Object.keys(areasProfession)"
-        v-model="formData.areaProfession"
-        autocomplete
-        aria-label="Area of Profession"></v-select>
-      <v-select
-        v-if="formData.areaProfession"
-        prepend-inner-icon="mdi-account-hard-hat"
-        :label="$t('profile.personalInfo.profession')"
-        variant="outlined"
-        :items="professions"
-        v-model="formData.profession"
-        autocomplete
-        aria-label="Profession"></v-select>
-    </div>
-  </v-col>
+    <v-text-field
+      v-model="formData.country"
+      icon-color="primary"
+      :label="$t('profile.personalInfo.country')"
+      prepend-icon="mdi-map"
+      placeholder="Ej: country"
+      aria-label="Country"
+      variant="underlined"></v-text-field>
+    <v-text-field
+      v-model="formData.city"
+      icon-color="primary"
+      :label="$t('profile.personalInfo.city')"
+      prepend-icon="mdi-city"
+      placeholder="Ej: city"
+      aria-label="City"
+      variant="underlined"></v-text-field>
+    <v-select
+      clearable
+      :label="$t('profile.personalInfo.areaProfession')"
+      variant="underlined"
+      icon-color="primary"
+      prepend-icon="mdi-briefcase"
+      :items="Object.keys(areasProfession)"
+      v-model="formData.areaProfession"
+      autocomplete
+      aria-label="Area of Profession"></v-select>
+    <v-select
+      v-if="formData.areaProfession"
+      prepend-icon="mdi-account-hard-hat"
+      icon-color="primary"
+      :label="$t('profile.personalInfo.profession')"
+      variant="underlined"
+      :items="professions"
+      v-model="formData.profession"
+      autocomplete
+      aria-label="Profession"></v-select>
+  </div>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'

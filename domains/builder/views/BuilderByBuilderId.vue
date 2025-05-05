@@ -1,8 +1,24 @@
 <template>
-  <div class="d-flex flex-column ga-4">
-    <div v-for="tab in tabs" :key="tab.translationKey">
-      <component :is="tab.component" v-bind="tab.props"></component>
+  <div class="d-flex ga-4">
+    <div class="d-flex flex-grow-0">
+      <UserProfile />
     </div>
+    <div class="d-flex flex-grow-1 flex-column ga-4">
+      <AboutMe />
+      <WorkExperience />
+      <Education />
+      <Skills />
+      <Languages />
+    </div>
+    <!-- <div v-for="section in sections" :key="section.translationKey">
+      <component
+        :is="section.component"
+        v-bind="section.props"
+        :data="cvStore.curriculumVitae[section.id]"
+        @update="
+          (newData: any) => handleUpdate(section.id, newData)
+        "></component>
+    </div> -->
   </div>
 </template>
 
@@ -16,32 +32,32 @@ import Education from '~/domains/builder/components/education/index.vue'
 import Skills from '~/domains/builder/components/skills/index.vue'
 import Languages from '~/domains/builder/components/languages/index.vue'
 import type { TabItem } from '~/types/global'
+import { useCVStore } from '../shared/cv.store'
+import type { Sections } from '../shared'
 
-type Sections =
-  | 'user-profile'
-  | 'about-me'
-  | 'work-experience'
-  | 'education'
-  | 'skills'
-  | 'languages'
+const cvStore = useCVStore()
 
-const tabs = ref<TabItem<Sections>[]>([
+function handleUpdate(section: Sections, newData: any) {
+  cvStore.updateSection(section, newData)
+}
+
+const sections = ref<TabItem<Sections>[]>([
   {
-    id: 'user-profile',
+    id: 'userProfile',
     title: 'Profile',
     translationKey: 'profile.personalInfo.title',
     component: markRaw(UserProfile),
     props: {}
   },
   {
-    id: 'about-me',
+    id: 'aboutMe',
     title: 'About Me',
     translationKey: 'profile.aboutMe.title',
     component: markRaw(AboutMe),
     props: {}
   },
   {
-    id: 'work-experience',
+    id: 'workExperience',
     title: 'Experience',
     translationKey: 'profile.experience.title',
     component: markRaw(WorkExperience),

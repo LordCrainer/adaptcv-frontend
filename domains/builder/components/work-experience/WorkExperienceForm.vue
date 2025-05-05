@@ -4,6 +4,8 @@
       <v-row class="pa-4">
         <v-col cols="12" md="6" class="py-1">
           <v-text-field
+            icon-color="primary"
+            prepend-inner-icon="mdi-briefcase"
             v-model="localExperiencie.jobTitle"
             variant="outlined"
             :label="$t('profile.experience.jobTitle')"
@@ -13,6 +15,8 @@
         </v-col>
         <v-col md="6" class="py-1">
           <v-text-field
+            icon-color="primary"
+            prepend-inner-icon="mdi-office-building"
             v-model="localExperiencie.company"
             :label="$t('profile.experience.company')"
             variant="outlined"
@@ -23,20 +27,38 @@
         <v-col cols="12">
           <v-row>
             <v-col md="6">
-              <v-text-field
-                v-model="localExperiencie.startDate"
-                :label="$t('common.startDate')"
-                variant="outlined"
-                type="date"
-                aria-label="Start Date"></v-text-field>
+              <v-menu>
+                <template v-slot:activator="{ props }">
+                  <v-text-field
+                    icon-color="primary"
+                    prepend-inner-icon="mdi-calendar"
+                    :value="localExperiencie.startDate"
+                    :placeholder="standardFormatDate(new Date())"
+                    variant="outlined"
+                    v-bind="props"
+                    aria-label="Start Date"></v-text-field>
+                </template>
+                <v-date-picker
+                  v-model="localExperiencie.startDate"
+                  show-adjacent-months></v-date-picker>
+              </v-menu>
             </v-col>
             <v-col md="6">
-              <v-text-field
-                v-model="localExperiencie.endDate"
-                :label="$t('common.endDate')"
-                variant="outlined"
-                type="date"
-                aria-label="End Date"></v-text-field>
+              <v-menu>
+                <template v-slot:activator="{ props }">
+                  <v-text-field
+                    icon-color="primary"
+                    prepend-inner-icon="mdi-calendar"
+                    :value="localExperiencie.endDate"
+                    :placeholder="standardFormatDate(addYearToDate(new Date()))"
+                    variant="outlined"
+                    v-bind="props"
+                    aria-label="End Date"></v-text-field>
+                </template>
+                <v-date-picker
+                  v-model="localExperiencie.endDate"
+                  show-adjacent-months></v-date-picker>
+              </v-menu>
             </v-col>
           </v-row>
         </v-col>
@@ -71,8 +93,10 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { IWorkExperience } from '~/domains/builder/shared';
+import type { IWorkExperience } from '~/domains/builder/shared'
+import { useFormatDate } from '~/composables/useFormatDate'
 
+const { standardFormatDate, addYearToDate } = useFormatDate()
 
 const props = defineProps<{
   title: string
@@ -90,13 +114,26 @@ const DEFAULT_ITEM: IWorkExperience = {
   description: {} as DEContentData
 }
 
-const localExperiencie = ref<IWorkExperience>(DEFAULT_ITEM)
+const localExperiencie = computed({
+  get: () => props.modelValue || { ...DEFAULT_ITEM },
+  set: (value) => {
+    localExperiencie.value = {
+      ...localExperiencie.value,
+      startDate: standardFormatDate(value.startDate),
+      endDate: standardFormatDate(value.endDate)
+    }
+  }
+})
 
 watch(
   () => props.modelValue,
   (newVal) => {
     if (newVal) {
-      localExperiencie.value = { ...newVal }
+      localExperiencie.value = {
+        ...newVal,
+        startDate: standardFormatDate(newVal.startDate),
+        endDate: standardFormatDate(newVal.endDate)
+      }
       $editor.value?.setContentData(newVal.description)
     }
   },

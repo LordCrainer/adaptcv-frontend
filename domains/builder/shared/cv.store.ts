@@ -1,16 +1,7 @@
 import type { ICV } from '@lordcrainer/adaptcv-shared-types'
 import { defineStore } from 'pinia'
+import type { Sections } from '.'
 const api = useApi()
-
-type Sections = Pick<
-  ICV,
-  | 'userProfile'
-  | 'skills'
-  | 'languages'
-  | 'education'
-  | 'workExperience'
-  | 'aboutMe'
->
 
 export const useCVStore = defineStore(
   'cv',
@@ -34,7 +25,7 @@ export const useCVStore = defineStore(
       curriculumVitae.value.status = newStatus
     }
 
-    function saveSection<K extends keyof Sections>(section: K, data: ICV[K]) {
+    function updateSection<K extends Sections>(section: K, data: ICV[K]) {
       if (!section) {
         console.error(`Error: ${section} data is undefined or null`)
         return
@@ -54,7 +45,7 @@ export const useCVStore = defineStore(
 
     return {
       updateStatus,
-      saveSection,
+      updateSection,
       creationCV,
       curriculumVitae
     }

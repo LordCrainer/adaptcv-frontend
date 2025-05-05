@@ -73,3 +73,13 @@ export interface IAboutMe {
   logo: IFileImage
   slogan: string
 }
+
+export type Sections = keyof Pick<
+  ICV,
+  | 'userProfile'
+  | 'skills'
+  | 'languages'
+  | 'education'
+  | 'workExperience'
+  | 'aboutMe'
+>

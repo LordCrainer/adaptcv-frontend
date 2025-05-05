@@ -65,7 +65,7 @@
       aria-label="Area of Profession"></v-select>
     <v-select
       density="comfortable"
-      v-if="formData.areaProfession"
+      :disabled="!formData.areaProfession"
       prepend-icon="mdi-account-hard-hat"
       icon-color="primary"
       :label="$t('profile.personalInfo.profession')"

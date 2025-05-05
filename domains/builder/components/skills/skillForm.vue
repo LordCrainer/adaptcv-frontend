@@ -1,29 +1,37 @@
 <template>
   <v-form @submit.prevent="submitForm">
-    <div class="d-flex ga-2 align-start pa-2">
-      <v-autocomplete
-        v-model="localSkills.skill"
-        variant="outlined"
-        class="flex-grow-1"
-        clearable
-        :items="SKILLS_LIST"
-        :label="$t('profile.skills.skill')"></v-autocomplete>
+    <div class="d-flex flex-column ga-2">
+      <div class="d-flex ga-2">
+        <v-autocomplete
+          prepend-icon="mdi-magnify"
+          density="comfortable"
+          v-model="localSkills.skill"
+          variant="underlined"
+          class="flex-grow-1"
+          clearable
+          :items="SKILLS_LIST"
+          :label="$t('profile.skills.skill')"
+          :aria-label="$t('profile.skills.skill')"></v-autocomplete>
+
+        <v-btn
+          color="secondary"
+          variant="flat"
+          prepend-icon="mdi-plus"
+          type="submit">
+          {{ $t('actions.add') }}
+        </v-btn>
+      </div>
 
       <v-select
+        prepend-icon="mdi-calendar"
+        density="comfortable"
         v-model="localSkills.yearsOfExperience"
         :items="experienceOptions"
-        variant="outlined"
+        variant="underlined"
         :item-title="(i) => i && $t(`profile.skills.${i}`)"
         :label="$t('profile.skills.yearsOfExperience')"
+        :aria-label="$t('profile.skills.yearsOfExperience')"
         required></v-select>
-
-      <v-btn
-        color="primary"
-        variant="tonal"
-        rounded
-        size="large"
-        icon="mdi-plus"
-        type="submit"></v-btn>
     </div>
   </v-form>
 </template>
@@ -39,7 +47,7 @@ const DEFAULT_SKILL_ITEM: ISkill = {
   yearsOfExperience: 'less1year'
 }
 
-const localSkills = ref<ISkill>(DEFAULT_SKILL_ITEM)
+const localSkills = ref<ISkill>({ ...DEFAULT_SKILL_ITEM })
 
 const emit = defineEmits(['submit'])
 
@@ -51,6 +59,6 @@ const submitForm = () => {
 }
 
 const _reset = () => {
-  localSkills.value = DEFAULT_SKILL_ITEM
+  localSkills.value = { ...DEFAULT_SKILL_ITEM }
 }
 </script>

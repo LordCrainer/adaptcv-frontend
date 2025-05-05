@@ -1,5 +1,5 @@
 <template>
-  <CardDefault title="profile.experience.title">
+  <CardDefault title="profile.experience.title" min-height="400px">
     <template #right-items>
       <v-btn
         color="secondary"

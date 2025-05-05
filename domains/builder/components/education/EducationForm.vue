@@ -15,6 +15,7 @@
         <v-text-field
           v-model="localEducation.fieldOfStudy"
           :label="$t('profile.education.fieldOfStudy')"
+          placeholder="Ej: Computer Science"
           variant="outlined"
           aria-label="Field of Study"
           required></v-text-field>
@@ -23,23 +24,51 @@
           v-model="localEducation.institution"
           :label="$t('profile.education.institution')"
           variant="outlined"
+          placeholder="Ej: University of Example"
           aria-label="Institution"
           required></v-text-field>
 
         <div class="d-flex flex-row ga-4">
-          <v-text-field
-            v-model="localEducation.startDate"
-            :label="$t('profile.common.startDate')"
-            variant="outlined"
-            type="date"
-            aria-label="Start Date"></v-text-field>
+          <v-menu v-model="stateMenu.startDate" :close-on-content-click="false">
+            <template v-slot:activator="{ props }">
+              <v-text-field
+                icon-color="primary"
+                prepend-inner-icon="mdi-calendar"
+                :value="standardFormatDate(localEducation.startDate)"
+                :label="$t('common.startDate')"
+                :active="true"
+                :placeholder="standardFormatDate(new Date())"
+                variant="outlined"
+                v-bind="props"
+                aria-label="Start Date"></v-text-field>
+            </template>
+            <v-date-picker
+              v-model="localEducation.startDate"
+              @update:modelValue="stateMenu.startDate = false"
+              show-adjacent-months></v-date-picker>
+          </v-menu>
 
-          <v-text-field
-            v-model="localEducation.endDate"
-            :label="$t('profile.common.endDate')"
-            variant="outlined"
-            type="date"
-            aria-label="End Date"></v-text-field>
+          <v-menu v-model="stateMenu.endDate" :close-on-content-click="false">
+            <template v-slot:activator="{ props }">
+              <v-text-field
+                icon-color="primary"
+                prepend-inner-icon="mdi-calendar"
+                :value="standardFormatDate(localEducation.endDate)"
+                :label="$t('common.endDate')"
+                :active="true"
+                :placeholder="standardFormatDate(addYearToDate(new Date()))"
+                variant="outlined"
+                v-bind="props"
+                aria-label="End Date"></v-text-field>
+            </template>
+            <v-date-picker
+              v-model="localEducation.endDate"
+              :allowed-dates="
+                (date) => allowedDates(date, localEducation.startDate)
+              "
+              @update:modelValue="stateMenu.endDate = false"
+              show-adjacent-months></v-date-picker>
+          </v-menu>
         </div>
       </div>
       <slot name="actions">
@@ -48,7 +77,12 @@
             {{ $t('actions.cancel') }}
           </v-btn>
 
-          <v-btn text="Save" color="primary" variant="tonal" type="submit" aria-label="Save">
+          <v-btn
+            text="Save"
+            color="primary"
+            variant="tonal"
+            type="submit"
+            aria-label="Save">
             {{ $t('actions.save') }}
           </v-btn>
         </v-card-actions>
@@ -60,6 +94,9 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import type { Degree, IEducationItem } from '~/domains/builder/shared/index'
+import { useFormatDate } from '~/composables/useFormatDate'
+
+const { standardFormatDate, allowedDates, addYearToDate } = useFormatDate()
 
 const props = defineProps<{
   title: string
@@ -74,6 +111,11 @@ const DEFAULT_ITEM: IEducationItem = {
   endDate: '',
   fieldOfStudy: ''
 }
+
+const stateMenu = ref({
+  startDate: false,
+  endDate: false
+})
 
 const localEducation = ref<IEducationItem>({ ...props.inputData })
 

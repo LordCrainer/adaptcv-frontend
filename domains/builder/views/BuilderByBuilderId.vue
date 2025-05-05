@@ -37,22 +37,16 @@
       <AboutMe />
       <WorkExperience />
       <Education />
-      <Skills />
-      <Languages />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, markRaw } from 'vue'
 import UserProfile from '~/domains/builder/components/user-profile/index.vue'
 import WorkExperience from '~/domains/builder/components/work-experience/index.vue'
 import AboutMe from '~/domains/builder/components/about-me/index.vue'
 
 import Education from '~/domains/builder/components/education/index.vue'
-import Skills from '~/domains/builder/components/skills/index.vue'
-import Languages from '~/domains/builder/components/languages/index.vue'
-import type { TabItem } from '~/types/global'
 import { useCVStore } from '../shared/cv.store'
 import type { Sections } from '../shared'
 import BuilderToolbar from '../components/BuilderToolbar.vue'

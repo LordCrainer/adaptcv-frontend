@@ -26,6 +26,18 @@
           <v-divider></v-divider>
           <UserInformationForm v-model="userProfile" />
         </div>
+
+        <div class="d-flex flex-column ga-4" style="width: 100%">
+          <span class="text-body-1 font-weight-bold">Habilidades</span>
+          <v-divider></v-divider>
+          <Skills />
+        </div>
+
+        <div class="d-flex flex-column ga-4" style="width: 100%">
+          <span class="text-body-1 font-weight-bold">Habilidades</span>
+          <v-divider></v-divider>
+          <Languages />
+        </div>
       </div>
       <v-dialog
         v-model="state.openDialog"
@@ -42,8 +54,9 @@ import type { IFileImage } from '~/types/global'
 import UserPreviewPhoto from './UserPreviewPhoto.vue'
 import UserInformationForm from './UserProfileForm.vue'
 import useUserProfile from '~/domains/builder/components/user-profile/useUserProfile'
-
 import CardDefault from '~/components/card/CardDefault.vue'
+import Skills from '~/domains/builder/components/skills/index.vue'
+import Languages from '~/domains/builder/components/languages/index.vue'
 
 const { setUserProfileImage, userProfile } = useUserProfile()
 

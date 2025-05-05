@@ -7,7 +7,7 @@
       v-model="formData.name"
       :label="$t('profile.personalInfo.fullname')"
       placeholder="Ej: John Doe"
-      variant="underlined"
+      variant="outlined"
       :rules="[required($t('profile.personalInfo.fullname'))]"
       :aria-label="$t('profile.personalInfo.fullname')"
       required></v-text-field>
@@ -18,7 +18,7 @@
       prepend-icon="mdi-email"
       :label="$t('profile.personalInfo.email')"
       placeholder="Ej: example@example.com"
-      variant="underlined"
+      variant="outlined"
       type="email"
       aria-label="Email"
       required></v-text-field>
@@ -30,7 +30,7 @@
       prepend-icon="mdi-phone"
       :label="$t('profile.personalInfo.phone')"
       placeholder="Ej: +1234567890"
-      variant="underlined"
+      variant="outlined"
       type="tel"
       aria-label="Phone"></v-text-field>
 
@@ -42,7 +42,7 @@
       prepend-icon="mdi-map"
       placeholder="Ej: country"
       aria-label="Country"
-      variant="underlined"></v-text-field>
+      variant="outlined"></v-text-field>
     <v-text-field
       density="comfortable"
       v-model="formData.city"
@@ -51,12 +51,12 @@
       prepend-icon="mdi-city"
       placeholder="Ej: city"
       aria-label="City"
-      variant="underlined"></v-text-field>
+      variant="outlined"></v-text-field>
     <v-select
       density="comfortable"
       clearable
       :label="$t('profile.personalInfo.areaProfession')"
-      variant="underlined"
+      variant="outlined"
       icon-color="primary"
       prepend-icon="mdi-briefcase"
       :items="Object.keys(areasProfession)"
@@ -69,7 +69,7 @@
       prepend-icon="mdi-account-hard-hat"
       icon-color="primary"
       :label="$t('profile.personalInfo.profession')"
-      variant="underlined"
+      variant="outlined"
       :items="professions"
       v-model="formData.profession"
       autocomplete

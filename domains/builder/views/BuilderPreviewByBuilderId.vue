@@ -4,11 +4,11 @@
       <div class="d-flex ga-2 pa-2 align-center">
         <v-btn
           size="small"
-          v-tooltip:start="$t('actions.preview')"
-          color="grey"
+          v-tooltip:start="$t('actions.edit')"
+          color="warning"
           @click="toggleView"
           variant="tonal">
-          <v-icon>mdi-eye</v-icon>
+          <v-icon>mdi-pencil</v-icon>
         </v-btn>
         <v-btn
           size="small"
@@ -51,6 +51,7 @@
 <script lang="ts" setup>
 import HarvardTemplate from '~/components/templates/HarvardTemplate.vue'
 import OwnTemplate from '~/components/templates/OwnTemplate.vue'
+import BuilderToolbar from '~/domains/builder/components/BuilderToolbar.vue'
 import type { Component } from 'vue'
 
 interface IItem {

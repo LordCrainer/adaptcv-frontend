@@ -4,9 +4,10 @@
       <div class="d-flex ga-2">
         <v-autocomplete
           prepend-icon="mdi-magnify"
+          icon-color="primary"
           density="comfortable"
           v-model="localSkills.skill"
-          variant="underlined"
+          variant="outlined"
           class="flex-grow-1"
           clearable
           :items="SKILLS_LIST"
@@ -16,14 +17,14 @@
         <v-btn
           color="secondary"
           variant="flat"
-          prepend-icon="mdi-plus"
-          type="submit">
-          {{ $t('actions.add') }}
-        </v-btn>
+          rounded
+          icon="mdi-plus"
+          type="submit"></v-btn>
       </div>
 
       <v-select
-        prepend-icon="mdi-calendar"
+        prepend-icon="mdi-timeline-clock"
+        icon-color="primary"
         density="comfortable"
         v-model="localSkills.yearsOfExperience"
         :items="experienceOptions"

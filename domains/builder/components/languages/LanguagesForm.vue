@@ -1,29 +1,35 @@
 <template>
   <v-form @submit.prevent="submitForm">
-    <div class="d-flex ga-2 align-start pa-2">
-      <v-autocomplete
-        v-model="localLang.name"
-        variant="outlined"
-        class="flex-grow-1"
-        clearable
-        :items="languages"
-        :label="$t('profile.languages.language')"></v-autocomplete>
+    <div class="d-flex flex-column ga-2">
+      <div class="d-flex ga-2">
+        <v-autocomplete
+          v-model="localLang.name"
+          icon-color="primary"
+          prepend-icon="mdi-magnify"
+          density="comfortable"
+          variant="outlined"
+          class="flex-grow-1"
+          clearable
+          :items="languages"
+          :label="$t('profile.languages.language')"></v-autocomplete>
+
+        <v-btn
+          color="secondary"
+          variant="flat"
+          rounded
+          icon="mdi-plus"
+          type="submit"></v-btn>
+      </div>
 
       <v-select
+        prepend-icon="mdi-layers-triple"
+        icon-color="primary"
         v-model="localLang.proficiency"
         :items="proficiencyLevels"
         variant="outlined"
         :item-title="(i) => $t(`profile.languages.${i}`)"
         :label="$t('profile.languages.level')"
         required></v-select>
-
-      <v-btn
-        color="primary"
-        variant="tonal"
-        rounded
-        size="large"
-        icon="mdi-plus"
-        type="submit"></v-btn>
     </div>
   </v-form>
 </template>

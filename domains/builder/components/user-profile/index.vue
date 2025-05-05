@@ -28,13 +28,17 @@
         </div>
 
         <div class="d-flex flex-column ga-4" style="width: 100%">
-          <span class="text-body-1 font-weight-bold">Habilidades</span>
+          <span class="text-body-1 font-weight-bold">
+            {{ $t('profile.skills.title') }}
+          </span>
           <v-divider></v-divider>
           <Skills />
         </div>
 
         <div class="d-flex flex-column ga-4" style="width: 100%">
-          <span class="text-body-1 font-weight-bold">Habilidades</span>
+          <span class="text-body-1 font-weight-bold">
+            {{ $t('profile.languages.title') }}
+          </span>
           <v-divider></v-divider>
           <Languages />
         </div>

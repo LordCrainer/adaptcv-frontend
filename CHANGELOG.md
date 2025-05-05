@@ -1,3 +1,10 @@
+# [1.68.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.67.0...v1.68.0) (2025-05-05)
+
+
+### Features
+
+* Remove direct component import from builder route for improved modularity ([f304e33](https://github.com/LordCrainer/adaptcv-frontend/commit/f304e339c37bbe8f35e3a0819a37b065ddcb7dff))
+
 # [1.67.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.66.0...v1.67.0) (2025-05-05)
 
 

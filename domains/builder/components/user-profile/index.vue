@@ -27,7 +27,7 @@
           <UserInformationForm v-model="userProfile" />
         </div>
 
-        <div class="d-flex flex-column ga-4">
+        <div class="d-flex flex-column ga-4" style="width: 100%">
           <span class="text-body-1 font-weight-bold">
             {{ $t('profile.skills.title') }}
           </span>

@@ -1,6 +1,8 @@
 <template>
   <v-app-bar density="comfortable" app color="white">
-    <slot name="toolbar-left"></slot>
+    <slot name="toolbar-left">
+      <v-icon></v-icon>
+    </slot>
     <v-toolbar-title class="text-h5 font-weight-bold ma-0">
       <slot name="toolbar-title">
         {{ $t('routes.builder') }}

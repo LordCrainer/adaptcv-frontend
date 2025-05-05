@@ -37,16 +37,20 @@
       </div>
     </template>
   </BuilderToolbar>
-  <div class="d-flex flex-wrap ga-4">
-    <div class="d-flex flex-grow-0">
+  <v-row>
+    <v-col cols="12" lg="4">
       <UserProfile />
-    </div>
-    <div class="d-flex flex-grow-1 flex-column ga-4">
+    </v-col>
+    <v-col cols="12" lg="8" class="d-flex flex-column ga-4">
       <AboutMe />
       <WorkExperience />
       <Education />
+    </v-col>
+  </v-row>
+  <!-- <div class="d-flexflex-grow-1 flex-shrink-1">
     </div>
-  </div>
+    <div class="d-flex flex-grow-0 flex-column ga-4">
+    </div> -->
 </template>
 
 <script setup lang="ts">

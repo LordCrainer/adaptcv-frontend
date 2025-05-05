@@ -1,5 +1,16 @@
 <template>
   <BuilderToolbar>
+    <template #toolbar-left>
+      <v-btn
+        variant="text"
+        class="text-primary"
+        @click="$router.push('/builder')">
+        <v-icon>mdi-arrow-left</v-icon>
+      </v-btn>
+    </template>
+    <template #toolbar-title>
+      {{ $t('routes.builder') }} / {{ $t('routes.preview') }}
+    </template>
     <template #toolbar-items>
       <div class="d-flex ga-2 pa-2 align-center">
         <v-btn

@@ -53,7 +53,8 @@ const profile: TranslationKeys['profile'] = {
     '5to10years': '5 to 10 years',
     '10plusyears': '10+ years',
     job: 'Job',
-    yearsOfExperience: 'Years of Experience'
+    yearsOfExperience: 'Years of Experience',
+    placeholderSkill: 'Select a skill',
   },
   languages: {
     title: 'Languages',
@@ -62,7 +63,8 @@ const profile: TranslationKeys['profile'] = {
     beginner: 'Beginner',
     intermediate: 'Intermediate',
     advanced: 'Advanced',
-    native: 'Native'
+    native: 'Native',
+    placeholderLanguage: 'Select a language'
   }
 }
 

@@ -112,7 +112,8 @@ interface TranslationKeys {
       '1to2years': string
       '2to3years': string
       '5to10years': string
-      '10plusyears': string
+      '10plusyears': string,
+      placeholderSkill: string
     }
     languages: {
       title: string
@@ -122,6 +123,7 @@ interface TranslationKeys {
       intermediate: string
       advanced: string
       native: string
+      placeholderLanguage: string
     }
   }
   login: {

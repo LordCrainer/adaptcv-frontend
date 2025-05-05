@@ -1,3 +1,12 @@
+# [1.69.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.68.0...v1.69.0) (2025-05-05)
+
+
+### Features
+
+* Enhance date formatting and validation in WorkExperienceForm component ([045f25c](https://github.com/LordCrainer/adaptcv-frontend/commit/045f25c96cdfc6e5bcd1e1797c46fd51b32cdd16))
+* Enhance EducationForm with date picker and validation, update UserProfileForm and index components for improved layout ([ee436b6](https://github.com/LordCrainer/adaptcv-frontend/commit/ee436b6824e86b28565295500c2c18005ecebcfc))
+* Integrate allowedDates function into WorkExperienceForm for date validation ([83de29a](https://github.com/LordCrainer/adaptcv-frontend/commit/83de29a0d6e4ae4c007cc57214bf2f2411c710a7))
+
 # [1.68.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.67.0...v1.68.0) (2025-05-05)
 
 

@@ -13,7 +13,7 @@
         {{ $t('actions.add') }}
       </v-btn>
     </template>
-    <v-card flat border class="rounded-lg fill-height">
+    <v-card flat border class="rounded-md fill-height">
       <v-data-table
         :headers="headers"
         :items="workExperiences"

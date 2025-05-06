@@ -5,6 +5,7 @@
       v-model="formData.slogan"
       :label="$t('profile.aboutMe.slogan')"
       active
+      icon-color="primary"
       placeholder="Your slogan here"
       variant="outlined"
       aria-label="Slogan"
@@ -16,6 +17,7 @@
       v-model="formData.summary"
       :label="$t('profile.aboutMe.summary')"
       active
+      icon-color="primary"
       placeholder="Your summary here"
       variant="outlined"
       counter="500"

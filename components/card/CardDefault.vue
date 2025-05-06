@@ -3,7 +3,7 @@
     class="mx-auto"
     width="100%"
     :color="global.name.value === 'dark' ? 'grey-darken-4' : color">
-    <div class="px-4 py-2 d-flex">
+    <div class="pa-4 d-flex">
       <slot name="left-items"></slot>
       <slot name="title">
         <span class="text-h6 font-weight-black text-primary">

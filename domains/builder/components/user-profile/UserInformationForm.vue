@@ -2,7 +2,7 @@
   <div class="d-flex flex-column ga-2" style="width: 100%">
     <v-text-field
       density="comfortable"
-      prepend-icon="mdi-account"
+      prepend-inner-icon="mdi-account"
       icon-color="primary"
       v-model="formData.name"
       :label="$t('profile.personalInfo.fullname')"
@@ -16,7 +16,7 @@
       density="comfortable"
       v-model="formData.email"
       icon-color="primary"
-      prepend-icon="mdi-email"
+      prepend-inner-icon="mdi-email"
       :label="$t('profile.personalInfo.email')"
       placeholder="example@example.com"
       active
@@ -29,7 +29,7 @@
       density="comfortable"
       v-model="formData.phone"
       icon-color="primary"
-      prepend-icon="mdi-phone"
+      prepend-inner-icon="mdi-phone"
       :label="$t('profile.personalInfo.phone')"
       placeholder="+1234567890"
       active
@@ -42,7 +42,7 @@
       v-model="formData.country"
       icon-color="primary"
       :label="$t('profile.personalInfo.country')"
-      prepend-icon="mdi-map"
+      prepend-inner-icon="mdi-map"
       placeholder="My country"
       active
       aria-label="Country"
@@ -52,7 +52,7 @@
       v-model="formData.city"
       icon-color="primary"
       :label="$t('profile.personalInfo.city')"
-      prepend-icon="mdi-city"
+      prepend-inner-icon="mdi-city"
       placeholder="My city"
       active
       aria-label="City"
@@ -65,7 +65,7 @@
       variant="outlined"
       active
       icon-color="primary"
-      prepend-icon="mdi-briefcase"
+      prepend-inner-icon="mdi-briefcase"
       :items="areaProfession"
       v-model="formData.areaProfession"
       autocomplete
@@ -74,7 +74,7 @@
       density="comfortable"
       :disabled="!formData.areaProfession"
       active
-      prepend-icon="mdi-account-hard-hat"
+      prepend-inner-icon="mdi-account-hard-hat"
       icon-color="primary"
       :label="$t('profile.personalInfo.profession')"
       :placeholder="$t('profile.personalInfo.professionPlaceholder')"

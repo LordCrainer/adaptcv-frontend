@@ -3,7 +3,7 @@
     <div class="d-flex flex-column ga-2">
       <div class="d-flex ga-2">
         <v-autocomplete
-          prepend-icon="mdi-magnify"
+          prepend-inner-icon="mdi-magnify"
           icon-color="primary"
           density="comfortable"
           v-model="localSkills.skill"
@@ -20,12 +20,13 @@
           color="secondary"
           variant="flat"
           rounded
+          aria-label="Add Skill"
           icon="mdi-plus"
           type="submit"></v-btn>
       </div>
 
       <v-select
-        prepend-icon="mdi-timeline-clock"
+        prepend-inner-icon="mdi-timeline-clock"
         icon-color="primary"
         density="comfortable"
         v-model="localSkills.yearsOfExperience"

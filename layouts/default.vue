@@ -20,11 +20,3 @@ import { APP_ROUTES } from '~/utils/routes'
 
 const { global } = useTheme()
 </script>
-
-<style>
-.container {
-  padding: 16px;
-  max-width: 1200px;
-  margin: auto;
-}
-</style>

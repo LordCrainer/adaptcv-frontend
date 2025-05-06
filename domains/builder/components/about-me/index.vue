@@ -6,7 +6,7 @@
           <v-card
             flat
             border
-            class="d-flex justify-center pa-4 rounded-lg"
+            class="d-flex justify-center pa-4 rounded-md"
             style="width: 100%">
             <div
               class="rounded-circle cursor-pointer pa-4"

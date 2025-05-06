@@ -5,7 +5,7 @@
         <v-autocomplete
           v-model="localLang.name"
           icon-color="primary"
-          prepend-icon="mdi-magnify"
+          prepend-inner-icon="mdi-magnify"
           density="comfortable"
           variant="outlined"
           :aria-label="$t('profile.languages.language')"
@@ -25,7 +25,7 @@
       </div>
 
       <v-select
-        prepend-icon="mdi-layers-triple"
+        prepend-inner-icon="mdi-layers-triple"
         icon-color="primary"
         v-model="localLang.proficiency"
         :items="proficiencyLevels"

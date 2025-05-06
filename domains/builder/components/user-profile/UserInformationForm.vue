@@ -66,7 +66,7 @@
       active
       icon-color="primary"
       prepend-inner-icon="mdi-briefcase"
-      :items="areaProfession"
+      :items="localAreaProfession"
       v-model="formData.areaProfession"
       autocomplete
       aria-label="Area of Profession"></v-select>
@@ -79,7 +79,7 @@
       :label="$t('profile.personalInfo.profession')"
       :placeholder="$t('profile.personalInfo.professionPlaceholder')"
       variant="outlined"
-      :items="professions"
+      :items="localProfessions"
       v-model="formData.profession"
       autocomplete
       aria-label="Profession"></v-select>
@@ -109,19 +109,19 @@ const DEFAULT_USER_PROFILE: IUserProfile = {
   profession: undefined
 }
 
-const areaProfession = computed(() => Object.keys(areasProfession))
-const professions = ref<string[]>([])
+const localAreaProfession = computed(() => Object.keys(areasProfession))
+const localProfessions = ref<string[]>([])
 
 const formData = computed({
-  get: () => props.modelValue || { ...DEFAULT_USER_PROFILE },
-  set: (value) => emit('update:modelValue', value)
+  get: () => props.modelValue ?? { ...DEFAULT_USER_PROFILE },
+  set: (value) => emit('update:modelValue', { ...value })
 })
 
 watch(
   () => formData.value.areaProfession,
   (newArea) => {
     if (newArea) {
-      professions.value = newArea ? areasProfession[newArea] : []
+      localProfessions.value = newArea ? areasProfession[newArea] : []
     } else {
       formData.value.areaProfession = undefined
     }

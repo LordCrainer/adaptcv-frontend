@@ -44,11 +44,13 @@ export function useImageUploader() {
     return { ...selectedImageFile.value }
   }
 
-  const previewImage = (event: Event) => {
-    const file = (event.target as HTMLInputElement).files?.[0]
-    if (file) {
-      selectedImageFile.value!.src = URL.createObjectURL(file)
-    }
+  const previewImage = (source?: File | Event) => {
+    if (!source) return
+    const file =
+      source instanceof File
+        ? source
+        : ((source?.target as HTMLInputElement)?.files?.[0] as File)
+    selectedImageFile.value!.src = URL.createObjectURL(file)
   }
 
   return {

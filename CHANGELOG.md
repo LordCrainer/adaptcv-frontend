@@ -1,3 +1,12 @@
+# [1.75.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.74.0...v1.75.0) (2025-05-06)
+
+
+### Features
+
+* Enhance BuilderToolbar layout with icon slot and adjust UserProfile display in BuilderByBuilderId view ([149acc9](https://github.com/LordCrainer/adaptcv-frontend/commit/149acc9809ba6c0318712d4d78155ec5c35563bd))
+* Refactor AboutMeForm and UserProfile components for improved layout and styling ([ea01da0](https://github.com/LordCrainer/adaptcv-frontend/commit/ea01da09a4a4d5a6d326b0e039374fbfad1652e1))
+* Update CardDefault usage in education and work experience components for improved layout and responsiveness ([74a3089](https://github.com/LordCrainer/adaptcv-frontend/commit/74a3089d130e99fc035640bf552d5b9f9713a77a))
+
 # [1.74.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.73.0...v1.74.0) (2025-05-05)
 
 

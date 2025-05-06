@@ -1,3 +1,12 @@
+# [1.76.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.75.0...v1.76.0) (2025-05-06)
+
+
+### Features
+
+* Enhance user profile components with improved layout and styling, including icon adjustments and card refinements ([2b57831](https://github.com/LordCrainer/adaptcv-frontend/commit/2b5783187469dc51e388359249dbe5902a2bc4a8))
+* Refactor user profile components and improve image upload functionality ([ee2d3cb](https://github.com/LordCrainer/adaptcv-frontend/commit/ee2d3cbbf16e11dac29fcb87e0c18505c56441ea))
+* Update image uploader and user information form for improved data handling and responsiveness ([f00477e](https://github.com/LordCrainer/adaptcv-frontend/commit/f00477e352eb180ec3e45756b533b5173d7ae727))
+
 # [1.75.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.74.0...v1.75.0) (2025-05-06)
 
 

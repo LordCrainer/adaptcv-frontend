@@ -20,7 +20,6 @@
 <script setup lang="ts">
 import SkillForm from './skillForm.vue'
 import { useSkill } from '~/domains/builder/components/skills/useSkill'
-import CardDefault from '~/components/card/CardDefault.vue'
 
 const { upsertSkill, skills, removeSkill } = useSkill()
 </script>

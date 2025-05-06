@@ -11,8 +11,6 @@ const useUserProfile = () => {
       src: ''
     },
     name: '',
-    profession: '',
-    areaProfession: undefined,
     email: '',
     phone: '',
     address: ''

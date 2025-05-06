@@ -58,7 +58,7 @@ export interface SocialMedia {
 export interface IUserProfile {
   name: string
   profession?: string
-  areaProfession: AreasProfession | undefined
+  areaProfession?: AreasProfession
   email: string
   phone: string
   address: string

@@ -13,7 +13,7 @@
       <v-spacer></v-spacer>
       <slot name="right-items"></slot>
     </div>
-    <div class="pa-4">
+    <div class="pa-4 fill-height">
       <slot></slot>
     </div>
   </v-card>

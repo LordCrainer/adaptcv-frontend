@@ -1,5 +1,8 @@
 <template>
-  <CardDefault title="profile.experience.title" min-height="400px">
+  <CardDefault
+    title="profile.experience.title"
+    min-height="400px"
+    class="d-flex flex-column">
     <template #right-items>
       <v-btn
         color="secondary"
@@ -10,47 +13,45 @@
         {{ $t('actions.add') }}
       </v-btn>
     </template>
-    <v-row>
-      <v-col cols="12">
-        <v-data-table
-          :headers="headers"
-          :items="workExperiences"
-          :hide-default-footer="workExperiences.length < 11">
-          <template v-slot:item.actions="{ item, index }">
-            <div class="d-flex ga-2 justify-end">
-              <v-icon
-                color="medium-emphasis"
-                icon="mdi-pencil"
-                size="small"
-                @click="edit(item.id)" />
+    <v-card flat border class="rounded-lg fill-height">
+      <v-data-table
+        :headers="headers"
+        :items="workExperiences"
+        :hide-default-footer="workExperiences.length < 11">
+        <template v-slot:item.actions="{ item, index }">
+          <div class="d-flex flex-grow-1 ga-2 justify-end">
+            <v-icon
+              color="medium-emphasis"
+              icon="mdi-pencil"
+              size="small"
+              @click="edit(item.id)" />
 
-              <v-icon
-                color="medium-emphasis"
-                icon="mdi-delete"
-                size="small"
-                @click="remove(item.id)" />
-            </div>
-          </template>
+            <v-icon
+              color="medium-emphasis"
+              icon="mdi-delete"
+              size="small"
+              @click="remove(item.id)" />
+          </div>
+        </template>
 
-          <template v-slot:no-data>
-            {{ $t('common.noData') }}
-          </template>
-        </v-data-table>
-      </v-col>
-    </v-row>
-
-    <v-dialog
-      v-model="state.openDialog"
-      max-width="650px"
-      transition="dialog-transition">
-      <WorkExperienceForm
-        :title="`${state.isEditing ? 'Edit' : 'Add'} an Experience`"
-        v-model="state.selected"
-        @submit="submitForm"
-        @cancel="closeForm"
-        v-if="state.openDialog"></WorkExperienceForm>
-    </v-dialog>
+        <template v-slot:no-data>
+          {{ $t('common.noData') }}
+        </template>
+      </v-data-table>
+    </v-card>
   </CardDefault>
+
+  <v-dialog
+    v-model="state.openDialog"
+    max-width="650px"
+    transition="dialog-transition">
+    <WorkExperienceForm
+      :title="`${state.isEditing ? 'Edit' : 'Add'} an Experience`"
+      v-model="state.selected"
+      @submit="submitForm"
+      @cancel="closeForm"
+      v-if="state.openDialog"></WorkExperienceForm>
+  </v-dialog>
 </template>
 
 <script setup lang="ts">

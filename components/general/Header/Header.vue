@@ -19,7 +19,7 @@ import HeaderActionItems from './HeaderActionItems.vue'
 import NavigationDrawer from './NavigationDrawer.vue'
 import HeaderSettingsMenu from './HeaderSettingsMenu.vue'
 
-const drawer = ref(true)
+const drawer = ref(false)
 
 const toggleDrawer = () => {
   drawer.value = !drawer.value

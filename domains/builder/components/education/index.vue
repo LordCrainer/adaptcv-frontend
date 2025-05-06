@@ -1,5 +1,8 @@
 <template>
-  <CardDefault title="profile.education.title" min-height="400px">
+  <CardDefault
+    title="profile.education.title"
+    min-height="400px"
+    class="d-flex flex-column">
     <template #right-items>
       <v-btn
         color="secondary"
@@ -10,34 +13,32 @@
         {{ $t('actions.add') }}
       </v-btn>
     </template>
-    <v-row>
-      <v-col cols="12">
-        <v-data-table
-          :headers="headers"
-          :items="education"
-          :hide-default-footer="education.length < 11">
-          <template v-slot:item.actions="{ item }">
-            <div class="d-flex ga-2 justify-end">
-              <v-icon
-                color="medium-emphasis"
-                icon="mdi-pencil"
-                size="small"
-                @click="edit(item.id)" />
+    <v-card flat border class="rounded-lg fill-height">
+      <v-data-table
+        :headers="headers"
+        :items="education"
+        :hide-default-footer="education.length < 11">
+        <template v-slot:item.actions="{ item }">
+          <div class="d-flex ga-2 justify-end">
+            <v-icon
+              color="medium-emphasis"
+              icon="mdi-pencil"
+              size="small"
+              @click="edit(item.id)" />
 
-              <v-icon
-                color="medium-emphasis"
-                icon="mdi-delete"
-                size="small"
-                @click="removeEducation(item.id)" />
-            </div>
-          </template>
+            <v-icon
+              color="medium-emphasis"
+              icon="mdi-delete"
+              size="small"
+              @click="removeEducation(item.id)" />
+          </div>
+        </template>
 
-          <template v-slot:no-data>
-            {{ $t('common.noData') }}
-          </template>
-        </v-data-table>
-      </v-col>
-    </v-row>
+        <template v-slot:no-data>
+          {{ $t('common.noData') }}
+        </template>
+      </v-data-table>
+    </v-card>
 
     <v-dialog v-model="state.openDialog" max-width="500px">
       <EducationForm

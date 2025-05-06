@@ -1,28 +1,28 @@
 <template>
-  <v-col cols="12" md="8" class="d-flex flex-column ga-2">
-    <div class="d-flex flex-column ga-2">
-      <v-text-field
-        prepend-inner-icon="mdi-watermark"
-        v-model="formData.slogan"
-        :label="$t('profile.aboutMe.slogan')"
-        active
-        placeholder="Your slogan here"
-        variant="outlined"
-        aria-label="Slogan"
-        required></v-text-field>
+  <div class="d-flex flex-column ga-2">
+    <v-text-field
+      prepend-inner-icon="mdi-watermark"
+      v-model="formData.slogan"
+      :label="$t('profile.aboutMe.slogan')"
+      active
+      placeholder="Your slogan here"
+      variant="outlined"
+      aria-label="Slogan"
+      required></v-text-field>
 
-      <v-textarea
-        prepend-inner-icon="mdi-text-box"
-        v-model="formData.summary"
-        :label="$t('profile.aboutMe.summary')"
-        active
-        placeholder="Your summary here"
-        variant="outlined"
-        rows="5"
-        aria-label="Summary"
-        required></v-textarea>  
-    </div>
-  </v-col>
+    <v-textarea
+      hide-details
+      prepend-inner-icon="mdi-text-box"
+      v-model="formData.summary"
+      :label="$t('profile.aboutMe.summary')"
+      active
+      placeholder="Your summary here"
+      variant="outlined"
+      counter="500"
+      class="fill-height d-flex flex-column"
+      aria-label="Summary"
+      required></v-textarea>
+  </div>
 </template>
 
 <script lang="ts" setup>

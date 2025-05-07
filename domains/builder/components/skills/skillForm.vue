@@ -10,7 +10,7 @@
           variant="outlined"
           class="flex-grow-1"
           clearable
-          :items="SKILLS_LIST"
+          :items="skillList"
           active
           :placeholder="$t('profile.skills.placeholderSkill')"
           :label="$t('profile.skills.skill')"
@@ -42,9 +42,17 @@
 
 <script setup lang="ts">
 import type { ISkill } from '@lordcrainer/adaptcv-shared-types'
-import { useSkill } from './useSkill'
 
-const { SKILLS_LIST, experienceOptions } = useSkill()
+defineProps({
+  experienceOptions: {
+    type: Array,
+    default: () => []
+  },
+  skillList: {
+    type: Array,
+    default: () => []
+  }
+})
 
 const DEFAULT_SKILL_ITEM: ISkill = {
   skill: undefined,

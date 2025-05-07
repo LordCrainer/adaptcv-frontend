@@ -23,7 +23,7 @@ const SKILLS_LIST = ref(
   ].sort()
 )
 
-const experienceOptions: yearsOfExperience[] = [
+const EXPERIENCE_OPTIONS: yearsOfExperience[] = [
   'less1year',
   '1to2years',
   '2to3years',
@@ -56,7 +56,7 @@ export const useSkill = () => {
     upsertSkill,
     skills,
     SKILLS_LIST,
-    experienceOptions,
+    EXPERIENCE_OPTIONS,
     removeSkill
   }
 }

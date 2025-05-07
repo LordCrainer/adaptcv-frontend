@@ -12,7 +12,10 @@
       </v-chip>
     </div>
     <div>
-      <SkillForm @submit="upsertSkill" />
+      <SkillForm
+        :experience-options="EXPERIENCE_OPTIONS"
+        :skill-list="SKILLS_LIST"
+        @submit="upsertSkill" />
     </div>
   </div>
 </template>
@@ -21,5 +24,6 @@
 import SkillForm from './skillForm.vue'
 import { useSkill } from '~/domains/builder/components/skills/useSkill'
 
-const { upsertSkill, skills, removeSkill } = useSkill()
+const { upsertSkill, skills, removeSkill, EXPERIENCE_OPTIONS, SKILLS_LIST } =
+  useSkill()
 </script>

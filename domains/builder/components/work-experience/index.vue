@@ -16,7 +16,7 @@
     <v-card flat border class="rounded-md fill-height">
       <v-data-table
         :headers="headers"
-        :items="workExperiences"
+        :items="experiences"
         :hide-default-footer="workExperiences.length < 11">
         <template v-slot:item.actions="{ item, index }">
           <div class="d-flex flex-grow-1 ga-2 justify-end">
@@ -70,6 +70,16 @@ const {
   updateWorkExperience,
   addWorkExperience
 } = useWorkExperience()
+
+const { standardFormatDate } = useFormatDate()
+
+const experiences = computed(() => {
+  return workExperiences.value.map((exp) => ({
+    ...exp,
+    startDate: standardFormatDate(exp.startDate),
+    endDate: standardFormatDate(exp.endDate)
+  }))
+})
 
 const headers = [
   { title: t('profile.experience.jobTitle'), key: 'jobTitle' },

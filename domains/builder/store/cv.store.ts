@@ -1,6 +1,5 @@
-import type { ICV } from '@lordcrainer/adaptcv-shared-types'
+import type { ICV, Sections } from '@lordcrainer/adaptcv-shared-types'
 import { defineStore } from 'pinia'
-import type { Sections } from '.'
 const api = useApi()
 
 export const useCVStore = defineStore(

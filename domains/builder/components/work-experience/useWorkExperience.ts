@@ -27,10 +27,11 @@ const useWorkExperience = () => {
 
   const removeWorkExperience = (id: string) => {
     workExperiences.value = workExperiences.value.filter((exp) => exp.id !== id)
+    updateSection('workExperience', workExperiences.value)
   }
   const addWorkExperience = (workExperience: IWorkExperience) => {
     workExperiences.value.push({ ...workExperience, id: Date.now().toString() })
-    updateSection('workExperiences', workExperiences.value)
+    updateSection('workExperience', workExperiences.value)
   }
 
   const updateWorkExperience = (
@@ -41,7 +42,7 @@ const useWorkExperience = () => {
     if (index !== -1) {
       workExperiences.value.splice(index, 1, workExperience)
     }
-    updateSection('workExperiences', workExperiences.value)
+    updateSection('workExperience', workExperiences.value)
   }
 
   const findWorkExperience = (id: string): IWorkExperience | undefined => {

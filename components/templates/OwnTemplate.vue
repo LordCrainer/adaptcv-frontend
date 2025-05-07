@@ -126,7 +126,8 @@
         </div>
       </div>
 
-      <div class="bg-white own-rounded-bt-24 pa-4 ga-4 d-flex flex-column flex-grow-1">
+      <div
+        class="bg-white own-rounded-bt-24 pa-4 ga-4 d-flex flex-column flex-grow-1">
         <div class="d-flex flex-column ga-4">
           <div class="d-flex ga-4 align-center">
             <v-icon size="32" icon="mdi-account-circle" color=""></v-icon>

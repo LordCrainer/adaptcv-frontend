@@ -1,3 +1,17 @@
+# [1.77.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.76.0...v1.77.0) (2025-05-07)
+
+
+### Bug Fixes
+
+* Update import paths for useCVStore across multiple components and files ([1a5fa5b](https://github.com/LordCrainer/adaptcv-frontend/commit/1a5fa5bf0f387e3b599f3996a5f89b67931ee59d))
+
+
+### Features
+
+* Enhance SkillForm and useSkill for improved data handling and integration with user profile ([b7dea8e](https://github.com/LordCrainer/adaptcv-frontend/commit/b7dea8ef2e9e8c3eb995c519147f6ca44f9bffe7))
+* Refactor user profile and work experience components for improved data handling and integration with CV store ([172eaf6](https://github.com/LordCrainer/adaptcv-frontend/commit/172eaf6295268bf66ee4ef94e5405aff4472d4a9))
+* Update @lordcrainer/adaptcv-shared-types to version 1.9.2 and adjust imports across components ([c1dec1c](https://github.com/LordCrainer/adaptcv-frontend/commit/c1dec1cdfe5e9e5a39cb98ef8c71633ed3c285d2))
+
 # [1.76.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.75.0...v1.76.0) (2025-05-06)
 
 

@@ -79,7 +79,7 @@
       :label="$t('profile.personalInfo.profession')"
       :placeholder="$t('profile.personalInfo.professionPlaceholder')"
       variant="outlined"
-      :items="localProfessions"
+      :items="PROFESSION_LIST"
       v-model="formData.profession"
       autocomplete
       aria-label="Profession"></v-select>
@@ -106,7 +106,7 @@ const DEFAULT_USER_PROFILE: IUserProfile = {
 }
 
 const localAreaProfession = computed(() => Object.keys(areasProfession))
-const localProfessions = ref<string[]>([])
+const PROFESSION_LIST = ref<string[]>([])
 
 const formData = computed({
   get: () => props.modelValue ?? { ...DEFAULT_USER_PROFILE },
@@ -117,11 +117,11 @@ watch(
   () => formData.value.areaProfession,
   (newArea) => {
     if (newArea) {
-      localProfessions.value = newArea ? areasProfession[newArea] : []
+      PROFESSION_LIST.value = newArea ? areasProfession[newArea] : []
     } else {
       formData.value.areaProfession = undefined
+      formData.value.profession = undefined
     }
-    formData.value.profession = undefined
   },
   { immediate: true }
 )

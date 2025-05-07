@@ -1,5 +1,14 @@
 import type { IEducationItem } from '~/domains/builder/shared/index'
 
+const DEFAULT_ITEM: IEducationItem = {
+  id: '',
+  degree: undefined,
+  institution: '',
+  startDate: '',
+  endDate: '',
+  fieldOfStudy: ''
+}
+
 const useEducation = () => {
   const education = ref<IEducationItem[]>([])
 
@@ -39,7 +48,8 @@ const useEducation = () => {
     removeEducation,
     updateEducation,
     clearEducation,
-    getEducation
+    getEducation,
+    DEFAULT_ITEM
   }
 }
 

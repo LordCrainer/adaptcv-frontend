@@ -110,42 +110,33 @@
 import { ref } from 'vue'
 import type { IWorkExperience } from '~/domains/builder/shared'
 import { useFormatDate } from '~/composables/useFormatDate'
+import useWorkExperience from './useWorkExperience'
 
+const { DEFAULT_ITEM } = useWorkExperience()
 const { standardFormatDate, addYearToDate, allowedDates } = useFormatDate()
 
 const props = defineProps<{
   title: string
-  modelValue: IWorkExperience | null
+  modelValue: IWorkExperience
 }>()
 
 const $editor = ref<DragonEditor>()
-
-const DEFAULT_ITEM: IWorkExperience = {
-  id: '',
-  jobTitle: '',
-  company: '',
-  startDate: '',
-  endDate: '',
-  description: {} as DEContentData
-}
 
 const stateMenu = ref({
   startDate: false,
   endDate: false
 })
 
-const localExperiencie = computed({
-  get: () => props.modelValue || { ...DEFAULT_ITEM },
-  set: (value) => {
-    localExperiencie.value = value
-  }
+const localExperiencie = ref<IWorkExperience>({
+  ...DEFAULT_ITEM,
+  ...props.modelValue
 })
 
 watch(
   () => props.modelValue,
   (newVal) => {
     if (newVal) {
-      localExperiencie.value = newVal
+      localExperiencie.value = { ...newVal }
     }
   },
   { deep: true, immediate: true }
@@ -159,7 +150,6 @@ const submitForm = () => {
       ...localExperiencie.value,
       description: $editor.value?.getContentData()
     })
-    emit('close')
   }
 }
 </script>

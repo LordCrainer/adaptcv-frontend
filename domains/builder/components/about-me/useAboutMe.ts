@@ -1,3 +1,4 @@
+import { useCVStore } from '~/domains/builder/store/cv.store'
 import { ref } from 'vue'
 import type { IAboutMe } from '~/domains/builder/shared'
 import type { IFileImage } from '~/types/global'
@@ -11,7 +12,14 @@ const DEFAULT_ABOUT_ME: IAboutMe = {
 }
 
 export const useAboutMe = () => {
-  const aboutMe = ref<IAboutMe>(DEFAULT_ABOUT_ME)
+  const { updateSection, curriculumVitae } = useCVStore()
+
+  const aboutMe = computed({
+    get: () => curriculumVitae.aboutMe || { ...DEFAULT_ABOUT_ME },
+    set: (value) => {
+      updateSection('aboutMe', value)
+    }
+  })
 
   const setAboutMe = (data: IAboutMe) => {
     aboutMe.value = data
@@ -19,10 +27,6 @@ export const useAboutMe = () => {
 
   const getAboutMe = () => {
     return aboutMe.value
-  }
-
-  const clearAboutMe = () => {
-    aboutMe.value = DEFAULT_ABOUT_ME
   }
 
   const setAboutMeLogo = (logo: IFileImage) => {
@@ -34,7 +38,6 @@ export const useAboutMe = () => {
   return {
     setAboutMe,
     getAboutMe,
-    clearAboutMe,
     aboutMe,
     setAboutMeLogo
   }

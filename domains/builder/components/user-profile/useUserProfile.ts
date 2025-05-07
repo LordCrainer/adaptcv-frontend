@@ -6,7 +6,7 @@ import type { IUserProfile } from '@lordcrainer/adaptcv-shared-types'
 const useUserProfile = () => {
   const { updateSection, curriculumVitae } = useCVStore()
 
-  const userProfile = ref<IUserProfile>({
+  const DEFAULT_USER_PROFILE = {
     image: {
       src: ''
     },
@@ -14,17 +14,14 @@ const useUserProfile = () => {
     email: '',
     phone: '',
     address: ''
-  })
+  }
 
-  watch(
-    () => userProfile.value,
-    (newValue) => {
-      if (newValue) {
-        updateSection('userProfile', newValue)
-      }
-    },
-    { deep: true }
-  )
+  const userProfile = computed({
+    get: () => curriculumVitae.userProfile || { ...DEFAULT_USER_PROFILE },
+    set: (value) => {
+      updateSection('userProfile', value)
+    }
+  })
 
   onMounted(() => {
     if (curriculumVitae.userProfile) {

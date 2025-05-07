@@ -9,7 +9,7 @@
         variant="outlined"
         prepend-icon="mdi-plus"
         aria-label="Add Work Experience"
-        @click="add()">
+        @click="add">
         {{ $t('actions.add') }}
       </v-btn>
     </template>

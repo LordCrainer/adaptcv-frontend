@@ -99,7 +99,9 @@
 import { ref } from 'vue'
 import type { Degree, IEducationItem } from '~/domains/builder/shared/index'
 import { useFormatDate } from '~/composables/useFormatDate'
+import useEducation from './useEducation'
 
+const { DEFAULT_ITEM } = useEducation()
 const { standardFormatDate, allowedDates, addYearToDate } = useFormatDate()
 
 const props = defineProps<{
@@ -107,21 +109,15 @@ const props = defineProps<{
   inputData: IEducationItem
 }>()
 
-const DEFAULT_ITEM: IEducationItem = {
-  id: '',
-  degree: undefined,
-  institution: '',
-  startDate: '',
-  endDate: '',
-  fieldOfStudy: ''
-}
-
 const stateMenu = ref({
   startDate: false,
   endDate: false
 })
 
-const localEducation = ref<IEducationItem>({ ...props.inputData })
+const localEducation = ref<IEducationItem>({
+  ...DEFAULT_ITEM,
+  ...props.inputData
+})
 
 watch(
   () => props.inputData,
@@ -152,6 +148,6 @@ const submitForm = () => {
 }
 
 const resetForm = () => {
-  Object.assign(localEducation.value, DEFAULT_ITEM)
+  Object.assign(localEducation.value, { ...DEFAULT_ITEM })
 }
 </script>

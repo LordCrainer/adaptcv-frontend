@@ -9,7 +9,7 @@
         variant="outlined"
         prepend-icon="mdi-plus"
         aria-label="Add Work Experience"
-        @click="add()">
+        @click="add">
         {{ $t('actions.add') }}
       </v-btn>
     </template>
@@ -47,9 +47,10 @@
     transition="dialog-transition">
     <WorkExperienceForm
       :title="`${state.isEditing ? 'Edit' : 'Add'} an Experience`"
-      v-model="state.selected"
+      v-model="state.record"
       @submit="submitForm"
-      @cancel="closeForm"
+      @close="close"
+      @cancel="close"
       v-if="state.openDialog"></WorkExperienceForm>
   </v-dialog>
 </template>
@@ -78,16 +79,19 @@ const headers = [
   { title: t('actions.options'), key: 'actions', sortable: false }
 ]
 
-const state = reactive({
+const state = ref({
   openDialog: false,
   isEditing: false,
-  selected: {} as IWorkExperience | null
+  record: {} as IWorkExperience
 })
 
-const add = (experience: IWorkExperience | null = null) => {
-  state.selected = experience
-  state.isEditing = !!experience
-  state.openDialog = true
+function editionMode(isEditing: boolean) {
+  state.value.isEditing = isEditing
+  state.value.openDialog = isEditing
+}
+
+const add = () => {
+  editionMode(true)
 }
 
 const edit = (id: string) => {
@@ -96,13 +100,13 @@ const edit = (id: string) => {
   if (!foundWorkExperience) {
     return
   }
-  add(foundWorkExperience)
+  state.value.record = foundWorkExperience
+  editionMode(true)
 }
 
-const closeForm = () => {
-  state.openDialog = false
-  state.isEditing = false
-  state.selected = null
+const close = () => {
+  editionMode(false)
+  state.value.record = {} as IWorkExperience
 }
 
 const remove = (id: string) => {
@@ -110,12 +114,12 @@ const remove = (id: string) => {
 }
 
 const submitForm = async (data: IWorkExperience) => {
-  if (state.isEditing && data.id) {
+  if (state.value.isEditing && data.id) {
     await updateWorkExperience(data.id, data)
   } else {
     await addWorkExperience(data)
   }
-  closeForm()
+  close()
 }
 </script>
 

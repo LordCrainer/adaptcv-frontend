@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ISkill } from '~/domains/builder/shared/index'
+import type { ISkill } from '@lordcrainer/adaptcv-shared-types'
 import { useSkill } from './useSkill'
 
 const { SKILLS_LIST, experienceOptions } = useSkill()

@@ -1,4 +1,7 @@
-import type { ISkill, yearsOfExperience } from '~/domains/builder/shared'
+import type {
+  yearsOfExperience,
+  ISkill
+} from '@lordcrainer/adaptcv-shared-types'
 
 const SKILLS_LIST = ref(
   [

@@ -87,8 +87,8 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { IUserProfile } from '~/domains/builder/shared'
-import { areasProfession } from '~/domains/builder/shared/constants/profesionArea'
+import { type IUserProfile } from '@lordcrainer/adaptcv-shared-types'
+import { areasProfession } from '@lordcrainer/adaptcv-shared-types/dist/src/types/builder/constants'
 
 const { required } = useRules()
 
@@ -102,11 +102,7 @@ const DEFAULT_USER_PROFILE: IUserProfile = {
   name: '',
   email: '',
   phone: '',
-  address: '',
-  country: undefined,
-  city: undefined,
-  areaProfession: undefined,
-  profession: undefined
+  address: ''
 }
 
 const localAreaProfession = computed(() => Object.keys(areasProfession))

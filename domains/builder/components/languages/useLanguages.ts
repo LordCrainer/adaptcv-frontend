@@ -1,9 +1,11 @@
+import { useCVStore } from '~/domains/builder/store/cv.store'
 import { ref } from 'vue'
 import type { ILanguageItem } from '~/domains/builder/shared'
 
 const MAX_LANGUAGES = 5
 
 export const useLanguages = () => {
+  const { updateSection, curriculumVitae } = useCVStore()
   const languages = ref<ILanguageItem[]>([])
 
   const proficiencyLevels = ['beginner', 'intermediate', 'advanced', 'native']
@@ -19,11 +21,23 @@ export const useLanguages = () => {
     } else {
       languages.value.push(lang)
     }
+    updateSection('languages', languages.value)
+  }
+
+  const setLanguages = (data: ILanguageItem[]) => {
+    languages.value = data
   }
 
   const removeLanguage = (index: number) => {
     languages.value.splice(index, 1)
+    updateSection('languages', languages.value)
   }
+
+  onMounted(() => {
+    if (curriculumVitae.languages) {
+      setLanguages(curriculumVitae.languages)
+    }
+  })
 
   return {
     languages,

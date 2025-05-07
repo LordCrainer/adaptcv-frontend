@@ -2,6 +2,7 @@ import type {
   yearsOfExperience,
   ISkill
 } from '@lordcrainer/adaptcv-shared-types'
+import { useCVStore } from '~/domains/builder/store/cv.store'
 
 const SKILLS_LIST = ref(
   [
@@ -34,6 +35,7 @@ const EXPERIENCE_OPTIONS: yearsOfExperience[] = [
 const MAX_SKILLS = 10
 
 export const useSkill = () => {
+  const { updateSection, curriculumVitae } = useCVStore()
   const skills = ref<ISkill[]>([])
 
   const upsertSkill = (data: ISkill) => {
@@ -46,11 +48,23 @@ export const useSkill = () => {
     } else {
       skills.value.push(data)
     }
+    updateSection('skills', skills.value)
   }
 
   const removeSkill = (index: number) => {
     skills.value.splice(index, 1)
+    updateSection('skills', skills.value)
   }
+
+  const setSkills = (data: ISkill[]) => {
+    skills.value = data
+  }
+
+  onMounted(() => {
+    if (curriculumVitae.skills) {
+      setSkills(curriculumVitae.skills)
+    }
+  })
 
   return {
     upsertSkill,

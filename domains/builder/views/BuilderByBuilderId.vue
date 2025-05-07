@@ -55,7 +55,7 @@ import WorkExperience from '~/domains/builder/components/work-experience/index.v
 import AboutMe from '~/domains/builder/components/about-me/index.vue'
 
 import Education from '~/domains/builder/components/education/index.vue'
-import { useCVStore } from '../shared/cv.store'
+import { useCVStore } from '../store/cv.store'
 import type { Sections } from '../shared'
 import BuilderToolbar from '../components/BuilderToolbar.vue'
 

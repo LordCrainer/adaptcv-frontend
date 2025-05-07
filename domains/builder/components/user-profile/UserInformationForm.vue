@@ -88,7 +88,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import type { IUserProfile } from '@lordcrainer/adaptcv-shared-types'
-import { areasProfession } from '../../shared/constants/profesionArea'
+import { areasProfession } from '@lordcrainer/adaptcv-shared-types/dist/src/types/builder/constants';
 
 const { required } = useRules()
 

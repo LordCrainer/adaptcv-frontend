@@ -1,4 +1,6 @@
-import type { IEducationItem } from '~/domains/builder/shared/index'
+import type { IEducationItem } from '@lordcrainer/adaptcv-shared-types'
+import { useCVStore } from '~/domains/builder/store/cv.store'
+// import type { IEducationItem } from '~/domains/builder/shared/index'
 
 const DEFAULT_ITEM: IEducationItem = {
   id: '',
@@ -10,31 +12,33 @@ const DEFAULT_ITEM: IEducationItem = {
 }
 
 const useEducation = () => {
-  const education = ref<IEducationItem[]>([])
+  const { updateSection, curriculumVitae } = useCVStore()
+  const education = computed(() => curriculumVitae.education || [])
 
   const addEducation = (educationItem: IEducationItem) => {
-    education.value.push({ ...educationItem, id: Date.now().toString() })
+    const newEducationItem = { ...educationItem, id: Date.now().toString() }
+    updateSection('education', [...education.value, newEducationItem])
   }
 
   const removeEducation = (id: string) => {
-    education.value = education.value.filter((item) => item.id !== id)
+    const updated = education.value.filter((item) => item.id !== id)
+    updateSection('education', updated)
   }
 
-  const updateEducation = (updatedItem: IEducationItem) => {
+  const updateEducation = (id: string, updatedItem: IEducationItem) => {
     const index = education.value.findIndex(
       (item) => item.id === updatedItem.id
     )
     if (index !== -1) {
-      education.value.splice(index, 1, updatedItem)
+      const updated = education.value.map((edu) =>
+        edu.id === id ? updatedItem : edu
+      )
+      updateSection('education', updated)
     }
   }
 
   const findEducation = (id: string): IEducationItem | undefined => {
     return education.value.find((item) => item.id === id)
-  }
-
-  const clearEducation = () => {
-    education.value = []
   }
 
   const getEducation = () => {
@@ -47,7 +51,6 @@ const useEducation = () => {
     addEducation,
     removeEducation,
     updateEducation,
-    clearEducation,
     getEducation,
     DEFAULT_ITEM
   }

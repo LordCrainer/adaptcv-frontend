@@ -13,25 +13,18 @@ const DEFAULT_ITEM: IWorkExperience = {
 const useWorkExperience = () => {
   const { updateSection, curriculumVitae } = useCVStore()
 
-  const workExperiences = ref<IWorkExperience[]>([])
-
-  watch(
-    () => curriculumVitae.workExperience,
-    (newValue) => {
-      if (newValue) {
-        workExperiences.value = newValue
-      }
-    },
-    { immediate: true, deep: true }
-  )
+  const workExperiences = computed(() => curriculumVitae.workExperience || [])
 
   const removeWorkExperience = (id: string) => {
-    workExperiences.value = workExperiences.value.filter((exp) => exp.id !== id)
-    updateSection('workExperience', workExperiences.value)
+    const updated = workExperiences.value.filter((exp) => exp.id !== id)
+    updateSection('workExperience', updated)
   }
   const addWorkExperience = (workExperience: IWorkExperience) => {
-    workExperiences.value.push({ ...workExperience, id: Date.now().toString() })
-    updateSection('workExperience', workExperiences.value)
+    const newWorkExperience = { ...workExperience, id: Date.now().toString() }
+    updateSection('workExperience', [
+      ...workExperiences.value,
+      newWorkExperience
+    ])
   }
 
   const updateWorkExperience = (
@@ -40,9 +33,11 @@ const useWorkExperience = () => {
   ) => {
     const index = workExperiences.value.findIndex((exp) => exp.id === id)
     if (index !== -1) {
-      workExperiences.value.splice(index, 1, workExperience)
+      const updated = workExperiences.value.map((exp) =>
+        exp.id === id ? workExperience : exp
+      )
+      updateSection('workExperience', updated)
     }
-    updateSection('workExperience', workExperiences.value)
   }
 
   const findWorkExperience = (id: string): IWorkExperience | undefined => {

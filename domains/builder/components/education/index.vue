@@ -54,9 +54,9 @@
 
 <script setup lang="ts">
 import EducationForm from './EducationForm.vue'
-import type { IEducationItem } from '~/domains/builder/shared/index'
 import useEducation from '~/domains/builder/components/education/useEducation'
 import CardDefault from '~/components/card/CardDefault.vue'
+import type { IEducationItem } from '@lordcrainer/adaptcv-shared-types'
 
 const { t } = useI18n()
 
@@ -87,6 +87,11 @@ const add = () => {
   state.openDialog = true
 }
 
+function editionMode(isEditing: boolean) {
+  state.isEditing = isEditing
+  state.openDialog = isEditing
+}
+
 const edit = (id: string) => {
   const foundEducation = findEducation(id)
 
@@ -110,8 +115,8 @@ const reset = () => {
 }
 
 const submitForm = (education: IEducationItem) => {
-  if (state.isEditing) {
-    updateEducation(education)
+  if (state.isEditing && education.id) {
+    updateEducation(education.id, education)
   } else {
     addEducation(education)
   }

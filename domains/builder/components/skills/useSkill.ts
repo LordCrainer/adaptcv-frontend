@@ -65,7 +65,7 @@ export const useSkill = () => {
     if (!data.skill) {
       return
     }
-    const index = findByIndex(data.skill)
+    const index = findIndexBySkill(data.skill)
     if (index !== -1) {
       updateSkill(index, data)
     } else {
@@ -73,7 +73,7 @@ export const useSkill = () => {
     }
   }
 
-  const findByIndex = (skill: string): number => {
+  const findIndexBySkill = (skill: string): number => {
     return skills.value.findIndex((item) => item.skill === skill)
   }
 

@@ -26,38 +26,44 @@ const PROFICIENCY_LEVELS = ['beginner', 'intermediate', 'advanced', 'native']
 
 export const useLanguages = () => {
   const { updateSection, curriculumVitae } = useCVStore()
-  const languages = ref<ILanguageItem[]>([])
+  const languages = computed(() => curriculumVitae.languages || [])
 
-  
-
-  const upsertLanguage = (lang: ILanguageItem) => {
+  const addLanguage = (lang: ILanguageItem) => {
     if (languages.value.length >= MAX_LANGUAGES) {
       return
     }
-
-    const index = languages.value.findIndex((item) => item.name === lang.name)
-    if (index !== -1) {
-      languages.value.splice(index, 1, lang)
-    } else {
-      languages.value.push(lang)
-    }
-    updateSection('languages', languages.value)
+    const updated = [...languages.value, lang]
+    updateSection('languages', updated)
   }
 
-  const setLanguages = (data: ILanguageItem[]) => {
-    languages.value = data
+  const updateLanguage = (index: number, lang: ILanguageItem) => {
+    const updated = languages.value.map((item, i) =>
+      i === index ? lang : item
+    )
+    updateSection('languages', updated)
+  }
+
+  const findIndexByLanguage = (language: string) => {
+    return languages.value.findIndex((item) => item.name === language)
+  }
+
+  const upsertLanguage = (lang: ILanguageItem) => {
+    if (!lang.name) {
+      return
+    }
+
+    const index = findIndexByLanguage(lang.name)
+    if (index !== -1) {
+      updateLanguage(index, lang)
+    } else {
+      addLanguage(lang)
+    }
   }
 
   const removeLanguage = (index: number) => {
     languages.value.splice(index, 1)
     updateSection('languages', languages.value)
   }
-
-  onMounted(() => {
-    if (curriculumVitae.languages) {
-      setLanguages(curriculumVitae.languages)
-    }
-  })
 
   return {
     languages,

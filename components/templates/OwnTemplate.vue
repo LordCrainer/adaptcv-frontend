@@ -113,12 +113,12 @@
             class="d-flex ga-2 align-center pa-2">
             <v-progress-circular
               :model-value="
-                getProficiencyLevel(lang.proficiency, proficiencyLevels)
+                getProficiencyLevel(lang.proficiency, PROFICIENCY_LEVELS)
               "
               color="orange-darken-1"
               :width="6"></v-progress-circular>
             <p>
-              {{ lang.name }} ({{
+              {{ lang.name }} {{ lang }} ({{
                 $t(`profile.languages.${lang.proficiency}`)
               }})
             </p>
@@ -214,7 +214,7 @@ import { useLanguages } from '~/domains/builder/components/languages/useLanguage
 import { useCVStore } from '~/domains/builder/store/cv.store'
 
 const { formatDateRange } = useFormatDate()
-const { proficiencyLevels } = useLanguages()
+const { PROFICIENCY_LEVELS } = useLanguages()
 const { curriculumVitae } = useCVStore()
 
 const { education, languages, userProfile, skills, workExperience, aboutMe } =

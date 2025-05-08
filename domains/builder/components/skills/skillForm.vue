@@ -24,15 +24,15 @@
           icon="mdi-plus"
           type="submit"></v-btn>
       </div>
-
       <v-select
         prepend-inner-icon="mdi-timeline-clock"
         icon-color="primary"
         density="comfortable"
         v-model="localSkills.yearsOfExperience"
         :items="EXPERIENCE_OPTIONS"
+        :item-title="(i) => $t(`profile.skills.${i}`)"
+        :item-value="(i) => i"
         variant="outlined"
-        :item-title="(i) => i && $t(`profile.skills.${i}`)"
         :label="$t('profile.skills.yearsOfExperience')"
         :aria-label="$t('profile.skills.yearsOfExperience')"
         required></v-select>
@@ -43,6 +43,7 @@
 <script setup lang="ts">
 import type { ISkill } from '@lordcrainer/adaptcv-shared-types'
 import { useSkill } from './useSkill'
+const { t } = useI18n()
 
 const { DEFAULT_SKILL_ITEM, EXPERIENCE_OPTIONS, SKILLS_LIST } = useSkill()
 

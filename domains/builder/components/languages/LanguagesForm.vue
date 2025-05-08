@@ -31,7 +31,9 @@
         :items="PROFICIENCY_LEVELS"
         variant="outlined"
         active
-        :item-title="(i) => $t(`profile.languages.${i}`)"
+        :item-title="(i) => $t(`profile.languages.${i}`
+        )"
+        :item-value="(i) => i"
         :label="$t('profile.languages.level')"
         required></v-select>
     </div>
@@ -66,6 +68,11 @@ const emit = defineEmits(['submit'])
 
 const submitForm = () => {
   if (localLang.value.name && localLang.value.proficiency) {
+
+    console.log(
+      '🚀 ~ file: LanguagesForm.vue:45 ~ submitForm ~ localLang.value:',
+      localLang.value
+    )
     emit('submit', { ...localLang.value })
     _reset()
   }

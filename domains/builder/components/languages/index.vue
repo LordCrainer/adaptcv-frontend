@@ -9,7 +9,7 @@
         closable
         @click="edit(item)"
         @click:close="removeLanguage(index)">
-        {{ item.name }} ({{ item.proficiency }})
+        {{ item.name }} ({{ $t(`profile.languages.${item.proficiency}`) }})
       </v-chip>
     </div>
     <div>

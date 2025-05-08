@@ -9,7 +9,7 @@
         closable
         @click="edit(item)"
         @click:close="removeSkill(index)">
-        {{ item.skill }} ({{ item.yearsOfExperience }})
+        {{ item.skill }} ({{ $t(`profile.skills.${item.yearsOfExperience}`) }})
       </v-chip>
     </div>
     <div>

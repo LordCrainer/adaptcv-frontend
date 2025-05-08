@@ -94,7 +94,9 @@
               class="pa-3 rounded-circle"
               style="border: 5px solid orange"></div>
             <p>
-              {{ skill.skill }}
+              {{ skill.skill }} ({{
+                $t(`profile.skills.${skill?.yearsOfExperience?.toLowerCase()}`)
+              }})
             </p>
           </div>
         </div>
@@ -118,8 +120,8 @@
               color="orange-darken-1"
               :width="6"></v-progress-circular>
             <p>
-              {{ lang.name }} {{ lang }} ({{
-                $t(`profile.languages.${lang.proficiency}`)
+              {{ lang.name }} ({{
+                $t(`profile.languages.${lang.proficiency.toLowerCase()}`)
               }})
             </p>
           </div>

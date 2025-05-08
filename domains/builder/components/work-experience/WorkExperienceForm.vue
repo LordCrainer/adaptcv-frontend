@@ -1,6 +1,6 @@
 <template>
-  <v-form @submit.prevent="submitForm">
-    <v-card :title="title">
+  <v-card :title="title">
+    <v-form>
       <v-row class="pa-4">
         <v-col cols="12" md="6" class="py-1">
           <v-text-field
@@ -81,29 +81,29 @@
           <div>
             <h3>{{ $t('profile.experience.description') }}</h3>
           </div>
-          <ClientOnly>
-            <DragonEditor ref="$editor" />
-          </ClientOnly>
         </v-col>
       </v-row>
-      <slot name="actions">
-        <v-card-actions class="pb-4 px-4">
-          <v-btn variant="flat" @click="$emit('cancel')" aria-label="Cancel">
-            {{ $t('actions.cancel') }}
-          </v-btn>
+    </v-form>
+    <v-col cols="12">
+      <ClientOnly>
+        <DragonEditor ref="editor" />
+      </ClientOnly>
+    </v-col>
+    <v-card-actions class="pb-4 px-4">
+      <v-btn variant="flat" aria-label="Cancel" @click="emit('cancel')">
+        {{ $t('actions.cancel') }}
+      </v-btn>
 
-          <v-btn
-            text="Save"
-            color="primary"
-            variant="tonal"
-            type="submit"
-            aria-label="Save">
-            {{ $t('actions.save') }}
-          </v-btn>
-        </v-card-actions>
-      </slot>
-    </v-card>
-  </v-form>
+      <v-btn
+        text="Save"
+        color="primary"
+        variant="tonal"
+        aria-label="Save"
+        @click="submitForm">
+        {{ $t('actions.save') }}
+      </v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script lang="ts" setup>
@@ -120,7 +120,7 @@ const props = defineProps<{
   modelValue: IWorkExperience
 }>()
 
-const $editor = ref<DragonEditor>()
+const editor = ref<DragonEditor>()
 
 const stateMenu = ref({
   startDate: false,
@@ -146,10 +146,19 @@ const emit = defineEmits(['submit', 'cancel', 'close'])
 
 const submitForm = () => {
   if (localExperiencie.value.company && localExperiencie.value.jobTitle) {
+    localExperiencie.value.description = editor.value?.getContentData()
     emit('submit', {
       ...localExperiencie.value,
-      description: $editor.value?.getContentData()
+      description: editor.value?.getContentData()
     })
   }
 }
+
+onMounted(() => {
+  if (localExperiencie.value.description) {
+    setTimeout(() => {
+      editor.value?.setContentData(localExperiencie.value.description)
+    }, 300)
+  }
+})
 </script>

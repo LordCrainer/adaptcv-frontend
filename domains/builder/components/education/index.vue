@@ -16,7 +16,7 @@
     <v-card flat border class="rounded-md fill-height">
       <v-data-table
         :headers="headers"
-        :items="education"
+        :items="educations"
         :hide-default-footer="education.length < 11">
         <template v-slot:item.actions="{ item }">
           <div class="d-flex justify-end">
@@ -54,7 +54,7 @@ import CardDefault from '~/components/card/CardDefault.vue'
 import type { IEducationItem } from '@lordcrainer/adaptcv-shared-types'
 
 const { t } = useI18n()
-
+const { standardFormatDate } = useFormatDate()
 const {
   addEducation,
   findEducation,
@@ -76,6 +76,14 @@ const state = reactive({
   openDialog: false,
   isEditing: false,
   record: {} as IEducationItem
+})
+
+const educations = computed(() => {
+  return education.value.map((exp) => ({
+    ...exp,
+    startDate: standardFormatDate(exp.startDate),
+    endDate: standardFormatDate(exp.endDate)
+  }))
 })
 
 const add = () => {

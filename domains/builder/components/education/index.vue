@@ -19,18 +19,13 @@
         :items="education"
         :hide-default-footer="education.length < 11">
         <template v-slot:item.actions="{ item }">
-          <div class="d-flex ga-2 justify-end">
-            <v-icon
-              color="medium-emphasis"
-              icon="mdi-pencil"
-              size="small"
-              @click="edit(item.id)" />
-
-            <v-icon
-              color="medium-emphasis"
-              icon="mdi-delete"
-              size="small"
-              @click="removeEducation(item.id)" />
+          <div class="d-flex justify-end">
+            <v-btn flat size="x-small" @click="edit(item.id)" icon>
+              <v-icon color="warning" icon="mdi-pencil" />
+            </v-btn>
+            <v-btn flat size="x-small" @click="remove(item.id)" icon>
+              <v-icon color="error" icon="mdi-delete" />
+            </v-btn>
           </div>
         </template>
 
@@ -68,14 +63,14 @@ const {
   education
 } = useEducation()
 
-const headers = ref([
+const headers = [
   { title: t('profile.education.degree'), key: 'degree' },
   { title: t('profile.education.institution'), key: 'institution' },
   { title: t('profile.education.fieldOfStudy'), key: 'fieldOfStudy' },
   { title: t('common.startDate'), key: 'startDate' },
   { title: t('common.endDate'), key: 'endDate' },
-  { title: t('actions.options'), key: 'actions', sortable: false }
-])
+  { title: t('actions.options'), key: 'actions', sortable: false, align: 'end' }
+] as const
 
 const state = reactive({
   openDialog: false,
@@ -84,7 +79,7 @@ const state = reactive({
 })
 
 const add = () => {
-  state.openDialog = true
+  editionMode(true)
 }
 
 function editionMode(isEditing: boolean) {
@@ -99,8 +94,7 @@ const edit = (id: string) => {
     return
   }
 
-  state.openDialog = true
-  state.isEditing = true
+  editionMode(true)
   state.record = { ...foundEducation }
 }
 
@@ -109,9 +103,12 @@ const close = () => {
 }
 
 const reset = () => {
-  state.openDialog = false
-  state.isEditing = false
+  editionMode(false)
   state.record = {} as IEducationItem
+}
+
+const remove = (id: string) => {
+  removeEducation(id)
 }
 
 const submitForm = (education: IEducationItem) => {

@@ -19,18 +19,13 @@
         :items="experiences"
         :hide-default-footer="workExperiences.length < 11">
         <template v-slot:item.actions="{ item, index }">
-          <div class="d-flex flex-grow-1 ga-2 justify-end">
-            <v-icon
-              color="medium-emphasis"
-              icon="mdi-pencil"
-              size="small"
-              @click="edit(item.id)" />
-
-            <v-icon
-              color="medium-emphasis"
-              icon="mdi-delete"
-              size="small"
-              @click="remove(item.id)" />
+          <div class="d-flex flex-grow-1 justify-end">
+            <v-btn flat size="x-small" @click="edit(item.id)" icon>
+              <v-icon color="warning" icon="mdi-pencil"/>
+            </v-btn>
+            <v-btn flat size="x-small" @click="remove(item.id)" icon>
+              <v-icon color="error" icon="mdi-delete"/>
+            </v-btn>
           </div>
         </template>
 
@@ -86,8 +81,8 @@ const headers = [
   { title: t('profile.experience.company'), key: 'company' },
   { title: t('common.startDate'), key: 'startDate' },
   { title: t('common.endDate'), key: 'endDate' },
-  { title: t('actions.options'), key: 'actions', sortable: false }
-]
+  { title: t('actions.options'), key: 'actions', sortable: false, align: 'end' }
+] as const
 
 const state = ref({
   openDialog: false,

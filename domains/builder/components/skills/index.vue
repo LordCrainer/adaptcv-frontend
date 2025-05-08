@@ -7,23 +7,32 @@
         class="ma-2 flex-grow-0"
         color="primary"
         closable
+        @click="edit(item)"
         @click:close="removeSkill(index)">
         {{ item.skill }} ({{ item.yearsOfExperience }})
       </v-chip>
     </div>
     <div>
-      <SkillForm
-        :experience-options="EXPERIENCE_OPTIONS"
-        :skill-list="SKILLS_LIST"
-        @submit="upsertSkill" />
+      <SkillForm :skill="selectedSkill" @submit="upsertSkill" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import type { ISkill } from '@lordcrainer/adaptcv-shared-types'
 import SkillForm from './skillForm.vue'
 import { useSkill } from '~/domains/builder/components/skills/useSkill'
 
-const { upsertSkill, skills, removeSkill, EXPERIENCE_OPTIONS, SKILLS_LIST } =
-  useSkill()
+const {
+  upsertSkill,
+  skills,
+  removeSkill,
+  DEFAULT_SKILL_ITEM
+} = useSkill()
+
+const selectedSkill = ref<ISkill>({ ...DEFAULT_SKILL_ITEM })
+
+function edit(skill: ISkill) {
+  selectedSkill.value = skill
+}
 </script>

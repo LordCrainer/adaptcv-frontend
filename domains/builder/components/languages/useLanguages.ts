@@ -4,11 +4,31 @@ import type { ILanguageItem } from '~/domains/builder/shared'
 
 const MAX_LANGUAGES = 5
 
+const DEFAULT_LANGUAGE_ITEM: ILanguageItem = {
+  name: undefined,
+  proficiency: 'beginner'
+}
+
+const LANGUAGES_LIST = [
+  'English',
+  'Spanish',
+  'French',
+  'German',
+  'Italian',
+  'Portuguese',
+  'Chinese',
+  'Japanese',
+  'Russian',
+  'Arabic'
+].sort()
+
+const PROFICIENCY_LEVELS = ['beginner', 'intermediate', 'advanced', 'native']
+
 export const useLanguages = () => {
   const { updateSection, curriculumVitae } = useCVStore()
   const languages = ref<ILanguageItem[]>([])
 
-  const proficiencyLevels = ['beginner', 'intermediate', 'advanced', 'native']
+  
 
   const upsertLanguage = (lang: ILanguageItem) => {
     if (languages.value.length >= MAX_LANGUAGES) {
@@ -43,6 +63,8 @@ export const useLanguages = () => {
     languages,
     upsertLanguage,
     removeLanguage,
-    proficiencyLevels
+    PROFICIENCY_LEVELS,
+    DEFAULT_LANGUAGE_ITEM,
+    LANGUAGES_LIST
   }
 }

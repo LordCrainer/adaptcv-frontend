@@ -13,7 +13,7 @@
           class="flex-grow-1"
           active
           clearable
-          :items="languages"
+          :items="LANGUAGES_LIST"
           :label="$t('profile.languages.language')"></v-autocomplete>
 
         <v-btn
@@ -28,7 +28,7 @@
         prepend-inner-icon="mdi-layers-triple"
         icon-color="primary"
         v-model="localLang.proficiency"
-        :items="proficiencyLevels"
+        :items="PROFICIENCY_LEVELS"
         variant="outlined"
         active
         :item-title="(i) => $t(`profile.languages.${i}`)"
@@ -42,28 +42,24 @@
 import type { ILanguageItem } from '~/domains/builder/shared'
 import { useLanguages } from '~/domains/builder/components/languages/useLanguages'
 
-const { proficiencyLevels } = useLanguages()
+const { PROFICIENCY_LEVELS, DEFAULT_LANGUAGE_ITEM, LANGUAGES_LIST } =
+  useLanguages()
 
-const DEFAULT_LANGUAGE_ITEM: ILanguageItem = {
-  name: undefined,
-  proficiency: 'beginner'
-}
+const props = defineProps({
+  language: {
+    type: Object as () => ILanguageItem,
+    default: () => ({})
+  }
+})
 
-const localLang = ref<ILanguageItem>({ ...DEFAULT_LANGUAGE_ITEM })
+const localLang = ref<ILanguageItem>({ ...props.language })
 
-const languages = ref(
-  [
-    'English',
-    'Spanish',
-    'French',
-    'German',
-    'Italian',
-    'Portuguese',
-    'Chinese',
-    'Japanese',
-    'Russian',
-    'Arabic'
-  ].sort()
+watch(
+  () => props.language,
+  (newLanguage) => {
+    localLang.value = { ...newLanguage }
+  },
+  { immediate: true }
 )
 
 const emit = defineEmits(['submit'])
@@ -76,6 +72,6 @@ const submitForm = () => {
 }
 
 const _reset = () => {
-  localLang.value = DEFAULT_LANGUAGE_ITEM
+  localLang.value = { ...DEFAULT_LANGUAGE_ITEM }
 }
 </script>

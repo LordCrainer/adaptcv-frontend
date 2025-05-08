@@ -10,7 +10,7 @@
           variant="outlined"
           class="flex-grow-1"
           clearable
-          :items="skillList"
+          :items="SKILLS_LIST"
           active
           :placeholder="$t('profile.skills.placeholderSkill')"
           :label="$t('profile.skills.skill')"
@@ -30,7 +30,7 @@
         icon-color="primary"
         density="comfortable"
         v-model="localSkills.yearsOfExperience"
-        :items="experienceOptions"
+        :items="EXPERIENCE_OPTIONS"
         variant="outlined"
         :item-title="(i) => i && $t(`profile.skills.${i}`)"
         :label="$t('profile.skills.yearsOfExperience')"
@@ -42,24 +42,26 @@
 
 <script setup lang="ts">
 import type { ISkill } from '@lordcrainer/adaptcv-shared-types'
+import { useSkill } from './useSkill'
 
-defineProps({
-  experienceOptions: {
-    type: Array,
-    default: () => []
-  },
-  skillList: {
-    type: Array,
-    default: () => []
+const { DEFAULT_SKILL_ITEM, EXPERIENCE_OPTIONS, SKILLS_LIST } = useSkill()
+
+const props = defineProps({
+  skill: {
+    type: Object as () => ISkill,
+    default: () => ({})
   }
 })
 
-const DEFAULT_SKILL_ITEM: ISkill = {
-  skill: undefined,
-  yearsOfExperience: 'less1year'
-}
+const localSkills = ref<ISkill>({ ...props.skill })
 
-const localSkills = ref<ISkill>({ ...DEFAULT_SKILL_ITEM })
+watch(
+  () => props.skill,
+  (newSkill) => {
+    localSkills.value = { ...newSkill }
+  },
+  { immediate: true }
+)
 
 const emit = defineEmits(['submit'])
 

@@ -1,3 +1,11 @@
+# [1.81.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.80.0...v1.81.0) (2025-05-09)
+
+
+### Features
+
+* add underline extension to Tiptap editor and enhance editor UI with formatting buttons ([38f5b17](https://github.com/LordCrainer/adaptcv-frontend/commit/38f5b1791a3cbcfe43eeca22daec09d60b409f17))
+* enhance Editor component with conditional menu display and update OwnTemplate integration ([d19a64c](https://github.com/LordCrainer/adaptcv-frontend/commit/d19a64ceba1783b4ad9e5bae17c927da16269667))
+
 # [1.80.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.79.0...v1.80.0) (2025-05-09)
 
 

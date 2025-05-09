@@ -17,12 +17,12 @@
         <div class="d-flex flex-column ga-4">
           <v-text-field
             v-model="formData.email"
-            rounded
+            rounded="lg"
             prepend-inner-icon="mdi-email"
             :rules="[rules.email()]"
             label="Email"
             type="email"
-            placeholder="Email address"
+            :placeholder="$t('login.emailPlaceholder')"
             variant="outlined"
             aria-label="Email"
             autocomplete="email"
@@ -31,13 +31,13 @@
 
           <v-text-field
             v-model="formData.password"
-            rounded
+            rounded="lg"
             prepend-inner-icon="mdi-lock"
             :rules="[rules.required(), rules.minLength(), rules.password()]"
             :type="showPassword ? 'text' : 'password'"
             variant="outlined"
             label="Password"
-            placeholder="Enter your password"
+            :placeholder="$t('login.passwordPlaceholder')"
             aria-label="Password"
             aria-required="true"
             required
@@ -55,7 +55,7 @@
         <div class="d-flex justify-space-between align-center">
           <v-checkbox
             v-model="formData.remember"
-            label="Remember Me"
+            :label="$t('login.rememberMe')"
             hide-details="auto"
             color="primary"></v-checkbox>
           <v-btn
@@ -68,7 +68,7 @@
       </v-card-text>
       <v-card-actions class="d-flex flex-column ga-4">
         <v-btn
-          rounded
+          rounded="lg"
           size="large"
           :loading="state.loading"
           color="primary"
@@ -126,7 +126,6 @@ function forgotPassword() {
 }
 
 function submit() {
-  console.log('Logging in with:', form.value.isValid)
   if (form.value?.isValid) {
     state.value.loading = true
   } else {

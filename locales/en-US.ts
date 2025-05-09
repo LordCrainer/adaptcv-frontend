@@ -57,7 +57,7 @@ const profile: TranslationKeys['profile'] = {
     '10plusyears': '10+ years',
     job: 'Job',
     yearsOfExperience: 'Years of Experience',
-    placeholderSkill: 'Select a skill',
+    placeholderSkill: 'Select a skill'
   },
   languages: {
     title: 'Languages',
@@ -78,7 +78,7 @@ const builder: TranslationKeys['builder'] = {
   description: 'Description',
   template: 'Template',
   id: 'ID',
-  sections: 'Sections',
+  sections: 'Sections'
 }
 
 const baseEntity: TranslationKeys['baseEntity'] = {
@@ -86,16 +86,17 @@ const baseEntity: TranslationKeys['baseEntity'] = {
   updatedAt: 'Updated',
   createdBy: 'Created by',
   updatedBy: 'Updated by',
-  deletedAt: 'Deleted',
+  deletedAt: 'Deleted'
 }
 
 export default defineI18nLocale(async () => {
   return {
     website: {
-      description: 'AdaptCV is a free online CV builder that helps you create a professional CV in minutes. Choose from a variety of templates and customize your CV to suit your needs.',
+      description:
+        'AdaptCV is a free online CV builder that helps you create a professional CV in minutes. Choose from a variety of templates and customize your CV to suit your needs.',
       title: 'AdaptCV',
       keywords: 'CV, Resume, Builder, Online, Free, Templates',
-      welcome: 'Welcome to',
+      welcome: 'Welcome to'
     },
     actions: {
       add: 'Add',
@@ -119,7 +120,7 @@ export default defineI18nLocale(async () => {
       signOut: 'Sign Out',
       forgotPassword: 'Forgot Password?',
       publish: 'Publish',
-      preview: 'Preview',
+      preview: 'Preview'
     },
     common: {
       home: 'Home',
@@ -140,12 +141,17 @@ export default defineI18nLocale(async () => {
       email: 'email',
       password: 'password',
       title: 'Login',
+      emailPlaceholder: 'Enter your email',
+      passwordPlaceholder: 'Enter your password',
+      loginAccount: 'Login to your account',
+      loginEnterDetails: 'Enter your details to login',
       forgotPassword: 'Forgot Password?',
+      keepMeLoggedIn: 'Keep me logged in',
       rememberMe: 'Remember Me',
       signUp: 'Sign Up',
       signIn: 'Sign In',
       dontHaveAccount: "Don't have an account?",
-      signInWithGoogle: 'Sign In with Google',
+      signInWithGoogle: 'Sign In with Google'
     },
     registration: {
       username: 'Username',

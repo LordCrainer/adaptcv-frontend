@@ -115,7 +115,7 @@ interface TranslationKeys {
       '1to2years': string
       '2to3years': string
       '5to10years': string
-      '10plusyears': string,
+      '10plusyears': string
       placeholderSkill: string
     }
     languages: {
@@ -131,6 +131,9 @@ interface TranslationKeys {
   }
   login: {
     password: string
+    email: string
+    passwordPlaceholder: string
+    emailPlaceholder: string
     title: string
     forgotPassword: string
     rememberMe: string
@@ -138,6 +141,9 @@ interface TranslationKeys {
     signIn: string
     signInWithGoogle: string
     dontHaveAccount: string
+    loginAccount: string
+    loginEnterDetails: string
+    keepMeLoggedIn: string
   }
   registration: {
     username: string

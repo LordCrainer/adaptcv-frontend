@@ -78,7 +78,7 @@ const builder: TranslationKeys['builder'] = {
   description: 'Descripción',
   template: 'Plantilla',
   id: 'ID',
-  sections: 'Secciones',
+  sections: 'Secciones'
 }
 
 const baseEntity: TranslationKeys['baseEntity'] = {
@@ -86,7 +86,7 @@ const baseEntity: TranslationKeys['baseEntity'] = {
   updatedAt: 'Actualizado',
   createdBy: 'Creado por',
   updatedBy: 'Actualizado por',
-  deletedAt: 'Eliminado',
+  deletedAt: 'Eliminado'
 }
 
 export default defineI18nLocale(async () => {
@@ -137,13 +137,19 @@ export default defineI18nLocale(async () => {
     },
     login: {
       password: 'contraseña',
+      email: 'correo electrónico',
+      emailPlaceholder: 'Ingresa tu correo electrónico',
+      passwordPlaceholder: 'Ingresa tu contraseña',
       title: 'Iniciar sesión',
       forgotPassword: '¿Olvidaste tu contraseña?',
       rememberMe: 'Recuérdame',
       signUp: 'Regístrate',
       signIn: 'Iniciar sesión',
       dontHaveAccount: '¿No tienes una cuenta?',
-      signInWithGoogle: 'Iniciar sesión con Google'
+      signInWithGoogle: 'Iniciar sesión con Google',
+      keepMeLoggedIn: 'Mantenerme conectado',
+      loginAccount: 'Inicia sesión en tu cuenta',
+      loginEnterDetails: 'Ingresa tus datos para iniciar sesión'
     },
     registration: {
       username: 'Nombre de usuario',

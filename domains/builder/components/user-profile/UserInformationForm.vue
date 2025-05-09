@@ -120,7 +120,6 @@ const formData = ref<IUserProfile>({
   ...props.modelValue
 })
 const oldData = ref<IUserProfile>({
-  ...DEFAULT_USER_PROFILE,
   ...props.modelValue
 })
 

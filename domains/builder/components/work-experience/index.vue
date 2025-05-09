@@ -18,6 +18,9 @@
         :headers="headers"
         :items="experiences"
         :hide-default-footer="workExperiences.length < 11">
+        <template v-slot:item.description="{ item }">
+          <v-chip close>text</v-chip>
+        </template>
         <template v-slot:item.actions="{ item, index }">
           <div class="d-flex flex-grow-1 justify-end">
             <v-btn flat size="x-small" @click="edit(item.id)" icon>
@@ -80,6 +83,7 @@ const headers = [
   { title: t('profile.experience.company'), key: 'company' },
   { title: t('common.startDate'), key: 'startDate' },
   { title: t('common.endDate'), key: 'endDate' },
+  { title: t('profile.experience.description'), key: 'description' },
   { title: t('actions.options'), key: 'actions', sortable: false, align: 'end' }
 ] as const
 

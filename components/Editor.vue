@@ -1,11 +1,29 @@
 <template>
-  <editor-content :editor="editor" />
+  <v-card border flat class="d-flex flex-column">
+    <div class="d-flex align-center">
+      <v-btn
+        rounded
+        class="rounded-0"
+        flat
+        v-for="button in buttonOptions"
+        :key="button.value"
+        :icon="button.icon"
+        :value="button.value"
+        @click="button.action"></v-btn>
+    </div>
+    <v-divider></v-divider>
+    <editor-content
+      :editor="editor"
+      style="overflow-y: auto"
+      class="d-flex flex-grow-1 pa-2" />
+  </v-card>
 </template>
 
 <script setup lang="ts">
 import StarterKit from '@tiptap/starter-kit'
+import { Underline } from '@tiptap/extension-underline'
 import { useEditor, Editor, EditorContent } from '@tiptap/vue-3'
-import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
+import { watch, onMounted, onBeforeUnmount } from 'vue'
 
 const props = defineProps({
   modelValue: {
@@ -22,8 +40,56 @@ const emit = defineEmits(['update:modelValue'])
 
 const editor = useEditor({
   content: '',
-  extensions: [StarterKit]
+  extensions: [StarterKit, Underline]
 })
+
+const toggleBold = () => {
+  editor.value?.chain().focus().toggleBold().run()
+}
+
+const toggleItalic = () => {
+  editor.value?.chain().focus().toggleItalic().run()
+}
+
+const toggleUnderline = () => {
+  editor.value?.chain().focus().toggleUnderline().run()
+}
+
+const toggleBulletList = () => {
+  editor.value?.chain().focus().toggleBulletList().run()
+}
+
+const toggleOrderedList = () => {
+  editor.value?.chain().focus().toggleOrderedList().run()
+}
+
+const buttonOptions = [
+  { name: 'Bold', action: toggleBold, value: 'bold', icon: 'mdi-format-bold' },
+  {
+    name: 'Italic',
+    action: toggleItalic,
+    value: 'italic',
+    icon: 'mdi-format-italic'
+  },
+  {
+    name: 'Underline',
+    action: toggleUnderline,
+    value: 'underline',
+    icon: 'mdi-format-underline'
+  },
+  {
+    name: 'Bullet List',
+    action: toggleBulletList,
+    value: 'bullet-list',
+    icon: 'mdi-format-list-bulleted'
+  },
+  {
+    name: 'Ordered List',
+    action: toggleOrderedList,
+    value: 'ordered-list',
+    icon: 'mdi-format-list-numbered'
+  }
+]
 
 watch(
   () => props.modelValue,
@@ -59,12 +125,15 @@ onBeforeUnmount(() => {
 
 <style lang="scss">
 /* Basic editor styles */
+
 .tiptap {
   height: 100%;
   :first-child {
     margin-top: 0;
   }
-
+  p {
+    padding-left: 0.1em;
+  }
   /* List styles */
   ul,
   ol {

@@ -90,11 +90,7 @@
           target="_blank"
           icon="mdi-information"></v-btn>
       </div>
-      <v-card flat border>
-        <Editor
-          v-model="localExperiencie.description"
-          class="editor-container" />
-      </v-card>
+      <Editor v-model="localExperiencie.description" class="editor-container" />
     </v-col>
     <v-card-actions class="pb-4 px-4">
       <v-btn variant="flat" aria-label="Cancel" @click="emit('cancel')">
@@ -161,6 +157,5 @@ const submitForm = () => {
 <style scoped>
 .editor-container {
   height: 300px;
-  overflow-y: auto;
 }
 </style>

@@ -86,6 +86,8 @@
           variant="text"
           color="primary"
           density="comfortable"
+          href="https://tiptap.dev/docs/editor/core-concepts/keyboard-shortcuts"
+          target="_blank"
           icon="mdi-information"></v-btn>
       </div>
       <v-card flat border>

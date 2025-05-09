@@ -1,3 +1,10 @@
+# [1.78.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.77.0...v1.78.0) (2025-05-09)
+
+
+### Features
+
+* add Tiptap editor component and integrate into templates ([25dc714](https://github.com/LordCrainer/adaptcv-frontend/commit/25dc714d842b478ecd5be72b9dd2c06bd0bf0c1b))
+
 # [1.77.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.76.0...v1.77.0) (2025-05-07)
 
 

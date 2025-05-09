@@ -73,6 +73,7 @@ function getLocation(...args: (string | undefined)[]) {
         <v-row>
           <v-col class="pt-0">
             <Editor
+              hide-menu
               :read-only="true"
               v-model="exp.description"
               class="editor-container" />
@@ -139,10 +140,3 @@ function getLocation(...args: (string | undefined)[]) {
     </v-card-item>
   </v-card>
 </template>
-
-<style>
-.dragon-editor-viewer {
-  margin: 0;
-  padding: 0;
-}
-</style>

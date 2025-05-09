@@ -6,6 +6,7 @@
 const BuilderByBuilderId = defineAsyncComponent(() => import('~/domains/builder/views/BuilderByBuilderId.vue'))
 
 definePageMeta({
-  name: 'builder-builderId'
+  name: 'builder-builderId',
+  ssr: false,
 })
 </script>

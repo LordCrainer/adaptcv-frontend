@@ -21,10 +21,10 @@
         <template v-slot:item.actions="{ item, index }">
           <div class="d-flex flex-grow-1 justify-end">
             <v-btn flat size="x-small" @click="edit(item.id)" icon>
-              <v-icon color="warning" icon="mdi-pencil"/>
+              <v-icon color="warning" icon="mdi-pencil" />
             </v-btn>
             <v-btn flat size="x-small" @click="remove(item.id)" icon>
-              <v-icon color="error" icon="mdi-delete"/>
+              <v-icon color="error" icon="mdi-delete" />
             </v-btn>
           </div>
         </template>
@@ -45,8 +45,7 @@
       v-model="state.record"
       @submit="submitForm"
       @close="close"
-      @cancel="close"
-      v-if="state.openDialog"></WorkExperienceForm>
+      @cancel="close"></WorkExperienceForm>
   </v-dialog>
 </template>
 
@@ -105,8 +104,8 @@ const edit = (id: string) => {
   if (!foundWorkExperience) {
     return
   }
-  state.value.record = foundWorkExperience
   editionMode(true)
+  state.value.record = foundWorkExperience
 }
 
 const close = () => {

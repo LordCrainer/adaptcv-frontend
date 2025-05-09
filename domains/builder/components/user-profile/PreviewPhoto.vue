@@ -28,7 +28,7 @@
 
 <script lang="ts" setup>
 import type { IFileImage } from '~/types/global'
-import useUserProfile from './useUserProfile'
+import { useUserProfile } from './useUserProfile'
 import UserPreviewPhotoForm from './UserPreviewPhotoForm.vue'
 
 const { setUserProfileImage, userProfile } = useUserProfile()

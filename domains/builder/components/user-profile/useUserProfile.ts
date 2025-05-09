@@ -3,18 +3,15 @@ import type { IFileImage } from '~/types/global'
 import { useCVStore } from '~/domains/builder/store/cv.store'
 import type { IUserProfile } from '@lordcrainer/adaptcv-shared-types'
 
-const useUserProfile = () => {
-  const { updateSection, curriculumVitae } = useCVStore()
+const DEFAULT_USER_PROFILE: IUserProfile = {
+  name: '',
+  email: '',
+  phone: '',
+  address: ''
+}
 
-  const DEFAULT_USER_PROFILE = {
-    image: {
-      src: ''
-    },
-    name: '',
-    email: '',
-    phone: '',
-    address: ''
-  }
+export const useUserProfile = () => {
+  const { updateSection, curriculumVitae } = useCVStore()
 
   const userProfile = computed({
     get: () => curriculumVitae.userProfile || { ...DEFAULT_USER_PROFILE },
@@ -62,8 +59,7 @@ const useUserProfile = () => {
     getUserProfile,
     clearUserProfile,
     userProfile,
-    setUserProfileImage
+    setUserProfileImage,
+    DEFAULT_USER_PROFILE
   }
 }
-
-export default useUserProfile

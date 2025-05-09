@@ -1,6 +1,7 @@
 <template>
-  <div class="d-flex flex-column ga-2" style="width: 100%">
+  <v-form ref="form" class="d-flex flex-column ga-2" style="width: 100%">
     <v-text-field
+      @blur="updateFormData"
       density="comfortable"
       prepend-inner-icon="mdi-account"
       icon-color="primary"
@@ -13,6 +14,7 @@
       :aria-label="$t('profile.personalInfo.fullname')"
       required></v-text-field>
     <v-text-field
+      @blur="updateFormData"
       density="comfortable"
       v-model="formData.email"
       icon-color="primary"
@@ -26,6 +28,7 @@
       required></v-text-field>
 
     <v-text-field
+      @blur="updateFormData"
       density="comfortable"
       v-model="formData.phone"
       icon-color="primary"
@@ -38,6 +41,7 @@
       aria-label="Phone"></v-text-field>
 
     <v-text-field
+      @blur="updateFormData"
       density="comfortable"
       v-model="formData.country"
       icon-color="primary"
@@ -48,6 +52,7 @@
       aria-label="Country"
       variant="outlined"></v-text-field>
     <v-text-field
+      @blur="updateFormData"
       density="comfortable"
       v-model="formData.city"
       icon-color="primary"
@@ -58,6 +63,7 @@
       aria-label="City"
       variant="outlined"></v-text-field>
     <v-select
+      @update:modelValue="updateFormData"
       density="comfortable"
       clearable
       :label="$t('profile.personalInfo.areaProfession')"
@@ -71,6 +77,7 @@
       autocomplete
       aria-label="Area of Profession"></v-select>
     <v-select
+      @update:modelValue="updateFormData"
       density="comfortable"
       :disabled="!formData.areaProfession"
       active
@@ -83,12 +90,17 @@
       v-model="formData.profession"
       autocomplete
       aria-label="Profession"></v-select>
-  </div>
+  </v-form>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
 import type { IUserProfile } from '@lordcrainer/adaptcv-shared-types'
-import { areasProfession } from '@lordcrainer/adaptcv-shared-types/dist/src/types/builder/constants';
+import { areasProfession } from '@lordcrainer/adaptcv-shared-types/dist/src/types/builder/constants'
+import { useUserProfile } from '~/domains/builder/components/user-profile/useUserProfile'
+import { useObject } from '~/utils/useObject'
+
+const { DEFAULT_USER_PROFILE } = useUserProfile()
+const { hasChanges } = useObject()
 
 const { required } = useRules()
 
@@ -98,20 +110,38 @@ const props = defineProps<{
   modelValue: IUserProfile
 }>()
 
-const DEFAULT_USER_PROFILE: IUserProfile = {
-  name: '',
-  email: '',
-  phone: '',
-  address: ''
-}
-
 const localAreaProfession = computed(() => Object.keys(areasProfession))
 const PROFESSION_LIST = ref<string[]>([])
 
-const formData = computed({
-  get: () => props.modelValue ?? { ...DEFAULT_USER_PROFILE },
-  set: (value) => emit('update:modelValue', { ...value })
+const form = ref()
+
+const formData = ref<IUserProfile>({
+  ...DEFAULT_USER_PROFILE,
+  ...props.modelValue
 })
+const oldData = ref<IUserProfile>({
+  ...DEFAULT_USER_PROFILE,
+  ...props.modelValue
+})
+
+watch(
+  () => props.modelValue,
+  (newVal) => {
+    if (hasChanges(newVal, formData.value)) {
+      formData.value = { ...DEFAULT_USER_PROFILE, ...newVal }
+      oldData.value = { ...formData.value }
+    }
+  }
+)
+
+async function updateFormData() {
+  if (!form.value) return
+  const { valid } = await form.value.validate()
+  if (valid && hasChanges(formData.value, oldData.value)) {
+    oldData.value = { ...formData.value }
+    emit('update:modelValue', formData.value)
+  }
+}
 
 watch(
   () => formData.value.areaProfession,

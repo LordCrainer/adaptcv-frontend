@@ -1,3 +1,17 @@
+# [1.80.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.79.0...v1.80.0) (2025-05-09)
+
+
+### Bug Fixes
+
+* remove redundant display of localExperiencie.description in WorkExperienceForm ([2586afd](https://github.com/LordCrainer/adaptcv-frontend/commit/2586afd9005db9aec19587a9f7e2a967c3f48d92))
+
+
+### Features
+
+* enhance login form with localized placeholders and labels ([e4c4e32](https://github.com/LordCrainer/adaptcv-frontend/commit/e4c4e32c53d3b9d0bc2432945572c85122cdea25))
+* enhance user profile forms with validation and update handling ([7034cee](https://github.com/LordCrainer/adaptcv-frontend/commit/7034cee3707802bf5efba8fc520ba549652ae98f))
+* integrate HeaderLanguage component into Header and auth layout, enhancing language selection ([ebda538](https://github.com/LordCrainer/adaptcv-frontend/commit/ebda538ffd8c480c89db043ba58e6cc0f58745af))
+
 # [1.79.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.78.0...v1.79.0) (2025-05-09)
 
 

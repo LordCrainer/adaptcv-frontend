@@ -80,7 +80,6 @@
       </v-row>
     </v-form>
     <v-col cols="12" class="d-flex flex-column py-1 ga-2">
-      {{ localExperiencie.description }}
       <div class="d-flex align-center justify-space-between">
         <h3>{{ $t('profile.experience.description') }}</h3>
         <v-btn

@@ -169,7 +169,10 @@
                   </div>
                 </div>
                 <div>
-                  <DragonEditorViewer :content="exp.description" />
+                  <Editor
+                    :read-only="true"
+                    v-model="exp.description"
+                    class="editor-container" />
                 </div>
               </div>
             </div>
@@ -214,6 +217,7 @@
 <script lang="ts" setup>
 import { useLanguages } from '~/domains/builder/components/languages/useLanguages'
 import { useCVStore } from '~/domains/builder/store/cv.store'
+import Editor from '../Editor.vue'
 
 const { formatDateRange } = useFormatDate()
 const { PROFICIENCY_LEVELS } = useLanguages()

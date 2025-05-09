@@ -72,7 +72,10 @@ function getLocation(...args: (string | undefined)[]) {
         </v-row>
         <v-row>
           <v-col class="pt-0">
-            <DragonEditorViewer :content="exp.description" />
+            <Editor
+              :read-only="true"
+              v-model="exp.description"
+              class="editor-container" />
           </v-col>
         </v-row>
       </v-col>

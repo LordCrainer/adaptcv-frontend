@@ -77,17 +77,22 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col class="d-flex flex-column py-1 ga-2">
-          <div>
-            <h3>{{ $t('profile.experience.description') }}</h3>
-          </div>
-        </v-col>
       </v-row>
     </v-form>
-    <v-col cols="12">
-      <ClientOnly>
-        <DragonEditor ref="editor" />
-      </ClientOnly>
+    <v-col cols="12" class="d-flex flex-column py-1 ga-2">
+      <div class="d-flex align-center justify-space-between">
+        <h3>{{ $t('profile.experience.description') }}</h3>
+        <v-btn
+          variant="text"
+          color="primary"
+          density="comfortable"
+          icon="mdi-information"></v-btn>
+      </div>
+      <v-card flat border>
+        <Editor
+          v-model="localExperiencie.description"
+          class="editor-container" />
+      </v-card>
     </v-col>
     <v-card-actions class="pb-4 px-4">
       <v-btn variant="flat" aria-label="Cancel" @click="emit('cancel')">
@@ -111,6 +116,7 @@ import { ref } from 'vue'
 import type { IWorkExperience } from '~/domains/builder/shared'
 import { useFormatDate } from '~/composables/useFormatDate'
 import useWorkExperience from './useWorkExperience'
+import Editor from '~/components/Editor.vue'
 
 const { DEFAULT_ITEM } = useWorkExperience()
 const { standardFormatDate, addYearToDate, allowedDates } = useFormatDate()
@@ -119,8 +125,6 @@ const props = defineProps<{
   title: string
   modelValue: IWorkExperience
 }>()
-
-const editor = ref<DragonEditor>()
 
 const stateMenu = ref({
   startDate: false,
@@ -146,19 +150,15 @@ const emit = defineEmits(['submit', 'cancel', 'close'])
 
 const submitForm = () => {
   if (localExperiencie.value.company && localExperiencie.value.jobTitle) {
-    localExperiencie.value.description = editor.value?.getContentData()
     emit('submit', {
-      ...localExperiencie.value,
-      description: editor.value?.getContentData()
+      ...localExperiencie.value
     })
   }
 }
-
-onMounted(() => {
-  if (localExperiencie.value.description) {
-    setTimeout(() => {
-      editor.value?.setContentData(localExperiencie.value.description)
-    }, 300)
-  }
-})
 </script>
+<style scoped>
+.editor-container {
+  height: 300px;
+  overflow-y: auto;
+}
+</style>

@@ -19,7 +19,10 @@
         :items="experiences"
         :hide-default-footer="workExperiences.length < 11">
         <template v-slot:item.description="{ item }">
-          <v-chip close>text</v-chip>
+          <v-chip v-if="item.description" color="primary" variant="outlined">
+            {{ cleanHtml(item.description).length }} characters
+          </v-chip>
+          <v-chip v-else color="grey" variant="outlined">0 characters</v-chip>
         </template>
         <template v-slot:item.actions="{ item, index }">
           <div class="d-flex flex-grow-1 justify-end">
@@ -83,7 +86,11 @@ const headers = [
   { title: t('profile.experience.company'), key: 'company' },
   { title: t('common.startDate'), key: 'startDate' },
   { title: t('common.endDate'), key: 'endDate' },
-  { title: t('profile.experience.description'), key: 'description' },
+  {
+    title: t('profile.experience.description'),
+    key: 'description',
+    align: 'center'
+  },
   { title: t('actions.options'), key: 'actions', sortable: false, align: 'end' }
 ] as const
 
@@ -96,6 +103,15 @@ const state = ref({
 function editionMode(isEditing: boolean) {
   state.value.isEditing = isEditing
   state.value.openDialog = isEditing
+}
+
+function cleanHtml(html: string) {
+  const parser = new DOMParser()
+  const doc = parser.parseFromString(html, 'text/html')
+  if (['undefined', 'null'].includes(doc.body?.textContent || '')) {
+    return ''
+  }
+  return doc.body.textContent || ''
 }
 
 const add = () => {

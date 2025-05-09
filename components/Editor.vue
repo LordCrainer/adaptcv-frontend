@@ -1,17 +1,19 @@
 <template>
-  <v-card border flat class="d-flex flex-column">
-    <div class="d-flex align-center">
-      <v-btn
-        rounded
-        class="rounded-0"
-        flat
-        v-for="button in buttonOptions"
-        :key="button.value"
-        :icon="button.icon"
-        :value="button.value"
-        @click="button.action"></v-btn>
+  <v-card :border="!hideMenu" flat class="d-flex flex-column">
+    <div v-if="!hideMenu" class="d-flex flex-column">
+      <div class="d-flex align-center">
+        <v-btn
+          rounded
+          class="rounded-0"
+          flat
+          v-for="button in buttonOptions"
+          :key="button.value"
+          :icon="button.icon"
+          :value="button.value"
+          @click="button.action"></v-btn>
+      </div>
+      <v-divider></v-divider>
     </div>
-    <v-divider></v-divider>
     <editor-content
       :editor="editor"
       style="overflow-y: auto"
@@ -31,6 +33,10 @@ const props = defineProps({
     default: ''
   },
   readOnly: {
+    type: Boolean,
+    default: false
+  },
+  hideMenu: {
     type: Boolean,
     default: false
   }

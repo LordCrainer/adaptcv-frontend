@@ -170,6 +170,7 @@
                 </div>
                 <div>
                   <Editor
+                    hide-menu
                     :read-only="true"
                     v-model="exp.description"
                     class="editor-container" />

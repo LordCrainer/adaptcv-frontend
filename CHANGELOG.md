@@ -1,3 +1,11 @@
+# [1.79.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.78.0...v1.79.0) (2025-05-09)
+
+
+### Features
+
+* add link to Tiptap editor keyboard shortcuts in work experience form ([4c08153](https://github.com/LordCrainer/adaptcv-frontend/commit/4c08153082b08a23c5d3e1878ded3836e9d17297))
+* update Editor component to accept Object type for modelValue and adjust margin in OwnTemplate styles ([d7ec7f1](https://github.com/LordCrainer/adaptcv-frontend/commit/d7ec7f10af95e0f1caa70b761a0e5bb4d9ab7058))
+
 # [1.78.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.77.0...v1.78.0) (2025-05-09)
 
 

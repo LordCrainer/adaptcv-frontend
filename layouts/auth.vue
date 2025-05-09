@@ -1,12 +1,17 @@
 <template>
   <v-app :style="`--angle: ${gradientAngle}deg`" class="adaptcv-bg">
-    <div class="cursor__ball"></div>
+    <v-app-bar flat color="transparent" density="compact" app>
+      <template v-slot:append>
+        <HeaderLanguage />
+      </template>
+    </v-app-bar>
     <slot />
   </v-app>
 </template>
 
 <script lang="ts" setup>
 import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
+import HeaderLanguage from '~/components/general/Header/HeaderLanguage.vue'
 
 const gradientAngle = ref('-150')
 

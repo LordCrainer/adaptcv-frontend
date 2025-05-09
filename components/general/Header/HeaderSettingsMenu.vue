@@ -1,7 +1,7 @@
 <template>
   <v-menu>
     <template v-slot:activator="{ props }">
-      <v-btn icon="mdi-dots-vertical" v-bind="props"></v-btn>
+      <v-btn class="fill-height" rounded icon="mdi-dots-vertical" v-bind="props"></v-btn>
     </template>
     <v-list>
       <v-list-item @click="toggleTheme">

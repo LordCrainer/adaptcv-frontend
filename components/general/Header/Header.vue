@@ -5,9 +5,10 @@
     </template>
 
     <v-app-bar-title>AdaptCV</v-app-bar-title>
-
     <template v-slot:append>
       <HeaderActionItems :tabs="items" />
+      <v-divider vertical></v-divider>
+      <HeaderLanguage />
       <HeaderSettingsMenu />
     </template>
   </v-app-bar>
@@ -16,6 +17,7 @@
 
 <script setup lang="ts">
 import HeaderActionItems from './HeaderActionItems.vue'
+import HeaderLanguage from './HeaderLanguage.vue'
 import NavigationDrawer from './NavigationDrawer.vue'
 import HeaderSettingsMenu from './HeaderSettingsMenu.vue'
 

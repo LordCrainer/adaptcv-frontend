@@ -30,7 +30,7 @@ export default defineNuxtPlugin(() => {
       // Handle successful response
       return response
     },
-    (error) => {
+    async (error) => {
       // Handle response error
       if (error.response && error.response.status === 401) {
         clearAllAuthData()

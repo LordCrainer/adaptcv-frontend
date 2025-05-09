@@ -1,3 +1,20 @@
+interface PersonalInformation {
+  title: string
+  fullname: string
+  areaProfession: string
+  areaProfessionPlaceholder: string
+  professionPlaceholder: string
+  profession: string
+  email: string
+  phone: string
+  address: string
+  city: string
+  country: string
+  builder: string
+  aboutMe: string
+  uploadPhoto: string
+}
+
 interface TranslationKeys {
   website: {
     title: string
@@ -60,22 +77,7 @@ interface TranslationKeys {
     template: string
   }
   profile: {
-    personalInfo: {
-      title: string
-      fullname: string
-      areaProfession: string
-      areaProfessionPlaceholder: string
-      professionPlaceholder: string
-      profession: string
-      email: string
-      phone: string
-      address: string
-      city: string
-      country: string
-      builder: string
-      aboutMe: string
-      uploadPhoto: string
-    }
+    personalInfo: PersonalInformation
     aboutMe: {
       title: string
       summary: string

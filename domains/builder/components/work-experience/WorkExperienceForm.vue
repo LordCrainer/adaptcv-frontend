@@ -114,7 +114,7 @@ import { ref } from 'vue'
 import type { IWorkExperience } from '~/domains/builder/shared'
 import { useFormatDate } from '~/composables/useFormatDate'
 import useWorkExperience from './useWorkExperience'
-import Editor from '~/components/Editor.vue'
+import Editor from '~/components/Editor/Editor.vue'
 
 const { DEFAULT_ITEM } = useWorkExperience()
 const { standardFormatDate, addYearToDate, allowedDates } = useFormatDate()

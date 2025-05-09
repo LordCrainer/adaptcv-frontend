@@ -218,7 +218,7 @@
 <script lang="ts" setup>
 import { useLanguages } from '~/domains/builder/components/languages/useLanguages'
 import { useCVStore } from '~/domains/builder/store/cv.store'
-import Editor from '../Editor.vue'
+import Editor from '../Editor/Editor.vue'
 
 const { formatDateRange } = useFormatDate()
 const { PROFICIENCY_LEVELS } = useLanguages()

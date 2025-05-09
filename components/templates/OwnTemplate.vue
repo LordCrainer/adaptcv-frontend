@@ -295,7 +295,7 @@ const contacts = ref<IContact[]>([
 
 .rounded-divider {
   width: 5px;
-  height: 80%;
+  height: 95%;
   background-color: #333;
   border-radius: 5px;
   margin: 20px auto;

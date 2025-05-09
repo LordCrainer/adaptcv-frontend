@@ -9,7 +9,7 @@ import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 
 const props = defineProps({
   modelValue: {
-    type: String,
+    type: [String, Object],
     default: ''
   },
   readOnly: {
@@ -69,7 +69,7 @@ onBeforeUnmount(() => {
   ul,
   ol {
     padding: 0 1rem;
-    margin: 1.25rem 1rem 1.25rem 0.4rem;
+    margin: 0.25rem 1rem 0.25rem 0.4rem;
 
     li p {
       margin-top: 0.25em;

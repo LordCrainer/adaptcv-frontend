@@ -14,28 +14,16 @@
     <template #toolbar-items>
       <div class="d-flex ga-2 pa-2 align-center">
         <v-btn
+          v-for="button in builderButtonsToolbar"
+          :key="button.value"
           size="small"
-          v-tooltip:start="$t('actions.edit')"
-          color="warning"
-          @click="toggleView"
-          variant="tonal">
-          <v-icon>mdi-pencil</v-icon>
-        </v-btn>
-        <v-btn
-          size="small"
-          v-tooltip:start="$t('actions.save')"
-          class="text-success"
-          @click="$router.push({ name: 'home' })"
-          variant="tonal">
-          <v-icon>mdi-content-save</v-icon>
-        </v-btn>
-        <v-btn
-          size="small"
-          v-tooltip:start="$t('actions.publish')"
-          variant="tonal"
-          @click="$router.push({ name: 'home' })"
-          class="text-primary">
-          <v-icon>mdi-publish</v-icon>
+          color="grey-darken-2"
+          variant="text"
+          v-tooltip:start="$t(button.value)"
+          @click="button.action"
+          icon
+          v-bind="button.props">
+          <v-icon>{{ button.icon }}</v-icon>
         </v-btn>
       </div>
     </template>
@@ -57,13 +45,21 @@
   <div class="mt-4" style="min-width: 800px">
     <component :is="templates[selectedTemplate].component"></component>
   </div>
+
+  <v-dialog
+    v-model="openDialog"
+    max-width="650px"
+    transition="dialog-transition">
+    <BuilderForm :title="$t('profile.title')" @close="close"></BuilderForm>
+  </v-dialog>
 </template>
 
 <script lang="ts" setup>
+import type { Component } from 'vue'
 import HarvardTemplate from '~/components/templates/HarvardTemplate.vue'
 import OwnTemplate from '~/components/templates/OwnTemplate.vue'
 import BuilderToolbar from '~/domains/builder/components/BuilderToolbar.vue'
-import type { Component } from 'vue'
+import BuilderForm from '../components/BuilderForm.vue'
 
 interface IItem {
   label: string
@@ -103,12 +99,49 @@ const selectItems = Object.entries(templates.value).map(
 
 const route = useRoute()
 
-function toggleView() {
-  const builderId = route.params.builderId
-  if (!builderId) {
-    console.error('Builder ID is not defined')
-    return
-  }
-  navigateTo(`/builder/${builderId}`)
+const openDialog = ref(false)
+
+function close() {
+  openDialog.value = false
 }
+
+const builderButtonsToolbar = [
+  {
+    icon: 'mdi-pencil',
+    value: 'preview',
+    tooltip: 'Preview',
+    action: () => {
+      const builderId = route.params.builderId
+      if (!builderId) {
+        console.error('Builder ID is not defined')
+        return
+      }
+      navigateTo(`/builder/${builderId}`)
+    },
+    props: {}
+  },
+  {
+    icon: 'mdi-content-save',
+    tooltip: 'Save',
+    value: 'save',
+    action: () => {},
+    props: {}
+  },
+  {
+    icon: 'mdi-publish',
+    value: 'publish',
+    tooltip: 'Publish',
+    action: () => {},
+    props: {}
+  },
+  {
+    icon: 'mdi-cog',
+    value: 'settings',
+    tooltip: 'Settings',
+    action: () => {
+      openDialog.value = true
+    },
+    props: {}
+  }
+]
 </script>

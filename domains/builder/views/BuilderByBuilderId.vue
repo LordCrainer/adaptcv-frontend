@@ -11,36 +11,15 @@
     <template #toolbar-items>
       <div class="d-flex ga-2 pa-2 align-center">
         <v-btn
+          v-for="button in builderButtonsToolbar"
+          :key="button.value"
           size="small"
-          v-tooltip:start="$t('actions.preview')"
-          color="grey"
-          @click="toggleView"
-          variant="tonal">
-          <v-icon>mdi-eye</v-icon>
-        </v-btn>
-        <v-btn
-          size="small"
-          v-tooltip:start="$t('actions.save')"
-          class="text-success"
-          @click="$router.push({ name: 'home' })"
-          variant="tonal">
-          <v-icon>mdi-content-save</v-icon>
-        </v-btn>
-        <v-btn
-          size="small"
-          v-tooltip:start="$t('actions.publish')"
-          variant="tonal"
-          @click="$router.push({ name: 'home' })"
-          class="text-primary">
-          <v-icon>mdi-publish</v-icon>
-        </v-btn>
-        <v-btn
-          size="small"
-          v-tooltip:start="$t('actions.settings')"
-          variant="tonal"
-          @click="openDialog = true"
-          class="text-accent">
-          <v-icon>mdi-cog</v-icon>
+          variant="text"
+          v-tooltip:start="$t(button.value)"
+          @click="button.action"
+          icon
+          v-bind="button.props">
+          <v-icon>{{ button.icon }}</v-icon>
         </v-btn>
       </div>
     </template>
@@ -60,9 +39,7 @@
     v-model="openDialog"
     max-width="650px"
     transition="dialog-transition">
-    <BuilderForm
-      :title="$t('profile.title')"
-      @close="close"></BuilderForm>
+    <BuilderForm :title="$t('profile.title')" @close="close"></BuilderForm>
   </v-dialog>
 </template>
 
@@ -87,4 +64,40 @@ function toggleView() {
 function close() {
   openDialog.value = false
 }
+
+const builderButtonsToolbar = [
+  {
+    icon: 'mdi-eye',
+    value: 'preview',
+    tooltip: 'Preview',
+    action: () => {
+      const builderId = route.params.builderId
+      navigateTo(`/builder/${builderId}/preview`)
+    },
+    props: {}
+  },
+  {
+    icon: 'mdi-content-save',
+    tooltip: 'Save',
+    value: 'save',
+    action: () => {},
+    props: {}
+  },
+  {
+    icon: 'mdi-publish',
+    value: 'publish',
+    tooltip: 'Publish',
+    action: () => {},
+    props: {}
+  },
+  {
+    icon: 'mdi-cog',
+    value: 'settings',
+    tooltip: 'Settings',
+    action: () => {
+      openDialog.value = true
+    },
+    props: {}
+  }
+]
 </script>

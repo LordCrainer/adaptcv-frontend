@@ -24,11 +24,11 @@
         </v-btn>
         <v-btn
           :loading="state.loading"
-          variant="tonal"
+          variant="flat"
           color="primary"
           aria-label="Save"
           @click="handleSaveChanges">
-          {{ $t('actions.add') }}
+          {{ $t('actions.save') }}
           <template v-slot:loader v-if="state.loading">
             <v-progress-circular
               indeterminate

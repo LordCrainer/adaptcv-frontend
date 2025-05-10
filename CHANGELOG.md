@@ -1,3 +1,14 @@
+# [1.82.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.81.0...v1.82.0) (2025-05-10)
+
+
+### Features
+
+* add BuilderForm component and integrate it into BuilderByBuilderId view for profile editing ([ed8963d](https://github.com/LordCrainer/adaptcv-frontend/commit/ed8963d0fc06904c9713177d9ced983b667a7778))
+* add profile translation keys and update i18n types for enhanced localization support ([05a01be](https://github.com/LordCrainer/adaptcv-frontend/commit/05a01be8eef40548ab4859d123d8fcf7d5c9980c))
+* hide menu in Editor component for read-only display in HarvardTemplate ([66b15b2](https://github.com/LordCrainer/adaptcv-frontend/commit/66b15b27f97cdf16423e21e32ea8752ddc945d63))
+* implement Editor component with menu options and integrate editor utilities ([8ca1081](https://github.com/LordCrainer/adaptcv-frontend/commit/8ca108176611244d428277ab27c13967f2c7799e))
+* refactor user profile component to utilize fill-width class for consistent styling ([201a9a3](https://github.com/LordCrainer/adaptcv-frontend/commit/201a9a34be868afc5eb8896af9d0ab05514ae5d8))
+
 # [1.81.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.80.0...v1.81.0) (2025-05-09)
 
 

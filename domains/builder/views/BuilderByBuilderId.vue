@@ -14,6 +14,7 @@
           v-for="button in builderButtonsToolbar"
           :key="button.value"
           size="small"
+          color="grey-darken-2"
           variant="text"
           v-tooltip:start="$t(button.value)"
           @click="button.action"

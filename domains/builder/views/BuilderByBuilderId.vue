@@ -34,6 +34,14 @@
           class="text-primary">
           <v-icon>mdi-publish</v-icon>
         </v-btn>
+        <v-btn
+          size="small"
+          v-tooltip:start="$t('actions.settings')"
+          variant="tonal"
+          @click="openDialog = true"
+          class="text-accent">
+          <v-icon>mdi-cog</v-icon>
+        </v-btn>
       </div>
     </template>
   </BuilderToolbar>
@@ -47,6 +55,15 @@
       <Education />
     </v-col>
   </v-row>
+
+  <v-dialog
+    v-model="openDialog"
+    max-width="650px"
+    transition="dialog-transition">
+    <BuilderForm
+      :title="$t('profile.title')"
+      @close="close"></BuilderForm>
+  </v-dialog>
 </template>
 
 <script setup lang="ts">
@@ -55,19 +72,19 @@ import WorkExperience from '~/domains/builder/components/work-experience/index.v
 import AboutMe from '~/domains/builder/components/about-me/index.vue'
 
 import Education from '~/domains/builder/components/education/index.vue'
-import { useCVStore } from '../store/cv.store'
-import type { Sections } from '../shared'
 import BuilderToolbar from '../components/BuilderToolbar.vue'
+import BuilderForm from '../components/BuilderForm.vue'
 
-const cvStore = useCVStore()
 const route = useRoute()
 
-function handleUpdate(section: Sections, newData: any) {
-  cvStore.updateSection(section, newData)
-}
+const openDialog = ref(false)
 
 function toggleView() {
   const builderId = route.params.builderId
   navigateTo(`/builder/${builderId}/preview`)
+}
+
+function close() {
+  openDialog.value = false
 }
 </script>

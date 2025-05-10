@@ -4,11 +4,10 @@
       <v-card
         flat
         border
-        class="d-flex justify-center pa-4 rounded-md"
-        style="width: 100%">
+        class="d-flex justify-center pa-4 rounded-md fill-width">
         <PreviewPhoto />
       </v-card>
-      <div class="d-flex flex-column ga-4" style="width: 100%">
+      <div class="d-flex flex-column ga-4 fill-width">
         <span class="text-body-1 font-weight-bold">
           Information de Contacto
         </span>
@@ -16,7 +15,7 @@
         <UserInformation />
       </div>
 
-      <div class="d-flex flex-column ga-4" style="width: 100%">
+      <div class="d-flex flex-column ga-4 fill-width">
         <span class="text-body-1 font-weight-bold">
           {{ $t('profile.skills.title') }}
         </span>
@@ -24,7 +23,7 @@
         <Skills />
       </div>
 
-      <div class="d-flex flex-column ga-4" style="width: 100%">
+      <div class="d-flex flex-column ga-4 fill-width">
         <span class="text-body-1 font-weight-bold">
           {{ $t('profile.languages.title') }}
         </span>

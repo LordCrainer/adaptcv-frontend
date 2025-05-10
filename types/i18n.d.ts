@@ -15,6 +15,63 @@ interface PersonalInformation {
   uploadPhoto: string
 }
 
+interface AboutMe {
+  title: string
+  summary: string
+  slogan: string
+  logo: string
+  uploadLogo: string
+}
+
+interface Experience {
+  title: string
+  jobTitle: string
+  company: string
+  position: string
+  description: string
+}
+
+interface Education {
+  title: string
+  degree: string
+  degreePlaceholder: string
+  institution: string
+  fieldOfStudy: string
+  startDate: string
+  endDate: string
+  secondary: string
+  highSchool: string
+  technical: string
+  undergraduate: string
+  graduate: string
+  masters: string
+  doctorate: string
+}
+
+interface Skills {
+  title: string
+  skill: string
+  job: string
+  yearsOfExperience: string
+  less1year: string
+  '1to2years': string
+  '2to3years': string
+  '5to10years': string
+  '10plusyears': string
+  placeholderSkill: string
+}
+
+interface Languages {
+  title: string
+  language: string
+  level: string
+  beginner: string
+  intermediate: string
+  advanced: string
+  native: string
+  placeholderLanguage: string
+}
+
 interface TranslationKeys {
   website: {
     title: string
@@ -59,6 +116,7 @@ interface TranslationKeys {
     forgotPassword: string
     publish: string
     preview: string
+    settings: string
   }
   baseEntity: {
     createdAt: string
@@ -77,59 +135,15 @@ interface TranslationKeys {
     template: string
   }
   profile: {
+    name: string
+    title: string
+    namePlaceholder: string
     personalInfo: PersonalInformation
-    aboutMe: {
-      title: string
-      summary: string
-      slogan: string
-      logo: string
-      uploadLogo: string
-    }
-    experience: {
-      title: string
-      jobTitle: string
-      company: string
-      position: string
-      description: string
-    }
-    education: {
-      title: string
-      degree: string
-      degreePlaceholder: string
-      institution: string
-      fieldOfStudy: string
-      startDate: string
-      endDate: string
-      secondary: string
-      highSchool: string
-      technical: string
-      undergraduate: string
-      graduate: string
-      masters: string
-      doctorate: string
-    }
-    skills: {
-      title: string
-      skill: string
-      job: string
-      yearsOfExperience: string
-      less1year: string
-      '1to2years': string
-      '2to3years': string
-      '5to10years': string
-      '10plusyears': string
-      placeholderSkill: string
-    }
-    languages: {
-      title: string
-      language: string
-      level: string
-      beginner: string
-      intermediate: string
-      advanced: string
-      native: string
-      placeholderLanguage: string
-    }
+    aboutMe: AboutMe
+    experience: Experience
+    education: Education
+    skills: Skills
+    languages: Languages
   }
   login: {
     password: string

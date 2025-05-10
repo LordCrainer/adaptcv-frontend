@@ -1,6 +1,9 @@
 import { en as $vuetify } from 'vuetify/locale'
 
 const profile: TranslationKeys['profile'] = {
+  name: 'Name',
+  title: 'CV Settings',
+  namePlaceholder: 'CV Title',
   personalInfo: {
     title: 'Personal Information',
     fullname: 'Full Name',
@@ -120,7 +123,8 @@ export default defineI18nLocale(async () => {
       signOut: 'Sign Out',
       forgotPassword: 'Forgot Password?',
       publish: 'Publish',
-      preview: 'Preview'
+      preview: 'Preview',
+      settings: 'Settings',
     },
     common: {
       home: 'Home',

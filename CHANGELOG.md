@@ -1,3 +1,10 @@
+## [1.83.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.83.0...v1.83.1) (2025-05-12)
+
+
+### Bug Fixes
+
+* update adaptcv-shared-types dependency to version 1.9.3 and refactor related types in BuilderForm, cv.service, cv.store, and index.d.ts ([ca004fb](https://github.com/LordCrainer/adaptcv-frontend/commit/ca004fbb12189bcc57ded31148e0e50b3177d084))
+
 # [1.83.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.82.0...v1.83.0) (2025-05-10)
 
 

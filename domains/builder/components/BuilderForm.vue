@@ -42,7 +42,7 @@
   </CardDefault>
 </template>
 <script lang="ts" setup>
-import type { ICV } from '@lordcrainer/adaptcv-shared-types'
+import type { Builder } from '@lordcrainer/adaptcv-shared-types'
 import { useCVStore } from '../store/cv.store'
 import CardDefault from '~/components/card/CardDefault.vue'
 
@@ -57,7 +57,7 @@ const state = reactive({
 })
 
 const form = ref()
-const localCurriculumVitae = ref<Partial<ICV>>({
+const localCurriculumVitae = ref<Partial<Builder>>({
   name: ''
 })
 

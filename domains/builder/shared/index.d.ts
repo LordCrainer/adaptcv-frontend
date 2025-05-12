@@ -75,7 +75,7 @@ export interface IAboutMe {
 }
 
 export type Sections = keyof Pick<
-  ICV,
+  Builder,
   | 'userProfile'
   | 'skills'
   | 'languages'

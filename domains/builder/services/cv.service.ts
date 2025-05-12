@@ -1,4 +1,4 @@
-import type { ICV } from '@lordcrainer/adaptcv-shared-types'
+import type { Builder } from '@lordcrainer/adaptcv-shared-types'
 
 const { $api } = useNuxtApp()
 
@@ -11,7 +11,7 @@ export const cvService = async () => {
     return null
   }
 
-  const createCV = async (cv: ICV) => {
+  const createCV = async (cv: Builder) => {
     const { data } = await $api.post('cv', cv)
     if (data) {
       return JSON.parse(data)

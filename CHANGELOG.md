@@ -1,3 +1,15 @@
+# [1.83.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.82.0...v1.83.0) (2025-05-10)
+
+
+### Bug Fixes
+
+* add color property to toolbar buttons for consistent styling ([1eb79ee](https://github.com/LordCrainer/adaptcv-frontend/commit/1eb79ee2b9dacf5a56e31573ef2d02957f28d9a2))
+
+
+### Features
+
+* refactor BuilderForm and toolbar buttons for improved functionality and styling ([1108b8a](https://github.com/LordCrainer/adaptcv-frontend/commit/1108b8ac0ac02a2868488e6b2050656e1519ade3))
+
 # [1.82.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.81.0...v1.82.0) (2025-05-10)
 
 

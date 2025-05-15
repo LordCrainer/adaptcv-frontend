@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import type { IFileImage } from '~/types/global'
-import { useCVStore } from '~/domains/builder/store/cv.store'
+import { useCVStore } from '~/domains/builder/store/builder.store'
 import type { IUserProfile } from '@lordcrainer/adaptcv-shared-types'
 
 const DEFAULT_USER_PROFILE: IUserProfile = {

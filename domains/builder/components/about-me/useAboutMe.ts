@@ -1,4 +1,4 @@
-import { useCVStore } from '~/domains/builder/store/cv.store'
+import { useCVStore } from '~/domains/builder/store/builder.store'
 import { ref } from 'vue'
 import type { IAboutMe } from '~/domains/builder/shared'
 import type { IFileImage } from '~/types/global'

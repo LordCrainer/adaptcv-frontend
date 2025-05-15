@@ -43,7 +43,7 @@
 </template>
 <script lang="ts" setup>
 import type { Builder } from '@lordcrainer/adaptcv-shared-types'
-import { useCVStore } from '../store/cv.store'
+import { useCVStore } from '~/domains/builder/store/builder.store'
 import CardDefault from '~/components/card/CardDefault.vue'
 
 const emit = defineEmits(['close'])

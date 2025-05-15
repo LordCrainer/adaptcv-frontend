@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useCVStore } from '~/domains/builder/store/cv.store'
+import { useCVStore } from '~/domains/builder/store/builder.store'
 import Editor from '../Editor/Editor.vue'
 const { curriculumVitae } = useCVStore()
 

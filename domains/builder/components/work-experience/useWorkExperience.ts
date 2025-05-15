@@ -1,4 +1,4 @@
-import { useCVStore } from '~/domains/builder/store/cv.store'
+import { useCVStore } from '~/domains/builder/store/builder.store'
 import type { IWorkExperience } from '~/domains/builder/shared'
 
 const DEFAULT_ITEM: IWorkExperience = {

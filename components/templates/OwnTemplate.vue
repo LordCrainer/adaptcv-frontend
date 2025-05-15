@@ -217,7 +217,7 @@
 
 <script lang="ts" setup>
 import { useLanguages } from '~/domains/builder/components/languages/useLanguages'
-import { useCVStore } from '~/domains/builder/store/cv.store'
+import { useCVStore } from '~/domains/builder/store/builder.store'
 import Editor from '../Editor/Editor.vue'
 
 const { formatDateRange } = useFormatDate()

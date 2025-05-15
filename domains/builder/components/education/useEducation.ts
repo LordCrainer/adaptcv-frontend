@@ -1,5 +1,5 @@
 import type { IEducationItem } from '@lordcrainer/adaptcv-shared-types'
-import { useCVStore } from '~/domains/builder/store/cv.store'
+import { useCVStore } from '~/domains/builder/store/builder.store'
 // import type { IEducationItem } from '~/domains/builder/shared/index'
 
 const DEFAULT_ITEM: IEducationItem = {

@@ -24,6 +24,10 @@ export default defineNuxtConfig({
       ]
     }
   },
+  devServer: {
+    port: Number(import.meta?.env?.VITE_PORT) || 4000,
+    url: import.meta?.env?.VITE_BASE_URL || 'http://localhost:4000'
+  },
   runtimeConfig: {
     public: {
       apiBase: import.meta?.env?.VITE_API_URL || 'http://localhost:3000'

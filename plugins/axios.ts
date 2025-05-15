@@ -27,8 +27,9 @@ export default defineNuxtPlugin(() => {
 
   api.interceptors.response.use(
     (response) => {
+      const data = response.data
       // Handle successful response
-      return response
+      return data
     },
     async (error) => {
       // Handle response error

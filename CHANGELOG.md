@@ -1,3 +1,18 @@
+# [1.84.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.83.1...v1.84.0) (2025-05-15)
+
+
+### Bug Fixes
+
+* update development server port to 4000 and adjust axios response handling ([9e46abc](https://github.com/LordCrainer/adaptcv-frontend/commit/9e46abcf9edce1aa52bbab41e89ae78de64b9cb7))
+* update import paths for useCVStore to use builder.store across multiple components ([4874a05](https://github.com/LordCrainer/adaptcv-frontend/commit/4874a05ab56ab164a9547b04a30f1426dbf54d06))
+* update launch URL in VSCode configuration to match local server port ([c156e0a](https://github.com/LordCrainer/adaptcv-frontend/commit/c156e0a6da54a0a9f48b7721437b6e654a9698c0))
+
+
+### Features
+
+* fetch builders data on component mount ([ebdf0d6](https://github.com/LordCrainer/adaptcv-frontend/commit/ebdf0d6f341908a84766015d17bb6dbaf92c507c))
+* implement builder service and CV store with CRUD operations ([5e74c5b](https://github.com/LordCrainer/adaptcv-frontend/commit/5e74c5bb966e243285320bae9a03b8b3a946ccce))
+
 ## [1.83.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.83.0...v1.83.1) (2025-05-12)
 
 

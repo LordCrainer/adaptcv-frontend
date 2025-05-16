@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import type { IFileImage } from '~/types/global'
-import { useCVStore } from '~/domains/builder/store/builder.store'
+import { useBuilderStore } from '~/domains/builder/store/builder.store'
 import type { IUserProfile } from '@lordcrainer/adaptcv-shared-types'
 
 const DEFAULT_USER_PROFILE: IUserProfile = {
@@ -11,18 +11,18 @@ const DEFAULT_USER_PROFILE: IUserProfile = {
 }
 
 export const useUserProfile = () => {
-  const { updateSection, curriculumVitae } = useCVStore()
+  const { updateSection, builderState } = useBuilderStore()
 
   const userProfile = computed({
-    get: () => curriculumVitae.userProfile || { ...DEFAULT_USER_PROFILE },
+    get: () => builderState.userProfile || { ...DEFAULT_USER_PROFILE },
     set: (value) => {
       updateSection('userProfile', value)
     }
   })
 
   onMounted(() => {
-    if (curriculumVitae.userProfile) {
-      setUserProfile(curriculumVitae.userProfile)
+    if (builderState.userProfile) {
+      setUserProfile(builderState.userProfile)
     }
   })
 

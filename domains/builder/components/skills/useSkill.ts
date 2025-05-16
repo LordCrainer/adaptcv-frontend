@@ -2,7 +2,7 @@ import type {
   yearsOfExperience,
   ISkill
 } from '@lordcrainer/adaptcv-shared-types'
-import { useCVStore } from '~/domains/builder/store/builder.store'
+import { useBuilderStore } from '~/domains/builder/store/builder.store'
 
 const SKILLS_LIST = ref(
   [
@@ -40,8 +40,8 @@ const DEFAULT_SKILL_ITEM: ISkill = {
 const MAX_SKILLS = 10
 
 export const useSkill = () => {
-  const { updateSection, curriculumVitae } = useCVStore()
-  const skills = computed(() => curriculumVitae.skills || [])
+  const { updateSection, builderState } = useBuilderStore()
+  const skills = computed(() => builderState.skills || [])
 
   const removeSkill = (index: number) => {
     const updated = skills.value.filter((_, i) => i !== index)

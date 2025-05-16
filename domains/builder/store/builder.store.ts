@@ -2,26 +2,26 @@ import type { Builder, Sections } from '@lordcrainer/adaptcv-shared-types'
 import { defineStore } from 'pinia'
 const api = useApi()
 
-export const useCVStore = defineStore(
-  'cv',
+export const useBuilderStore = defineStore(
+  'builder',
   () => {
-    const curriculumVitae = ref<Partial<Builder>>({
+    const builderState = ref<Partial<Builder>>({
       status: 'draft'
     })
 
-    async function creationCV(data: Builder) {
+    async function creationBuilder(data: Builder) {
       try {
         if (!data) {
           throw new Error('CV data is undefined or null')
         }
-        await api.post('/cv', data)
+        await api.post('/builder', data)
       } catch (error) {
         console.error('Error creating CV:', error)
       }
     }
 
-    function updateStatus(newStatus: Builder['status']) {
-      curriculumVitae.value.status = newStatus
+    function updateBuilderStatus(newStatus: Builder['status']) {
+      builderState.value.status = newStatus
     }
 
     function updateSection<K extends Sections>(section: K, data: Builder[K]) {
@@ -29,24 +29,24 @@ export const useCVStore = defineStore(
         console.error(`Error: ${section} data is undefined or null`)
         return
       }
-      if (curriculumVitae.value) {
-        curriculumVitae.value[section] = data
+      if (builderState.value) {
+        builderState.value[section] = data
       }
     }
 
-    function saveAll(cvData: Builder) {
+    function saveAll(builderData: Builder) {
       try {
-        localStorage.setItem('cvData', JSON.stringify(cvData))
+        localStorage.setItem('builderData', JSON.stringify(builderData))
       } catch (error) {
         console.error('Error saving CV data to localStorage:', error)
       }
     }
 
     return {
-      updateStatus,
+      updateBuilderStatus,
       updateSection,
-      creationCV,
-      curriculumVitae
+      creationBuilder,
+      builderState
     }
   },
   {

@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { useCVStore } from '~/domains/builder/store/builder.store'
+import { useBuilderStore } from '~/domains/builder/store/builder.store'
 import Editor from '../Editor/Editor.vue'
-const { curriculumVitae } = useCVStore()
+const { builderState } = useBuilderStore()
 
 import { computed } from 'vue'
 
 const { formatDateRange } = useFormatDate()
 const { education, languages, userProfile, skills, workExperience, aboutMe } =
-  curriculumVitae
+  builderState
 
 const location = computed(() => {
   return getLocation(userProfile?.city, userProfile?.country)

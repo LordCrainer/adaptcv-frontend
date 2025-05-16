@@ -1,4 +1,4 @@
-import { useCVStore } from '~/domains/builder/store/builder.store'
+import { useBuilderStore } from '~/domains/builder/store/builder.store'
 import { ref } from 'vue'
 import type { ILanguageItem } from '~/domains/builder/shared'
 
@@ -25,8 +25,8 @@ const LANGUAGES_LIST = [
 const PROFICIENCY_LEVELS = ['beginner', 'intermediate', 'advanced', 'native']
 
 export const useLanguages = () => {
-  const { updateSection, curriculumVitae } = useCVStore()
-  const languages = computed(() => curriculumVitae.languages || [])
+  const { updateSection, builderState } = useBuilderStore()
+  const languages = computed(() => builderState.languages || [])
 
   const addLanguage = (lang: ILanguageItem) => {
     if (languages.value.length >= MAX_LANGUAGES) {

@@ -4,7 +4,7 @@
 ### Bug Fixes
 
 * update development server port to 4000 and adjust axios response handling ([9e46abc](https://github.com/LordCrainer/adaptcv-frontend/commit/9e46abcf9edce1aa52bbab41e89ae78de64b9cb7))
-* update import paths for useCVStore to use builder.store across multiple components ([4874a05](https://github.com/LordCrainer/adaptcv-frontend/commit/4874a05ab56ab164a9547b04a30f1426dbf54d06))
+* update import paths for useBuilderStore to use builder.store across multiple components ([4874a05](https://github.com/LordCrainer/adaptcv-frontend/commit/4874a05ab56ab164a9547b04a30f1426dbf54d06))
 * update launch URL in VSCode configuration to match local server port ([c156e0a](https://github.com/LordCrainer/adaptcv-frontend/commit/c156e0a6da54a0a9f48b7721437b6e654a9698c0))
 
 
@@ -85,7 +85,7 @@
 
 ### Bug Fixes
 
-* Update import paths for useCVStore across multiple components and files ([1a5fa5b](https://github.com/LordCrainer/adaptcv-frontend/commit/1a5fa5bf0f387e3b599f3996a5f89b67931ee59d))
+* Update import paths for useBuilderStore across multiple components and files ([1a5fa5b](https://github.com/LordCrainer/adaptcv-frontend/commit/1a5fa5bf0f387e3b599f3996a5f89b67931ee59d))
 
 
 ### Features

@@ -1,5 +1,5 @@
 import type { IEducationItem } from '@lordcrainer/adaptcv-shared-types'
-import { useCVStore } from '~/domains/builder/store/builder.store'
+import { useBuilderStore } from '~/domains/builder/store/builder.store'
 // import type { IEducationItem } from '~/domains/builder/shared/index'
 
 const DEFAULT_ITEM: IEducationItem = {
@@ -12,8 +12,8 @@ const DEFAULT_ITEM: IEducationItem = {
 }
 
 const useEducation = () => {
-  const { updateSection, curriculumVitae } = useCVStore()
-  const education = computed(() => curriculumVitae.education || [])
+  const { updateSection, builderState } = useBuilderStore()
+  const education = computed(() => builderState.education || [])
 
   const addEducation = (educationItem: IEducationItem) => {
     const newEducationItem = { ...educationItem, id: Date.now().toString() }

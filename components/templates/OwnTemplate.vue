@@ -217,15 +217,15 @@
 
 <script lang="ts" setup>
 import { useLanguages } from '~/domains/builder/components/languages/useLanguages'
-import { useCVStore } from '~/domains/builder/store/builder.store'
+import { useBuilderStore } from '~/domains/builder/store/builder.store'
 import Editor from '../Editor/Editor.vue'
 
 const { formatDateRange } = useFormatDate()
 const { PROFICIENCY_LEVELS } = useLanguages()
-const { curriculumVitae } = useCVStore()
+const { builderState } = useBuilderStore()
 
 const { education, languages, userProfile, skills, workExperience, aboutMe } =
-  curriculumVitae
+  builderState
 
 function getProficiencyLevel(prop: string, options: string[]) {
   const index = options.findIndex((s) => s === prop) + 1

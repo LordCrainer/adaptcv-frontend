@@ -1,4 +1,4 @@
-import { useCVStore } from '~/domains/builder/store/builder.store'
+import { useBuilderStore } from '~/domains/builder/store/builder.store'
 import type { IWorkExperience } from '~/domains/builder/shared'
 
 const DEFAULT_ITEM: IWorkExperience = {
@@ -11,9 +11,9 @@ const DEFAULT_ITEM: IWorkExperience = {
 }
 
 const useWorkExperience = () => {
-  const { updateSection, curriculumVitae } = useCVStore()
+  const { updateSection, builderState } = useBuilderStore()
 
-  const workExperiences = computed(() => curriculumVitae.workExperience || [])
+  const workExperiences = computed(() => builderState.workExperience || [])
 
   const removeWorkExperience = (id: string) => {
     const updated = workExperiences.value.filter((exp) => exp.id !== id)

@@ -1,3 +1,10 @@
+# [1.87.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.86.0...v1.87.0) (2025-05-17)
+
+
+### Features
+
+* update builder form and service interfaces to handle structured responses and improve state management ([d06aa98](https://github.com/LordCrainer/adaptcv-frontend/commit/d06aa9868cdcd368ec3fbf029a66b828478b638e))
+
 # [1.86.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.85.0...v1.86.0) (2025-05-17)
 
 

@@ -37,15 +37,16 @@
 
 <script lang="ts" setup>
 import BuilderToolbar from '~/domains/builder/components/BuilderToolbar.vue'
-import { builderService } from '~/domains/builder/services/builder.service'
+import { useBuilder } from '../composables/useBuilder'
 
-const { getBuilders } = builderService()
+const { builderService } = useBuilder()
 
 const builders = ref()
 
 onMounted(async () => {
   // Fetch the list of builders from the service
-  builders.value = (await getBuilders()).data
+  const { data } = await builderService.getAll()
+  builders.value = data
 })
 
 const router = useRouter()

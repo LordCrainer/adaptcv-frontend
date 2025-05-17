@@ -2,7 +2,7 @@ import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
 
 export interface IBuilderService {
   getById(id: string): Promise<IBuilder>
-  getAll(filters: Record<string, any>): Promise<{
+  getAll(filters?: Record<string, any>): Promise<{
     data: IBuilder[]
     pagination: any
   }>

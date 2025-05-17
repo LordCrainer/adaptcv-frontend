@@ -1,3 +1,11 @@
+# [1.85.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.84.0...v1.85.0) (2025-05-17)
+
+
+### Features
+
+* implement IBuilderService interface and HttpBuilderService class, refactor builder store to use IBuilder type ([3a1b8d2](https://github.com/LordCrainer/adaptcv-frontend/commit/3a1b8d23783119e4647658c87d242dd7287ceb70))
+* implement useApi hook for Axios instance with request and response interceptors ([b18c595](https://github.com/LordCrainer/adaptcv-frontend/commit/b18c5958560c66a306ec3b7f200c92200285a3c8))
+
 # [1.84.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.83.1...v1.84.0) (2025-05-15)
 
 

@@ -1,15 +1,18 @@
-import type { Builder, Sections } from '@lordcrainer/adaptcv-shared-types'
+import type {
+  IBuilder,
+  BuilderSections
+} from '@lordcrainer/adaptcv-shared-types'
 import { defineStore } from 'pinia'
 const api = useApi()
 
 export const useBuilderStore = defineStore(
   'builder',
   () => {
-    const builderState = ref<Partial<Builder>>({
+    const builderState = ref<Partial<IBuilder>>({
       status: 'draft'
     })
 
-    async function creationBuilder(data: Builder) {
+    async function creationBuilder(data: IBuilder) {
       try {
         if (!data) {
           throw new Error('CV data is undefined or null')
@@ -20,11 +23,14 @@ export const useBuilderStore = defineStore(
       }
     }
 
-    function updateBuilderStatus(newStatus: Builder['status']) {
+    function updateBuilderStatus(newStatus: IBuilder['status']) {
       builderState.value.status = newStatus
     }
 
-    function updateSection<K extends Sections>(section: K, data: Builder[K]) {
+    function updateSection<K extends BuilderSections>(
+      section: K,
+      data: IBuilder[K]
+    ) {
       if (!section) {
         console.error(`Error: ${section} data is undefined or null`)
         return
@@ -34,7 +40,7 @@ export const useBuilderStore = defineStore(
       }
     }
 
-    function saveAll(builderData: Builder) {
+    function saveAll(builderData: IBuilder) {
       try {
         localStorage.setItem('builderData', JSON.stringify(builderData))
       } catch (error) {

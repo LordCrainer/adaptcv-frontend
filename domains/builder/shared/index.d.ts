@@ -74,7 +74,7 @@ export interface IAboutMe {
   slogan: string
 }
 
-export type Sections = keyof Pick<
+export type BuilderSections = keyof Pick<
   Builder,
   | 'userProfile'
   | 'skills'

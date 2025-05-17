@@ -5,14 +5,13 @@ import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
 const API_BASE = '/v1/builders'
 
 export const createBuilderService = (api: AxiosInstance): IBuilderService => {
-  
   return {
-    async getById(id: string): Promise<IBuilder> {
+    async getById(id: string): Promise<{ data: IBuilder }> {
       const { data } = await api.get(`${API_BASE}/${id}`)
       if (!data) {
         throw new Error('Error loading builder')
       }
-      return data
+      return { data }
     },
 
     async getAll(): Promise<{
@@ -41,12 +40,12 @@ export const createBuilderService = (api: AxiosInstance): IBuilderService => {
       }
     },
 
-    async create(builder: IBuilder): Promise<IBuilder> {
+    async create(builder: IBuilder): Promise<{ data: IBuilder }> {
       const { data } = await api.post(`${API_BASE}`, builder)
       if (!data) {
         throw new Error('Error creating builder')
       }
-      return data
+      return { data }
     }
   }
 }

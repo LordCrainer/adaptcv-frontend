@@ -4,7 +4,7 @@
       <v-btn
         prepend-icon="mdi-plus"
         variant="outlined"
-        @click="addNewItem"
+        @click="add"
         color="primary">
         {{ t('actions.add') }}
       </v-btn>
@@ -12,14 +12,18 @@
   </BuilderToolbar>
   <v-data-table
     :headers="headers"
-    :items="items"
+    :items="builders"
     :items-per-page="5"
     class="elevation-1"
     hide-default-footer
     item-value="id">
     <template v-slot:item.options="{ item }">
       <div class="d-flex ga-2 justify-end">
-        <v-btn size="small" variant="text" icon @click="edit(item.id)">
+        <v-btn
+          size="small"
+          variant="text"
+          icon
+          @click="edit(item?._id as string)">
           <v-icon color="primary">mdi-pencil</v-icon>
         </v-btn>
         <v-btn
@@ -27,26 +31,43 @@
           variant="text"
           icon
           color="error"
-          @click="remove(item.id)">
+          @click="remove(item?._id as string)">
           <v-icon color="error">mdi-delete</v-icon>
         </v-btn>
       </div>
     </template>
   </v-data-table>
+
+  <v-dialog
+    v-model="state.openDialog"
+    max-width="650px"
+    transition="dialog-transition">
+    <BuilderForm
+      :title="`Add an ${$t('builder.title')}`"
+      @submit="submitForm"
+      @close="close"
+      @cancel="close"></BuilderForm>
+  </v-dialog>
 </template>
 
 <script lang="ts" setup>
 import BuilderToolbar from '~/domains/builder/components/BuilderToolbar.vue'
-import { useBuilder } from '../composables/useBuilder'
+import BuilderForm from '../components/BuilderForm.vue'
+import { useBuilderStore } from '~/domains/builder/store/builder.store'
+import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
 
-const { builderService } = useBuilder()
+const { loadBuilders, creationBuilder } = useBuilderStore()
 
-const builders = ref()
+const builders = ref<IBuilder[]>()
+
+const state = ref({
+  openDialog: false
+})
 
 onMounted(async () => {
   // Fetch the list of builders from the service
-  const { data } = await builderService.getAll()
-  builders.value = data
+  const res = await loadBuilders()
+  builders.value = res?.data
 })
 
 const router = useRouter()
@@ -92,8 +113,20 @@ function remove(builderId: string) {
   console.log('Remove item with id:', builderId)
 }
 
-function addNewItem() {
-  // router.push('/builder/new')
+function close() {
+  state.value.openDialog = false
+}
+
+function add() {
+  state.value.openDialog = true
+}
+
+async function submitForm(builder: any) {
+  close()
+  const { data } = await creationBuilder(builder)
+  if (data?._id) {
+    router.push(`/builder/${data._id}`)
+  }
 }
 </script>
 

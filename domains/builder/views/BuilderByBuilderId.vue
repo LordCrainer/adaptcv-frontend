@@ -40,7 +40,10 @@
     v-model="openDialog"
     max-width="650px"
     transition="dialog-transition">
-    <BuilderForm :title="$t('profile.title')" @close="close"></BuilderForm>
+    <BuilderForm
+      :title="$t('profile.title')"
+      @submit="handleSubmit"
+      @close="close"></BuilderForm>
   </v-dialog>
 </template>
 
@@ -64,6 +67,11 @@ function toggleView() {
 
 function close() {
   openDialog.value = false
+}
+
+function handleSubmit() {
+  openDialog.value = false
+  
 }
 
 const builderButtonsToolbar = [

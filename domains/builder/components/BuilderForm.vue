@@ -42,11 +42,11 @@
   </CardDefault>
 </template>
 <script lang="ts" setup>
-import type { Builder } from '@lordcrainer/adaptcv-shared-types'
+import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
 import { useBuilderStore } from '~/domains/builder/store/builder.store'
 import CardDefault from '~/components/card/CardDefault.vue'
 
-const emit = defineEmits(['close'])
+const emit = defineEmits(['close', 'submit'])
 const { hasChanges } = useObject()
 const { required } = useRules()
 
@@ -57,19 +57,15 @@ const state = reactive({
 })
 
 const form = ref()
-const localCurriculumVitae = ref<Partial<Builder>>({
+const localCurriculumVitae = ref<Partial<IBuilder>>({
   name: ''
 })
 
 async function handleSaveChanges() {
   if (!form.value) return
   const { valid } = await form.value.validate()
-  if (
-    valid &&
-    hasChanges(localCurriculumVitae.value.name, builderState.name)
-  ) {
-    builderState.name = localCurriculumVitae.value.name
+  if (valid && hasChanges(localCurriculumVitae.value.name, builderState.name)) {
+    emit('submit', localCurriculumVitae.value)
   }
-  emit('close')
 }
 </script>

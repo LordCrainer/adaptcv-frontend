@@ -1,3 +1,10 @@
+# [1.86.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.85.0...v1.86.0) (2025-05-17)
+
+
+### Features
+
+* implement builder service architecture with composables and provider pattern ([08730eb](https://github.com/LordCrainer/adaptcv-frontend/commit/08730ebc9d3850673869ed0231c28410c9874b96))
+
 # [1.85.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.84.0...v1.85.0) (2025-05-17)
 
 

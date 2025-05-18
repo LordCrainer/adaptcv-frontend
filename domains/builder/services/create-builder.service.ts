@@ -16,7 +16,9 @@ export const createBuilderService = (api: AxiosInstance): IBuilderService => {
 
     async getAll() {
       const result = await api.get(`${API_BASE}`)
-      if (!result.data) throw new Error('Error loading builders')
+      if (!result.data) {
+        throw new Error('Error loading builders')
+      }
       return {
         data: result.data,
         pagination: (result as any)?.pagination

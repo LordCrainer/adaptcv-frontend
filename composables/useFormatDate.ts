@@ -9,12 +9,12 @@ export const useFormatDate = () => {
     if (!date) {
       return ''
     }
-    const fechaFormateada = new Date(date).toLocaleDateString('es-EC', {
+    const formattedDate = new Date(date).toLocaleDateString('es-EC', {
       month: 'short',
       year: 'numeric'
     })
 
-    const [month, year] = fechaFormateada.split(' ')
+    const [month, year] = formattedDate.split(' ')
     const formattedMonth = month.charAt(0).toUpperCase() + month.slice(1)
 
     return `${formattedMonth} ${year}`
@@ -24,13 +24,34 @@ export const useFormatDate = () => {
     if (!date) {
       return ''
     }
-    const fechaFormateada = new Date(date).toLocaleDateString('es-EC', {
+    const formattedDate = new Date(date).toLocaleDateString('es-EC', {
       year: 'numeric',
       month: '2-digit',
       day: '2-digit'
     })
-    const [day, month, year] = fechaFormateada.split('/')
+
+    const [day, month, year] = formattedDate.split('/')
     return `${year}-${month}-${day}`
+  }
+
+  const formatDate = (date: Date | string | number, format: string) => {
+    if (!date) {
+      return ''
+    }
+    const d = new Date(date)
+    const pad = (p: number) => p.toString().padStart(2, '0')
+    const capitalize = (p: string) => p.charAt(0).toUpperCase() + p.slice(1)
+
+    const formatOptions: { [key: string]: string } = {
+      YYYY: d.getFullYear().toString(),
+      MM: pad(d.getMonth() + 1),
+      MMMM: capitalize(d.toLocaleString('es-EC', { month: 'long' })),
+      DD: pad(d.getDate()),
+      hh: pad(d.getHours()),
+      mm: pad(d.getMinutes()),
+    }
+
+    return format.replace(/YYYY|MMMM|YY|MM|DD|hh|mm/g, (m) => formatOptions[m] || m)
   }
 
   function formatDateRange(
@@ -52,6 +73,7 @@ export const useFormatDate = () => {
   return {
     standardDate,
     formatDateRange,
+    formatDate,
     addYearToDate,
     standardFormatDate,
     allowedDates

@@ -60,6 +60,9 @@ import HarvardTemplate from '~/components/templates/HarvardTemplate.vue'
 import OwnTemplate from '~/components/templates/OwnTemplate.vue'
 import BuilderToolbar from '~/domains/builder/components/BuilderToolbar.vue'
 import BuilderForm from '../components/BuilderForm.vue'
+import { useBuilderStore } from '../store/builder.store'
+
+const { saveAll } = useBuilderStore()
 
 interface IItem {
   label: string
@@ -124,7 +127,12 @@ const builderButtonsToolbar = [
     icon: 'mdi-content-save',
     tooltip: 'Save',
     value: 'save',
-    action: () => {},
+    action: () => {
+      const builderId = route.params.builderId
+      saveAll(builderId as string).then(() => {
+        console.log('Saved successfully')
+      })
+    },
     props: {}
   },
   {

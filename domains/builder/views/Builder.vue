@@ -17,6 +17,13 @@
     class="elevation-1"
     hide-default-footer
     item-value="id">
+    <template v-slot:item.createdAt="{ item }">
+      {{ formatDate(item?.createdAt, 'YYYY-MM-DD hh:mm') }}
+    </template>
+    <template v-slot:item.updatedAt="{ item }">
+      {{ formatDate(item?.updatedAt, 'YYYY-MM-DD hh:mm') }}
+    </template>
+
     <template v-slot:item.options="{ item }">
       <div class="d-flex ga-2 justify-end">
         <v-btn
@@ -54,15 +61,20 @@
 import BuilderToolbar from '~/domains/builder/components/BuilderToolbar.vue'
 import BuilderForm from '../components/BuilderForm.vue'
 import { useBuilderStore } from '~/domains/builder/store/builder.store'
+import { useFormatDate } from '~/composables/useFormatDate'
 
-const { loadBuilders, create, builders } = useBuilderStore()
+const builderStore = useBuilderStore()
+const { builders } = storeToRefs(builderStore)
+
+const { loadBuilders, create, deleteBuilder } = useBuilderStore()
+const { formatDate } = useFormatDate()
 
 const state = ref({
   openDialog: false
 })
 
 onMounted(async () => {
-  // Fetch the list of builders from the service
+  console.log('Mounted Builder.vue')
   await loadBuilders()
 })
 
@@ -70,7 +82,7 @@ const router = useRouter()
 const { t } = useI18n()
 
 const headers = [
-  { title: t('builder.id'), key: 'id' },
+  { title: t('builder.id'), key: '_id' },
   { title: t('builder.name'), key: 'name' },
   { title: t('builder.status'), key: 'status' },
   { title: t('baseEntity.createdAt'), key: 'createdAt' },
@@ -83,30 +95,16 @@ const headers = [
   } as const
 ]
 
-const items = [
-  {
-    id: '1',
-    name: 'John Doe',
-    status: 'active',
-    createdAt: '2023-01-01',
-    updatedAt: '2023-01-02'
-  },
-  {
-    id: '2',
-    name: 'Jane Smith',
-    status: 'inactive',
-    createdAt: '2023-01-03',
-    updatedAt: '2023-01-04'
-  }
-]
-
 function edit(builderId: string) {
   if (builderId) {
     router.push(`/builder/${builderId}`)
   }
 }
-function remove(builderId: string) {
-  console.log('Remove item with id:', builderId)
+
+async function remove(builderId: string) {
+  if (builderId) {
+    await deleteBuilder(builderId)
+  }
 }
 
 function close() {
@@ -120,7 +118,7 @@ function add() {
 async function submitForm(builder: any) {
   close()
   try {
-    const { data: createdBuilder } = await create(builder)
+    const createdBuilder = await create(builder)
     if (createdBuilder?._id) {
       router.push(`/builder/${createdBuilder._id}`)
     }

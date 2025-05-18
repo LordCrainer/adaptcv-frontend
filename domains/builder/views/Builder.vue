@@ -54,11 +54,8 @@
 import BuilderToolbar from '~/domains/builder/components/BuilderToolbar.vue'
 import BuilderForm from '../components/BuilderForm.vue'
 import { useBuilderStore } from '~/domains/builder/store/builder.store'
-import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
 
-const { loadBuilders, creationBuilder } = useBuilderStore()
-
-const builders = ref<IBuilder[]>()
+const { loadBuilders, create, builders } = useBuilderStore()
 
 const state = ref({
   openDialog: false
@@ -66,8 +63,7 @@ const state = ref({
 
 onMounted(async () => {
   // Fetch the list of builders from the service
-  const res = await loadBuilders()
-  builders.value = res?.data
+  await loadBuilders()
 })
 
 const router = useRouter()
@@ -123,9 +119,9 @@ function add() {
 
 async function submitForm(builder: any) {
   close()
-  const { data } = await creationBuilder(builder)
-  if (data?._id) {
-    router.push(`/builder/${data._id}`)
+  const { data: createdBuilder } = await create(builder)
+  if (createdBuilder?._id) {
+    router.push(`/builder/${createdBuilder._id}`)
   }
 }
 </script>

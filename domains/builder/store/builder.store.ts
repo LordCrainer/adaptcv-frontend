@@ -1,6 +1,7 @@
 import type {
   IBuilder,
-  BuilderSections
+  BuilderSections,
+  Pagination
 } from '@lordcrainer/adaptcv-shared-types'
 import { defineStore } from 'pinia'
 import { useBuilder } from '../composables/useBuilder'
@@ -9,46 +10,49 @@ export const useBuilderStore = defineStore(
   'builder',
   () => {
     const { builderService } = useBuilder()
+
+    const builders = ref<IBuilder[]>()
     const builderState = ref<Partial<IBuilder>>({
       status: 'draft'
     })
-    const loading = ref(false)
+    const pagination = ref<Pagination>()
 
-    async function creationBuilder(data: IBuilder) {
+    const loadingDetail = ref(false)
+    const loadingList = ref(false)
+
+    async function create(data: IBuilder) {
       try {
+        loadingDetail.value = true
         if (!data) {
           throw new Error('CV data is undefined or null')
         }
-        loading.value = true
-        return await builderService.create(data)
       } catch (error) {
         console.error('Error creating CV:', error)
       } finally {
-        loading.value = false
+        loadingDetail.value = false
       }
+      return await builderService.create(data)
     }
 
     async function loadBuilders() {
       try {
-        loading.value = true
-        const { data, pagination } = await builderService.getAll()
+        loadingList.value = true
+        const { data, pagination: pag } = await builderService.getAll()
         if (!data) {
           throw new Error('CV data is undefined or null')
         }
-        return {
-          data: data,
-          pagination
-        }
+        builders.value = data
+        pagination.value = pag
       } catch (error) {
-        console.error('Error loading CVs:', error)
+        console.error('Error loadingList CVs:', error)
       } finally {
-        loading.value = false
+        loadingList.value = false
       }
     }
 
     async function getBuilder(id: string) {
       try {
-        loading.value = true
+        loadingDetail.value = true
         const { data } = await builderService.getById(id)
         if (!data) {
           throw new Error('CV data is undefined or null')
@@ -56,9 +60,9 @@ export const useBuilderStore = defineStore(
         builderState.value = data
         return { data }
       } catch (error) {
-        console.error('Error loading CV:', error)
+        console.error('Error loadingDetail CV:', error)
       } finally {
-        loading.value = false
+        loadingDetail.value = false
       }
     }
 
@@ -90,10 +94,14 @@ export const useBuilderStore = defineStore(
     return {
       updateBuilderStatus,
       updateSection,
-      creationBuilder,
+      create,
       getBuilder,
       loadBuilders,
-      builderState
+      builderState,
+      builders,
+      pagination,
+      loadingDetail,
+      loadingList
     }
   },
   {

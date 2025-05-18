@@ -55,19 +55,14 @@ import AboutMe from '~/domains/builder/components/about-me/index.vue'
 import Education from '~/domains/builder/components/education/index.vue'
 import BuilderToolbar from '../components/BuilderToolbar.vue'
 import BuilderForm from '../components/BuilderForm.vue'
-import { useBuilder } from '../composables/useBuilder'
 import { useBuilderStore } from '../store/builder.store'
 
-const { saveAll } = useBuilderStore()
+const builderStore = useBuilderStore()
 
 const route = useRoute()
+const builderId = ref(route.params.builderId)
 
 const openDialog = ref(false)
-
-function toggleView() {
-  const builderId = route.params.builderId
-  navigateTo(`/builder/${builderId}/preview`)
-}
 
 function close() {
   openDialog.value = false
@@ -83,8 +78,7 @@ const builderButtonsToolbar = [
     value: 'actions.preview',
     tooltip: 'Preview',
     action: () => {
-      const builderId = route.params.builderId
-      navigateTo(`/builder/${builderId}/preview`)
+      navigateTo(`/builder/${builderId.value}/preview`)
     },
     props: {}
   },
@@ -92,11 +86,8 @@ const builderButtonsToolbar = [
     icon: 'mdi-content-save',
     tooltip: 'Save',
     value: 'actions.save',
-    action: () => {
-      const builderId = route.params.builderId
-      saveAll(builderId as string).then(() => {
-        console.log('Saved successfully')
-      })
+    action: async () => {
+      await builderStore.saveAll(builderId.value as string)
     },
     props: {}
   },

@@ -8,6 +8,7 @@ import { useBuilder } from '../composables/useBuilder'
 
 export const useBuilderStore = defineStore('builders', () => {
   const { builderService } = useBuilder()
+  const route = useRoute()
 
   const builders = ref<IBuilder[]>([])
   const builderState = ref<IBuilder>({
@@ -85,6 +86,7 @@ export const useBuilderStore = defineStore('builders', () => {
       console.error(`Error: ${section} data is undefined or null`)
       return
     }
+    console.log('Updated CV data:', builderState.value)
     if (builderState.value) {
       builderState.value[section] = data
     }
@@ -92,6 +94,7 @@ export const useBuilderStore = defineStore('builders', () => {
 
   async function saveAll(builderId: string) {
     try {
+      console.log('Saving CV data to localStorage:', builderState.value)
       if (!builderState.value) {
         throw new Error('CV data is undefined or null')
       }
@@ -113,6 +116,21 @@ export const useBuilderStore = defineStore('builders', () => {
       console.error('Error deleting CV:', error)
     }
   }
+
+  onMounted(() => {
+    console.log('builderId:', route.params.builderId)
+    if (route.params.builderId) {
+      console.log('Loading data from server:', route.params.builderId)
+      getBuilder(route.params.builderId as string)
+    }
+  })
+
+  onUnmounted(() => {
+    if (builderState.value?._id) {
+      console.log('Saving CV data to server:', builderState.value._id)
+      saveAll(builderState.value._id)
+    }
+  })
 
   return {
     updateBuilderStatus,

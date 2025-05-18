@@ -17,7 +17,7 @@
     <editor-content
       :editor="editor"
       style="overflow-y: auto"
-      class="d-flex flex-grow-1 pa-2" />
+      class="d-flex flex-grow-1 pa-2 full-width" />
   </v-card>
 </template>
 
@@ -95,6 +95,7 @@ onBeforeUnmount(() => {
 
 .tiptap {
   height: 100%;
+  width: 100%;
   :first-child {
     margin-top: 0;
   }

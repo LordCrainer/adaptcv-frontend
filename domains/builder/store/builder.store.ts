@@ -49,6 +49,7 @@ export const useBuilderStore = defineStore('builders', () => {
       }
       builders.value = data
       pagination.value = pag
+      builderState.value = { name: '', status: 'draft' }
       const mapper = (item: IBuilder[]) => item.map((i) => i.updatedAt)
       console.log('CVs loaded mapper:', mapper(builders.value), mapper(data))
     } catch (error) {
@@ -99,7 +100,6 @@ export const useBuilderStore = defineStore('builders', () => {
         throw new Error('CV data is undefined or null')
       }
       await builderService.update(builderId, builderState.value)
-      builderState.value = { status: 'draft', name: '' }
     } catch (error) {
       console.error('Error saving CV data to localStorage:', error)
       throw error

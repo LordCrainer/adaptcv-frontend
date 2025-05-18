@@ -91,11 +91,10 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="scss">
-/* Basic editor styles */
-
 .tiptap {
   height: 100%;
   width: 100%;
+  overflow-y: auto;
   :first-child {
     margin-top: 0;
   }

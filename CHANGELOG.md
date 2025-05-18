@@ -1,3 +1,15 @@
+# [1.89.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.88.0...v1.89.0) (2025-05-18)
+
+
+### Bug Fixes
+
+* handle errors in builder creation and ensure loading state is managed correctly ([cf782a0](https://github.com/LordCrainer/adaptcv-frontend/commit/cf782a0d94984606a6afa29223650a039eb37739))
+
+
+### Features
+
+* enhance date formatting utility and integrate into builder views; improve error handling in builder service ([053899f](https://github.com/LordCrainer/adaptcv-frontend/commit/053899f83ee7286fed7ee395e7dccb40f89203ab))
+
 # [1.88.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.87.0...v1.88.0) (2025-05-18)
 
 

@@ -1,4 +1,7 @@
-import type { BaseEntity as BaseEntityGlobal } from '@lordcrainer/adaptcv-shared-types'
+import type {
+  BaseEntity as BaseEntityGlobal,
+  Pagination
+} from '@lordcrainer/adaptcv-shared-types'
 import type { Component } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
 export interface IFileImage extends Partial<File> {
@@ -30,4 +33,11 @@ declare global {
   }
 
   type BaseEntity = BaseEntityGlobal
+
+  type ServiceResponse<T> = {
+    data: T
+    pagination?: Pagination
+  }
+
+  type ServiceResponseData<T> = Pick<ServiceResponse<T>, 'data'>
 }

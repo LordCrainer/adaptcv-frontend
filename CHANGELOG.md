@@ -1,3 +1,12 @@
+# [1.88.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.87.0...v1.88.0) (2025-05-18)
+
+
+### Features
+
+* enhance global types by adding Pagination to ServiceResponse ([f5ede69](https://github.com/LordCrainer/adaptcv-frontend/commit/f5ede69c4b15b64d9693d57b165fc098eb9cbb11))
+* refactor builder service injection and update service methods to use structured responses ([90f5cf7](https://github.com/LordCrainer/adaptcv-frontend/commit/90f5cf7a56a32612f5fbf6b32dd3b2e85d191814))
+* update @lordcrainer/adaptcv-shared-types to version 1.14.0 ([0463b67](https://github.com/LordCrainer/adaptcv-frontend/commit/0463b67b7f48813dbb923a2cfcfe83424ed220d2))
+
 # [1.87.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.86.0...v1.87.0) (2025-05-17)
 
 

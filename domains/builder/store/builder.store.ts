@@ -42,7 +42,6 @@ export const useBuilderStore = defineStore('builders', () => {
 
   async function loadBuilders() {
     try {
-      console.log('Loading CVs...')
       loadingList.value = true
       const { data, pagination: pag } = await builderService.getAll()
       if (!data) {
@@ -50,7 +49,8 @@ export const useBuilderStore = defineStore('builders', () => {
       }
       builders.value = data
       pagination.value = pag
-      console.log('CVs loaded:', builders.value, data)
+      const mapper = (item: IBuilder[]) => item.map((i) => i.updatedAt)
+      console.log('CVs loaded mapper:', mapper(builders.value), mapper(data))
     } catch (error) {
       console.error('Error loadingList CVs:', error)
       throw error

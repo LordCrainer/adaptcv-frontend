@@ -119,9 +119,13 @@ function add() {
 
 async function submitForm(builder: any) {
   close()
-  const { data: createdBuilder } = await create(builder)
-  if (createdBuilder?._id) {
-    router.push(`/builder/${createdBuilder._id}`)
+  try {
+    const { data: createdBuilder } = await create(builder)
+    if (createdBuilder?._id) {
+      router.push(`/builder/${createdBuilder._id}`)
+    }
+  } catch (error) {
+    console.error('Error creating builder:', error)
   }
 }
 </script>

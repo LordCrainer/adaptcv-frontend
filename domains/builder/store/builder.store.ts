@@ -21,17 +21,18 @@ export const useBuilderStore = defineStore(
     const loadingList = ref(false)
 
     async function create(data: IBuilder) {
+      loadingDetail.value = true
       try {
-        loadingDetail.value = true
         if (!data) {
           throw new Error('CV data is undefined or null')
         }
+        return await builderService.create(data)
       } catch (error) {
         console.error('Error creating CV:', error)
+        throw error
       } finally {
         loadingDetail.value = false
       }
-      return await builderService.create(data)
     }
 
     async function loadBuilders() {

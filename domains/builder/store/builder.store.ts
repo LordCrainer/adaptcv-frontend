@@ -48,7 +48,6 @@ export const useBuilderStore = defineStore('builders', () => {
       }
       builders.value = data
       pagination.value = pag
-      console.log('loadBuilders:', builders.value, data)
     } catch (error) {
       console.error('Error loadingList CVs:', error)
       throw error
@@ -96,7 +95,6 @@ export const useBuilderStore = defineStore('builders', () => {
       if (!builderState.value) {
         throw new Error('CV data is undefined or null')
       }
-      // Ensure all required fields are present before casting
 
       await builderService.update(builderId, builderState.value)
     } catch (error) {

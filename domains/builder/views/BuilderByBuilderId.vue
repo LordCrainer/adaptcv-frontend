@@ -80,7 +80,7 @@ function handleSubmit() {
 const builderButtonsToolbar = [
   {
     icon: 'mdi-eye',
-    value: 'preview',
+    value: 'actions.preview',
     tooltip: 'Preview',
     action: () => {
       const builderId = route.params.builderId
@@ -91,7 +91,7 @@ const builderButtonsToolbar = [
   {
     icon: 'mdi-content-save',
     tooltip: 'Save',
-    value: 'save',
+    value: 'actions.save',
     action: () => {
       const builderId = route.params.builderId
       saveAll(builderId as string).then(() => {
@@ -102,14 +102,14 @@ const builderButtonsToolbar = [
   },
   {
     icon: 'mdi-publish',
-    value: 'publish',
+    value: 'actions.publish',
     tooltip: 'Publish',
     action: () => {},
     props: {}
   },
   {
     icon: 'mdi-cog',
-    value: 'settings',
+    value: 'actions.settings',
     tooltip: 'Settings',
     action: () => {
       openDialog.value = true

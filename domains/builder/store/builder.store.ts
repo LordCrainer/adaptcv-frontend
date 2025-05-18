@@ -42,6 +42,7 @@ export const useBuilderStore = defineStore('builders', () => {
 
   async function loadBuilders() {
     try {
+      console.log('Loading CVs...')
       loadingList.value = true
       const { data, pagination: pag } = await builderService.getAll()
       if (!data) {
@@ -49,6 +50,7 @@ export const useBuilderStore = defineStore('builders', () => {
       }
       builders.value = data
       pagination.value = pag
+      console.log('CVs loaded:', builders.value, data)
     } catch (error) {
       console.error('Error loadingList CVs:', error)
       throw error
@@ -86,20 +88,18 @@ export const useBuilderStore = defineStore('builders', () => {
       console.error(`Error: ${section} data is undefined or null`)
       return
     }
-    console.log('Updated CV data:', builderState.value)
     if (builderState.value) {
       builderState.value[section] = data
     }
   }
 
-  async function saveAll(builderId: string) {
+  async function saveByBuilderId(builderId: string) {
     try {
-      console.log('Saving CV data to localStorage:', builderState.value)
       if (!builderState.value) {
         throw new Error('CV data is undefined or null')
       }
-
       await builderService.update(builderId, builderState.value)
+      builderState.value = { status: 'draft', name: '' }
     } catch (error) {
       console.error('Error saving CV data to localStorage:', error)
       throw error
@@ -114,23 +114,9 @@ export const useBuilderStore = defineStore('builders', () => {
       )
     } catch (error) {
       console.error('Error deleting CV:', error)
+      throw error
     }
   }
-
-  onMounted(() => {
-    console.log('builderId:', route.params.builderId)
-    if (route.params.builderId) {
-      console.log('Loading data from server:', route.params.builderId)
-      getBuilder(route.params.builderId as string)
-    }
-  })
-
-  onUnmounted(() => {
-    if (builderState.value?._id) {
-      console.log('Saving CV data to server:', builderState.value._id)
-      saveAll(builderState.value._id)
-    }
-  })
 
   return {
     updateBuilderStatus,
@@ -139,7 +125,7 @@ export const useBuilderStore = defineStore('builders', () => {
     getBuilder,
     deleteBuilder,
     loadBuilders,
-    saveAll,
+    saveByBuilderId,
     builderState,
     builders,
     pagination,

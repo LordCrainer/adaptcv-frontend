@@ -56,11 +56,15 @@ import Education from '~/domains/builder/components/education/index.vue'
 import BuilderToolbar from '../components/BuilderToolbar.vue'
 import BuilderForm from '../components/BuilderForm.vue'
 import { useBuilderStore } from '../store/builder.store'
+import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
 
 const builderStore = useBuilderStore()
+const { hasChanges } = useObject()
+const { builderState } = storeToRefs(builderStore)
 
 const route = useRoute()
 const builderId = ref(route.params.builderId)
+const builderStateTemp = ref<IBuilder>()
 
 const openDialog = ref(false)
 
@@ -87,7 +91,7 @@ const builderButtonsToolbar = [
     tooltip: 'Save',
     value: 'actions.save',
     action: async () => {
-      await builderStore.saveAll(builderId.value as string)
+      await builderStore.saveByBuilderId(builderId.value as string)
     },
     props: {}
   },
@@ -108,4 +112,17 @@ const builderButtonsToolbar = [
     props: {}
   }
 ]
+
+onMounted(async () => {
+  if (route.params.builderId) {
+    await builderStore.getBuilder(route.params.builderId as string)
+    builderStateTemp.value = { ...builderState.value }
+  }
+})
+
+onUnmounted(() => {
+  if (hasChanges(builderState.value, builderStateTemp.value)) {
+    builderStore.saveByBuilderId(builderId.value as string)
+  }
+})
 </script>

@@ -12,10 +12,12 @@ const DEFAULT_ABOUT_ME: IAboutMe = {
 }
 
 export const useAboutMe = () => {
-  const { updateSection, builderState } = useBuilderStore()
+  const builderStore = useBuilderStore()
+  const { builderState } = storeToRefs(builderStore)
+  const { updateSection } = useBuilderStore()
 
   const aboutMe = computed({
-    get: () => builderState.aboutMe || { ...DEFAULT_ABOUT_ME },
+    get: () => builderState.value.aboutMe || { ...DEFAULT_ABOUT_ME },
     set: (value) => {
       updateSection('aboutMe', value)
     }

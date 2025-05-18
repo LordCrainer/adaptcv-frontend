@@ -61,8 +61,13 @@ import OwnTemplate from '~/components/templates/OwnTemplate.vue'
 import BuilderToolbar from '~/domains/builder/components/BuilderToolbar.vue'
 import BuilderForm from '../components/BuilderForm.vue'
 import { useBuilderStore } from '../store/builder.store'
+import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
 
-const { saveAll } = useBuilderStore()
+const builderStore = useBuilderStore()
+const { hasChanges } = useObject()
+const { builderState } = storeToRefs(builderStore)
+
+const route = useRoute()
 
 interface IItem {
   label: string
@@ -70,6 +75,9 @@ interface IItem {
   component: Component
   props: any
 }
+
+const builderId = ref(route.params.builderId)
+const builderStateTemp = ref<IBuilder>()
 
 type TemplateOptions = 'harvard' | 'own'
 
@@ -100,8 +108,6 @@ const selectItems = Object.entries(templates.value).map(
   })
 )
 
-const route = useRoute()
-
 const openDialog = ref(false)
 
 function close() {
@@ -129,7 +135,7 @@ const builderButtonsToolbar = [
     value: 'actions.save',
     action: () => {
       const builderId = route.params.builderId
-      saveAll(builderId as string).then(() => {
+      builderStore.saveByBuilderId(builderId as string).then(() => {
         console.log('Saved successfully')
       })
     },
@@ -152,4 +158,17 @@ const builderButtonsToolbar = [
     props: {}
   }
 ]
+
+onMounted(async () => {
+  if (route.params.builderId) {
+    await builderStore.getBuilder(route.params.builderId as string)
+    builderStateTemp.value = { ...builderState.value }
+  }
+})
+
+onUnmounted(() => {
+  if (hasChanges(builderState.value, builderStateTemp.value)) {
+    builderStore.saveByBuilderId(builderId.value as string)
+  }
+})
 </script>

@@ -50,7 +50,8 @@ const emit = defineEmits(['close', 'submit'])
 const { hasChanges } = useObject()
 const { required } = useRules()
 
-const { builderState } = useBuilderStore()
+const builderStore = useBuilderStore()
+const { builderState } = storeToRefs(builderStore)
 
 const state = reactive({
   loading: false
@@ -64,7 +65,10 @@ const localCurriculumVitae = ref<Partial<IBuilder>>({
 async function handleSaveChanges() {
   if (!form.value) return
   const { valid } = await form.value.validate()
-  if (valid && hasChanges(localCurriculumVitae.value.name, builderState.name)) {
+  if (
+    valid &&
+    hasChanges(localCurriculumVitae.value.name, builderState.value.name)
+  ) {
     emit('submit', localCurriculumVitae.value)
   }
 }

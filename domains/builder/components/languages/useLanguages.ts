@@ -25,22 +25,23 @@ const LANGUAGES_LIST = [
 const PROFICIENCY_LEVELS = ['beginner', 'intermediate', 'advanced', 'native']
 
 export const useLanguages = () => {
-  const { updateSection, builderState } = useBuilderStore()
-  const languages = computed(() => builderState.languages || [])
+  const builderStore = useBuilderStore()
+  const { builderState } = storeToRefs(builderStore)
+  const languages = computed(() => builderState.value.languages || [])
 
   const addLanguage = (lang: ILanguageItem) => {
     if (languages.value.length >= MAX_LANGUAGES) {
       return
     }
     const updated = [...languages.value, lang]
-    updateSection('languages', updated)
+    builderStore.updateSection('languages', updated)
   }
 
   const updateLanguage = (index: number, lang: ILanguageItem) => {
     const updated = languages.value.map((item, i) =>
       i === index ? lang : item
     )
-    updateSection('languages', updated)
+    builderStore.updateSection('languages', updated)
   }
 
   const findIndexByLanguage = (language: string) => {
@@ -62,7 +63,7 @@ export const useLanguages = () => {
 
   const removeLanguage = (index: number) => {
     languages.value.splice(index, 1)
-    updateSection('languages', languages.value)
+    builderStore.updateSection('languages', languages.value)
   }
 
   return {

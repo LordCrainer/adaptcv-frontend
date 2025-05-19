@@ -12,17 +12,18 @@ const DEFAULT_ITEM: IEducationItem = {
 }
 
 const useEducation = () => {
-  const { updateSection, builderState } = useBuilderStore()
-  const education = computed(() => builderState.education || [])
+  const builderStore = useBuilderStore()
+  const { builderState } = storeToRefs(builderStore)
+  const education = computed(() => builderState.value.education || [])
 
   const addEducation = (educationItem: IEducationItem) => {
     const newEducationItem = { ...educationItem, id: Date.now().toString() }
-    updateSection('education', [...education.value, newEducationItem])
+    builderStore.updateSection('education', [...education.value, newEducationItem])
   }
 
   const removeEducation = (id: string) => {
     const updated = education.value.filter((item) => item.id !== id)
-    updateSection('education', updated)
+    builderStore.updateSection('education', updated)
   }
 
   const updateEducation = (id: string, updatedItem: IEducationItem) => {
@@ -33,7 +34,7 @@ const useEducation = () => {
       const updated = education.value.map((edu) =>
         edu.id === id ? updatedItem : edu
       )
-      updateSection('education', updated)
+      builderStore.updateSection('education', updated)
     }
   }
 

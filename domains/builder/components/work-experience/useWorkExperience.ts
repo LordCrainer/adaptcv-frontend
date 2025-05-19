@@ -13,17 +13,16 @@ const DEFAULT_ITEM: IWorkExperience = {
 const useWorkExperience = () => {
   const builderStore = useBuilderStore()
   const { builderState } = storeToRefs(builderStore)
-  const { updateSection } = useBuilderStore()
 
   const workExperiences = computed(() => builderState.value.workExperience || [])
 
   const removeWorkExperience = (id: string) => {
     const updated = workExperiences.value.filter((exp) => exp.id !== id)
-    updateSection('workExperience', updated)
+    builderStore.updateSection('workExperience', updated)
   }
   const addWorkExperience = (workExperience: IWorkExperience) => {
     const newWorkExperience = { ...workExperience, id: Date.now().toString() }
-    updateSection('workExperience', [
+    builderStore.updateSection('workExperience', [
       ...workExperiences.value,
       newWorkExperience
     ])
@@ -38,7 +37,7 @@ const useWorkExperience = () => {
       const updated = workExperiences.value.map((exp) =>
         exp.id === id ? workExperience : exp
       )
-      updateSection('workExperience', updated)
+      builderStore.updateSection('workExperience', updated)
     }
   }
 

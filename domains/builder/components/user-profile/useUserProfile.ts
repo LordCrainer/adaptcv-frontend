@@ -13,12 +13,11 @@ const DEFAULT_USER_PROFILE: IUserProfile = {
 export const useUserProfile = () => {
   const builderStore = useBuilderStore()
   const { builderState } = storeToRefs(builderStore)
-  const { updateSection } = useBuilderStore()
 
   const userProfile = computed({
     get: () => builderState.value.userProfile || { ...DEFAULT_USER_PROFILE },
     set: (value) => {
-      updateSection('userProfile', value)
+      builderStore.updateSection('userProfile', value)
     }
   })
 

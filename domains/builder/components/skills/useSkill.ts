@@ -40,12 +40,13 @@ const DEFAULT_SKILL_ITEM: ISkill = {
 const MAX_SKILLS = 10
 
 export const useSkill = () => {
-  const { updateSection, builderState } = useBuilderStore()
-  const skills = computed(() => builderState.skills || [])
+  const builderStore = useBuilderStore()
+  const { builderState } = storeToRefs(builderStore)
+  const skills = computed(() => builderState.value.skills || [])
 
   const removeSkill = (index: number) => {
     const updated = skills.value.filter((_, i) => i !== index)
-    updateSection('skills', updated)
+    builderStore.updateSection('skills', updated)
   }
 
   const addSkill = (skill: ISkill) => {
@@ -53,12 +54,12 @@ export const useSkill = () => {
       return
     }
     const updated = [...skills.value, skill]
-    updateSection('skills', updated)
+    builderStore.updateSection('skills', updated)
   }
 
   const updateSkill = (index: number, skill: ISkill) => {
     const updated = skills.value.map((item, i) => (i === index ? skill : item))
-    updateSection('skills', updated)
+    builderStore.updateSection('skills', updated)
   }
 
   const upsertSkill = (data: ISkill) => {

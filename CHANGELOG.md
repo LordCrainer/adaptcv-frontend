@@ -1,3 +1,10 @@
+## [1.92.2](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.92.1...v1.92.2) (2025-05-20)
+
+
+### Bug Fixes
+
+* remove unnecessary token and fetch-depth from checkout step in release workflow ([47704d9](https://github.com/LordCrainer/adaptcv-frontend/commit/47704d91cf6d2b403d6c00804b98f491c05e9dde))
+
 ## [1.92.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.92.0...v1.92.1) (2025-05-20)
 
 

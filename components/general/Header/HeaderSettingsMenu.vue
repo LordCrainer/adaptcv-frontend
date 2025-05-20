@@ -1,15 +1,27 @@
 <template>
   <v-menu>
     <template v-slot:activator="{ props }">
-      <v-btn class="fill-height" rounded icon="mdi-dots-vertical" v-bind="props"></v-btn>
+      <v-btn
+        class="fill-height"
+        rounded
+        icon="mdi-dots-vertical"
+        v-bind="props"></v-btn>
     </template>
     <v-list>
-      <v-list-item @click="toggleTheme">
+      <v-list-item
+        v-for="option in settingsOptions"
+        :key="option.key"
+        @click="option.action">
         <template v-slot:prepend>
-          <v-icon :icon="selectedTheme.icon"></v-icon>
+          <v-icon :icon="option.icon()"></v-icon>
         </template>
-        <v-list-item-title>
-          {{ selectedTheme.label }}
+        <v-progress-circular
+          v-if="option?.loading()"
+          indeterminate
+          size="24"
+          class="mr-2"></v-progress-circular>
+        <v-list-item-title v-else>
+          {{ option.label() }}
         </v-list-item-title>
       </v-list-item>
     </v-list>
@@ -17,29 +29,32 @@
 </template>
 
 <script setup lang="ts">
-import { useTheme } from 'vuetify'
+import { useAuth } from '~/domains/auth/composables/useAuth'
+import { useThemeAcv } from '~/shared/useThemeAcv'
+const { selectedTheme, toggleTheme } = useThemeAcv()
 
-const { global } = useTheme()
+const { logout, loadingAuth } = useAuth()
+const router = useRouter()
 
-interface IThemeMode {
-  icon: string
-  label: string
-}
-
-const themeMode: Record<string, IThemeMode> = {
-  light: {
-    icon: 'mdi-moon-waxing-crescent',
-    label: 'Dark Mode'
+const settingsOptions = [
+  {
+    icon: () => selectedTheme.value.icon,
+    label: () => selectedTheme.value.label,
+    action: () => {
+      toggleTheme()
+    },
+    loading: () => false,
+    key: 'theme'
   },
-  dark: {
-    icon: 'mdi-white-balance-sunny',
-    label: 'Light Mode'
+  {
+    icon: () => 'mdi-logout',
+    label: () => 'Log Out',
+    action: () => {
+      logout()
+      router.push('/login')
+    },
+    loading: () => loadingAuth.value,
+    key: 'logout'
   }
-}
-
-const selectedTheme = computed(() => themeMode[global.name.value])
-
-const toggleTheme = () => {
-  global.name.value = global.name.value === 'dark' ? 'light' : 'dark'
-}
+]
 </script>

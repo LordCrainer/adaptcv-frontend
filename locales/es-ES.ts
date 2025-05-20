@@ -123,6 +123,7 @@ export default defineI18nLocale(async () => {
       publish: 'Publicar',
       preview: 'Visualizar',
       settings: 'Configuraciones',
+      signUp: 'Registrarse'
     },
     common: {
       home: 'Inicio',

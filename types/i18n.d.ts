@@ -117,6 +117,7 @@ interface TranslationKeys {
     publish: string
     preview: string
     settings: string
+    signUp: string
   }
   baseEntity: {
     createdAt: string

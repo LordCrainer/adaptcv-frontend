@@ -100,7 +100,7 @@ const templates = ref<Record<TemplateOptions, IItem>>({
   }
 })
 
-const selectedTemplate = ref<TemplateOptions>('harvard')
+const selectedTemplate = ref<TemplateOptions>('own')
 const selectItems = Object.entries(templates.value).map(
   ([value, attributes]) => ({
     value: value as TemplateOptions,

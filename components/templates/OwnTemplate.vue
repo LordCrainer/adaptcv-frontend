@@ -33,10 +33,10 @@
           </div>
 
           <v-card-title class="text-h6 font-weight-bold">
-            {{ userProfile?.name }}
+            {{ builderState.userProfile?.name }}
           </v-card-title>
           <p class="text-body-1 font-weight-bold">
-            {{ userProfile?.profession }}
+            {{ builderState.userProfile?.profession }}
           </p>
         </div>
 
@@ -51,7 +51,7 @@
               <v-icon size="large" color="orange" icon="mdi-bullhorn"></v-icon>
             </v-avatar>
             <p>
-              {{ aboutMe?.slogan }}
+              {{ builderState.aboutMe?.slogan }}
             </p>
           </div>
         </div>
@@ -87,7 +87,7 @@
             thickness="2"
             color="white"></v-divider>
           <div
-            v-for="skill in skills"
+            v-for="skill in builderState.skills"
             :key="skill.skill"
             class="d-flex ga-2 align-center pa-2">
             <div
@@ -138,7 +138,7 @@
           <div class="d-flex ga-4 align-center">
             <div class="rounded-divider ml-3"></div>
             <p class="text-caption" style="width: 100%">
-              {{ aboutMe?.summary }}
+              {{ builderState.aboutMe?.summary }}
             </p>
           </div>
         </div>
@@ -148,7 +148,9 @@
             <v-icon size="32" icon="mdi-account-circle" color=""></v-icon>
             <p class="text-h6">{{ $t('profile.experience.title') }}</p>
           </div>
-          <div class="d-flex ga-4 align-center" v-for="exp in workExperience">
+          <div
+            class="d-flex ga-4 align-center"
+            v-for="exp in builderState.workExperience">
             <div class="rounded-divider ml-3"></div>
             <div class="text-caption" style="width: 100%">
               <div class="d-flex ga-1 flex-column">
@@ -225,9 +227,6 @@ const { PROFICIENCY_LEVELS } = useLanguages()
 const builderStore = useBuilderStore()
 const { builderState } = storeToRefs(builderStore)
 
-const { education, languages, userProfile, skills, workExperience, aboutMe } =
-  builderState.value
-
 function getProficiencyLevel(prop: string, options: string[]) {
   const index = options.findIndex((s) => s === prop) + 1
   return (100 / options.length) * index
@@ -254,25 +253,25 @@ interface IContact {
 const contacts = ref<IContact[]>([
   {
     icon: 'mdi-email',
-    link: `mailto:${userProfile?.email}`,
-    label: userProfile?.email
+    link: `mailto:${builderState.value.userProfile?.email}`,
+    label: builderState.value.userProfile?.email
   },
   {
     icon: 'mdi-phone',
-    link: `https://wa.me/${userProfile?.phone}`,
+    link: `https://wa.me/${builderState.value.userProfile?.phone}`,
     label: 'phone',
     hasUserProfile: true
   },
   {
     icon: 'mdi-github',
-    link: userProfile?.socialMedia?.github,
+    link: builderState.value.userProfile?.socialMedia?.github,
     label: 'github',
     hasUserProfile: true
   },
   {
     icon: 'mdi-linkedin',
-    link: userProfile?.socialMedia?.linkedin,
-    label: userProfile?.socialMedia?.linkedin,
+    link: builderState.value.userProfile?.socialMedia?.linkedin,
+    label: builderState.value.userProfile?.socialMedia?.linkedin,
     hasUserProfile: true
   }
 ])

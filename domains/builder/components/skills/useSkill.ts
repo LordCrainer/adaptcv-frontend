@@ -20,7 +20,12 @@ const SKILLS_LIST = ref(
     'CSS',
     'SQL',
     'Rust',
-    'Node.js'
+    'Node.js',
+    'Vue.js',
+    'React',
+    'Angular',
+    'Excel',
+    'PowerBI',
   ].sort()
 )
 

@@ -110,7 +110,7 @@
             thickness="2"
             color="white"></v-divider>
           <div
-            v-for="lang in languages"
+            v-for="lang in builderState.languages"
             :key="lang.name"
             class="d-flex ga-2 align-center pa-2">
             <v-progress-circular
@@ -187,7 +187,7 @@
           </div>
           <div
             class="d-flex ga-4 align-center"
-            v-for="edu in education"
+            v-for="edu in builderState.education"
             :key="edu.institution + edu.fieldOfStudy">
             <div class="ml-3 rounded-divider"></div>
             <div class="d-flex flex-column" style="width: 100%">
@@ -222,10 +222,11 @@ import Editor from '../Editor/Editor.vue'
 
 const { formatDateRange } = useFormatDate()
 const { PROFICIENCY_LEVELS } = useLanguages()
-const { builderState } = useBuilderStore()
+const builderStore = useBuilderStore()
+const { builderState } = storeToRefs(builderStore)
 
 const { education, languages, userProfile, skills, workExperience, aboutMe } =
-  builderState
+  builderState.value
 
 function getProficiencyLevel(prop: string, options: string[]) {
   const index = options.findIndex((s) => s === prop) + 1

@@ -8,7 +8,6 @@ import { useBuilder } from '../composables/useBuilder'
 
 export const useBuilderStore = defineStore('builders', () => {
   const { builderService } = useBuilder()
-  const route = useRoute()
 
   const builders = ref<IBuilder[]>([])
   const builderState = ref<IBuilder>({

@@ -1,13 +1,14 @@
 <script lang="ts" setup>
 import { useBuilderStore } from '~/domains/builder/store/builder.store'
 import Editor from '../Editor/Editor.vue'
-const { builderState } = useBuilderStore()
+const builderStore = useBuilderStore()
 
 import { computed } from 'vue'
 
 const { formatDateRange } = useFormatDate()
+const { builderState } = storeToRefs(builderStore)
 const { education, languages, userProfile, skills, workExperience, aboutMe } =
-  builderState
+  builderState.value
 
 const location = computed(() => {
   return getLocation(userProfile?.city, userProfile?.country)
@@ -87,7 +88,7 @@ function getLocation(...args: (string | undefined)[]) {
         {{ $t('profile.education.title') }}
       </div>
       <v-divider></v-divider>
-      <v-row v-for="(edu, index) in education" :key="index" class="pa-4">
+      <v-row v-for="(edu, index) in builderState.education" :key="index" class="pa-4">
         <v-col cols="8" md="8" class="py-2 px-0">
           <p class="font-weight-bold">
             {{ edu.institution }}

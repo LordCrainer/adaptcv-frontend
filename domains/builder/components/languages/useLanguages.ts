@@ -26,8 +26,7 @@ const PROFICIENCY_LEVELS = ['beginner', 'intermediate', 'advanced', 'native']
 
 export const useLanguages = () => {
   const builderStore = useBuilderStore()
-  const { builderState } = storeToRefs(builderStore)
-  const languages = computed(() => builderState.value.languages || [])
+  const languages = computed(() => builderStore.builderState.languages || [])
 
   const addLanguage = (lang: ILanguageItem) => {
     if (languages.value.length >= MAX_LANGUAGES) {

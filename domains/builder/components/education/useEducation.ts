@@ -13,12 +13,14 @@ const DEFAULT_ITEM: IEducationItem = {
 
 const useEducation = () => {
   const builderStore = useBuilderStore()
-  const { builderState } = storeToRefs(builderStore)
-  const education = computed(() => builderState.value.education || [])
+  const education = computed(() => builderStore.builderState.education || [])
 
   const addEducation = (educationItem: IEducationItem) => {
     const newEducationItem = { ...educationItem, id: Date.now().toString() }
-    builderStore.updateSection('education', [...education.value, newEducationItem])
+    builderStore.updateSection('education', [
+      ...education.value,
+      newEducationItem
+    ])
   }
 
   const removeEducation = (id: string) => {

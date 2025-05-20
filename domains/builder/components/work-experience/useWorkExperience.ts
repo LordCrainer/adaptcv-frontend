@@ -12,9 +12,10 @@ const DEFAULT_ITEM: IWorkExperience = {
 
 const useWorkExperience = () => {
   const builderStore = useBuilderStore()
-  const { builderState } = storeToRefs(builderStore)
 
-  const workExperiences = computed(() => builderState.value.workExperience || [])
+  const workExperiences = computed(
+    () => builderStore.builderState.workExperience || []
+  )
 
   const removeWorkExperience = (id: string) => {
     const updated = workExperiences.value.filter((exp) => exp.id !== id)

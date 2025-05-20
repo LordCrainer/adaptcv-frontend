@@ -41,8 +41,7 @@ const MAX_SKILLS = 10
 
 export const useSkill = () => {
   const builderStore = useBuilderStore()
-  const { builderState } = storeToRefs(builderStore)
-  const skills = computed(() => builderState.value.skills || [])
+  const skills = computed(() => builderStore.builderState.skills || [])
 
   const removeSkill = (index: number) => {
     const updated = skills.value.filter((_, i) => i !== index)

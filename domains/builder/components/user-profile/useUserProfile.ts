@@ -12,18 +12,18 @@ const DEFAULT_USER_PROFILE: IUserProfile = {
 
 export const useUserProfile = () => {
   const builderStore = useBuilderStore()
-  const { builderState } = storeToRefs(builderStore)
 
   const userProfile = computed({
-    get: () => builderState.value.userProfile || { ...DEFAULT_USER_PROFILE },
+    get: () =>
+      builderStore.builderState.userProfile || { ...DEFAULT_USER_PROFILE },
     set: (value) => {
       builderStore.updateSection('userProfile', value)
     }
   })
 
   onMounted(() => {
-    if (builderState.value.userProfile) {
-      setUserProfile(builderState.value.userProfile)
+    if (builderStore.builderState.userProfile) {
+      setUserProfile(builderStore.builderState.userProfile)
     }
   })
 

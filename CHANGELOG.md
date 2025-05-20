@@ -1,3 +1,10 @@
+# [1.92.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.91.0...v1.92.0) (2025-05-20)
+
+
+### Features
+
+* update commit-analyzer plugin to include custom release rules for refactor type ([5ac29f2](https://github.com/LordCrainer/adaptcv-frontend/commit/5ac29f2e9e929dee0fb4f7876837fd6e35a186e2))
+
 # [1.91.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.90.0...v1.91.0) (2025-05-20)
 
 

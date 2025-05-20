@@ -117,7 +117,7 @@ function close() {
 const builderButtonsToolbar = [
   {
     icon: 'mdi-pencil',
-    value: 'preview',
+    value: 'actions.preview',
     tooltip: 'Preview',
     action: () => {
       const builderId = route.params.builderId

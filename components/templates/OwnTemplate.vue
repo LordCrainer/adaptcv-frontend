@@ -17,7 +17,6 @@
         <v-btn icon="mdi-menu" color="white"></v-btn>
       </template>
     </v-toolbar>
-
     <div class="d-flex flex-row">
       <div
         style="width: 275px; min-width: 275px"
@@ -62,20 +61,23 @@
             class="border-opacity-75 py-2"
             thickness="2"
             color="white"></v-divider>
-          <div
-            v-for="contact in contacts"
-            :key="contact.label"
-            class="d-flex ga-2 align-center pa-2">
-            <v-avatar size="32" color="white">
-              <v-icon
-                size="24"
-                color="orange-darken-1"
-                :icon="contact.icon"></v-icon>
-            </v-avatar>
-            <a :href="contact.link" target="_blank" class="text-white">
-              {{ linkContact(contact) }}
-            </a>
-          </div>
+          <template
+            v-for="contact in getContact(builderState?.userProfile)"
+            :key="contact.key">
+            <template v-if="contact.label">
+              <div class="d-flex ga-2 align-center pa-2">
+                <v-avatar size="32" color="white">
+                  <v-icon
+                    size="24"
+                    color="orange-darken-1"
+                    :icon="contact.icon"></v-icon>
+                </v-avatar>
+                <a :href="contact.link" target="_blank" class="text-white">
+                  {{ contact.label }}
+                </a>
+              </div>
+            </template>
+          </template>
         </div>
 
         <div class="text-body-2">
@@ -221,6 +223,7 @@
 import { useLanguages } from '~/domains/builder/components/languages/useLanguages'
 import { useBuilderStore } from '~/domains/builder/store/builder.store'
 import Editor from '../Editor/Editor.vue'
+import type { IUserProfile } from '@lordcrainer/adaptcv-shared-types'
 
 const { formatDateRange } = useFormatDate()
 const { PROFICIENCY_LEVELS } = useLanguages()
@@ -233,49 +236,40 @@ function getProficiencyLevel(prop: string, options: string[]) {
 }
 
 function getUserProfile(text: string) {
+  if (!text) return ''
   const word = text.split('/').slice(-1)[0]
   return word.charAt(0).toUpperCase() + word.slice(1)
 }
 
-function linkContact(contact: IContact) {
-  return contact.hasUserProfile && contact.link
-    ? getUserProfile(contact.link)
-    : contact.label
+function getContact(userProfile?: IUserProfile) {
+  if (!userProfile) return []
+  return [
+    {
+      icon: 'mdi-email',
+      link: `mailto:${userProfile.email}`,
+      label: userProfile.email,
+      key: 'email'
+    },
+    {
+      icon: 'mdi-phone',
+      link: `https://wa.me/${userProfile.phone}`,
+      label: `+${userProfile.phone}`,
+      key: 'phone'
+    },
+    {
+      icon: 'mdi-github',
+      link: userProfile.socialMedia?.github,
+      label: getUserProfile(userProfile.socialMedia?.github as string),
+      key: 'github'
+    },
+    {
+      icon: 'mdi-linkedin',
+      link: userProfile.socialMedia?.linkedin,
+      label: getUserProfile(userProfile.socialMedia?.linkedin as string),
+      key: 'linkedin'
+    }
+  ]
 }
-
-interface IContact {
-  icon: string
-  link?: string
-  label?: string
-  hasUserProfile?: boolean
-}
-
-const contacts = ref<IContact[]>([
-  {
-    icon: 'mdi-email',
-    link: `mailto:${builderState.value.userProfile?.email}`,
-    label: builderState.value.userProfile?.email
-  },
-  {
-    icon: 'mdi-phone',
-    link: `https://wa.me/${builderState.value.userProfile?.phone}`,
-    label: 'phone',
-    hasUserProfile: true
-  },
-  {
-    icon: 'mdi-github',
-    link: builderState.value.userProfile?.socialMedia?.github,
-    label: 'github',
-    hasUserProfile: true
-  },
-  {
-    icon: 'mdi-linkedin',
-    link: builderState.value.userProfile?.socialMedia?.linkedin,
-    label: builderState.value.userProfile?.socialMedia?.linkedin,
-    hasUserProfile: true
-  }
-])
-// rgb(8, 54, 91)
 </script>
 
 <style scoped lang="scss">

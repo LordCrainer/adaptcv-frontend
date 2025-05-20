@@ -34,7 +34,7 @@
       icon-color="primary"
       prepend-inner-icon="mdi-phone"
       :label="$t('profile.personalInfo.phone')"
-      placeholder="+1234567890"
+      placeholder="1234567890"
       active
       variant="outlined"
       type="tel"
@@ -51,6 +51,7 @@
       active
       aria-label="Country"
       variant="outlined"></v-text-field>
+
     <v-text-field
       @blur="updateFormData"
       density="comfortable"

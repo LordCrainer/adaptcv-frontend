@@ -1,3 +1,11 @@
+# [1.91.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.90.0...v1.91.0) (2025-05-20)
+
+
+### Features
+
+* enhance HeaderSettingsMenu with dynamic settings options and loading states; add signUp translation ([cbb1d33](https://github.com/LordCrainer/adaptcv-frontend/commit/cbb1d338fbde88a0d67b6daca0f9cae02fd30a19))
+* expand SKILLS_LIST with additional programming languages and tools ([bf50d8f](https://github.com/LordCrainer/adaptcv-frontend/commit/bf50d8f7caf59c77f5e0579aa831b530f6de4ae0))
+
 # [1.90.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.89.0...v1.90.0) (2025-05-20)
 
 

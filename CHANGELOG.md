@@ -1,3 +1,10 @@
+## [1.92.3](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.92.2...v1.92.3) (2025-05-20)
+
+
+### Bug Fixes
+
+* update token references in semantic release step to use GITHUB_TOKEN ([e2d9c5f](https://github.com/LordCrainer/adaptcv-frontend/commit/e2d9c5fc3c59bb05fd0297684802757b2dcc2de9))
+
 ## [1.92.2](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.92.1...v1.92.2) (2025-05-20)
 
 

@@ -1,3 +1,10 @@
+## [1.92.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.92.0...v1.92.1) (2025-05-20)
+
+
+### Bug Fixes
+
+* update token references in release workflow to use NPM_TOKEN ([a06db72](https://github.com/LordCrainer/adaptcv-frontend/commit/a06db72a5ad102862b030af8a9c1579717abd5c0))
+
 # [1.92.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.91.0...v1.92.0) (2025-05-20)
 
 

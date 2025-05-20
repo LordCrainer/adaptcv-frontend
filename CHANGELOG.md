@@ -1,3 +1,10 @@
+# [1.90.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.89.0...v1.90.0) (2025-05-20)
+
+
+### Features
+
+* add CountryCodes.json with international dialing codes ([fe17dbb](https://github.com/LordCrainer/adaptcv-frontend/commit/fe17dbbe84c8f5baa2a14165a49c7d91c03616c1))
+
 # [1.89.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.88.0...v1.89.0) (2025-05-18)
 
 

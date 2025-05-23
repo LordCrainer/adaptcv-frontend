@@ -54,17 +54,12 @@ import CardDefault from '~/components/card/CardDefault.vue'
 
 const { aboutMe, setAboutMeLogo } = useAboutMe()
 
-const fileImage = ref<IFileImage>(aboutMe.value?.logo as IFileImage)
-
-watch(
-  () => fileImage,
-  (newFileImage) => {
-    if (newFileImage.value?.src) {
-      setAboutMeLogo({ ...fileImage.value })
-    }
-  },
-  { deep: true }
-)
+const fileImage = computed({
+  get: () => aboutMe.value.logo,
+  set: (value: IFileImage) => {
+    setAboutMeLogo({ ...value })
+  }
+})
 
 const state = ref({
   openDialog: false

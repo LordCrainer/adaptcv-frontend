@@ -1,4 +1,3 @@
-import { ref } from 'vue'
 import type { IFileImage } from '~/types/global'
 import { useBuilderStore } from '~/domains/builder/store/builder.store'
 import type { IUserProfile } from '@lordcrainer/adaptcv-shared-types'
@@ -6,8 +5,12 @@ import type { IUserProfile } from '@lordcrainer/adaptcv-shared-types'
 const DEFAULT_USER_PROFILE: IUserProfile = {
   name: '',
   email: '',
-  phone: '',
-  address: ''
+  phone: 0,
+  phoneCode: 0,
+  address: '',
+  image: {
+    src: ''
+  }
 }
 
 export const useUserProfile = () => {
@@ -21,12 +24,6 @@ export const useUserProfile = () => {
     }
   })
 
-  onMounted(() => {
-    if (builderStore.builderState.userProfile) {
-      setUserProfile(builderStore.builderState.userProfile)
-    }
-  })
-
   const setUserProfile = (data: IUserProfile) => {
     userProfile.value = data
   }
@@ -36,17 +33,7 @@ export const useUserProfile = () => {
   }
 
   const clearUserProfile = () => {
-    userProfile.value = {
-      image: {
-        src: ''
-      },
-      name: '',
-      profession: '',
-      areaProfession: undefined,
-      email: '',
-      phone: '',
-      address: ''
-    }
+    userProfile.value = { ...DEFAULT_USER_PROFILE }
   }
 
   const setUserProfileImage = (image: IFileImage) => {

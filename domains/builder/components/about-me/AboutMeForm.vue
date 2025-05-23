@@ -30,15 +30,13 @@
 </template>
 
 <script lang="ts" setup>
+import type { IAboutMe } from '@lordcrainer/adaptcv-shared-types';
 import { ref } from 'vue'
-import type { IAboutMe } from '~/domains/builder/shared'
 import { useObject } from '~/utils/useObject'
 
 const { hasChanges } = useObject()
 
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: IAboutMe): void
-}>()
+const emit = defineEmits(['update:modelValue'])
 
 const props = defineProps<{
   modelValue: IAboutMe

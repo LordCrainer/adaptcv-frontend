@@ -93,7 +93,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRules } from '~/composables/useRules'
-import { useAuth } from '../composables/useAuth'
+import { useAuthService } from '../composables/useAuthService'
+import { useAuthStore } from '../store/auth.store'
 
 definePageMeta({
   title: 'Login',
@@ -104,7 +105,8 @@ definePageMeta({
   }
 })
 
-const { login, isLoading } = useAuth()
+const { isLoading } = useAuthStore()
+const { login } = useAuthService()
 const rules = useRules()
 
 const form = ref()

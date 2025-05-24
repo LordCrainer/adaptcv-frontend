@@ -2,7 +2,7 @@ import { useAuthStore } from '@/domains/auth/store/auth.store'
 import axios, { type AxiosInstance } from 'axios'
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const { token, clearAuthData } = useAuthStore()
+  const authStore = useAuthStore()
   const runtimeConfig = useRuntimeConfig()
 
   const api: AxiosInstance = axios.create({
@@ -12,8 +12,8 @@ export default defineNuxtPlugin((nuxtApp) => {
   api.interceptors.request.use(
     (config) => {
       // Modify request config before sending the request
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`
+      if (authStore.token) {
+        config.headers.Authorization = `Bearer ${authStore.token}`
       }
       return config
     },
@@ -32,7 +32,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     async (error) => {
       // Handle response error
       if (error.response && error.response.status === 401) {
-        clearAuthData()
+        authStore.resetAuth()
       }
       return Promise.reject(error)
     }

@@ -1,19 +1,40 @@
-import { computed } from 'vue'
 import { useAuthStore } from '../store/auth.store'
+import type { IAuthService } from '../interfaces/auth.interface'
 
-export function useAuth() {
-  const store = useAuthStore()
+export const useAuth = (authHttpService: IAuthService) => {
+  return () => {
+    const store = useAuthStore()
 
-  return {
-    // State
-    user: computed(() => store.user),
-    isAuthenticated: computed(() => store.isAuthenticated),
-    isLoading: computed(() => store.isLoading),
-    error: computed(() => store.error),
+    async function login(credentials: { email: string; password: string }) {
+      store.toggleLoading(true)
+      try {
+        const response = await authHttpService.login(credentials)
+        store.setToken(response.token)
+        store.setUser(response.user)
+      } catch (err: any) {
+        store.error = err.response?.data?.message || err.message
+        throw err
+      } finally {
+        store.toggleLoading(false)
+      }
+    }
 
-    // Actions
-    login: store.login,
-    logout: store.logout,
-    fetchUser: store.fetchUser
+    async function logout() {
+      await authHttpService.logout()
+      store.resetAuth()
+    }
+    
+    async function refreshToken() {
+      if (!store.refreshToken) throw new Error('No refresh token')
+      const response = await authHttpService.refreshToken(store.refreshToken)
+      store.setToken(response.token)
+      store.setRefreshToken(response.refreshToken)
+    }
+
+    return {
+      login,
+      logout,
+      refreshToken,
+    }
   }
 }

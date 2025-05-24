@@ -33,7 +33,7 @@ import { useAuth } from '~/domains/auth/composables/useAuth'
 import { useThemeAcv } from '~/shared/useThemeAcv'
 const { selectedTheme, toggleTheme } = useThemeAcv()
 
-const { logout, loadingAuth } = useAuth()
+const { logout, isLoading } = useAuth()
 const router = useRouter()
 
 const settingsOptions = [
@@ -53,7 +53,7 @@ const settingsOptions = [
       logout()
       router.push('/login')
     },
-    loading: () => loadingAuth.value,
+    loading: () => isLoading.value,
     key: 'logout'
   }
 ]

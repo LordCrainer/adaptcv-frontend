@@ -1,13 +1,12 @@
-import type { AxiosInstance } from "axios"
-import { useAuth } from "~/domains/auth/composables/useAuth"
-import { AuthHttpService } from "~/domains/auth/services/auth-http.service"
-
+import { useAuth } from '~/domains/auth/composables/useAuth'
+import { AuthHttpService } from '~/domains/auth/services/auth-http.service'
+import { UseAuthKey } from '~/types/symbol'
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const axios = useNuxtApp().$axios as unknown as AxiosInstance
-  const authHttp = new AuthHttpService(axios)
+  const api = useNuxtApp().$api
+  const authHttp = new AuthHttpService(api)
 
   const injectedUseAuth = useAuth(authHttp)
 
-  nuxtApp.vueApp.provide('useAuth', injectedUseAuth())
+  nuxtApp.vueApp.provide(UseAuthKey, injectedUseAuth)
 })

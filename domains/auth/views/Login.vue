@@ -99,7 +99,6 @@ import { useAuthStore } from '../store/auth.store'
 const { isLoading } = useAuthStore()
 const { login } = useAuthWrapper()
 const rules = useRules()
-
 const form = ref()
 
 const formData = ref({

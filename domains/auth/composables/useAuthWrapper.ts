@@ -5,5 +5,5 @@ import { useAuth } from './useAuth'
 export function useAuthWrapper() {
   const api = useApi()
   const authHttp = new AuthHttpService(api)
-  return useAuth(authHttp)()
+  return useAuth(authHttp)
 }

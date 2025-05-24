@@ -1,63 +1,19 @@
-const { $api } = useNuxtApp()
-import { useAuthStore } from '~/domains/auth/store/auth.store'
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-
-import { AuthService } from '~/domains/auth/services/auth.service'
-import type { LoginParams, RequestUserData } from '@lordcrainer/adaptcv-shared-types'
+import { computed } from 'vue'
+import { useAuthStore } from '../store/auth.store'
 
 export function useAuth() {
-  const authService = new AuthService($api)
-  const { setUserData, setToken, clearAllAuthData, getUserData, removeToken } =
-    useAuthStore()
-  const router = useRouter()
-  const loading = ref(false)
+  const store = useAuthStore()
 
-  const login = async (credentials: LoginParams) => {
-    try {
-      loading.value = true
-      const data = await authService.login(credentials)
-      setUserData(data.user)
-      setToken(data.token)
-      return data
-    } catch (error) {
-      removeToken()
-      throw new Error('useAuth.login: logging in')
-    } finally {
-      loading.value = false
-    }
+  return {
+    // State
+    user: computed(() => store.user),
+    isAuthenticated: computed(() => store.isAuthenticated),
+    isLoading: computed(() => store.isLoading),
+    error: computed(() => store.error),
+
+    // Actions
+    login: store.login,
+    logout: store.logout,
+    fetchUser: store.fetchUser
   }
-
-  const register = async (user: RequestUserData) => {
-    try {
-      if (!user) {
-        throw new Error('User not found')
-      }
-      const data = await authService.register(user)
-      return data
-    } catch (error) {
-      throw new Error('useAuth.register: registering')
-    }
-  }
-
-  const logout = async () => {
-    try {
-      loading.value = true
-      const user = getUserData()
-      if (!user) {
-        throw new Error('User not found')
-      }
-      await router.push({ name: 'login' })
-      const data = await authService.logout(user._id)
-      return data
-    } catch (error) {
-      await router.back()
-      throw new Error('useAuth.logout: logging out')
-    } finally {
-      loading.value = false
-      clearAllAuthData()
-    }
-  }
-
-  return { login, register, logout }
 }

@@ -1,84 +1,79 @@
-import type { RequestUserData } from '@/domains/auth/interfaces/auth.interface'
+import type { IAuthService } from '~/domains/auth/interfaces/auth.interface'
+import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
+import type { IUsers } from '@lordcrainer/adaptcv-shared-types'
+import { useAuthService } from '../composables/useAuthService'
 
-enum AuthStorageType {
-  LOCAL_STORAGE = 'localStorage',
-  COOKIE = 'cookie',
-  SESSION = 'session'
-}
+export const useAuthStore = defineStore('auth', () => {
+  // ——— State (refs) ———
+  const token = ref<string>('')
+  const refreshToken = ref<string>('')
+  const user = ref<IUsers | null>(null)
+  const isLoading = ref<boolean>(false)
+  const error = ref<string>('')
 
-type StaticCacheType = 'userData' | 'authToken'
-type CacheType = StaticCacheType
-interface BaseAuthStorage {
-  set(key: CacheType, data: string): void
-  get(key: CacheType): string
-  remove(key: CacheType): void
-}
+  const isAuthenticated = computed(() => !!token.value)
 
-class LocalStorage implements BaseAuthStorage {
-  set(key: CacheType, data: string) {
-    localStorage.set(key, data)
+  function getAuthService(): IAuthService {
+    return useAuthService()
   }
 
-  get(key: CacheType): string {
-    return localStorage.getItem(key) || ''
+  // ——— Actions ———
+  async function login(credentials: { email: string; password: string }) {
+    isLoading.value = true
+    error.value = ''
+    try {
+      const response = await getAuthService().login(credentials)
+      token.value = response.token
+      refreshToken.value = response.refreshToken
+      user.value = response.user
+    } catch (err: any) {
+      error.value = err.response?.data?.message || err.message
+      throw err
+    } finally {
+      isLoading.value = false
+    }
   }
 
-  remove(key: CacheType): void {
-    localStorage.remove(key)
-  }
-}
-
-const AuthStorageStrategy = (typeStore: AuthStorageType): BaseAuthStorage => {
-  if (typeStore === AuthStorageType.LOCAL_STORAGE) {
-    return new LocalStorage()
-  } else if (typeStore === AuthStorageType.COOKIE) {
-    return new LocalStorage()
-  } else if (typeStore === AuthStorageType.SESSION) {
-    return new LocalStorage()
-  }
-  throw new Error('Invalid storage type')
-}
-
-export const useAuthStore = () => {
-  const authStorageStrategy = AuthStorageStrategy(AuthStorageType.LOCAL_STORAGE)
-
-  const getToken = () => {
-    return authStorageStrategy.get('authToken')
+  async function clearAuthData() {
+    token.value = ''
+    refreshToken.value = ''
+    user.value = null
   }
 
-  const getUserData = (): RequestUserData | null => {
-    const userDataString = authStorageStrategy.get('userData')
-    return userDataString ? JSON.parse(userDataString) : null
+  async function logout() {
+    await getAuthService().logout()
+    clearAuthData()
   }
 
-  const setUserData = (data: RequestUserData) => {
-    authStorageStrategy.set('userData', JSON.stringify(data))
+  async function refresh() {
+    if (!refreshToken.value) throw new Error('No refresh token')
+    const response = await getAuthService().refreshToken(refreshToken.value)
+    token.value = response.token
+    refreshToken.value = response.refreshToken
   }
 
-  const setToken = (newToken: string) => {
-    authStorageStrategy.set('authToken', newToken)
+  async function fetchUser() {
+    user.value = await getAuthService().getCurrentUser()
   }
 
-  const removeToken = () => {
-    authStorageStrategy.remove('authToken')
-  }
-
-  const removeUserData = () => {
-    authStorageStrategy.remove('userData')
-  }
-
-  const clearAllAuthData = () => {
-    removeUserData()
-    removeToken()
-  }
-
+  // ——— Expose ———
   return {
-    getToken,
-    getUserData,
-    setUserData,
-    setToken,
-    removeToken,
-    removeUserData,
-    clearAllAuthData
+    // state
+    token,
+    refreshToken,
+    user,
+    isLoading,
+    error,
+
+    // getters
+    isAuthenticated,
+
+    // actions
+    login,
+    logout,
+    refresh,
+    fetchUser,
+    clearAuthData
   }
-}
+})

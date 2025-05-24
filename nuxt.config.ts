@@ -37,7 +37,6 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/icon',
     '@nuxt/image',
-    '@nuxt/test-utils',
     '@pinia/nuxt',
     'vuetify-nuxt-module',
     'pinia-plugin-persistedstate',

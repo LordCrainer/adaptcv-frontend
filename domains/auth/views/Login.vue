@@ -93,20 +93,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRules } from '~/composables/useRules'
-import { useAuthService } from '../composables/useAuthService'
+import { useAuthWrapper } from '../composables/useAuthWrapper'
 import { useAuthStore } from '../store/auth.store'
 
-definePageMeta({
-  title: 'Login',
-  layout: 'auth',
-  meta: {
-    title: 'Login',
-    description: 'Login to your account'
-  }
-})
-
 const { isLoading } = useAuthStore()
-const { login } = useAuthService()
+const { login } = useAuthWrapper()
 const rules = useRules()
 
 const form = ref()
@@ -130,6 +121,10 @@ async function submit() {
       email: formData.value.email,
       password: formData.value.password
     })
+    // await login({
+    //   email: formData.value.email,
+    //   password: formData.value.password
+    // })
   } else {
     console.error('Form is invalid')
   }

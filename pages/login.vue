@@ -8,8 +8,13 @@
 import Login from '~/domains/auth/views/Login.vue'
 
 definePageMeta({
+  title: 'Login',
   layout: 'auth',
-  name: 'login'
+  name: 'login',
+  meta: {
+    title: 'Login',
+    description: 'Login to your account'
+  }
 })
 </script>
 

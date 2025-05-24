@@ -9,5 +9,5 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   const injectedUseAuth = useAuth(authHttp)
 
-  nuxtApp.provide('useAuth', injectedUseAuth)
+  nuxtApp.vueApp.provide('useAuth', injectedUseAuth())
 })

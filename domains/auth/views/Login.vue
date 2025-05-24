@@ -70,7 +70,7 @@
         <v-btn
           rounded="lg"
           size="large"
-          :loading="state.loading"
+          :loading="isLoading"
           color="primary"
           type="submit"
           variant="flat"
@@ -93,6 +93,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRules } from '~/composables/useRules'
+import { useAuth } from '../composables/useAuth'
 
 definePageMeta({
   title: 'Login',
@@ -103,14 +104,10 @@ definePageMeta({
   }
 })
 
+const { login, isLoading } = useAuth()
 const rules = useRules()
 
 const form = ref()
-
-const state = ref({
-  loading: false,
-  error: null
-})
 
 const formData = ref({
   email: '',
@@ -125,13 +122,15 @@ function forgotPassword() {
   console.log('Forgot password clicked')
 }
 
-function submit() {
+async function submit() {
   if (form.value?.isValid) {
-    state.value.loading = true
+    await login({
+      email: formData.value.email,
+      password: formData.value.password
+    })
   } else {
     console.error('Form is invalid')
   }
-  state.value.loading = false
 }
 
 function togglePasswordVisibility() {

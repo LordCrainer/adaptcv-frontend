@@ -58,7 +58,7 @@
 import type { Component } from 'vue'
 import HarvardTemplate from '~/components/templates/HarvardTemplate.vue'
 import OwnTemplate from '~/components/templates/OwnTemplate.vue'
-import BuilderToolbar from '~/domains/builder/components/BuilderToolbar.vue'
+import BuilderToolbar from '~/modules/builder/components/BuilderToolbar.vue'
 import BuilderForm from '../components/BuilderForm.vue'
 import { useBuilderStore } from '../store/builder.store'
 import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'

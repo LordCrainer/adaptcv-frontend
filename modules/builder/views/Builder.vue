@@ -12,16 +12,16 @@
   </BuilderToolbar>
   <v-data-table
     :headers="headers"
-    :items="builders"
+    :items="builderStore.builders"
     :items-per-page="5"
     class="elevation-1"
     hide-default-footer
     item-value="id">
     <template v-slot:item.createdAt="{ item }">
-      {{ formatDate(item?.createdAt, 'YYYY-MM-DD hh:mm') }}
+      {{ item?.createdAt && formatDate(item?.createdAt, 'YYYY-MM-DD hh:mm') }}
     </template>
     <template v-slot:item.updatedAt="{ item }">
-      {{ formatDate(item?.updatedAt, 'YYYY-MM-DD hh:mm') }}
+      {{ item?.updatedAt && formatDate(item?.updatedAt, 'YYYY-MM-DD hh:mm') }}
     </template>
 
     <template v-slot:item.options="{ item }">
@@ -58,15 +58,15 @@
 </template>
 
 <script lang="ts" setup>
-import BuilderToolbar from '~/domains/builder/components/BuilderToolbar.vue'
+import BuilderToolbar from '~/modules/builder/components/BuilderToolbar.vue'
 import BuilderForm from '../components/BuilderForm.vue'
 import { useBuilderStore } from '~/modules/builder/store/builder.store'
 import { useFormatDate } from '~/composables/useFormatDate'
+import { useBuilderWrapper } from '../composables/useBuilderWrapper'
 
 const builderStore = useBuilderStore()
-const { builders } = storeToRefs(builderStore)
 
-const { loadBuilders, create, deleteBuilder } = useBuilderStore()
+const { createBuilder, loadBuilders, deleteBuilder } = useBuilderWrapper()
 const { formatDate } = useFormatDate()
 
 const state = ref({
@@ -118,7 +118,7 @@ function add() {
 async function submitForm(builder: any) {
   close()
   try {
-    const createdBuilder = await create(builder)
+    const createdBuilder = await createBuilder(builder)
     if (createdBuilder?._id) {
       router.push(`/builder/${createdBuilder._id}`)
     }

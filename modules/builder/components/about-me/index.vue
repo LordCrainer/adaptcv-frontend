@@ -48,7 +48,7 @@
 import { ref } from 'vue'
 import type { IFileImage } from '~/types/global'
 import { useAboutMe } from '~/modules/builder/components/about-me/useAboutMe'
-import UserPreviewPhoto from '~/domains/builder/components/user-profile/UserPreviewPhotoForm.vue'
+import UserPreviewPhoto from '~/modules/builder/components/user-profile/UserPreviewPhotoForm.vue'
 import AboutMeForm from './AboutMeForm.vue'
 import CardDefault from '~/components/card/CardDefault.vue'
 

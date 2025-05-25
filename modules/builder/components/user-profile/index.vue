@@ -38,10 +38,10 @@
 import UserInformation from './UserInformation.vue'
 import CardDefault from '~/components/card/CardDefault.vue'
 const Skills = defineAsyncComponent(
-  () => import('~/domains/builder/components/skills/index.vue')
+  () => import('~/modules/builder/components/skills/index.vue')
 )
 const Languages = defineAsyncComponent(
-  () => import('~/domains/builder/components/languages/index.vue')
+  () => import('~/modules/builder/components/languages/index.vue')
 )
 import PreviewPhoto from './PreviewPhoto.vue'
 </script>

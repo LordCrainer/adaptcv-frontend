@@ -15,37 +15,38 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: Configurate Node.js
-      - name: Cache node_modules
+      # Step 2: Cache npm
+      - name: Cache npm
         uses: actions/cache@v3
-        id: cache-deps # Identificador único para este cache
+        id: cache-deps
         with:
           path: |
-            ~/.bun/install/cache
+            ~/.npm
             node_modules
-          key: ${{ runner.os }}-deps-${{ hashFiles('.releaserc') }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-deps-
+            ${{ runner.os }}-npm-
 
-      # Step 2.1: Configure .npmrc for GitHub Packages
+      # Step 3: Configure Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22.x
+          cache: 'npm'
+
+      # Step 3.1: Configure .npmrc for GitHub Packages
       - name: Configure .npmrc for GitHub Packages
         run: |
           echo "@lordcrainer:registry=https://npm.pkg.github.com" >> .npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
 
-      # Step 3: Set up Bun
+      # Step 4: Set up Bun
       - name: Install dependencies
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: 'latest'
+        run: npm ci
 
-      # Step 4: Run unit tests
-      - name: Install Dependencies
-        run: bun install
-
-      # Step 4: Run unit tests
+      # Step 5: Run unit tests
       - name: Run Tests
-        run: bun run test
+        run: npm run test
       # - name: Run unit tests
       #   env:
       #     DEBUG: 'true'

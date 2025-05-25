@@ -11,6 +11,8 @@
     "postinstall": "nuxt prepare",
     "prepare": "husky",
     "test": "vitest",
+    "test:unit": "vitest --environment happy-dom",
+    "test:e2e": "vitest --environment happy-dom --testPathPattern=tests/e2e",
     "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore .",
     "lint:fix": "eslint --ext .js,.ts,.vue --ignore-path .gitignore . --fix"
   },

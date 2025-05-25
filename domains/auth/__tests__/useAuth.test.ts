@@ -2,22 +2,14 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { useAuth } from '~/domains/auth/composables/useAuth'
 import { useAuthStore } from '~/domains/auth/store/auth.store'
 import { createPinia, setActivePinia } from 'pinia'
-import type { IAuthService } from '../interfaces/auth.interface'
+import { mockAuthService } from './mocks/mockHttpService'
 
 describe('useAuth', () => {
-  let mockAuthService: Record<keyof IAuthService, any>
   let store: ReturnType<typeof useAuthStore>
 
   beforeEach(() => {
     setActivePinia(createPinia())
-    // Mock service
     store = useAuthStore()
-    mockAuthService = {
-      login: vi.fn(),
-      logout: vi.fn(),
-      refreshToken: vi.fn(),
-      getCurrentUser: vi.fn()
-    }
 
     vi.spyOn(store, 'setToken')
     vi.spyOn(store, 'setUser')
@@ -73,7 +65,9 @@ describe('useAuth', () => {
   })
 
   it('refreshToken: throws if no refreshedToken', async () => {
-    mockAuthService.refreshToken.mockRejectedValue(new Error('No refresh token'))
+    mockAuthService.refreshToken.mockRejectedValue(
+      new Error('No refresh token')
+    )
     store.refreshedToken = ''
     const { refreshToken } = useAuth(mockAuthService)
     await expect(refreshToken()).rejects.toThrow('No refresh token')

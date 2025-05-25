@@ -1,3 +1,17 @@
+# [1.96.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.95.0...v1.96.0) (2025-05-25)
+
+
+### Bug Fixes
+
+* make format parameter optional in formatDate function ([42a83cc](https://github.com/LordCrainer/adaptcv-frontend/commit/42a83cce86b69367dd6559b96402ad8feed2bec9))
+* update @lordcrainer/adaptcv-shared-types to version 1.17.4 and refactor auth-related imports for consistency ([136dfb1](https://github.com/LordCrainer/adaptcv-frontend/commit/136dfb1050cbab6f6bf47faae75bb36d11fce174))
+* update import paths from domains to modules for consistency ([a4675ba](https://github.com/LordCrainer/adaptcv-frontend/commit/a4675baed98a5546d9b3235f9bbae619a1a32ede))
+
+
+### Features
+
+* add authentication middleware to protect routes ([1e73820](https://github.com/LordCrainer/adaptcv-frontend/commit/1e73820cda232c16a888a5f52353f6e81393c847))
+
 # [1.95.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.94.5...v1.95.0) (2025-05-25)
 
 

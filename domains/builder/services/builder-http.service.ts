@@ -1,10 +1,9 @@
 import type { IBuilderService } from '~/domains/builder/domain/builder-service.interface'
 import type { AxiosInstance } from 'axios'
-import type { IBuilder, Pagination } from '@lordcrainer/adaptcv-shared-types'
+import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
 
-const API_BASE = '/v1/builders'
-
-export const createBuilderService = (api: AxiosInstance): IBuilderService => {
+export const builderHttpService = (api: AxiosInstance): IBuilderService => {
+  const API_BASE: string = '/v1/builders'
   return {
     async getById(id: string) {
       const { data } = await api.get(`${API_BASE}/${id}`)

@@ -1,3 +1,10 @@
+# [1.95.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.94.5...v1.95.0) (2025-05-25)
+
+
+### Features
+
+* add user profile photo upload component and integrate with user profile management ([afbe20a](https://github.com/LordCrainer/adaptcv-frontend/commit/afbe20a0a70930869bb28f89ee07cdaf7c431044))
+
 ## [1.94.5](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.94.4...v1.94.5) (2025-05-25)
 
 

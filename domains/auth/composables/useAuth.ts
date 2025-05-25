@@ -24,10 +24,10 @@ export const useAuth = (authHttpService: IAuthService) => {
   }
 
   async function refreshToken() {
-    if (!store.refreshToken) throw new Error('No refresh token')
-    const response = await authHttpService.refreshToken(store.refreshToken)
+    // if (!store.refreshToken) throw new Error('No refresh token')
+    const response = await authHttpService.refreshToken(store.refreshedToken)
     store.setToken(response.token)
-    store.setRefreshToken(response.refreshToken)
+    store.setRefreshToken(response.refreshedToken)
   }
 
   return {

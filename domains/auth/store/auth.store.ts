@@ -5,7 +5,7 @@ import type { IUsers } from '@lordcrainer/adaptcv-shared-types'
 export const useAuthStore = defineStore('auth', () => {
   // ——— State (refs) ———
   const token = ref<string>('')
-  const refreshToken = ref<string>('')
+  const refreshedToken = ref<string>('')
   const user = ref<IUsers | null>(null)
   const isLoading = ref<boolean>(false)
   const error = ref<string>('')
@@ -21,7 +21,7 @@ export const useAuthStore = defineStore('auth', () => {
   function resetAuth() {
     user.value = null
     token.value = ''
-    refreshToken.value = ''
+    refreshedToken.value = ''
   }
 
   function toggleLoading(loading: boolean) {
@@ -29,12 +29,12 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   function setRefreshToken(data: string) {
-    refreshToken.value = data
+    refreshedToken.value = data
   }
 
   return {
     token,
-    refreshToken,
+    refreshedToken,
     user,
     isLoading,
     error,

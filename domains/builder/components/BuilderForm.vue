@@ -51,7 +51,6 @@ const { hasChanges } = useObject()
 const { required } = useRules()
 
 const builderStore = useBuilderStore()
-const { builderState } = storeToRefs(builderStore)
 
 const state = reactive({
   loading: false
@@ -67,7 +66,7 @@ async function handleSaveChanges() {
   const { valid } = await form.value.validate()
   if (
     valid &&
-    hasChanges(localCurriculumVitae.value.name, builderState.value.name)
+    hasChanges(localCurriculumVitae.value.name, builderStore.builderState.name)
   ) {
     emit('submit', localCurriculumVitae.value)
   }

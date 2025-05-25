@@ -31,8 +31,7 @@
         :items="PROFICIENCY_LEVELS"
         variant="outlined"
         active
-        :item-title="(i) => $t(`profile.languages.${i}`
-        )"
+        :item-title="(i) => $t(`profile.languages.${i}`)"
         :item-value="(i) => i"
         :label="$t('profile.languages.level')"
         required></v-select>
@@ -41,7 +40,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { ILanguageItem } from '~/domains/builder/shared'
+import type { ILanguageItem } from '@lordcrainer/adaptcv-shared-types'
 import { useLanguages } from '~/domains/builder/components/languages/useLanguages'
 
 const { PROFICIENCY_LEVELS, DEFAULT_LANGUAGE_ITEM, LANGUAGES_LIST } =
@@ -68,7 +67,6 @@ const emit = defineEmits(['submit'])
 
 const submitForm = () => {
   if (localLang.value.name && localLang.value.proficiency) {
-
     console.log(
       '🚀 ~ file: LanguagesForm.vue:45 ~ submitForm ~ localLang.value:',
       localLang.value

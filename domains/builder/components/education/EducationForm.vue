@@ -97,7 +97,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { Degree, IEducationItem } from '~/domains/builder/shared/index'
+import type { Degree, IEducationItem } from '@lordcrainer/adaptcv-shared-types'
 import { useFormatDate } from '~/composables/useFormatDate'
 import useEducation from './useEducation'
 

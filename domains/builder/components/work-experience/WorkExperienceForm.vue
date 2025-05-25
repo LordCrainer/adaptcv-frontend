@@ -111,10 +111,10 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { IWorkExperience } from '~/domains/builder/shared'
 import { useFormatDate } from '~/composables/useFormatDate'
 import useWorkExperience from './useWorkExperience'
 import Editor from '~/components/Editor/Editor.vue'
+import type { IWorkExperience } from '@lordcrainer/adaptcv-shared-types'
 
 const { DEFAULT_ITEM } = useWorkExperience()
 const { standardFormatDate, addYearToDate, allowedDates } = useFormatDate()

@@ -1,5 +1,5 @@
 import { useBuilderStore } from '~/domains/builder/store/builder.store'
-import type { IWorkExperience } from '~/domains/builder/shared'
+import type { IWorkExperience } from '@lordcrainer/adaptcv-shared-types'
 
 const DEFAULT_ITEM: IWorkExperience = {
   id: '',

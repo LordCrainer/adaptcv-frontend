@@ -56,7 +56,7 @@
 </template>
 
 <script setup lang="ts">
-import type { IWorkExperience } from '~/domains/builder/shared'
+import type { IWorkExperience } from '@lordcrainer/adaptcv-shared-types'
 import useWorkExperience from '~/domains/builder/components/work-experience/useWorkExperience'
 import WorkExperienceForm from './WorkExperienceForm.vue'
 import CardDefault from '~/components/card/CardDefault.vue'

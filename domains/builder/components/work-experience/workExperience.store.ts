@@ -1,4 +1,4 @@
-import type { IWorkExperience } from '~/domains/builder/shared'
+import type { IWorkExperience } from '@lordcrainer/adaptcv-shared-types'
 
 export const useWorkExperienceStore = defineStore(
   'workExperience',

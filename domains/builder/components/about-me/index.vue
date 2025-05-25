@@ -54,8 +54,10 @@ import CardDefault from '~/components/card/CardDefault.vue'
 
 const { aboutMe, setAboutMeLogo } = useAboutMe()
 
-const fileImage = computed({
-  get: () => aboutMe.value.logo,
+const defaultFileImage: IFileImage = { src: '' }
+
+const fileImage = computed<IFileImage>({
+  get: () => aboutMe.value.logo ?? defaultFileImage,
   set: (value: IFileImage) => {
     setAboutMeLogo({ ...value })
   }

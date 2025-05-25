@@ -1,3 +1,5 @@
+## [1.92.4](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.92.3...v1.92.4) (2025-05-24)
+
 ## [1.92.3](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.92.2...v1.92.3) (2025-05-20)
 
 

@@ -3,7 +3,6 @@ import { ref, computed } from 'vue'
 import type { IUsers } from '@lordcrainer/adaptcv-shared-types'
 
 export const useAuthStore = defineStore('auth', () => {
-  // ——— State (refs) ———
   const token = ref<string>('')
   const refreshedToken = ref<string>('')
   const user = ref<IUsers | null>(null)

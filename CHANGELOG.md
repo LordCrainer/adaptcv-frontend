@@ -1,3 +1,10 @@
+## [1.94.5](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.94.4...v1.94.5) (2025-05-25)
+
+
+### Bug Fixes
+
+* update GitHub Actions workflow to use Bun for testing and dependency management ([ecfda1b](https://github.com/LordCrainer/adaptcv-frontend/commit/ecfda1bcd80812380d625c0a3713c38727ceeefc))
+
 ## [1.94.4](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.94.3...v1.94.4) (2025-05-25)
 
 

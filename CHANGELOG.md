@@ -1,3 +1,10 @@
+# [1.93.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.92.4...v1.93.0) (2025-05-25)
+
+
+### Features
+
+* implement builder service and store with CRUD operations and loading states ([7905ad3](https://github.com/LordCrainer/adaptcv-frontend/commit/7905ad37ae2cf4808f5efb46ea5a3e5c4a0e4409))
+
 ## [1.92.4](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.92.3...v1.92.4) (2025-05-24)
 
 ## [1.92.3](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.92.2...v1.92.3) (2025-05-20)

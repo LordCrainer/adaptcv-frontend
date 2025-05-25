@@ -34,7 +34,7 @@ export const useFormatDate = () => {
     return `${year}-${month}-${day}`
   }
 
-  const formatDate = (date: Date | string | number, format: string) => {
+  const formatDate = (date: Date | string | number, format?: string) => {
     if (!date) {
       return ''
     }
@@ -51,7 +51,7 @@ export const useFormatDate = () => {
       mm: pad(d.getMinutes()),
     }
 
-    return format.replace(/YYYY|MMMM|YY|MM|DD|hh|mm/g, (m) => formatOptions[m] || m)
+    return format?.replace(/YYYY|MMMM|YY|MM|DD|hh|mm/g, (m) => formatOptions[m] || m)
   }
 
   function formatDateRange(

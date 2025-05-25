@@ -1,3 +1,10 @@
+## [1.94.3](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.94.2...v1.94.3) (2025-05-25)
+
+
+### Bug Fixes
+
+* add missing step to install dependencies before running tests ([00ab57c](https://github.com/LordCrainer/adaptcv-frontend/commit/00ab57c6850f296db391f7f6cefbfcc7b0ea4450))
+
 ## [1.94.2](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.94.1...v1.94.2) (2025-05-25)
 
 

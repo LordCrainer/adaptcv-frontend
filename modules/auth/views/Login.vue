@@ -96,6 +96,7 @@ import { useRules } from '~/composables/useRules'
 import { useAuthWrapper } from '../composables/useAuthWrapper'
 import { useAuthStore } from '../store/auth.store'
 
+const router = useRouter()
 const { isLoading } = useAuthStore()
 const { login } = useAuthWrapper()
 const rules = useRules()
@@ -120,10 +121,7 @@ async function submit() {
       email: formData.value.email,
       password: formData.value.password
     })
-    // await login({
-    //   email: formData.value.email,
-    //   password: formData.value.password
-    // })
+    await router.push('/')
   } else {
     console.error('Form is invalid')
   }

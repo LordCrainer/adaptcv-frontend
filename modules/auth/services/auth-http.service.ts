@@ -2,7 +2,7 @@ import type { IAuthService } from '../interfaces/auth.interface'
 import type {
   IUsers,
   LoginOutput,
-  LoginParams
+  LoginInput
 } from '@lordcrainer/adaptcv-shared-types'
 import type { AxiosInstance } from 'axios'
 
@@ -10,7 +10,7 @@ export class AuthHttpService implements IAuthService {
   url: string = 'v1/auth'
   constructor(private api: AxiosInstance) {}
 
-  async login(credentials: LoginParams) {
+  async login(credentials: LoginInput) {
     try {
       const { data } = await this.api.post<LoginOutput>(`${this.url}/login`, credentials)
       return data

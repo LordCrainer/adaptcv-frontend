@@ -29,11 +29,13 @@
 </template>
 
 <script setup lang="ts">
-import { useAuth } from '~/modules/auth/composables/useAuth'
+import { useAuthWrapper } from '~/modules/auth/composables/useAuthWrapper'
+import { useAuthStore } from '~/modules/auth/store/auth.store'
 import { useThemeAcv } from '~/shared/useThemeAcv'
 const { selectedTheme, toggleTheme } = useThemeAcv()
 
-const { logout, isLoading } = useAuth()
+const authStore = useAuthStore()
+const { logout } = useAuthWrapper()
 const router = useRouter()
 
 const settingsOptions = [
@@ -53,7 +55,7 @@ const settingsOptions = [
       logout()
       router.push('/login')
     },
-    loading: () => isLoading.value,
+    loading: () => authStore.isLoading,
     key: 'logout'
   }
 ]

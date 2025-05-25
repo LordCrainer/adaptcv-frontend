@@ -49,7 +49,7 @@
 
 <script setup lang="ts">
 import EducationForm from './EducationForm.vue'
-import useEducation from '~/domains/builder/components/education/useEducation'
+import useEducation from '~/modules/builder/components/education/useEducation'
 import CardDefault from '~/components/card/CardDefault.vue'
 import type { IEducationItem } from '@lordcrainer/adaptcv-shared-types'
 

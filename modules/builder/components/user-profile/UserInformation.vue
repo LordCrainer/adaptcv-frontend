@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import UserInformationForm from './UserInformationForm.vue'
-import { useUserProfile } from '~/domains/builder/components/user-profile/useUserProfile'
+import { useUserProfile } from '~/modules/builder/components/user-profile/useUserProfile'
 
 const { userProfile } = useUserProfile()
 </script>

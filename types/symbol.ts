@@ -1,7 +1,7 @@
 import type { AxiosInstance } from 'axios'
 import type { InjectionKey } from 'vue'
-import { useAuth } from '~/domains/auth/composables/useAuth'
-import type { builderHttpService } from '~/domains/builder/services/builder-http.service'
+import { useAuth } from '~/modules/auth/composables/useAuth'
+import type { builderHttpService } from '~/modules/builder/services/builder-http.service'
 
 export const ApiKey: InjectionKey<AxiosInstance> = Symbol('api')
 

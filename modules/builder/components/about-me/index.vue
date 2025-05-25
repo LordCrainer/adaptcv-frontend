@@ -47,7 +47,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import type { IFileImage } from '~/types/global'
-import { useAboutMe } from '~/domains/builder/components/about-me/useAboutMe'
+import { useAboutMe } from '~/modules/builder/components/about-me/useAboutMe'
 import UserPreviewPhoto from '~/domains/builder/components/user-profile/UserPreviewPhotoForm.vue'
 import AboutMeForm from './AboutMeForm.vue'
 import CardDefault from '~/components/card/CardDefault.vue'

@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import type { ILanguageItem } from '@lordcrainer/adaptcv-shared-types'
 import LanguagesForm from './LanguagesForm.vue'
-import { useLanguages } from '~/domains/builder/components/languages/useLanguages'
+import { useLanguages } from '~/modules/builder/components/languages/useLanguages'
 
 const { languages, upsertLanguage, removeLanguage, DEFAULT_LANGUAGE_ITEM } =
   useLanguages()

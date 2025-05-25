@@ -220,8 +220,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useLanguages } from '~/domains/builder/components/languages/useLanguages'
-import { useBuilderStore } from '~/domains/builder/store/builder.store'
+import { useLanguages } from '~/modules/builder/components/languages/useLanguages'
+import { useBuilderStore } from '~/modules/builder/store/builder.store'
 import Editor from '../Editor/Editor.vue'
 import type { IUserProfile } from '@lordcrainer/adaptcv-shared-types'
 

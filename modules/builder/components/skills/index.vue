@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import type { ISkill } from '@lordcrainer/adaptcv-shared-types'
 import SkillForm from './skillForm.vue'
-import { useSkill } from '~/domains/builder/components/skills/useSkill'
+import { useSkill } from '~/modules/builder/components/skills/useSkill'
 
 const {
   upsertSkill,

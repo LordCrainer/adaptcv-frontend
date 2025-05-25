@@ -41,7 +41,7 @@
 
 <script lang="ts" setup>
 import type { ILanguageItem } from '@lordcrainer/adaptcv-shared-types'
-import { useLanguages } from '~/domains/builder/components/languages/useLanguages'
+import { useLanguages } from '~/modules/builder/components/languages/useLanguages'
 
 const { PROFICIENCY_LEVELS, DEFAULT_LANGUAGE_ITEM, LANGUAGES_LIST } =
   useLanguages()

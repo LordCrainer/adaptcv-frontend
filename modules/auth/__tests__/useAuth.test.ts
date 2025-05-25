@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { useAuth } from '~/domains/auth/composables/useAuth'
-import { useAuthStore } from '~/domains/auth/store/auth.store'
+import { useAuth } from '~/modules/auth/composables/useAuth'
+import { useAuthStore } from '~/modules/auth/store/auth.store'
 import { createPinia, setActivePinia } from 'pinia'
 import { mockAuthService } from './mocks/mockHttpService'
 

@@ -3,5 +3,5 @@
 </template>
 
 <script lang="ts" setup>
-import Builder from '~/domains/builder/views/Builder.vue'
+import Builder from '~/modules/builder/views/Builder.vue'
 </script>

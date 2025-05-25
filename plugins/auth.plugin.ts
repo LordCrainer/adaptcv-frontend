@@ -1,5 +1,5 @@
-import { useAuth } from '~/domains/auth/composables/useAuth'
-import { AuthHttpService } from '~/domains/auth/services/auth-http.service'
+import { useAuth } from '~/modules/auth/composables/useAuth'
+import { AuthHttpService } from '~/modules/auth/services/auth-http.service'
 import { UseAuthKey } from '~/types/symbol'
 
 export default defineNuxtPlugin((nuxtApp) => {

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useBuilderStore } from '~/domains/builder/store/builder.store'
+import { useBuilderStore } from '~/modules/builder/store/builder.store'
 import Editor from '../Editor/Editor.vue'
 const builderStore = useBuilderStore()
 

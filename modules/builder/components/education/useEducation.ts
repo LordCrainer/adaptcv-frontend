@@ -1,5 +1,5 @@
 import type { IEducationItem } from '@lordcrainer/adaptcv-shared-types'
-import { useBuilderStore } from '~/domains/builder/store/builder.store'
+import { useBuilderStore } from '~/modules/builder/store/builder.store'
 // import type { IEducationItem } from '@lordcrainer/adaptcv-shared-types/index'
 
 const DEFAULT_ITEM: IEducationItem = {

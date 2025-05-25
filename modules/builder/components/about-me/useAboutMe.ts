@@ -1,5 +1,5 @@
 import type { IAboutMe } from '@lordcrainer/adaptcv-shared-types'
-import { useBuilderStore } from '~/domains/builder/store/builder.store'
+import { useBuilderStore } from '~/modules/builder/store/builder.store'
 import type { IFileImage } from '~/types/global'
 
 const DEFAULT_ABOUT_ME: IAboutMe = {

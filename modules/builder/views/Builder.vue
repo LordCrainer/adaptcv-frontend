@@ -60,7 +60,7 @@
 <script lang="ts" setup>
 import BuilderToolbar from '~/domains/builder/components/BuilderToolbar.vue'
 import BuilderForm from '../components/BuilderForm.vue'
-import { useBuilderStore } from '~/domains/builder/store/builder.store'
+import { useBuilderStore } from '~/modules/builder/store/builder.store'
 import { useFormatDate } from '~/composables/useFormatDate'
 
 const builderStore = useBuilderStore()

@@ -2,7 +2,7 @@ import type {
   yearsOfExperience,
   ISkill
 } from '@lordcrainer/adaptcv-shared-types'
-import { useBuilderStore } from '~/domains/builder/store/builder.store'
+import { useBuilderStore } from '~/modules/builder/store/builder.store'
 
 const SKILLS_LIST = ref(
   [

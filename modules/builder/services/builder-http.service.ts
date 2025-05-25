@@ -1,4 +1,4 @@
-import type { IBuilderService } from '~/domains/builder/domain/builder-service.interface'
+import type { IBuilderService } from '~/modules/builder/domain/builder-service.interface'
 import type { AxiosInstance } from 'axios'
 import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
 

@@ -97,7 +97,7 @@
 import { ref } from 'vue'
 import type { IUserProfile } from '@lordcrainer/adaptcv-shared-types'
 import { areasProfession } from '@lordcrainer/adaptcv-shared-types/dist/src/types/builder/constants'
-import { useUserProfile } from '~/domains/builder/components/user-profile/useUserProfile'
+import { useUserProfile } from '~/modules/builder/components/user-profile/useUserProfile'
 import { useObject } from '~/utils/useObject'
 
 const { DEFAULT_USER_PROFILE } = useUserProfile()

@@ -1,5 +1,5 @@
 import type { IFileImage } from '~/types/global'
-import { useBuilderStore } from '~/domains/builder/store/builder.store'
+import { useBuilderStore } from '~/modules/builder/store/builder.store'
 import type { IUserProfile } from '@lordcrainer/adaptcv-shared-types'
 
 const DEFAULT_USER_PROFILE: IUserProfile = {

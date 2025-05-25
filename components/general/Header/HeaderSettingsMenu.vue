@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { useAuth } from '~/domains/auth/composables/useAuth'
+import { useAuth } from '~/modules/auth/composables/useAuth'
 import { useThemeAcv } from '~/shared/useThemeAcv'
 const { selectedTheme, toggleTheme } = useThemeAcv()
 

@@ -1,4 +1,4 @@
-import { useAuthStore } from '@/domains/auth/store/auth.store'
+import { useAuthStore } from '~/modules/auth/store/auth.store'
 import axios, { type AxiosInstance } from 'axios'
 
 export default defineNuxtPlugin((nuxtApp) => {

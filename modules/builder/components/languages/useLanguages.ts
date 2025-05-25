@@ -1,4 +1,4 @@
-import { useBuilderStore } from '~/domains/builder/store/builder.store'
+import { useBuilderStore } from '~/modules/builder/store/builder.store'
 import { ref } from 'vue'
 import type { ILanguageItem } from '@lordcrainer/adaptcv-shared-types'
 

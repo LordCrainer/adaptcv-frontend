@@ -40,6 +40,10 @@ jobs:
           bun-version: 'latest'
 
       # Step 4: Run unit tests
+      - name: Install Dependencies
+        run: bun install
+
+      # Step 4: Run unit tests
       - name: Run Tests
         run: bun run test
       # - name: Run unit tests

@@ -1,3 +1,10 @@
+# [1.94.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.93.1...v1.94.0) (2025-05-25)
+
+
+### Features
+
+* add GitHub Actions workflow for running tests and update package.json with unit and E2E test scripts ([348e0a8](https://github.com/LordCrainer/adaptcv-frontend/commit/348e0a8ea8fcf0f9c34619cb0576257965146b08))
+
 ## [1.93.1](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.93.0...v1.93.1) (2025-05-25)
 
 # [1.93.0](https://github.com/LordCrainer/adaptcv-frontend/compare/v1.92.4...v1.93.0) (2025-05-25)

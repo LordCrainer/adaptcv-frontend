@@ -15,7 +15,6 @@ describe('useAuth', () => {
     vi.spyOn(store, 'setUser')
     vi.spyOn(store, 'toggleLoading')
     vi.spyOn(store, 'resetAuth')
-    vi.spyOn(store, 'setRefreshToken')
   })
 
   it('login: sets token and user on success', async () => {
@@ -47,6 +46,7 @@ describe('useAuth', () => {
 
   it('logout: calls service and resets auth', async () => {
     const store = useAuthStore()
+    store.setUser({ _id: '123', email: 'a@a.com', name: '', status: 'pending' }) // Mock user
     mockAuthService.logout.mockResolvedValue()
     const { logout } = useAuth(mockAuthService)
     await logout()
@@ -59,17 +59,15 @@ describe('useAuth', () => {
     const response = { token: 'new-token', refreshedToken: 'new-refresh' }
     mockAuthService.refreshToken.mockResolvedValue(response)
     const { refreshToken } = useAuth(mockAuthService)
-    await refreshToken()
+    await refreshToken(response.refreshedToken)
     expect(store.setToken).toHaveBeenCalledWith(response.token)
-    expect(store.setRefreshToken).toHaveBeenCalledWith(response.refreshedToken)
   })
 
   it('refreshToken: throws if no refreshedToken', async () => {
     mockAuthService.refreshToken.mockRejectedValue(
       new Error('No refresh token')
     )
-    store.refreshedToken = ''
     const { refreshToken } = useAuth(mockAuthService)
-    await expect(refreshToken()).rejects.toThrow('No refresh token')
+    await expect(refreshToken('')).rejects.toThrow('No refresh token')
   })
 })

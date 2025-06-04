@@ -12,8 +12,9 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   api.interceptors.request.use(
     (config) => {
-      if (authStore.token) {
-        config.headers.Authorization = `Bearer ${authStore.token}`
+      const token = authStore.getToken()
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`
       }
       return config
     },
@@ -29,24 +30,24 @@ export default defineNuxtPlugin((nuxtApp) => {
     },
     async (error) => {
       const response = error.response
-      console.error('API Error:', response)
       if (
         response.status === 401 &&
         ['invalidToken', 'unauthorized'].includes(response.data.name)
       ) {
-        await refreshToken()
+        await refreshToken(error)
       }
       return Promise.reject(error)
     }
   )
 
-  function refreshToken() {
+  async function refreshToken(error: any) {
     return api
       .post('/v1/auth/refresh-token')
       .then((response) => {
         if (response.data.token) {
           authStore.setToken(response.data.token)
-          return response.data.token
+          error.config.headers.Authorization = `Bearer ${response.data.token}`
+          return axios.request(error.config)
         } else {
           authStore.resetAuth()
           throw new Error('Failed to refresh token')

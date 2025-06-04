@@ -10,7 +10,7 @@ export const useAuthStore = defineStore('auth', () => {
   const isLoading = ref<boolean>(false)
   const error = ref<string>('')
 
-  const isAuthenticated = computed(() => !!token.value)
+  const isAuthenticated = computed(() => !!getToken())
 
   function setUser(data: IUsers | null) {
     user.value = data

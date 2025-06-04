@@ -12,7 +12,10 @@ export class AuthHttpService implements IAuthService {
 
   async login(credentials: LoginInput) {
     try {
-      const { data } = await this.api.post<LoginOutput>(`${this.url}/login`, credentials)
+      const { data } = await this.api.post<LoginOutput>(
+        `${this.url}/login`,
+        credentials
+      )
       return data
     } catch (error) {
       console.error('Login error:', error)
@@ -20,8 +23,10 @@ export class AuthHttpService implements IAuthService {
     }
   }
 
-  async logout() {
-    const { data } = await this.api.post(`${this.url}/logout`)
+  async logout(userId: string) {
+    const { data } = await this.api.post(`${this.url}/logout`, {
+      userId
+    })
     return data
   }
 

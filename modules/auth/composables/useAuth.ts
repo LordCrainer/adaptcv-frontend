@@ -1,5 +1,5 @@
 import { useAuthStore } from '../store/auth.store'
-import type { IAuthService } from '../interfaces/auth.interface'
+import type { IAuthService } from '../interfaces/auth.interface';
 
 export const useAuth = (authHttpService: IAuthService) => {
   const store = useAuthStore()
@@ -19,15 +19,18 @@ export const useAuth = (authHttpService: IAuthService) => {
   }
 
   async function logout() {
-    await authHttpService.logout()
+    if (!store.user) {
+      store.resetAuth()
+      throw new Error('No user logged in')
+    }
+    await authHttpService.logout(store.user._id)
     store.resetAuth()
   }
 
-  async function refreshToken() {
+  async function refreshToken(refreshedToken: string) {
     // if (!store.refreshToken) throw new Error('No refresh token')
-    const response = await authHttpService.refreshToken(store.refreshedToken)
+    const response = await authHttpService.refreshToken(refreshedToken)
     store.setToken(response.token)
-    store.setRefreshToken(response.refreshedToken)
   }
 
   return {

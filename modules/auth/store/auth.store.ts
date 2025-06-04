@@ -2,9 +2,10 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { IUsers } from '@lordcrainer/adaptcv-shared-types'
 
+const accessTokenKey = 'access-token'
+
 export const useAuthStore = defineStore('auth', () => {
   const token = ref<string>('')
-  const refreshedToken = ref<string>('')
   const user = ref<IUsers | null>(null)
   const isLoading = ref<boolean>(false)
   const error = ref<string>('')
@@ -16,24 +17,25 @@ export const useAuthStore = defineStore('auth', () => {
   }
   function setToken(data: string) {
     token.value = data
+    localStorage.setItem(accessTokenKey, data)
   }
+
+  function getToken() {
+    return token.value || localStorage.getItem(accessTokenKey) || ''
+  }
+
   function resetAuth() {
     user.value = null
     token.value = ''
-    refreshedToken.value = ''
+    localStorage.removeItem(accessTokenKey)
   }
 
   function toggleLoading(loading: boolean) {
     isLoading.value = loading
   }
 
-  function setRefreshToken(data: string) {
-    refreshedToken.value = data
-  }
-
   return {
     token,
-    refreshedToken,
     user,
     isLoading,
     error,
@@ -42,8 +44,8 @@ export const useAuthStore = defineStore('auth', () => {
 
     setUser,
     setToken,
+    getToken,
     resetAuth,
-    toggleLoading,
-    setRefreshToken
+    toggleLoading
   }
 })

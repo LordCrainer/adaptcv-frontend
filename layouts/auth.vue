@@ -18,8 +18,7 @@ const gradientAngle = ref('-150')
 function moveMouse(event: MouseEvent) {
   const { clientX, clientY } = event
   const { innerWidth: width, innerHeight: height } = window
-  const angle =
-    Math.atan2(clientY - height, clientX - width) * (180 / Math.PI) || 0
+  const angle = Math.atan2(clientY, clientX) * (180 / Math.PI) || 0
   gradientAngle.value = angle.toFixed(2)
 }
 

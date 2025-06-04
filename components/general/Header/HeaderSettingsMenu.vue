@@ -32,6 +32,7 @@
 import { useAuthWrapper } from '~/modules/auth/composables/useAuthWrapper'
 import { useAuthStore } from '~/modules/auth/store/auth.store'
 import { useThemeAcv } from '~/shared/useThemeAcv'
+
 const { selectedTheme, toggleTheme } = useThemeAcv()
 
 const authStore = useAuthStore()
@@ -51,9 +52,15 @@ const settingsOptions = [
   {
     icon: () => 'mdi-logout',
     label: () => 'Log Out',
-    action: () => {
-      logout()
-      router.push('/login')
+    action: async () => {
+      try {
+        await logout()
+      } catch (error) {
+        console.error('Logout error:', error)
+        authStore.isLoading = false
+      } finally {
+        await router.push('/login')
+      }
     },
     loading: () => authStore.isLoading,
     key: 'logout'

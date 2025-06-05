@@ -8,7 +8,7 @@ export const useAuth = (authHttpService: IAuthService) => {
     store.toggleLoading(true)
     try {
       const response = await authHttpService.login(credentials)
-      store.setToken(response.token)
+      store.setToken(response.accessToken)
       store.setUser(response.user)
     } catch (err: any) {
       store.error = err.response?.data?.message || err.message
@@ -30,7 +30,7 @@ export const useAuth = (authHttpService: IAuthService) => {
   async function refreshToken(refreshedToken: string) {
     // if (!store.refreshToken) throw new Error('No refresh token')
     const response = await authHttpService.refreshToken(refreshedToken)
-    store.setToken(response.token)
+    store.setToken(response.accessToken)
   }
 
   return {

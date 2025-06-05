@@ -1,14 +1,14 @@
 import type {
   IUsers,
-  LoginOutput,
-  LoginInput
+  LoginResponse,
+  LoginRequest
 } from '@lordcrainer/adaptcv-shared-types'
 
 export interface IAuthService {
-  login(credentials: LoginInput): Promise<LoginOutput>
+  login(credentials: LoginRequest): Promise<LoginResponse>
   logout(userId: string): Promise<void>
   refreshToken(
-    token: string
-  ): Promise<{ token: string; refreshedToken: string }>
+    currentAccessToken: string
+  ): Promise<{ accessToken: string; refreshedToken: string }>
   getCurrentUser(): Promise<IUsers>
 }

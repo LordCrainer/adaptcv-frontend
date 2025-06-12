@@ -23,6 +23,23 @@ export const useBuilder = (builderService: IBuilderService) => {
     }
   }
 
+  async function getBuilderById(id: string) {
+    builderStore.toogleLoadingDetail(true)
+    try {
+      const { data } = await builderService.getById(id)
+      if (!data) {
+        throw new Error('CV data is undefined or null')
+      }
+      builderStore.builderState = data
+      return data
+    } catch (error) {
+      console.error('Error loading CV by ID:', error)
+      throw error
+    } finally {
+      builderStore.toogleLoadingDetail(false)
+    }
+  }
+
   async function createBuilder(data: IBuilder) {
     builderStore.toogleLoadingDetail(true)
     try {
@@ -75,6 +92,7 @@ export const useBuilder = (builderService: IBuilderService) => {
     createBuilder,
     updateBuilder,
     loadBuilders,
-    deleteBuilder
+    deleteBuilder,
+    getBuilderById
   }
 }

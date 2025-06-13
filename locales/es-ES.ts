@@ -55,7 +55,9 @@ const profile: TranslationKeys['profile'] = {
     skill: 'Habilidad',
     less1year: 'Menos de 1 año',
     '1to2years': '1 a 2 años',
+    '1to3years': '1 a 3 años',
     '2to3years': '2 a 3 años',
+    '3to5years': '3 a 5 años',
     '5to10years': '5 a 10 años',
     '10plusyears': 'Más de 10 años',
     job: 'Trabajo',
@@ -138,7 +140,8 @@ export default defineI18nLocale(async () => {
       email: 'Correo electrónico',
       noData: 'No hay datos disponibles',
       startDate: 'Fecha de inicio',
-      endDate: 'Fecha de finalización'
+      endDate: 'Fecha de finalización',
+      current: 'Presente'
     },
     login: {
       password: 'contraseña',

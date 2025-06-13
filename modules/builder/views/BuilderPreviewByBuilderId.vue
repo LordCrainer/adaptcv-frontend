@@ -62,10 +62,12 @@ import BuilderToolbar from '~/modules/builder/components/BuilderToolbar.vue'
 import BuilderForm from '../components/BuilderForm.vue'
 import { useBuilderStore } from '../store/builder.store'
 import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
+import { useBuilderWrapper } from '../composables/useBuilderWrapper'
 
 const builderStore = useBuilderStore()
 const { hasChanges } = useObject()
 const { builderState } = storeToRefs(builderStore)
+const usebuilder = useBuilderWrapper()
 
 const route = useRoute()
 
@@ -135,7 +137,7 @@ const builderButtonsToolbar = [
     value: 'actions.save',
     action: () => {
       const builderId = route.params.builderId
-      builderStore.saveByBuilderId(builderId as string).then(() => {
+      usebuilder.updateBuilder(builderId as string, builderState.value).then(() => {
         console.log('Saved successfully')
       })
     },
@@ -161,14 +163,14 @@ const builderButtonsToolbar = [
 
 onMounted(async () => {
   if (route.params.builderId) {
-    await builderStore.getBuilder(route.params.builderId as string)
+    await usebuilder.getBuilderById(route.params.builderId as string)
     builderStateTemp.value = { ...builderState.value }
   }
 })
 
 onUnmounted(() => {
   if (hasChanges(builderState.value, builderStateTemp.value)) {
-    builderStore.saveByBuilderId(builderId.value as string)
+    usebuilder.updateBuilder(builderId.value as string, builderState.value)
   }
 })
 </script>

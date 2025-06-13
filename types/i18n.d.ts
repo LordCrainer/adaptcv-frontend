@@ -55,7 +55,9 @@ interface Skills {
   yearsOfExperience: string
   less1year: string
   '1to2years': string
+  '1to3years': string
   '2to3years': string
+  '3to5years': string
   '5to10years': string
   '10plusyears': string
   placeholderSkill: string
@@ -93,6 +95,7 @@ interface TranslationKeys {
     noData: string
     startDate: string
     endDate: string
+    current: string
   }
   actions: {
     add: string

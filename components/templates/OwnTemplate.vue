@@ -157,7 +157,7 @@
             <div class="text-caption" style="width: 100%">
               <div class="d-flex ga-1 flex-column">
                 <div class="d-flex justify-space-between">
-                  <div class="d-flex align-center ga-2">
+                  <div class="d-flex align-center ga-1">
                     <p class="font-weight-bold">
                       {{ exp.jobTitle }}
                     </p>

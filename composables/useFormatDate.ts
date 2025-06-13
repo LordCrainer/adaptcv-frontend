@@ -1,4 +1,7 @@
+import type { i18n } from 'virtual:vuetify-date-configuration'
+
 export const useFormatDate = () => {
+  const { t } = useI18n()
   function addYearToDate(date: Date | string, years = 1): string {
     const res = new Date(date)
     res.setFullYear(res.getFullYear() + years)
@@ -48,10 +51,13 @@ export const useFormatDate = () => {
       MMMM: capitalize(d.toLocaleString('es-EC', { month: 'long' })),
       DD: pad(d.getDate()),
       hh: pad(d.getHours()),
-      mm: pad(d.getMinutes()),
+      mm: pad(d.getMinutes())
     }
 
-    return format?.replace(/YYYY|MMMM|YY|MM|DD|hh|mm/g, (m) => formatOptions[m] || m)
+    return format?.replace(
+      /YYYY|MMMM|YY|MM|DD|hh|mm/g,
+      (m) => formatOptions[m] || m
+    )
   }
 
   function formatDateRange(
@@ -64,7 +70,15 @@ export const useFormatDate = () => {
     if (fn === undefined) {
       fn = standardDate
     }
-    return `${fn(startDate)} - ${fn(endDate)}`
+
+    const startDateText = startDate ? fn(startDate) : ''
+    if (!endDate) {
+      return startDateText
+    }
+    const endDateString = new Date(endDate)
+    const endDateText =
+      endDateString > new Date() ? t('common.current') : fn(endDateString)
+    return [startDateText, endDateText].join(' - ')
   }
 
   const allowedDates = (currentDate: unknown, startDate: Date | string) =>

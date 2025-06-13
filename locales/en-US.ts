@@ -125,6 +125,8 @@ export default defineI18nLocale(async () => {
       publish: 'Publish',
       preview: 'Preview',
       settings: 'Settings',
+      print: 'Print',
+      download: 'Download'
     },
     common: {
       home: 'Home',

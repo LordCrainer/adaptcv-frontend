@@ -17,7 +17,7 @@
     "lint:fix": "eslint --ext .js,.ts,.vue --ignore-path .gitignore . --fix"
   },
   "dependencies": {
-    "@lordcrainer/adaptcv-shared-types": "^1.17.6",
+    "@lordcrainer/adaptcv-shared-types": "^1.17.8",
     "@nuxt/eslint": "1.3.0",
     "@nuxt/icon": "1.11.0",
     "@nuxt/image": "1.10.0",

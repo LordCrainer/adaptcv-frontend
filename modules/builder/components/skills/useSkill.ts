@@ -38,9 +38,7 @@ const SKILLS_LIST = ref(
 
 const EXPERIENCE_OPTIONS: yearsOfExperience[] = [
   'less1year',
-  '1to2years',
   '1to3years',
-  '2to3years',
   '3to5years',
   '5to10years',
   '10plusyears'

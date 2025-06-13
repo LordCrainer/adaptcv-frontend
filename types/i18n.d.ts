@@ -54,9 +54,7 @@ interface Skills {
   job: string
   yearsOfExperience: string
   less1year: string
-  '1to2years': string
   '1to3years': string
-  '2to3years': string
   '3to5years': string
   '5to10years': string
   '10plusyears': string

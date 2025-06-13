@@ -20,6 +20,7 @@ function getLocation(...args: (string | undefined)[]) {
 <template>
   <v-card
     max-width="800"
+    border
     width="100%"
     class="mx-auto flex-card flex-container pa-4 text-caption">
     <v-card-title class="text-h5 font-weight-bold text-center pb-0">

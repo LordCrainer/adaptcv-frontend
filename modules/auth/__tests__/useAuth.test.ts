@@ -15,17 +15,18 @@ describe('useAuth', () => {
     vi.spyOn(store, 'setUser')
     vi.spyOn(store, 'toggleLoading')
     vi.spyOn(store, 'resetAuth')
+    vi.spyOn(store, 'getUser')
+    vi.spyOn(store, 'getToken')
   })
 
   it('login: sets token and user on success', async () => {
-    const response = { token: 'token', user: { id: 1 } }
+    const response = { accessToken: 'token', user: { id: 1 } }
     mockAuthService.login.mockResolvedValue(response)
 
     const { login } = useAuth(mockAuthService)
     await login({ email: 'a@a.com', password: '123' })
-
-    expect(store.token).toBe(response.token)
-    expect(store.user).toEqual(response.user)
+    expect(store.getUser()).toEqual(response.user)
+    expect(store.getToken()).toBe(response.accessToken)
     expect(store.toggleLoading).toHaveBeenCalledWith(true)
     expect(store.setToken).toHaveBeenCalledWith('token')
     expect(store.setUser).toHaveBeenCalledWith({ id: 1 })
@@ -56,11 +57,11 @@ describe('useAuth', () => {
 
   it('refreshToken: sets new tokens', async () => {
     const store = useAuthStore()
-    const response = { token: 'new-token', refreshedToken: 'new-refresh' }
+    const response = { accessToken: 'new-token', refreshedToken: 'new-refresh' }
     mockAuthService.refreshToken.mockResolvedValue(response)
     const { refreshToken } = useAuth(mockAuthService)
-    await refreshToken(response.refreshedToken)
-    expect(store.setToken).toHaveBeenCalledWith(response.token)
+    await refreshToken()
+    expect(store.setToken).toHaveBeenCalledWith(response.accessToken)
   })
 
   it('refreshToken: throws if no refreshedToken', async () => {
@@ -68,6 +69,6 @@ describe('useAuth', () => {
       new Error('No refresh token')
     )
     const { refreshToken } = useAuth(mockAuthService)
-    await expect(refreshToken('')).rejects.toThrow('No refresh token')
+    await expect(refreshToken()).rejects.toThrow('No refresh token')
   })
 })

@@ -1,9 +1,11 @@
 import { useAuthStore } from '~/modules/auth/store/auth.store'
 import axios, { type AxiosInstance } from 'axios'
+import { useAuthWrapper } from '~/modules/auth/composables/useAuthWrapper'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const authStore = useAuthStore()
   const runtimeConfig = useRuntimeConfig()
+  const { refreshToken } = useAuthWrapper()
 
   const api: AxiosInstance = axios.create({
     baseURL: runtimeConfig.public.apiBase,
@@ -31,33 +33,25 @@ export default defineNuxtPlugin((nuxtApp) => {
     async (error) => {
       const response = error.response
       if (
-        response.status === 401 &&
+        response?.status === 401 &&
         ['invalidToken', 'unauthorized'].includes(response.data.name)
       ) {
-        await refreshToken(error)
+        try {
+          // Usar el método refreshToken del wrapper, que ya maneja la lógica y guarda el token
+          await refreshToken()
+          // Obtener el nuevo token del store
+          const newToken = authStore.getToken()
+          error.config.headers.Authorization = `Bearer ${newToken}`
+          // Reintentar la petición original
+          return api.request(error.config)
+        } catch (refreshError) {
+          authStore.resetAuth()
+          return Promise.reject(refreshError)
+        }
       }
       return Promise.reject(error)
     }
   )
-
-  async function refreshToken(error: any) {
-    return api
-      .post('/v1/auth/refresh-token')
-      .then((response) => {
-        if (response.data.token) {
-          authStore.setToken(response.data.token)
-          error.config.headers.Authorization = `Bearer ${response.data.token}`
-          return axios.request(error.config)
-        } else {
-          authStore.resetAuth()
-          throw new Error('Failed to refresh token')
-        }
-      })
-      .catch((error) => {
-        authStore.resetAuth()
-        throw error
-      })
-  }
 
   return {
     provide: {

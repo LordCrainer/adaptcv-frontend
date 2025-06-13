@@ -14,6 +14,11 @@ export const useAuthStore = defineStore('auth', () => {
 
   function setUser(data: IUsers | null) {
     user.value = data
+    if (data) {
+      localStorage.setItem('user', JSON.stringify(data))
+    } else {
+      localStorage.removeItem('user')
+    }
   }
   function setToken(data: string) {
     accessToken.value = data
@@ -22,6 +27,10 @@ export const useAuthStore = defineStore('auth', () => {
 
   function getToken() {
     return accessToken.value || localStorage.getItem(accessTokenKey) || ''
+  }
+
+  function getUser() {
+    return user.value || JSON.parse(localStorage.getItem('user') || 'null')
   }
 
   function resetAuth() {
@@ -46,6 +55,7 @@ export const useAuthStore = defineStore('auth', () => {
     setToken,
     getToken,
     resetAuth,
+    getUser,
     toggleLoading
   }
 })

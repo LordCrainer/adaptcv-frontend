@@ -7,8 +7,6 @@ import type {
 export interface IAuthService {
   login(credentials: LoginRequest): Promise<LoginResponse>
   logout(userId: string): Promise<void>
-  refreshToken(
-    currentAccessToken: string
-  ): Promise<{ accessToken: string; refreshedToken: string }>
+  refreshToken(): Promise<{ accessToken: string; refreshedToken: string }>
   getCurrentUser(): Promise<IUsers>
 }

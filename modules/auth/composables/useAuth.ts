@@ -27,10 +27,10 @@ export const useAuth = (authHttpService: IAuthService) => {
     store.resetAuth()
   }
 
-  async function refreshToken(refreshedToken: string) {
-    // if (!store.refreshToken) throw new Error('No refresh token')
-    const response = await authHttpService.refreshToken(refreshedToken)
+  async function refreshToken() {
+    const response = await authHttpService.refreshToken()
     store.setToken(response.accessToken)
+    return response
   }
 
   return {

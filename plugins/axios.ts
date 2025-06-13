@@ -32,18 +32,17 @@ export default defineNuxtPlugin((nuxtApp) => {
     },
     async (error) => {
       const response = error.response
+      const originalRequest = error.config
       if (
         response?.status === 401 &&
-        ['invalidToken', 'unauthorized'].includes(response.data.name)
+        ['invalidToken', 'unauthorized'].includes(response.data.name) &&
+        !originalRequest._retry
       ) {
+        originalRequest._retry = true
         try {
-          // Usar el método refreshToken del wrapper, que ya maneja la lógica y guarda el token
           await refreshToken()
-          // Obtener el nuevo token del store
-          const newToken = authStore.getToken()
-          error.config.headers.Authorization = `Bearer ${newToken}`
-          // Reintentar la petición original
-          return api.request(error.config)
+          originalRequest.headers.Authorization = `Bearer ${authStore.getToken()}`
+          return api.request(originalRequest)
         } catch (refreshError) {
           authStore.resetAuth()
           return Promise.reject(refreshError)

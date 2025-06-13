@@ -5,7 +5,6 @@ import { useAuthWrapper } from '~/modules/auth/composables/useAuthWrapper'
 export default defineNuxtPlugin((nuxtApp) => {
   const authStore = useAuthStore()
   const runtimeConfig = useRuntimeConfig()
-  const { refreshToken } = useAuthWrapper()
 
   const api: AxiosInstance = axios.create({
     baseURL: runtimeConfig.public.apiBase,
@@ -31,6 +30,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       return response.data
     },
     async (error) => {
+      const { refreshToken } = useAuthWrapper(api)
       const response = error.response
       const originalRequest = error.config
       if (

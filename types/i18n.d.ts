@@ -72,6 +72,37 @@ interface Languages {
   placeholderLanguage: string
 }
 
+interface Actions {
+  add: string
+  edit: string
+  delete: string
+  save: string
+  cancel: string
+  submit: string
+  options: string
+  upload: string
+  uploadImage: string
+  saveImage: string
+  next: string
+  previous: string
+  continue: string
+  finish: string
+  back: string
+  register: string
+  signIn: string
+  signOut: string
+  forgotPassword: string
+  publish: string
+  preview: string
+  settings: string
+  signUp: string
+  print: string
+  download: string
+  exportPdf: string
+  downloadPdf: string
+  exportCSV: string
+}
+
 interface TranslationKeys {
   website: {
     title: string
@@ -95,33 +126,7 @@ interface TranslationKeys {
     endDate: string
     current: string
   }
-  actions: {
-    add: string
-    edit: string
-    delete: string
-    save: string
-    cancel: string
-    submit: string
-    options: string
-    upload: string
-    uploadImage: string
-    saveImage: string
-    next: string
-    previous: string
-    continue: string
-    finish: string
-    back: string
-    register: string
-    signIn: string
-    signOut: string
-    forgotPassword: string
-    publish: string
-    preview: string
-    settings: string
-    signUp: string
-    print: string
-    download: string
-  }
+  actions: Actions
   baseEntity: {
     createdAt: string
     updatedAt: string

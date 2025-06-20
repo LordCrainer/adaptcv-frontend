@@ -126,7 +126,10 @@ export default defineI18nLocale(async () => {
       preview: 'Preview',
       settings: 'Settings',
       print: 'Print',
-      download: 'Download'
+      download: 'Download',
+      exportPdf: 'Download PDF',
+      downloadPdf: 'Download PDF',
+      exportCSV: 'Download CSV',
     },
     common: {
       home: 'Home',

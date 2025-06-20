@@ -92,6 +92,37 @@ const baseEntity: TranslationKeys['baseEntity'] = {
   deletedAt: 'Eliminado'
 }
 
+const actions: TranslationKeys['actions'] = {
+  add: 'Agregar',
+  edit: 'Editar',
+  delete: 'Eliminar',
+  save: 'Guardar',
+  cancel: 'Cancelar',
+  submit: 'Enviar',
+  options: 'Opciones',
+  upload: 'Subir',
+  uploadImage: 'Subir imagen',
+  saveImage: 'Guardar imagen',
+  back: 'Volver',
+  next: 'Siguiente',
+  previous: 'Anterior',
+  continue: 'Continuar',
+  finish: 'Finalizar',
+  register: 'Registrar',
+  signIn: 'Iniciar sesión',
+  signOut: 'Cerrar sesión',
+  forgotPassword: 'Olvidé mi contraseña?',
+  publish: 'Publicar',
+  preview: 'Visualizar',
+  settings: 'Configuraciones',
+  signUp: 'Registrarse',
+  print: 'Imprimir',
+  download: 'Descargar',
+  exportPdf: 'Exportar PDF',
+  downloadPdf: 'Descargar PDF',
+  exportCSV: 'Exportar CSV'
+}
+
 export default defineI18nLocale(async () => {
   return {
     website: {
@@ -100,33 +131,7 @@ export default defineI18nLocale(async () => {
       keywords: 'cv, currículum, plantillas, generador de currículum',
       welcome: 'Bienvenido a'
     },
-    actions: {
-      add: 'Agregar',
-      edit: 'Editar',
-      delete: 'Eliminar',
-      save: 'Guardar',
-      cancel: 'Cancelar',
-      submit: 'Enviar',
-      options: 'Opciones',
-      upload: 'Subir',
-      uploadImage: 'Subir imagen',
-      saveImage: 'Guardar imagen',
-      back: 'Volver',
-      next: 'Siguiente',
-      previous: 'Anterior',
-      continue: 'Continuar',
-      finish: 'Finalizar',
-      register: 'Registrar',
-      signIn: 'Iniciar sesión',
-      signOut: 'Cerrar sesión',
-      forgotPassword: 'Olvidé mi contraseña?',
-      publish: 'Publicar',
-      preview: 'Visualizar',
-      settings: 'Configuraciones',
-      signUp: 'Registrarse',
-      print: 'Imprimir',
-      download: 'Descargar'
-    },
+    actions: actions,
     common: {
       home: 'Inicio',
       about: 'Acerca de',

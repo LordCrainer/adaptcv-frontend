@@ -123,8 +123,13 @@ const actions: TranslationKeys['actions'] = {
   exportCSV: 'Exportar CSV'
 }
 
+const generatePDF: TranslationKeys['generatePDF'] = {
+  generatingPdfForTemplate: 'Generando PDF para la plantilla'
+}
+
 export default defineI18nLocale(async () => {
   return {
+    generatePDF: generatePDF,
     website: {
       title: 'AdaptCV',
       description: 'Generador de currículum en línea',

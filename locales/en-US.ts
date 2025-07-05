@@ -92,8 +92,13 @@ const baseEntity: TranslationKeys['baseEntity'] = {
   deletedAt: 'Deleted'
 }
 
+const generatePDF: TranslationKeys['generatePDF'] = {
+  generatingPdfForTemplate: 'Generating PDF for template'
+}
+
 export default defineI18nLocale(async () => {
   return {
+    generatePDF: generatePDF,
     website: {
       description:
         'AdaptCV is a free online CV builder that helps you create a professional CV in minutes. Choose from a variety of templates and customize your CV to suit your needs.',

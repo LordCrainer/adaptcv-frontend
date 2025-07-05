@@ -10,6 +10,18 @@
       "name": "Launch Chrome against localhost",
       "url": "http://localhost:4000",
       "webRoot": "${workspaceFolder}"
+    },{
+      "type": "chrome",
+      "request": "launch",
+      "name": "Debug Vite App",
+      "url": "http://localhost:4000",
+      // "runtimeExecutable": "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
+      "webRoot": "${workspaceFolder}/src",
+      "sourceMapPathOverrides": {
+        "webpack:///./src/*": "${webRoot}/*"
+      },
+      "sourceMaps": true,
+      "runtimeArgs": ["--remote-debugging-port=9222"]
     }
   ]
 }

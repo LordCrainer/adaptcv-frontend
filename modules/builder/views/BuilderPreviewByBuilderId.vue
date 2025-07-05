@@ -10,7 +10,14 @@
         :items="selectItems"
         v-model="selectedTemplate"
         item-title="title"
-        item-value="value"></v-select>
+        item-value="value"
+        :disabled="isGenerating"></v-select>
+
+      <!-- Generating PDF Alert -->
+      <v-alert v-if="isGenerating" type="info" variant="tonal" class="mt-3">
+        <v-progress-linear indeterminate class="mb-2"></v-progress-linear>
+        {{ $t('generatePDF.generatingPdfForTemplate') }}: {{ currentTemplate }}
+      </v-alert>
     </v-card-item>
   </v-card>
   <div id="cv-template-container" class="mt-4" style="min-width: 800px">
@@ -33,12 +40,22 @@ import BuilderForm from '../components/BuilderForm.vue'
 import { useBuilderStore } from '../store/builder.store'
 import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
 import { useBuilderWrapper } from '../composables/useBuilderWrapper'
+import { useBuilderPdfGenerator } from '~/composables/useBuilderPdfGenerator'
 
-const { generatePDF } = useGeneratePDF()
 const builderStore = useBuilderStore()
 const { hasChanges } = useObject()
 const { builderState } = storeToRefs(builderStore)
 const usebuilder = useBuilderWrapper()
+
+// PDF Generation Composable
+const {
+  setTemplateConfig,
+  setSelectedTemplate,
+  downloadTemplatePDF,
+  canGeneratePdf,
+  currentTemplate,
+  isGenerating
+} = useBuilderPdfGenerator()
 
 const route = useRoute()
 
@@ -87,22 +104,24 @@ function close() {
   openDialog.value = false
 }
 
-// Exponer función para generar PDF (será llamada desde el componente padre)
-const downloadTemplatePDF = async () => {
-  try {
-    const pdf = await generatePDF('cv-template-container')
-    if (pdf) {
-      const fileName = `cv_${templates.value[selectedTemplate.value].title.toLowerCase()}_${new Date().getTime()}.pdf`
-      pdf.save(fileName)
-    }
-  } catch (error) {
-    console.error('Error al generar PDF:', error)
-  }
-}
+// Sync builder state with temporary state
+watchEffect(() => {
+  setTemplateConfig({
+    selectedTemplate: selectedTemplate.value,
+    templates: templates.value
+  })
+})
 
-// Exponer métodos para el componente padre
+watch(selectedTemplate, (newTemplate) => {
+  setSelectedTemplate(newTemplate)
+})
+
+// Handle builder state changes
 defineExpose({
-  downloadTemplatePDF
+  downloadTemplatePDF,
+  canDownload: canGeneratePdf,
+  currentTemplate,
+  isGenerating
 })
 
 onUnmounted(() => {

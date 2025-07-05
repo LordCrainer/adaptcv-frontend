@@ -34,7 +34,7 @@ export const useBuilderToolbar = () => {
   }
 
   // Definir acciones base del toolbar
-  const getToolbarActions = (builderId: string): ToolbarAction[] => [
+  const getToolbarActions = (): ToolbarAction[] => [
     {
       icon: 'mdi-file-pdf-box',
       value: 'actions.exportPdf',
@@ -64,8 +64,7 @@ export const useBuilderToolbar = () => {
 
   // Acciones visibles según el contexto
   const visibleActions = computed(() => {
-    const builderId = '' // Se establecerá desde el componente
-    return getToolbarActions(builderId).filter(
+    return getToolbarActions().filter(
       (action) => action.visible !== false
     )
   })

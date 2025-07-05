@@ -22,6 +22,8 @@
           v-tooltip:start="$t(button.value)"
           @click="button.action"
           icon
+          :loading="button.value === 'actions.exportPdf' && isGenerating"
+          :disabled="button.value === 'actions.exportPdf' && isGenerating"
           v-bind="button.props">
           <v-icon>{{ button.icon }}</v-icon>
         </v-btn>
@@ -31,8 +33,28 @@
 
   <v-tabs v-model="tab" bg-color="primary" @update:model-value="onTabChange">
     <v-tab value="edit">{{ $t('actions.edit') }}</v-tab>
-    <v-tab value="preview">{{ $t('actions.preview') }}</v-tab>
+    <v-tab value="preview">
+      {{ $t('actions.preview') }}
+      <v-progress-circular
+        v-if="isGenerating && tab === 'preview'"
+        indeterminate
+        size="16"
+        width="2"
+        class="ml-2" />
+    </v-tab>
   </v-tabs>
+
+  <!-- ⚠️ Notificación de error global de PDF -->
+  <v-alert
+    v-if="hasError"
+    type="error"
+    variant="tonal"
+    closable
+    class="ma-4"
+    @click:close="clearError">
+    <template #title>Error generando PDF</template>
+    {{ error }}
+  </v-alert>
 
   <v-card-text>
     <v-tabs-window v-model="tab">
@@ -60,6 +82,10 @@
 import { useBuilderStore } from '~/modules/builder/store/builder.store'
 import { useBuilderWrapper } from '~/modules/builder/composables/useBuilderWrapper'
 import { useBuilderToolbar } from '~/modules/builder/composables/useBuilderToolbar'
+import {
+  useBuilderPdfGenerator,
+  usePdfState
+} from '~/composables/useBuilderPdfGenerator'
 
 const BuilderByBuilderId = defineAsyncComponent(
   () => import('~/modules/builder/views/BuilderByBuilderId.vue')
@@ -76,10 +102,13 @@ const BuilderForm = defineAsyncComponent(
 
 const route = useRoute()
 const { t } = useI18n()
-const { generatePDF, downloadPDF } = useGeneratePDF()
 const builderStore = useBuilderStore()
 const { builderState } = storeToRefs(builderStore)
 const useBuilder = useBuilderWrapper()
+
+// PDF Composable
+const { downloadTemplatePDF, clearError } = useBuilderPdfGenerator()
+const { isGenerating, error, hasError } = usePdfState()
 
 // Toolbar management
 const { currentTab, setBuilderTab, registerActionHandler, getToolbarActions } =
@@ -100,7 +129,7 @@ const currentTabTitle = computed(() => {
 })
 
 const visibleToolbarActions = computed(() => {
-  return getToolbarActions(builderId.value).filter((action) => {
+  return getToolbarActions().filter((action) => {
     if (action.value === 'actions.exportPdf') return tab.value === 'preview'
     return true
   })
@@ -114,32 +143,8 @@ function closeSettings() {
   openDialog.value = false
 }
 
-async function downloadTemplatePDF() {
-  // Si estamos en el tab de preview, usar la función del componente hijo
-  if (tab.value === 'preview' && previewComponent.value?.downloadTemplatePDF) {
-    await previewComponent.value.downloadTemplatePDF()
-    return
-  }
-
-  // Fallback para generar PDF general
-  const pdf = await generatePDF('cv-template-container')
-  if (!pdf) {
-    console.error('No se pudo generar el PDF')
-    return
-  }
-  try {
-    const filename = `cv_${new Date().getTime()}`
-    await downloadPDF(pdf, filename)
-    console.log('PDF downloaded successfully')
-  } catch (error) {
-    console.error('Error downloading PDF:', error)
-  }
-}
-
 // Register toolbar action handlers
 onMounted(() => {
-  // Navigation actions
-
   // Save action
   registerActionHandler('save', async () => {
     try {
@@ -150,9 +155,14 @@ onMounted(() => {
     }
   })
 
-  // Download PDF action
+  // 📄 Download PDF action - Ahora usa el composable directamente
   registerActionHandler('downloadPdf', async () => {
-    await downloadTemplatePDF()
+    if (tab.value === 'preview') {
+      const success = await downloadTemplatePDF()
+      if (success) {
+        console.log('PDF descargado exitosamente desde toolbar')
+      }
+    }
   })
 
   // Publish action

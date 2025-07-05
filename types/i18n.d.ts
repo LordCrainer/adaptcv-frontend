@@ -103,7 +103,12 @@ interface Actions {
   exportCSV: string
 }
 
+interface GeneratePDF {
+  generatingPdfForTemplate: string
+}
+
 interface TranslationKeys {
+  generatePDF: GeneratePDF
   website: {
     title: string
     description: string

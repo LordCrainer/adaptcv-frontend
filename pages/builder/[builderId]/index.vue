@@ -31,12 +31,12 @@
     </template>
   </BuilderToolbar>
 
-  <v-tabs v-model="tab" bg-color="primary" @update:model-value="onTabChange">
+  <v-tabs v-model="currentTab" bg-color="primary">
     <v-tab value="edit">{{ $t('actions.edit') }}</v-tab>
     <v-tab value="preview">
       {{ $t('actions.preview') }}
       <v-progress-circular
-        v-if="isGenerating && tab === 'preview'"
+        v-if="isGenerating && currentTab === 'preview'"
         indeterminate
         size="16"
         width="2"
@@ -44,7 +44,6 @@
     </v-tab>
   </v-tabs>
 
-  <!-- ⚠️ Notificación de error global de PDF -->
   <v-alert
     v-if="hasError"
     type="error"
@@ -52,21 +51,24 @@
     closable
     class="ma-4"
     @click:close="clearError">
-    <template #title>Error generando PDF</template>
+    <template #title>Generating PDF Error</template>
     {{ error }}
   </v-alert>
 
-  <v-card-text>
-    <v-tabs-window v-model="tab">
-      <v-tabs-window-item value="edit">
-        <BuilderByBuilderId ref="editComponent" />
-      </v-tabs-window-item>
-
-      <v-tabs-window-item value="preview">
-        <BuilderPreviewByBuilderId ref="previewComponent" />
-      </v-tabs-window-item>
-    </v-tabs-window>
-  </v-card-text>
+  <div>
+    <v-lazy
+      v-if="currentTab === 'edit'"
+      :options="{ threshold: 0.5 }"
+      transition="fade-transition">
+      <BuilderByBuilderId />
+    </v-lazy>
+    <v-lazy
+      v-else-if="currentTab === 'preview'"
+      :options="{ threshold: 0.5 }"
+      transition="fade-transition">
+      <BuilderPreviewByBuilderId />
+    </v-lazy>
+  </div>
 
   <v-dialog
     v-model="openDialog"
@@ -111,36 +113,36 @@ const { downloadTemplatePDF, clearError } = useBuilderPdfGenerator()
 const { isGenerating, error, hasError } = usePdfState()
 
 // Toolbar management
-const { currentTab, setBuilderTab, registerActionHandler, getToolbarActions } =
+const { registerActionHandler, getToolbarActions, currentTab } =
   useBuilderToolbar()
 
-// Component refs
-const editComponent = ref()
-const previewComponent = ref()
-
 // State
-const tab = ref('edit')
 const openDialog = ref(false)
 const builderId = computed(() => route.params.builderId as string)
 
 // Computed properties
 const currentTabTitle = computed(() => {
-  return tab.value === 'edit' ? t('actions.edit') : t('actions.preview')
+  return currentTab.value === 'edit' ? t('actions.edit') : t('actions.preview')
 })
 
 const visibleToolbarActions = computed(() => {
-  return getToolbarActions().filter((action) => {
-    if (action.value === 'actions.exportPdf') return tab.value === 'preview'
-    return true
-  })
+  const visibleByTab: Record<string, (action: any) => boolean> = {
+    edit: () => true,
+    preview: (action: any) =>
+      action.value !== 'actions.exportPdf' || currentTab.value === 'preview'
+  }
+  return getToolbarActions().filter((action) =>
+    visibleByTab[currentTab.value]?.(action)
+  )
 })
 
-function onTabChange(newTab: unknown) {
-  setBuilderTab(newTab as string)
-}
-
+// Methods
 function closeSettings() {
   openDialog.value = false
+}
+
+function setTab(tab: 'edit' | 'preview') {
+  currentTab.value = tab
 }
 
 // Register toolbar action handlers
@@ -155,9 +157,9 @@ onMounted(() => {
     }
   })
 
-  // 📄 Download PDF action - Ahora usa el composable directamente
+  // Export PDF action
   registerActionHandler('downloadPdf', async () => {
-    if (tab.value === 'preview') {
+    if (currentTab.value === 'preview') {
       const success = await downloadTemplatePDF()
       if (success) {
         console.log('PDF descargado exitosamente desde toolbar')

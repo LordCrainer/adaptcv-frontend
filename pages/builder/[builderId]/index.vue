@@ -141,10 +141,6 @@ function closeSettings() {
   openDialog.value = false
 }
 
-function setTab(tab: 'edit' | 'preview') {
-  currentTab.value = tab
-}
-
 // Register toolbar action handlers
 onMounted(() => {
   // Save action

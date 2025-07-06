@@ -15,7 +15,7 @@ export const useBuilderToolbar = () => {
   const currentTab = ref<TabType>('edit')
   const actionHandlers = ref<Record<string, () => void | Promise<void>>>({})
 
-  // Registrar handlers para acciones específicas
+  // Register a handler for a specific action
   const registerActionHandler = (
     actionName: string,
     handler: () => void | Promise<void>
@@ -23,7 +23,7 @@ export const useBuilderToolbar = () => {
     actionHandlers.value[actionName] = handler
   }
 
-  // Ejecutar una acción
+  // Execute a registered action by name
   const executeAction = async (actionName: string) => {
     const handler = actionHandlers.value[actionName]
     if (handler) {
@@ -33,7 +33,7 @@ export const useBuilderToolbar = () => {
     }
   }
 
-  // Definir acciones base del toolbar
+  // Define the toolbar actions
   const getToolbarActions = (): ToolbarAction[] => [
     {
       icon: 'mdi-file-pdf-box',
@@ -62,7 +62,7 @@ export const useBuilderToolbar = () => {
     }
   ]
 
-  // Acciones visibles según el contexto
+  // Computed property to filter visible actions
   const visibleActions = computed(() => {
     return getToolbarActions().filter(
       (action) => action.visible !== false

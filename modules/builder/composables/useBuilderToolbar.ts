@@ -7,6 +7,7 @@ export interface ToolbarAction {
   action: () => void | Promise<void>
   props?: Record<string, any>
   visible?: boolean
+  hidden?: boolean
 }
 
 type TabType = 'edit' | 'preview'
@@ -40,7 +41,6 @@ export const useBuilderToolbar = () => {
       value: 'actions.exportPdf',
       tooltip: 'Download PDF',
       action: () => executeAction('downloadPdf'),
-      visible: currentTab.value === 'edit'
     },
     {
       icon: 'mdi-content-save',

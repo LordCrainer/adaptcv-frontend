@@ -127,9 +127,8 @@ const currentTabTitle = computed(() => {
 
 const visibleToolbarActions = computed(() => {
   const visibleByTab: Record<string, (action: any) => boolean> = {
-    edit: () => true,
-    preview: (action: any) =>
-      action.value !== 'actions.exportPdf' || currentTab.value === 'preview'
+    edit: (action) => action.value !== 'actions.exportPdf',
+    preview: () => true
   }
   return getToolbarActions().filter((action) =>
     visibleByTab[currentTab.value]?.(action)

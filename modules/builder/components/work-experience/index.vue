@@ -46,12 +46,22 @@
     v-model="state.openDialog"
     max-width="650px"
     transition="dialog-transition">
-    <WorkExperienceForm
-      :title="`${state.isEditing ? 'Edit' : 'Add'} an Experience`"
-      v-model="state.record"
-      @submit="submitForm"
-      @close="close"
-      @cancel="close"></WorkExperienceForm>
+    <CardDefault :title="`${state.isEditing ? 'Edit' : 'Add'} an Experience`">
+      <template #right-items>
+        <v-btn
+          color="primary"
+          variant="text"
+          size="small"
+          icon="mdi-close"
+          aria-label="Close Work Experience Form"
+          @click="close"></v-btn>
+      </template>
+      <WorkExperienceForm
+        v-model="state.record"
+        @submit="submitForm"
+        @close="close"
+        @cancel="close"></WorkExperienceForm>
+    </CardDefault>
   </v-dialog>
 </template>
 

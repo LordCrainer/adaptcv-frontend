@@ -31,6 +31,7 @@
 
     <TranslationDialog
       v-model="showTranslationDialog"
+      @save="formData.summary = $event"
       :original-text="formData.summary" />
   </v-form>
 </template>

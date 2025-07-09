@@ -1,50 +1,57 @@
-import { ref } from 'vue';
+import { ref } from 'vue'
+
+export interface TranslationParams {
+  text: string
+  from: string
+  to: string
+}
+
+const API_BASE = '/v1/translation'
 
 export const useTranslationApi = () => {
-  const translatedText = ref('');
-  const isLoading = ref(false);
-  const error = ref<string | null>(null);
+  const api = useNuxtApp().$api
+  const translatedText = ref('')
+  const isLoading = ref(false)
+  const error = ref<string | null>(null)
 
-  const translate = async (text: string): Promise<string | null> => {
-    isLoading.value = true;
-    error.value = null;
-    translatedText.value = '';
+  const translate = async (
+    params: TranslationParams
+  ): Promise<string | null> => {
+    isLoading.value = true
+    error.value = null
+    translatedText.value = ''
 
-    if (!text) {
-      isLoading.value = false;
-      return null;
+    const { text, from, to } = params
+
+    if (!text || !from || !to) {
+      error.value = 'Missing required translation parameters.'
+      isLoading.value = false
+      return null
     }
 
     try {
-      const response = await fetch('/api/translate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ text }),
-      });
+      const { data } = await api.post(`${API_BASE}/`, params)
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.statusMessage || 'Translation failed');
+      if (!data) {
+        throw new Error('Translation failed')
       }
 
-      const data = await response.json();
-      translatedText.value = data.translatedText;
-      return data.translatedText;
+      translatedText.value = data.translatedText
+      return data.translatedText
     } catch (err: any) {
-      error.value = err.message || 'An unknown error occurred during translation.';
-      console.error('Error during translation API call:', err);
-      return null;
+      error.value =
+        err.message || 'An unknown error occurred during translation.'
+      console.error('Error during translation API call:', err)
+      return null
     } finally {
-      isLoading.value = false;
+      isLoading.value = false
     }
-  };
+  }
 
   return {
     translatedText,
     isLoading,
     error,
-    translate,
-  };
-};
+    translate
+  }
+}

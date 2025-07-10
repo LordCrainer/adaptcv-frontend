@@ -35,40 +35,6 @@ import { errorMessages, errorNames } from '~/utils/errorHandlers/error.messages'
     message?: string
   }
 
-  // const errorHandler = async (params: ErrorHandler) => {
-  //   const { name, status, originalRequest, message } = params
-  //   const { refreshToken } = useAuthWrapper(api)
-
-  //   switch (status) {
-  //     case 401:
-  //       if (
-  //         ['invalidToken', 'unauthorized'].includes(name) &&
-  //         !originalRequest._retry
-  //       ) {
-  //         originalRequest._retry = true
-  //         try {
-  //           await refreshToken()
-  //           originalRequest.headers.Authorization = `Bearer ${authStore.getToken()}`
-  //           return api.request(originalRequest)
-  //         } catch (refreshError) {
-  //           authStore.resetAuth()
-  //           const statusMessage = errorNames[name] || errorMessages[401]
-  //           throw createError({ statusCode: 401, statusMessage })
-  //         }
-  //       }
-  //       // Si no aplica refresh, lanza error personalizado
-  //       const statusMessage401 = errorNames[name] || errorMessages[401]
-  //       throw createError({ statusCode: 401, statusMessage: statusMessage401 })
-  //     default:
-  //       // Prioridad: mensaje backend > error name > error code
-  //       const errorMessage =
-  //         message ||
-  //         (name && errorNames[name]) ||
-  //         errorMessages[status] ||
-  //         'Unknown error'
-  //       throw createError({ statusCode: status, statusMessage: errorMessage })
-  //   }
-  // }
 
   api.interceptors.response.use(
     (response) => response.data,

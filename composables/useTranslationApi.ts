@@ -23,7 +23,7 @@ export const useTranslationApi = () => {
 
     const { text, from, to } = params
 
-    if (!text || !from || !to) {
+    if (!text.trim() || !from || !to) {
       error.value = 'Missing required translation parameters.'
       isLoading.value = false
       return null

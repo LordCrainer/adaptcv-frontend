@@ -23,7 +23,7 @@ describe('auth store', () => {
       status: 'active',
       _id: '1'
     })
-    expect(store.token).toBe('abc123')
+    expect(store.getToken()).toBe('abc123')
   })
 
   it('resets auth', () => {
@@ -38,6 +38,6 @@ describe('auth store', () => {
     store.resetAuth()
 
     expect(store.user).toBe(null)
-    expect(store.token).toBe('')
+    expect(store.getToken()).toBe('')
   })
 })

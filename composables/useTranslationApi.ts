@@ -49,7 +49,6 @@ export const useTranslationApi = () => {
           : 'An unknown error occurred during translation.'
       console.error('Error during translation API call:', err)
       return null
-    }
     } finally {
       isLoading.value = false
     }

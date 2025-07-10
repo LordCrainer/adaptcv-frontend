@@ -13,9 +13,12 @@
       <v-spacer></v-spacer>
       <slot name="right-items"></slot>
     </div>
-    <div class="flex-container flex-card px-4 pt-4 fill-height">
+    <div class="flex-container flex-card px-4 py-4 fill-height">
       <slot></slot>
     </div>
+    <v-card-actions>
+      <v-btn color="success">text</v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 

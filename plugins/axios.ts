@@ -49,7 +49,9 @@ import { errorMessages, errorNames } from '~/utils/errorHandlers/error.messages'
         status,
         refreshToken,
         originalRequest,
-        message: data?.message
+        message: data?.message,
+        authStore,
+        api
       })
       if (result) return result
       return Promise.reject(error)

@@ -34,7 +34,7 @@ export class AuthHttpService implements IAuthService {
     const { data } = await this.api.post<{
       accessToken: string
       refreshedToken: string
-    }>(`${this.url}/refresh`)
+    }>(`${this.url}/refresh-token`)
     return data
   }
 

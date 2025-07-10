@@ -22,7 +22,9 @@ describe('authHttpService', () => {
   })
 
   it('calls logout endpoint', async () => {
-    await authService.logout()
-    expect(mockHttp.post).toHaveBeenCalledWith('v1/auth/logout')
+    await authService.logout('123')
+    expect(mockHttp.post).toHaveBeenCalledWith('v1/auth/logout', {
+      userId: '123'
+    })
   })
 })

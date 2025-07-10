@@ -16,6 +16,8 @@
       @blur="updateFormData"
       hide-details
       prepend-inner-icon="mdi-text-box"
+      append-inner-icon="mdi-translate"
+      @click:append-inner="openTranslationDialog"
       v-model="formData.summary"
       :label="$t('profile.aboutMe.summary')"
       active
@@ -26,12 +28,18 @@
       class="fill-height d-flex flex-column"
       aria-label="Summary"
       required></v-textarea>
+
+    <TranslationDialog
+      v-model="showTranslationDialog"
+      @save="formData.summary = $event"
+      :original-text="formData.summary" />
   </v-form>
 </template>
 
 <script lang="ts" setup>
-import type { IAboutMe } from '@lordcrainer/adaptcv-shared-types';
-import { ref } from 'vue'
+import type { IAboutMe } from '@lordcrainer/adaptcv-shared-types'
+import { ref, watch } from 'vue'
+import TranslationDialog from '~/components/general/TranslationDialog.vue'
 import { useObject } from '~/utils/useObject'
 
 const { hasChanges } = useObject()
@@ -46,6 +54,8 @@ const form = ref()
 const formData = ref<IAboutMe>({ ...props.modelValue })
 const oldData = ref<IAboutMe>({ ...props.modelValue })
 
+const showTranslationDialog = ref(false)
+
 async function updateFormData() {
   if (!form.value) return
   const { valid } = await form.value.validate()
@@ -53,6 +63,10 @@ async function updateFormData() {
     emit('update:modelValue', formData.value)
     oldData.value = { ...formData.value }
   }
+}
+
+function openTranslationDialog() {
+  showTranslationDialog.value = true
 }
 
 watch(

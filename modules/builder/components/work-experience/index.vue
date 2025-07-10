@@ -46,7 +46,7 @@
     v-model="state.openDialog"
     max-width="650px"
     transition="dialog-transition">
-    <CardDefault :title="`${state.isEditing ? 'Edit' : 'Add'} an Experience`">
+    <CardDefault :title="state.isEditing ? 'profile.experience.edit' : 'profile.experience.add'">
       <template #right-items>
         <v-btn
           color="primary"

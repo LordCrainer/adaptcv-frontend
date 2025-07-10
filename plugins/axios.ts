@@ -26,16 +26,6 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
   )
 
-import { errorMessages, errorNames } from '~/utils/errorHandlers/error.messages'
-
-  interface ErrorHandler {
-    name: string
-    status: number
-    originalRequest: any
-    message?: string
-  }
-
-
   api.interceptors.response.use(
     (response) => response.data,
     async (error) => {

@@ -37,12 +37,12 @@ export async function errorHandler({
           return api.request(originalRequest)
         } catch (refreshError) {
           authStore.resetAuth()
-          const statusMessage = errorNames[name] || errorMessages[401]
-          throw createError({ statusCode: 401, statusMessage })
+          const statusMessage = errorNames[name] || errorMessages[status]
+          throw createError({ statusCode: status, statusMessage })
         }
       }
-      const statusMessage401 = errorNames[name] || errorMessages[401]
-      throw createError({ statusCode: 401, statusMessage: statusMessage401 })
+      const statusMessage401 = errorNames[name] || errorMessages[status]
+      throw createError({ statusCode: status, statusMessage: statusMessage401 })
     default:
       const errorMessage =
         message ||

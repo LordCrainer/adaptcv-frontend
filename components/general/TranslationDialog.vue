@@ -150,6 +150,13 @@ const snackbarText = ref('')
 
 function copyText(text: string) {
   if (!text) return
+
+  if (!navigator.clipboard) {
+    snackbarText.value = 'Clipboard not supported in this browser'
+    snackbar.value = true
+    return
+  }
+
   navigator.clipboard
     .writeText(text)
     .then(() => {

@@ -38,11 +38,14 @@ export const useTranslationApi = () => {
 
       translatedText.value = data.translatedText
       return data.translatedText
-    } catch (err: any) {
+    } catch (err: unknown) {
       error.value =
-        err.message || 'An unknown error occurred during translation.'
+        err instanceof Error
+          ? err.message
+          : 'An unknown error occurred during translation.'
       console.error('Error during translation API call:', err)
       return null
+    }
     } finally {
       isLoading.value = false
     }

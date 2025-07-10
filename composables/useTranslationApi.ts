@@ -36,6 +36,10 @@ export const useTranslationApi = () => {
         throw new Error('Translation failed')
       }
 
+      if (!data.translatedText || typeof data.translatedText !== 'string') {
+        throw new Error('Invalid translation response format')
+      }
+
       translatedText.value = data.translatedText
       return data.translatedText
     } catch (err: unknown) {

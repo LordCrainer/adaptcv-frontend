@@ -15,9 +15,10 @@ describe('builder.store', () => {
 
   it('addBuilder agrega un builder al array', async () => {
     const store = useBuilderStore()
-    const builder: IBuilder = { name: 'Nuevo', status: 'draft' } as IBuilder
+    const builder: IBuilder = { name: 'Nuevo', status: 'draft', _id: '1' } as IBuilder
     await store.addBuilder(builder)
-    expect(store.builders[0]).toEqual(builder)
+    const foundBuilder = store.builders.find(b => b._id === builder._id)
+    expect(foundBuilder).toEqual(builder)
   })
 
   it('updateBuilderStatus actualiza el status', () => {

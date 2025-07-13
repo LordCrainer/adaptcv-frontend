@@ -1,7 +1,7 @@
 import { errorHandler } from '~/utils/errorHandlers/error.handler'
 import { useAuthStore } from '~/modules/auth/store/auth.store'
 import axios, { type AxiosInstance } from 'axios'
-import { useAuthWrapper } from '~/modules/auth/composables/useAuthWrapper'
+import { API_KEY } from '~/composables/useApi'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const authStore = useAuthStore()
@@ -32,7 +32,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       const response = error.response
       const originalRequest = error.config
       const { status, data } = response || {}
-      const { refreshToken } = useAuthWrapper(api)
+      const { refreshToken } = authStore
 
       const result = await errorHandler({
         name: data?.name || 'UnknownError',
@@ -47,6 +47,9 @@ export default defineNuxtPlugin((nuxtApp) => {
       return Promise.reject(error)
     }
   )
+
+  // Proveer la instancia para Vue
+  nuxtApp.vueApp.provide(API_KEY, api)
 
   return {
     provide: {

@@ -93,12 +93,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRules } from '~/composables/useRules'
-import { useAuthWrapper } from '../composables/useAuthWrapper'
 import { useAuthStore } from '../store/auth.store'
 
 const router = useRouter()
-const { isLoading } = useAuthStore()
-const { login } = useAuthWrapper()
+const authStore = useAuthStore()
+const { isLoading } = storeToRefs(authStore)
 const rules = useRules()
 const form = ref()
 
@@ -117,7 +116,7 @@ function forgotPassword() {
 
 async function submit() {
   if (form.value?.isValid) {
-    await login({
+    await authStore.login({
       email: formData.value.email,
       password: formData.value.password
     })

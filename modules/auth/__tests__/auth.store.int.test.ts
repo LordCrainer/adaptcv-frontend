@@ -1,25 +1,18 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import type { Mock } from 'vitest'
-import { useAuth } from '~/modules/auth/composables/useAuth'
 import { useAuthStore } from '~/modules/auth/store/auth.store'
 import { createPinia, setActivePinia } from 'pinia'
-import { AuthHttpService } from '../services/auth-http.service'
-import { useApi } from '~/composables/useApi'
 import type { IUsers } from '@lordcrainer/adaptcv-shared-types'
 
+// Reemplazar el mock de useApi para devolver siempre la misma instancia
+const mockApi = { post: vi.fn(), get: vi.fn() }
 vi.mock('~/composables/useApi', () => ({
-  useApi: vi.fn(() => ({
-    post: vi.fn(),
-    get: vi.fn()
-  }))
+  useApi: () => mockApi
 }))
 
-describe('useAuth', () => {
-  let mockApi: ReturnType<typeof useApi>
-
+describe('Auth Store - Integration', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
-    mockApi = useApi()
   })
 
   afterEach(() => {
@@ -28,8 +21,7 @@ describe('useAuth', () => {
   })
 
   it('login: updates the store on success', async () => {
-    const store = useAuthStore()
-    const responsePayload = {
+    const response = {
       accessToken: 'test-token',
       user: {
         _id: '1',
@@ -38,15 +30,13 @@ describe('useAuth', () => {
         status: 'active'
       } as IUsers
     }
-    ;(mockApi.post as Mock).mockResolvedValue({ data: responsePayload })
+    ;(mockApi.post as Mock).mockResolvedValue({ data: response })
+    const store = useAuthStore()
 
-    const authService = new AuthHttpService(mockApi)
-    const { login } = useAuth(authService)
+    await store.login({ email: 'a@a.com', password: '123' })
 
-    await login({ email: 'a@a.com', password: '123' })
-
-    expect(store.user).toEqual(responsePayload.user)
-    expect(store.accessToken).toBe(responsePayload.accessToken)
+    expect(store.user).toEqual(response.user)
+    expect(store.accessToken).toBe(response.accessToken)
     expect(store.isLoading).toBe(false)
     expect(store.error).toBe('')
 
@@ -64,12 +54,9 @@ describe('useAuth', () => {
     }
     ;(mockApi.post as Mock).mockRejectedValue(error)
 
-    const authService = new AuthHttpService(mockApi)
-    const { login } = useAuth(authService)
-
-    await expect(login({ email: 'a@a.com', password: '123' })).rejects.toBe(
-      error
-    )
+    await expect(
+      store.login({ email: 'a@a.com', password: '123' })
+    ).rejects.toBe(error)
 
     expect(store.error).toBe('Invalid credentials')
     expect(store.isLoading).toBe(false)
@@ -88,10 +75,8 @@ describe('useAuth', () => {
     store.setUser(user)
     store.setToken('some-token')
     ;(mockApi.post as Mock).mockResolvedValue({ data: {} })
-    const authService = new AuthHttpService(mockApi)
-    const { logout } = useAuth(authService)
 
-    await logout()
+    await store.logout()
 
     expect(mockApi.post).toHaveBeenCalledWith('v1/auth/logout', {
       userId: '123'
@@ -105,10 +90,7 @@ describe('useAuth', () => {
     const response = { accessToken: 'new-token', refreshedToken: 'new-refresh' }
     ;(mockApi.post as Mock).mockResolvedValue({ data: response })
 
-    const authService = new AuthHttpService(mockApi)
-    const { refreshToken } = useAuth(authService)
-
-    await refreshToken()
+    await store.refreshToken()
 
     expect(mockApi.post).toHaveBeenCalledWith('v1/auth/refresh-token')
     expect(store.accessToken).toBe(response.accessToken)
@@ -116,10 +98,9 @@ describe('useAuth', () => {
 
   it('refreshToken: throws if API call fails', async () => {
     const error = new Error('No refresh token')
+    const store = useAuthStore()
     ;(mockApi.post as Mock).mockRejectedValue(error)
-    const authService = new AuthHttpService(mockApi)
-    const { refreshToken } = useAuth(authService)
 
-    await expect(refreshToken()).rejects.toThrow('No refresh token')
+    await expect(store.refreshToken()).rejects.toThrow('No refresh token')
   })
 })

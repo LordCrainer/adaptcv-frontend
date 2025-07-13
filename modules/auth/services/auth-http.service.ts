@@ -12,11 +12,11 @@ export class AuthHttpService implements IAuthService {
 
   async login(credentials: LoginRequest) {
     try {
-      const { data } = await this.api.post<LoginResponse>(
+      const result = await this.api.post<LoginResponse>(
         `${this.url}/login`,
         credentials
       )
-      return data
+      return result.data
     } catch (error) {
       console.error('Login error:', error)
       throw error

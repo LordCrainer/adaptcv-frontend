@@ -37,15 +37,12 @@ import type { Component } from 'vue'
 import HarvardTemplate from '~/components/templates/HarvardTemplate.vue'
 import OwnTemplate from '~/components/templates/OwnTemplate.vue'
 import BuilderForm from '../components/BuilderForm.vue'
-import { useBuilderStore } from '../store/builder.store'
 import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
-import { useBuilderWrapper } from '../composables/useBuilderWrapper'
+import { useBuilder } from '../composables/useBuilder'
 import { useBuilderPdfGenerator } from '~/composables/useBuilderPdfGenerator'
 
-const builderStore = useBuilderStore()
 const { hasChanges } = useObject()
-const { builderState } = storeToRefs(builderStore)
-const usebuilder = useBuilderWrapper()
+const { updateBuilder, builderState } = useBuilder()
 
 // PDF Generation Composable
 const {
@@ -126,7 +123,7 @@ defineExpose({
 
 onUnmounted(() => {
   if (hasChanges(builderState.value, builderStateTemp.value)) {
-    usebuilder.updateBuilder(builderId.value as string, builderState.value)
+    updateBuilder(builderId.value as string, builderState.value)
   }
 })
 </script>

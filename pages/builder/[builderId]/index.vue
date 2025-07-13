@@ -82,7 +82,7 @@
 
 <script lang="ts" setup>
 import { useBuilderStore } from '~/modules/builder/store/builder.store'
-import { useBuilderWrapper } from '~/modules/builder/composables/useBuilderWrapper'
+import { useBuilder } from '~/modules/builder/composables/useBuilder'
 import { useBuilderToolbar } from '~/modules/builder/composables/useBuilderToolbar'
 import {
   useBuilderPdfGenerator,
@@ -104,9 +104,7 @@ const BuilderForm = defineAsyncComponent(
 
 const route = useRoute()
 const { t } = useI18n()
-const builderStore = useBuilderStore()
-const { builderState } = storeToRefs(builderStore)
-const useBuilder = useBuilderWrapper()
+const { updateBuilder, builderState } = useBuilder()
 
 // PDF Composable
 const { downloadTemplatePDF, clearError } = useBuilderPdfGenerator()
@@ -145,7 +143,7 @@ onMounted(() => {
   // Save action
   registerActionHandler('save', async () => {
     try {
-      await useBuilder.updateBuilder(builderId.value, builderState.value)
+      await updateBuilder(builderId.value, builderState.value)
       console.log('Saved successfully')
     } catch (error) {
       console.error('Error saving:', error)

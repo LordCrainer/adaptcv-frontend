@@ -12,7 +12,7 @@
   </BuilderToolbar>
   <v-data-table
     :headers="headers"
-    :items="builderStore.builders"
+    :items="builders"
     :items-per-page="5"
     class="elevation-1"
     hide-default-footer
@@ -60,13 +60,10 @@
 <script lang="ts" setup>
 import BuilderToolbar from '~/modules/builder/components/BuilderToolbar.vue'
 import BuilderForm from '../components/BuilderForm.vue'
-import { useBuilderStore } from '~/modules/builder/store/builder.store'
 import { useFormatDate } from '~/composables/useFormatDate'
-import { useBuilderWrapper } from '../composables/useBuilderWrapper'
+import { useBuilder } from '../composables/useBuilder'
 
-const builderStore = useBuilderStore()
-
-const { createBuilder, loadBuilders, deleteBuilder } = useBuilderWrapper()
+const { createBuilder, loadBuilders, deleteBuilder, builders } = useBuilder()
 const { formatDate } = useFormatDate()
 
 const state = ref({

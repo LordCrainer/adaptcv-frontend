@@ -29,12 +29,12 @@ import Education from '~/modules/builder/components/education/index.vue'
 import BuilderForm from '../components/BuilderForm.vue'
 import { useBuilderStore } from '../store/builder.store'
 import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
-import { useBuilderWrapper } from '../composables/useBuilderWrapper'
+import { useBuilder } from '../composables/useBuilder'
 
 const builderStore = useBuilderStore()
 const { hasChanges } = useObject()
 const { builderState } = storeToRefs(builderStore)
-const useBuilder = useBuilderWrapper()
+const { getBuilderById, updateBuilder } = useBuilder()
 
 const route = useRoute()
 const builderId = ref(route.params.builderId)
@@ -52,14 +52,14 @@ function handleSubmit() {
 
 onMounted(async () => {
   if (route.params.builderId) {
-    await useBuilder.getBuilderById(route.params.builderId as string)
+    await getBuilderById(route.params.builderId as string)
     builderStateTemp.value = { ...builderState.value }
   }
 })
 
 onUnmounted(() => {
   if (hasChanges(builderState.value, builderStateTemp.value)) {
-    useBuilder.updateBuilder(builderId.value as string, builderState.value)
+    updateBuilder(builderId.value as string, builderState.value)
   }
 })
 </script>

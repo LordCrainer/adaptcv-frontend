@@ -4,7 +4,6 @@ import { useAuthStore } from '~/modules/auth/store/auth.store'
 import { createPinia, setActivePinia } from 'pinia'
 import type { IUsers } from '@lordcrainer/adaptcv-shared-types'
 
-// Reemplazar el mock de useApi para devolver siempre la misma instancia
 const mockApi = { post: vi.fn(), get: vi.fn() }
 vi.mock('~/composables/useApi', () => ({
   useApi: () => mockApi

@@ -1,6 +1,7 @@
+import { computed } from 'vue'
 import type { IFileImage } from '~/types/global'
-import { useBuilderStore } from '~/modules/builder/store/builder.store'
 import type { IUserProfile } from '@lordcrainer/adaptcv-shared-types'
+import { useBuilder } from '~/modules/builder/composables/useBuilder'
 
 const DEFAULT_USER_PROFILE: IUserProfile = {
   name: '',
@@ -8,45 +9,38 @@ const DEFAULT_USER_PROFILE: IUserProfile = {
   phone: 0,
   phoneCode: 0,
   address: '',
-  image: {
-    src: ''
-  }
+  image: { src: '' }
 }
 
-export const useUserProfile = () => {
-  const builderStore = useBuilderStore()
+export function useUserProfile() {
+  const { builderState, updateSection } = useBuilder()
+  const userProfile = computed(
+    () => builderState.value.userProfile || { ...DEFAULT_USER_PROFILE }
+  )
 
-  const userProfile = computed({
-    get: () =>
-      builderStore.builderState.userProfile || { ...DEFAULT_USER_PROFILE },
-    set: (value) => {
-      builderStore.updateSection('userProfile', value)
-    }
-  })
-
-  const setUserProfile = (data: IUserProfile) => {
-    userProfile.value = data
+  function setUserProfile(data: IUserProfile) {
+    updateSection('userProfile', data)
   }
 
-  const getUserProfile = () => {
+  function clearUserProfile() {
+    updateSection('userProfile', { ...DEFAULT_USER_PROFILE })
+  }
+
+  function getUserProfile() {
     return userProfile.value
   }
 
-  const clearUserProfile = () => {
-    userProfile.value = { ...DEFAULT_USER_PROFILE }
-  }
-
-  const setUserProfileImage = (image: IFileImage) => {
+  function setUserProfileImage(image: IFileImage) {
     if (image.src) {
-      userProfile.value.image = image
+      updateSection('userProfile', { ...userProfile.value, image })
     }
   }
 
   return {
-    setUserProfile,
-    getUserProfile,
-    clearUserProfile,
     userProfile,
+    setUserProfile,
+    clearUserProfile,
+    getUserProfile,
     setUserProfileImage,
     DEFAULT_USER_PROFILE
   }

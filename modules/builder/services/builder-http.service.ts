@@ -5,6 +5,7 @@ import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
 export class builderHttpService implements IBuilderService {
   API_BASE: string = '/v1/builders'
   constructor(private api: AxiosInstance) {}
+
   async getById(id: string) {
     const { data } = await this.api.get(`${this.API_BASE}/${id}`)
     if (!data) {

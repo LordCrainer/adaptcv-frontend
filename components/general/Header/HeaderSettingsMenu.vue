@@ -29,12 +29,11 @@
 </template>
 
 <script setup lang="ts">
-import { useAuthStore } from '~/modules/auth/store/auth.store'
+import { useAuth } from '~/modules/auth/composables/useAuth'
 import { useThemeAcv } from '~/shared/useThemeAcv'
 
 const { selectedTheme, toggleTheme } = useThemeAcv()
-
-const authStore = useAuthStore()
+const { logout, isLoading } = useAuth()
 const router = useRouter()
 
 const settingsOptions = [
@@ -52,15 +51,14 @@ const settingsOptions = [
     label: () => 'Log Out',
     action: async () => {
       try {
-        await authStore.logout()
-      } catch (error) {
-        console.error('Logout error:', error)
-        authStore.isLoading = false
+        await logout()
+      } catch (err) {
+        console.error('Logout error:', err)
       } finally {
         await router.push('/login')
       }
     },
-    loading: () => authStore.isLoading,
+    loading: () => isLoading.value,
     key: 'logout'
   }
 ]

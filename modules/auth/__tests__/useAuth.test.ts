@@ -1,74 +1,125 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
+import type { Mock } from 'vitest'
 import { useAuth } from '~/modules/auth/composables/useAuth'
 import { useAuthStore } from '~/modules/auth/store/auth.store'
 import { createPinia, setActivePinia } from 'pinia'
-import { mockAuthService } from './mocks/mockHttpService'
+import { AuthHttpService } from '../services/auth-http.service'
+import { useApi } from '~/composables/useApi'
+import type { IUsers } from '@lordcrainer/adaptcv-shared-types'
+
+vi.mock('~/composables/useApi', () => ({
+  useApi: vi.fn(() => ({
+    post: vi.fn(),
+    get: vi.fn()
+  }))
+}))
 
 describe('useAuth', () => {
-  let store: ReturnType<typeof useAuthStore>
+  let mockApi: ReturnType<typeof useApi>
 
   beforeEach(() => {
     setActivePinia(createPinia())
-    store = useAuthStore()
-
-    vi.spyOn(store, 'setToken')
-    vi.spyOn(store, 'setUser')
-    vi.spyOn(store, 'toggleLoading')
-    vi.spyOn(store, 'resetAuth')
-    vi.spyOn(store, 'getUser')
-    vi.spyOn(store, 'getToken')
+    mockApi = useApi()
   })
 
-  it('login: sets token and user on success', async () => {
-    const response = { accessToken: 'token', user: { id: 1 } }
-    mockAuthService.login.mockResolvedValue(response)
-
-    const { login } = useAuth(mockAuthService)
-    await login({ email: 'a@a.com', password: '123' })
-    expect(store.getUser()).toEqual(response.user)
-    expect(store.getToken()).toBe(response.accessToken)
-    expect(store.toggleLoading).toHaveBeenCalledWith(true)
-    expect(store.setToken).toHaveBeenCalledWith('token')
-    expect(store.setUser).toHaveBeenCalledWith({ id: 1 })
-    expect(store.toggleLoading).toHaveBeenCalledWith(false)
+  afterEach(() => {
+    vi.clearAllMocks()
+    localStorage.clear()
   })
 
-  it('login: sets error and throws on failure', async () => {
+  it('login: updates the store on success', async () => {
     const store = useAuthStore()
-    const error = { response: { data: { message: 'fail' } }, message: 'fail' }
-    mockAuthService.login.mockRejectedValue(error)
-    const { login } = useAuth(mockAuthService)
+    const responsePayload = {
+      accessToken: 'test-token',
+      user: {
+        _id: '1',
+        name: 'Test User',
+        email: 'test@test.com',
+        status: 'active'
+      } as IUsers
+    }
+    ;(mockApi.post as Mock).mockResolvedValue({ data: responsePayload })
+
+    const authService = new AuthHttpService(mockApi)
+    const { login } = useAuth(authService)
+
+    await login({ email: 'a@a.com', password: '123' })
+
+    expect(store.user).toEqual(responsePayload.user)
+    expect(store.accessToken).toBe(responsePayload.accessToken)
+    expect(store.isLoading).toBe(false)
+    expect(store.error).toBe('')
+
+    expect(mockApi.post).toHaveBeenCalledWith('v1/auth/login', {
+      email: 'a@a.com',
+      password: '123'
+    })
+  })
+
+  it('login: sets error in store and throws on failure', async () => {
+    const store = useAuthStore()
+    const error = {
+      response: { data: { message: 'Invalid credentials' } },
+      message: 'Request failed'
+    }
+    ;(mockApi.post as Mock).mockRejectedValue(error)
+
+    const authService = new AuthHttpService(mockApi)
+    const { login } = useAuth(authService)
+
     await expect(login({ email: 'a@a.com', password: '123' })).rejects.toBe(
       error
     )
-    expect(store.error).toBe('fail')
-    expect(store.toggleLoading).toHaveBeenCalledWith(false)
+
+    expect(store.error).toBe('Invalid credentials')
+    expect(store.isLoading).toBe(false)
+    expect(store.user).toBe(null)
+    expect(store.accessToken).toBe('')
   })
 
-  it('logout: calls service and resets auth', async () => {
+  it('logout: calls service and resets auth state in store', async () => {
     const store = useAuthStore()
-    store.setUser({ _id: '123', email: 'a@a.com', name: '', status: 'pending' }) // Mock user
-    mockAuthService.logout.mockResolvedValue()
-    const { logout } = useAuth(mockAuthService)
+    const user = {
+      _id: '123',
+      email: 'a@a.com',
+      name: '',
+      status: 'pending'
+    } as IUsers
+    store.setUser(user)
+    store.setToken('some-token')
+    ;(mockApi.post as Mock).mockResolvedValue({ data: {} })
+    const authService = new AuthHttpService(mockApi)
+    const { logout } = useAuth(authService)
+
     await logout()
-    expect(mockAuthService.logout).toHaveBeenCalled()
-    expect(store.resetAuth).toHaveBeenCalled()
+
+    expect(mockApi.post).toHaveBeenCalledWith('v1/auth/logout', {
+      userId: '123'
+    })
+    expect(store.user).toBe(null)
+    expect(store.accessToken).toBe('')
   })
 
-  it('refreshToken: sets new tokens', async () => {
+  it('refreshToken: sets new token in store', async () => {
     const store = useAuthStore()
     const response = { accessToken: 'new-token', refreshedToken: 'new-refresh' }
-    mockAuthService.refreshToken.mockResolvedValue(response)
-    const { refreshToken } = useAuth(mockAuthService)
+    ;(mockApi.post as Mock).mockResolvedValue({ data: response })
+
+    const authService = new AuthHttpService(mockApi)
+    const { refreshToken } = useAuth(authService)
+
     await refreshToken()
-    expect(store.setToken).toHaveBeenCalledWith(response.accessToken)
+
+    expect(mockApi.post).toHaveBeenCalledWith('v1/auth/refresh-token')
+    expect(store.accessToken).toBe(response.accessToken)
   })
 
-  it('refreshToken: throws if no refreshedToken', async () => {
-    mockAuthService.refreshToken.mockRejectedValue(
-      new Error('No refresh token')
-    )
-    const { refreshToken } = useAuth(mockAuthService)
+  it('refreshToken: throws if API call fails', async () => {
+    const error = new Error('No refresh token')
+    ;(mockApi.post as Mock).mockRejectedValue(error)
+    const authService = new AuthHttpService(mockApi)
+    const { refreshToken } = useAuth(authService)
+
     await expect(refreshToken()).rejects.toThrow('No refresh token')
   })
 })

@@ -1,5 +1,5 @@
 <template>
-  <CardDefault title="profile.title" style="min-width: 300px">
+  <CardDefault :title="$t('profile.title')" style="min-width: 300px">
     <v-form ref="form">
       <v-text-field
         density="comfortable"

@@ -1,6 +1,6 @@
 <template>
   <CardDefault
-    title="profile.experience.title"
+    :title="$t('profile.experience.title')"
     min-height="400px"
     class="d-flex flex-column">
     <template #right-items>
@@ -46,7 +46,10 @@
     v-model="state.openDialog"
     max-width="650px"
     transition="dialog-transition">
-    <CardDefault :title="state.isEditing ? 'profile.experience.edit' : 'profile.experience.add'">
+    <CardDefault
+      :title="
+        state.isEditing ? 'profile.experience.edit' : 'profile.experience.add'
+      ">
       <template #right-items>
         <v-btn
           color="primary"

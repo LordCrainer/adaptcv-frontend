@@ -1,5 +1,7 @@
 <template>
-  <CardDefault title="profile.personalInfo.title" style="min-width: 300px">
+  <CardDefault
+    :title="$t('profile.personalInfo.title')"
+    style="min-width: 300px">
     <div class="d-flex flex-column ga-4 justify-center align-center">
       <v-card
         flat

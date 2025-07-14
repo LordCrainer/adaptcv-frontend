@@ -37,6 +37,13 @@
           size="small"
           variant="text"
           icon
+          @click="duplicate(item?._id as string)">
+          <v-icon color="secondary">mdi-content-copy</v-icon>
+        </v-btn>
+        <v-btn
+          size="small"
+          variant="text"
+          icon
           color="error"
           @click="remove(item?._id as string)">
           <v-icon color="error">mdi-delete</v-icon>
@@ -63,7 +70,7 @@ import BuilderForm from '../components/BuilderForm.vue'
 import { useFormatDate } from '~/composables/useFormatDate'
 import { useBuilder } from '../composables/useBuilder'
 
-const { createBuilder, loadBuilders, deleteBuilder, builders } = useBuilder()
+const { createBuilder, loadBuilders, deleteBuilder, duplicateBuilder, builders } = useBuilder()
 const { formatDate } = useFormatDate()
 
 const state = ref({
@@ -101,6 +108,19 @@ function edit(builderId: string) {
 async function remove(builderId: string) {
   if (builderId) {
     await deleteBuilder(builderId)
+  }
+}
+
+async function duplicate(builderId: string) {
+  if (builderId) {
+    try {
+      const duplicatedBuilder = await duplicateBuilder(builderId)
+      if (duplicatedBuilder?._id) {
+        router.push(`/builder/${duplicatedBuilder._id}`)
+      }
+    } catch (error) {
+      console.error('Error duplicating builder:', error)
+    }
   }
 }
 

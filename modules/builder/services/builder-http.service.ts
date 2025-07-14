@@ -46,4 +46,14 @@ export class builderHttpService implements IBuilderService {
     }
     return { data }
   }
+
+  async duplicate(builderId: string) {
+    const { data } = await this.api.post(
+      `${this.API_BASE}/${builderId}/duplicate`
+    )
+    if (!data) {
+      throw new Error('Error duplicating builder')
+    }
+    return { data }
+  }
 }

@@ -66,4 +66,30 @@ describe('builder.store', () => {
 
     expect(store.builders).toEqual([{ _id: '2', name: 'B', status: 'draft' }])
   })
+
+  it('duplicateBuilder llama a la ruta de duplicar con solo el ID', async () => {
+    const store = useBuilderStore()
+
+    store.builders = []
+
+    const duplicatedBuilder: IBuilder = {
+      _id: '2',
+      name: 'Original Builder (Copy)',
+      status: 'published',
+      aboutMe: { summary: 'Test summary' },
+      createdAt: new Date('2024-01-03'),
+      updatedAt: new Date('2024-01-03')
+    } as IBuilder
+
+    mockApi.post.mockResolvedValue({ data: duplicatedBuilder })
+
+    const result = await store.duplicateBuilder('1')
+
+    expect(mockApi.post).toHaveBeenCalledWith('/v1/builders/1/duplicate')
+
+    expect(store.builders).toHaveLength(1)
+    expect(store.builders[0]).toEqual(duplicatedBuilder)
+
+    expect(result).toEqual(duplicatedBuilder)
+  })
 })

@@ -15,6 +15,7 @@ export function useBuilder() {
   const createBuilder = store.createBuilder
   const updateBuilder = store.updateBuilder
   const deleteBuilder = store.deleteBuilder
+  const duplicateBuilder = store.duplicateBuilder
   const updateSection = store.updateSection
 
   return {
@@ -28,6 +29,7 @@ export function useBuilder() {
     createBuilder,
     updateBuilder,
     deleteBuilder,
+    duplicateBuilder,
     updateSection
   }
 }

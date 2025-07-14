@@ -5,5 +5,6 @@ export interface IBuilderService {
   getAll(filters?: Record<string, any>): Promise<ServiceResponse<IBuilder[]>>
   update(id: string, builder: Partial<IBuilder>): Promise<void>
   create(builder: IBuilder): Promise<ServiceResponseData<IBuilder>>
+  duplicate(id: string): Promise<ServiceResponseData<IBuilder>>
   delete(id: string): Promise<void>
 }

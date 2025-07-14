@@ -121,6 +121,20 @@ export const useBuilderStore = defineStore('builders', () => {
     }
   }
 
+  async function duplicateBuilder(builderId: string) {
+    toogleLoadingDetail(true)
+    try {
+      const { data: created } = await getBuilderService().duplicate(builderId)
+      builders.value.push(created)
+      return created
+    } catch (error) {
+      console.error('Error duplicating builder:', error)
+      throw error
+    } finally {
+      toogleLoadingDetail(false)
+    }
+  }
+
   async function updateBuilderStatus(newStatus: IBuilder['status']) {
     if (!builderState.value._id) {
       throw new Error('Builder ID is required to update status')
@@ -146,6 +160,7 @@ export const useBuilderStore = defineStore('builders', () => {
     loadBuilders,
     getBuilderById,
     createBuilder,
-    updateBuilder
+    updateBuilder,
+    duplicateBuilder
   }
 })

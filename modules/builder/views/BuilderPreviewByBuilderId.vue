@@ -28,7 +28,7 @@
     v-model="openDialog"
     max-width="650px"
     transition="dialog-transition">
-    <BuilderForm :title="$t('profile.title')" @close="close"></BuilderForm>
+    <BuilderForm :title="'profile.title'" @close="close"></BuilderForm>
   </v-dialog>
 </template>
 

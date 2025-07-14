@@ -94,11 +94,11 @@ export const useBuilderStore = defineStore('builders', () => {
     }
   }
 
-  async function updateBuilder(id: string, data: IBuilder) {
+  async function updateBuilder(id: string, data: Partial<IBuilder>) {
     toogleLoadingDetail(true)
     try {
       await getBuilderService().update(id, data)
-      builderState.value = data
+      builderState.value = { ...builderState.value, ...data }
       return data
     } catch (error) {
       console.error('Error updating builder:', error)

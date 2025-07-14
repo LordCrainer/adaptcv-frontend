@@ -55,8 +55,14 @@
     {{ error }}
   </v-alert>
 
-  <div>
-    <v-lazy
+  <div class="d-flex flex-column pt-4 ga-4 justify-center align-center">
+    <v-card class="fill-width">
+      <v-card-title primary-title class="text-center">
+        <h1>{{ builderState.name }}</h1>
+      </v-card-title>
+    </v-card>
+    <v-lazy 
+      class="fill-width"
       v-if="currentTab === 'edit'"
       :options="{ threshold: 0.5 }"
       transition="fade-transition">
@@ -75,19 +81,20 @@
     max-width="650px"
     transition="dialog-transition">
     <BuilderForm
+      @submit="handleSubmit"
       :title="$t('profile.title')"
       @close="closeSettings"></BuilderForm>
   </v-dialog>
 </template>
 
 <script lang="ts" setup>
-import { useBuilderStore } from '~/modules/builder/store/builder.store'
 import { useBuilder } from '~/modules/builder/composables/useBuilder'
 import { useBuilderToolbar } from '~/modules/builder/composables/useBuilderToolbar'
 import {
   useBuilderPdfGenerator,
   usePdfState
 } from '~/composables/useBuilderPdfGenerator'
+import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
 
 const BuilderByBuilderId = defineAsyncComponent(
   () => import('~/modules/builder/views/BuilderByBuilderId.vue')
@@ -136,6 +143,16 @@ const visibleToolbarActions = computed(() => {
 // Methods
 function closeSettings() {
   openDialog.value = false
+}
+
+async function handleSubmit(builder: IBuilder) {
+  openDialog.value = false
+  try {
+    await updateBuilder(builderId.value, { ...builderState.value, ...builder })
+    console.log('Saved successfully')
+  } catch (error) {
+    console.error('Error saving:', error)
+  }
 }
 
 // Register toolbar action handlers

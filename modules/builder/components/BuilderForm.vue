@@ -1,5 +1,5 @@
 <template>
-  <CardDefault :title="$t('profile.title')" style="min-width: 300px">
+  <CardDefault :title="title" style="min-width: 300px">
     <v-form ref="form">
       <v-text-field
         density="comfortable"
@@ -49,6 +49,10 @@ import CardDefault from '~/components/card/CardDefault.vue'
 const emit = defineEmits(['close', 'submit'])
 const { hasChanges } = useObject()
 const { required } = useRules()
+
+defineProps<{
+  title: string
+}>()
 
 const { builderState } = useBuilder()
 

@@ -26,7 +26,7 @@ export class builderHttpService implements IBuilderService {
   }
 
   async update(id: string, builder: Partial<IBuilder>) {
-    const { data } = await this.api.put(`${this.API_BASE}/${id}`, builder)
+    const { data } = await this.api.patch(`${this.API_BASE}/${id}`, builder)
     if (!data) {
       throw new Error('Error updating builder')
     }

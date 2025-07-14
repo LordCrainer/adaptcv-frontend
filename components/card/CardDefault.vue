@@ -7,7 +7,7 @@
       <slot name="left-items"></slot>
       <slot name="title">
         <span class="text-h6 font-weight-black text-primary">
-          {{ $t(title) }}
+          {{ title }}
         </span>
       </slot>
       <v-spacer></v-spacer>

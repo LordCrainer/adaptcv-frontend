@@ -1,39 +1,35 @@
-import { useAuthStore } from '../store/auth.store'
-import type { IAuthService } from '../interfaces/auth.interface';
+import { computed } from 'vue'
+import { useAuthStore } from '~/modules/auth/store/auth.store'
 
-export const useAuth = (authHttpService: IAuthService) => {
+/**
+ * Composable para interactuar con la autenticación desde componentes.
+ * Expone el estado y las acciones del Auth Store de forma reactiva.
+ */
+export function useAuth() {
   const store = useAuthStore()
 
+  const user = computed(() => store.user)
+  const isLoading = computed(() => store.isLoading)
+  const error = computed(() => store.error)
+  const isAuthenticated = computed(() => store.isAuthenticated)
+
   async function login(credentials: { email: string; password: string }) {
-    store.toggleLoading(true)
-    try {
-      const response = await authHttpService.login(credentials)
-      store.setToken(response.accessToken)
-      store.setUser(response.user)
-    } catch (err: any) {
-      store.error = err.response?.data?.message || err.message
-      throw err
-    } finally {
-      store.toggleLoading(false)
-    }
+    return store.login(credentials)
   }
 
   async function logout() {
-    if (!store.user) {
-      store.resetAuth()
-      throw new Error('No user logged in')
-    }
-    await authHttpService.logout(store.user._id)
-    store.resetAuth()
+    return store.logout()
   }
 
   async function refreshToken() {
-    const response = await authHttpService.refreshToken()
-    store.setToken(response.accessToken)
-    return response
+    return store.refreshToken()
   }
 
   return {
+    user,
+    isLoading,
+    error,
+    isAuthenticated,
     login,
     logout,
     refreshToken

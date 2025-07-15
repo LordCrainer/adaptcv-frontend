@@ -7,13 +7,13 @@
       <slot name="left-items"></slot>
       <slot name="title">
         <span class="text-h6 font-weight-black text-primary">
-          {{ $t(title) }}
+          {{ title }}
         </span>
       </slot>
       <v-spacer></v-spacer>
       <slot name="right-items"></slot>
     </div>
-    <div class="pa-4 fill-height">
+    <div class="flex-container flex-card px-4 py-4 fill-height">
       <slot></slot>
     </div>
   </v-card>

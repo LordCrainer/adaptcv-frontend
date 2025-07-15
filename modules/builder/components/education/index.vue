@@ -1,6 +1,6 @@
 <template>
   <CardDefault
-    title="profile.education.title"
+    :title="$t('profile.education.title')"
     min-height="400px"
     class="d-flex flex-column">
     <template #right-items>

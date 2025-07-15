@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import type { IUsers } from '@lordcrainer/adaptcv-shared-types'
+import type { IUsers, LoginRequest } from '@lordcrainer/adaptcv-shared-types'
+import { AuthHttpService } from '../services/auth-http.service'
+import { useApi } from '~/composables/useApi'
 
 const accessTokenKey = 'access-token'
 
@@ -9,6 +11,15 @@ export const useAuthStore = defineStore('auth', () => {
   const user = ref<IUsers | null>(null)
   const isLoading = ref<boolean>(false)
   const error = ref<string>('')
+
+  let authServiceInstance: AuthHttpService | null = null
+
+  function getAuthService() {
+    if (!authServiceInstance) {
+      authServiceInstance = new AuthHttpService(useApi())
+    }
+    return authServiceInstance
+  }
 
   const isAuthenticated = computed(() => !!getToken())
 
@@ -43,6 +54,42 @@ export const useAuthStore = defineStore('auth', () => {
     isLoading.value = loading
   }
 
+  async function login(credentials: LoginRequest) {
+    toggleLoading(true)
+    error.value = ''
+    try {
+      const response = await getAuthService().login(credentials)
+      setToken(response.accessToken)
+      setUser(response.user)
+    } catch (err: any) {
+      error.value = err.response?.data?.message || err.message
+      throw err
+    } finally {
+      toggleLoading(false)
+    }
+  }
+
+  async function logout() {
+    const currentUser = getUser()
+    if (!currentUser) {
+      resetAuth()
+      throw new Error('No user logged in')
+    }
+    await getAuthService().logout(currentUser._id)
+    resetAuth()
+  }
+
+  async function refreshToken() {
+    try {
+      const response = await getAuthService().refreshToken()
+      setToken(response.accessToken)
+      return response
+    } catch (err) {
+      resetAuth()
+      throw err
+    }
+  }
+
   return {
     accessToken,
     user,
@@ -55,7 +102,10 @@ export const useAuthStore = defineStore('auth', () => {
     setToken,
     getToken,
     resetAuth,
-    getUser,
-    toggleLoading
+    getUser, // getUser ya existe
+    toggleLoading,
+    login,
+    logout,
+    refreshToken
   }
 })

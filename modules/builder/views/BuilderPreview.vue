@@ -1,51 +1,44 @@
 <template>
-  <v-card max-width="800" width="100%" class="mx-auto pa-4 text-caption">
-    <v-card-title>
-      <div class="text-h5 font-weight-bold text-center pb-0">
-        {{ $t('routes.preview') }}
-      </div>
-    </v-card-title>
-    <v-card-item>
-      <v-select
-        :items="selectItems"
-        v-model="selectedTemplate"
-        item-title="title"
-        item-value="value"
-        :disabled="isGenerating"></v-select>
+  <div>
+    <v-card max-width="800" width="100%" class="mx-auto pa-4 text-caption">
+      <v-card-title>
+        <div class="text-h5 font-weight-bold text-center pb-0">
+          {{ $t('builder.selectTemplate') }}
+        </div>
+      </v-card-title>
+      <v-card-item>
+        <v-select
+          :items="selectItems"
+          v-model="selectedTemplate"
+          variant="filled"
+          item-title="title"
+          item-value="value"
+          :disabled="isGenerating"></v-select>
 
-      <!-- Generating PDF Alert -->
-      <v-alert v-if="isGenerating" type="info" variant="tonal" class="mt-3">
-        <v-progress-linear indeterminate class="mb-2"></v-progress-linear>
-        {{ $t('generatePDF.generatingPdfForTemplate') }}: {{ currentTemplate }}
-      </v-alert>
-    </v-card-item>
-  </v-card>
-  <div id="cv-template-container" class="mt-4" style="min-width: 800px">
-    <component :is="templates[selectedTemplate].component"></component>
+        <!-- Generating PDF Alert -->
+        <v-alert v-if="isGenerating" type="info" variant="tonal" class="mt-3">
+          <v-progress-linear indeterminate class="mb-2"></v-progress-linear>
+          {{ $t('generatePDF.generatingPdfForTemplate') }}:
+          {{ currentTemplate }}
+        </v-alert>
+      </v-card-item>
+    </v-card>
+    <div id="cv-template-container" class="mt-4" style="min-width: 800px; overflow-x: auto;">
+      <component :is="templates[selectedTemplate].component"></component>
+    </div>
   </div>
-
-  <v-dialog
-    v-model="openDialog"
-    max-width="650px"
-    transition="dialog-transition">
-    <BuilderForm :title="$t('profile.title')" @close="close"></BuilderForm>
-  </v-dialog>
 </template>
 
 <script lang="ts" setup>
 import type { Component } from 'vue'
 import HarvardTemplate from '~/components/templates/HarvardTemplate.vue'
 import OwnTemplate from '~/components/templates/OwnTemplate.vue'
-import BuilderForm from '../components/BuilderForm.vue'
-import { useBuilderStore } from '../store/builder.store'
 import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
-import { useBuilderWrapper } from '../composables/useBuilderWrapper'
+import { useBuilder } from '../composables/useBuilder'
 import { useBuilderPdfGenerator } from '~/composables/useBuilderPdfGenerator'
 
-const builderStore = useBuilderStore()
 const { hasChanges } = useObject()
-const { builderState } = storeToRefs(builderStore)
-const usebuilder = useBuilderWrapper()
+const { updateBuilder, builderState } = useBuilder()
 
 // PDF Generation Composable
 const {
@@ -98,12 +91,6 @@ const selectItems = Object.entries(templates.value).map(
   })
 )
 
-const openDialog = ref(false)
-
-function close() {
-  openDialog.value = false
-}
-
 // Sync builder state with temporary state
 watchEffect(() => {
   setTemplateConfig({
@@ -126,7 +113,7 @@ defineExpose({
 
 onUnmounted(() => {
   if (hasChanges(builderState.value, builderStateTemp.value)) {
-    usebuilder.updateBuilder(builderId.value as string, builderState.value)
+    updateBuilder(builderId.value as string, builderState.value)
   }
 })
 </script>

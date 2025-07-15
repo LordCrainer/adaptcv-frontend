@@ -55,45 +55,74 @@
     {{ error }}
   </v-alert>
 
-  <div>
+  <div class="pt-4 ga-4 justify-center align-center">
     <v-lazy
       v-if="currentTab === 'edit'"
       :options="{ threshold: 0.5 }"
       transition="fade-transition">
-      <BuilderByBuilderId />
+      <BuilderDetails />
     </v-lazy>
     <v-lazy
       v-else-if="currentTab === 'preview'"
       :options="{ threshold: 0.5 }"
       transition="fade-transition">
-      <BuilderPreviewByBuilderId />
+      <BuilderPreview />
     </v-lazy>
   </div>
+
+  <!-- <v-sheet
+    :class="
+      $vuetify.display.xs || $vuetify.display.sm
+        ? 'd-block'
+        : 'd-flex pa-4 ga-4 justify-center align-center'
+    ">
+    <v-window v-model="currentTab" class="rounded-lg">
+      <v-window-item value="edit">
+        <v-lazy
+          :options="{ threshold: 0.5 }"
+          transition="fade-transition"
+          class="ma-4">
+          <BuilderDetails />
+        </v-lazy>
+      </v-window-item>
+      <v-window-item value="preview">
+        <v-lazy
+          :options="{ threshold: 0.5 }"
+          transition="fade-transition"
+          class="ma-4">
+          <BuilderPreview />
+        </v-lazy>
+      </v-window-item>
+    </v-window>
+  </v-sheet> -->
 
   <v-dialog
     v-model="openDialog"
     max-width="650px"
     transition="dialog-transition">
     <BuilderForm
+      @submit="handleSubmit"
       :title="$t('profile.title')"
       @close="closeSettings"></BuilderForm>
   </v-dialog>
 </template>
 
 <script lang="ts" setup>
-import { useBuilderStore } from '~/modules/builder/store/builder.store'
-import { useBuilderWrapper } from '~/modules/builder/composables/useBuilderWrapper'
+import { useBuilder } from '~/modules/builder/composables/useBuilder'
 import { useBuilderToolbar } from '~/modules/builder/composables/useBuilderToolbar'
 import {
   useBuilderPdfGenerator,
   usePdfState
 } from '~/composables/useBuilderPdfGenerator'
+import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
+import { watch } from 'vue'
+import { useRouter } from 'vue-router'
 
-const BuilderByBuilderId = defineAsyncComponent(
-  () => import('~/modules/builder/views/BuilderByBuilderId.vue')
+const BuilderDetails = defineAsyncComponent(
+  () => import('~/modules/builder/views/BuilderDetails.vue')
 )
-const BuilderPreviewByBuilderId = defineAsyncComponent(
-  () => import('~/modules/builder/views/BuilderPreviewByBuilderId.vue')
+const BuilderPreview = defineAsyncComponent(
+  () => import('~/modules/builder/views/BuilderPreview.vue')
 )
 const BuilderToolbar = defineAsyncComponent(
   () => import('~/modules/builder/components/BuilderToolbar.vue')
@@ -103,10 +132,9 @@ const BuilderForm = defineAsyncComponent(
 )
 
 const route = useRoute()
+const router = useRouter()
 const { t } = useI18n()
-const builderStore = useBuilderStore()
-const { builderState } = storeToRefs(builderStore)
-const useBuilder = useBuilderWrapper()
+const { updateBuilder, builderState } = useBuilder()
 
 // PDF Composable
 const { downloadTemplatePDF, clearError } = useBuilderPdfGenerator()
@@ -135,9 +163,36 @@ const visibleToolbarActions = computed(() => {
   )
 })
 
+watch(
+  () => route.query.tab,
+  (tab) => {
+    if (tab === 'edit' || tab === 'preview') {
+      if (tab !== currentTab.value) {
+        currentTab.value = tab
+      }
+    }
+  },
+  { immediate: true }
+)
+watch(currentTab, (tab) => {
+  if (route.query.tab !== tab) {
+    router.replace({ query: { ...route.query, tab } })
+  }
+})
+
 // Methods
 function closeSettings() {
   openDialog.value = false
+}
+
+async function handleSubmit(builder: IBuilder) {
+  openDialog.value = false
+  try {
+    await updateBuilder(builderId.value, { ...builderState.value, ...builder })
+    console.log('Saved successfully')
+  } catch (error) {
+    console.error('Error saving:', error)
+  }
 }
 
 // Register toolbar action handlers
@@ -145,7 +200,7 @@ onMounted(() => {
   // Save action
   registerActionHandler('save', async () => {
     try {
-      await useBuilder.updateBuilder(builderId.value, builderState.value)
+      await updateBuilder(builderId.value, builderState.value)
       console.log('Saved successfully')
     } catch (error) {
       console.error('Error saving:', error)

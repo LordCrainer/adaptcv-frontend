@@ -30,8 +30,8 @@
 </template>
 
 <script lang="ts" setup>
-import type { IAboutMe } from '@lordcrainer/adaptcv-shared-types';
-import { ref } from 'vue'
+import type { IAboutMe } from '@lordcrainer/adaptcv-shared-types'
+import { ref, watch } from 'vue'
 import { useObject } from '~/utils/useObject'
 
 const { hasChanges } = useObject()

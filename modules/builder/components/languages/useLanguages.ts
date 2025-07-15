@@ -1,5 +1,5 @@
-import { useBuilderStore } from '~/modules/builder/store/builder.store'
-import { ref } from 'vue'
+import { useBuilder } from '~/modules/builder/composables/useBuilder'
+import { computed } from 'vue'
 import type { ILanguageItem } from '@lordcrainer/adaptcv-shared-types'
 
 const MAX_LANGUAGES = 5
@@ -25,22 +25,22 @@ const LANGUAGES_LIST = [
 const PROFICIENCY_LEVELS = ['beginner', 'intermediate', 'advanced', 'native']
 
 export const useLanguages = () => {
-  const builderStore = useBuilderStore()
-  const languages = computed(() => builderStore.builderState.languages || [])
+  const { builderState, updateSection } = useBuilder()
+  const languages = computed(() => builderState.value.languages || [])
 
   const addLanguage = (lang: ILanguageItem) => {
     if (languages.value.length >= MAX_LANGUAGES) {
       return
     }
     const updated = [...languages.value, lang]
-    builderStore.updateSection('languages', updated)
+    updateSection('languages', updated)
   }
 
   const updateLanguage = (index: number, lang: ILanguageItem) => {
     const updated = languages.value.map((item, i) =>
       i === index ? lang : item
     )
-    builderStore.updateSection('languages', updated)
+    updateSection('languages', updated)
   }
 
   const findIndexByLanguage = (language: string) => {
@@ -61,8 +61,8 @@ export const useLanguages = () => {
   }
 
   const removeLanguage = (index: number) => {
-    languages.value.splice(index, 1)
-    builderStore.updateSection('languages', languages.value)
+    const updated = languages.value.filter((_, i) => i !== index)
+    updateSection('languages', updated)
   }
 
   return {

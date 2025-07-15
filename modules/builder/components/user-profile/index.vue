@@ -1,37 +1,35 @@
 <template>
-  <CardDefault title="profile.personalInfo.title" style="min-width: 300px">
-    <div class="d-flex flex-column ga-4 justify-center align-center">
+  <div class="d-flex flex-column ga-4 justify-center align-center">
+    <div class="d-flex flex-column ga-4 fill-width">
+      <span class="text-body-1 font-weight-bold">
+        {{ $t('profile.personalInfo.contactInfo') }}
+      </span>
+      <v-divider></v-divider>
       <v-card
         flat
         border
         class="d-flex justify-center pa-4 rounded-md fill-width">
         <PreviewPhoto />
       </v-card>
-      <div class="d-flex flex-column ga-4 fill-width">
-        <span class="text-body-1 font-weight-bold">
-          Information de Contacto
-        </span>
-        <v-divider></v-divider>
-        <UserInformation />
-      </div>
-
-      <div class="d-flex flex-column ga-4 fill-width">
-        <span class="text-body-1 font-weight-bold">
-          {{ $t('profile.skills.title') }}
-        </span>
-        <v-divider></v-divider>
-        <Skills />
-      </div>
-
-      <div class="d-flex flex-column ga-4 fill-width">
-        <span class="text-body-1 font-weight-bold">
-          {{ $t('profile.languages.title') }}
-        </span>
-        <v-divider></v-divider>
-        <Languages />
-      </div>
+      <UserInformation />
     </div>
-  </CardDefault>
+
+    <div class="d-flex flex-column ga-4 fill-width">
+      <span class="text-body-1 font-weight-bold">
+        {{ $t('profile.skills.title') }}
+      </span>
+      <v-divider></v-divider>
+      <Skills />
+    </div>
+
+    <div class="d-flex flex-column ga-4 fill-width">
+      <span class="text-body-1 font-weight-bold">
+        {{ $t('profile.languages.title') }}
+      </span>
+      <v-divider></v-divider>
+      <Languages />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">

@@ -4,9 +4,14 @@ import type {
   LoginRequest
 } from '@lordcrainer/adaptcv-shared-types'
 
+export interface RefreshTokenResponse {
+  accessToken: string
+  refreshedToken: string
+}
+
 export interface IAuthService {
   login(credentials: LoginRequest): Promise<LoginResponse>
   logout(userId: string): Promise<void>
-  refreshToken(): Promise<{ accessToken: string; refreshedToken: string }>
+  refreshToken(): Promise<RefreshTokenResponse>
   getCurrentUser(): Promise<IUsers>
 }

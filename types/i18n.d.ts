@@ -1,5 +1,6 @@
 interface PersonalInformation {
   title: string
+  contactInfo: string
   fullname: string
   areaProfession: string
   areaProfessionPlaceholder: string
@@ -147,6 +148,7 @@ interface TranslationKeys {
     description: string
     status: string
     template: string
+    selectTemplate: string
   }
   profile: {
     name: string

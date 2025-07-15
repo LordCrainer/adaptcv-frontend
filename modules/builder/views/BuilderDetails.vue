@@ -57,15 +57,19 @@ function onNameBlur() {
 }
 
 onMounted(async () => {
-  if (route.params.builderId) {
-    await getBuilderById(route.params.builderId as string)
+  const builderId = route.params.builderId
+  if (builderId && typeof builderId === 'string') {
+    await getBuilderById(builderId)
     builderStateTemp.value = { ...builderState.value }
   }
 })
 
 onUnmounted(() => {
   if (hasChanges(builderState.value, builderStateTemp.value)) {
-    updateBuilder(builderId.value as string, builderState.value)
+    const id = builderId.value
+    if (id && typeof id === 'string') {
+      updateBuilder(id, builderState.value)
+    }
   }
 })
 </script>

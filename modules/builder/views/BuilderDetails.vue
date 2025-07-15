@@ -3,7 +3,7 @@
     <v-col cols="12" lg="4">
       <UserProfile />
     </v-col>
-    <v-col cols="12" lg="8" class="d-flex flex-column ga-4">
+    <v-col class="d-flex flex-column ga-4">
       <AboutMe />
       <WorkExperience />
       <Education />

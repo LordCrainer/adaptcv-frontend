@@ -30,6 +30,13 @@
           size="small"
           variant="text"
           icon
+          @click="preview(item?._id as string)">
+          <v-icon color="primary">mdi-eye</v-icon>
+        </v-btn>
+        <v-btn
+          size="small"
+          variant="text"
+          icon
           @click="edit(item?._id as string)">
           <v-icon color="primary">mdi-pencil</v-icon>
         </v-btn>
@@ -70,7 +77,13 @@ import BuilderForm from '../components/BuilderForm.vue'
 import { useFormatDate } from '~/composables/useFormatDate'
 import { useBuilder } from '../composables/useBuilder'
 
-const { createBuilder, loadBuilders, deleteBuilder, duplicateBuilder, builders } = useBuilder()
+const {
+  createBuilder,
+  loadBuilders,
+  deleteBuilder,
+  duplicateBuilder,
+  builders
+} = useBuilder()
 const { formatDate } = useFormatDate()
 
 const state = ref({
@@ -99,9 +112,15 @@ const headers = [
   } as const
 ]
 
+function preview(builderId: string) {
+  if (builderId) {
+    router.push(`/builder/${builderId}?tab=preview`)
+  }
+}
+
 function edit(builderId: string) {
   if (builderId) {
-    router.push(`/builder/${builderId}`)
+    router.push(`/builder/${builderId}?tab=edit`)
   }
 }
 

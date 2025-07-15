@@ -56,13 +56,7 @@
   </v-alert>
 
   <div class="d-flex flex-column pt-4 ga-4 justify-center align-center">
-    <v-card class="fill-width">
-      <v-card-title primary-title class="text-center">
-        <h1>{{ builderState.name }}</h1>
-      </v-card-title>
-    </v-card>
-    <v-lazy 
-      class="fill-width"
+    <v-lazy
       v-if="currentTab === 'edit'"
       :options="{ threshold: 0.5 }"
       transition="fade-transition">
@@ -95,6 +89,8 @@ import {
   usePdfState
 } from '~/composables/useBuilderPdfGenerator'
 import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
+import { watch } from 'vue'
+import { useRouter } from 'vue-router'
 
 const BuilderDetails = defineAsyncComponent(
   () => import('~/modules/builder/views/BuilderDetails.vue')
@@ -110,6 +106,7 @@ const BuilderForm = defineAsyncComponent(
 )
 
 const route = useRoute()
+const router = useRouter()
 const { t } = useI18n()
 const { updateBuilder, builderState } = useBuilder()
 
@@ -138,6 +135,23 @@ const visibleToolbarActions = computed(() => {
   return getToolbarActions().filter((action) =>
     visibleByTab[currentTab.value]?.(action)
   )
+})
+
+watch(
+  () => route.query.tab,
+  (tab) => {
+    if (tab === 'edit' || tab === 'preview') {
+      if (tab !== currentTab.value) {
+        currentTab.value = tab
+      }
+    }
+  },
+  { immediate: true }
+)
+watch(currentTab, (tab) => {
+  if (route.query.tab !== tab) {
+    router.replace({ query: { ...route.query, tab } })
+  }
 })
 
 // Methods

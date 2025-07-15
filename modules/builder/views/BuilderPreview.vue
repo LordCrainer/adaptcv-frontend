@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column">
+  <div>
     <v-card max-width="800" width="100%" class="mx-auto pa-4 text-caption">
       <v-card-title>
         <div class="text-h5 font-weight-bold text-center pb-0">
@@ -22,7 +22,7 @@
         </v-alert>
       </v-card-item>
     </v-card>
-    <div id="cv-template-container" class="mt-4" style="min-width: 800px">
+    <div id="cv-template-container" class="mt-4" style="min-width: 800px; overflow-x: auto;">
       <component :is="templates[selectedTemplate].component"></component>
     </div>
   </div>

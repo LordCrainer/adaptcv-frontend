@@ -55,7 +55,7 @@
     {{ error }}
   </v-alert>
 
-  <div class="d-flex flex-column pt-4 ga-4 justify-center align-center">
+  <div class="pt-4 ga-4 justify-center align-center">
     <v-lazy
       v-if="currentTab === 'edit'"
       :options="{ threshold: 0.5 }"
@@ -69,6 +69,32 @@
       <BuilderPreview />
     </v-lazy>
   </div>
+
+  <!-- <v-sheet
+    :class="
+      $vuetify.display.xs || $vuetify.display.sm
+        ? 'd-block'
+        : 'd-flex pa-4 ga-4 justify-center align-center'
+    ">
+    <v-window v-model="currentTab" class="rounded-lg">
+      <v-window-item value="edit">
+        <v-lazy
+          :options="{ threshold: 0.5 }"
+          transition="fade-transition"
+          class="ma-4">
+          <BuilderDetails />
+        </v-lazy>
+      </v-window-item>
+      <v-window-item value="preview">
+        <v-lazy
+          :options="{ threshold: 0.5 }"
+          transition="fade-transition"
+          class="ma-4">
+          <BuilderPreview />
+        </v-lazy>
+      </v-window-item>
+    </v-window>
+  </v-sheet> -->
 
   <v-dialog
     v-model="openDialog"

@@ -5,7 +5,8 @@ const profile: TranslationKeys['profile'] = {
   title: 'Configuración del currículum',
   namePlaceholder: 'Título del currículum',
   personalInfo: {
-    title: 'Información personal',
+    contactInfo: 'Información de contacto',
+    title: 'Información',
     fullname: 'Nombre completo',
     areaProfession: 'Área de profesión',
     areaProfessionPlaceholder: 'Selecciona un área de profesión',

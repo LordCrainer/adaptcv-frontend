@@ -5,7 +5,8 @@ const profile: TranslationKeys['profile'] = {
   title: 'CV Settings',
   namePlaceholder: 'CV Title',
   personalInfo: {
-    title: 'Personal Information',
+    contactInfo: 'Contact Information',
+    title: 'Information',
     fullname: 'Full Name',
     areaProfession: 'Area of Profession',
     areaProfessionPlaceholder: 'Select an area of profession',

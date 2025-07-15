@@ -1,5 +1,6 @@
 interface PersonalInformation {
   title: string
+  contactInfo: string
   fullname: string
   areaProfession: string
   areaProfessionPlaceholder: string

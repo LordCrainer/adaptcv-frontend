@@ -23,20 +23,12 @@
   <div id="cv-template-container" class="mt-4" style="min-width: 800px">
     <component :is="templates[selectedTemplate].component"></component>
   </div>
-
-  <v-dialog
-    v-model="openDialog"
-    max-width="650px"
-    transition="dialog-transition">
-    <BuilderForm :title="'profile.title'" @close="close"></BuilderForm>
-  </v-dialog>
 </template>
 
 <script lang="ts" setup>
 import type { Component } from 'vue'
 import HarvardTemplate from '~/components/templates/HarvardTemplate.vue'
 import OwnTemplate from '~/components/templates/OwnTemplate.vue'
-import BuilderForm from '../components/BuilderForm.vue'
 import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
 import { useBuilder } from '../composables/useBuilder'
 import { useBuilderPdfGenerator } from '~/composables/useBuilderPdfGenerator'
@@ -94,12 +86,6 @@ const selectItems = Object.entries(templates.value).map(
     title: attributes.title
   })
 )
-
-const openDialog = ref(false)
-
-function close() {
-  openDialog.value = false
-}
 
 // Sync builder state with temporary state
 watchEffect(() => {

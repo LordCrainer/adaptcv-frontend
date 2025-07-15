@@ -66,13 +66,13 @@
       v-if="currentTab === 'edit'"
       :options="{ threshold: 0.5 }"
       transition="fade-transition">
-      <BuilderByBuilderId />
+      <BuilderDetails />
     </v-lazy>
     <v-lazy
       v-else-if="currentTab === 'preview'"
       :options="{ threshold: 0.5 }"
       transition="fade-transition">
-      <BuilderPreviewByBuilderId />
+      <BuilderPreview />
     </v-lazy>
   </div>
 
@@ -96,11 +96,11 @@ import {
 } from '~/composables/useBuilderPdfGenerator'
 import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
 
-const BuilderByBuilderId = defineAsyncComponent(
-  () => import('~/modules/builder/views/BuilderByBuilderId.vue')
+const BuilderDetails = defineAsyncComponent(
+  () => import('~/modules/builder/views/BuilderDetails.vue')
 )
-const BuilderPreviewByBuilderId = defineAsyncComponent(
-  () => import('~/modules/builder/views/BuilderPreviewByBuilderId.vue')
+const BuilderPreview = defineAsyncComponent(
+  () => import('~/modules/builder/views/BuilderPreview.vue')
 )
 const BuilderToolbar = defineAsyncComponent(
   () => import('~/modules/builder/components/BuilderToolbar.vue')

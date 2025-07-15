@@ -3,13 +3,14 @@
     <v-card max-width="800" width="100%" class="mx-auto pa-4 text-caption">
       <v-card-title>
         <div class="text-h5 font-weight-bold text-center pb-0">
-          {{ $t('routes.preview') }}
+          {{ $t('builder.selectTemplate') }}
         </div>
       </v-card-title>
       <v-card-item>
         <v-select
           :items="selectItems"
           v-model="selectedTemplate"
+          variant="filled"
           item-title="title"
           item-value="value"
           :disabled="isGenerating"></v-select>

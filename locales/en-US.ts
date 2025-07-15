@@ -82,7 +82,8 @@ const builder: TranslationKeys['builder'] = {
   description: 'Description',
   template: 'Template',
   id: 'ID',
-  sections: 'Sections'
+  sections: 'Sections',
+  selectTemplate: 'Select Template',
 }
 
 const baseEntity: TranslationKeys['baseEntity'] = {

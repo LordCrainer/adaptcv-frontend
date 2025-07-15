@@ -148,6 +148,7 @@ interface TranslationKeys {
     description: string
     status: string
     template: string
+    selectTemplate: string
   }
   profile: {
     name: string

@@ -79,11 +79,6 @@
       :title="$t('profile.title')"
       @close="closeSettings"></BuilderForm>
   </v-dialog>
-
-  <TranslationDialog
-    v-model="showTranslationDialog"
-    :originalText="JSON.stringify(builderState)"
-    @save="handleTranslationSave" />
 </template>
 
 <script lang="ts" setup>
@@ -97,7 +92,6 @@ import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
 import { watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useTranslationApi } from '~/composables/useTranslationApi'
-import TranslationDialog from '~/components/general/TranslationDialog.vue'
 
 const BuilderDetails = defineAsyncComponent(
   () => import('~/modules/builder/views/BuilderDetails.vue')
@@ -188,10 +182,6 @@ onMounted(() => {
     } catch (error) {
       console.error('Error saving:', error)
     }
-  })
-  // Translate action
-  registerActionHandler('translate', async () => {
-    showTranslationDialog.value = true
   })
 
   // Export PDF action

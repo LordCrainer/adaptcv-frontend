@@ -40,13 +40,7 @@ export const useBuilderToolbar = () => {
       icon: 'mdi-file-pdf-box',
       value: 'actions.exportPdf',
       tooltip: 'Download PDF',
-      action: () => executeAction('downloadPdf'),
-    },
-    {
-      icon: 'mdi-translate',
-      value: 'actions.translate',
-      tooltip: 'Translate',
-      action: () => executeAction('translate')
+      action: () => executeAction('downloadPdf')
     },
     {
       icon: 'mdi-content-save',
@@ -70,9 +64,7 @@ export const useBuilderToolbar = () => {
 
   // Computed property to filter visible actions
   const visibleActions = computed(() => {
-    return getToolbarActions().filter(
-      (action) => action.visible !== false
-    )
+    return getToolbarActions().filter((action) => action.visible !== false)
   })
 
   function setBuilderTab(tab: TabType | string) {

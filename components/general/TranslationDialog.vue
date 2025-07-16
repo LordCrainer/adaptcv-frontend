@@ -41,7 +41,11 @@
               class="ml-4"
               @click="handleTranslate"
               :loading="isLoading"
-              :disabled="!internalOriginalText?.trim() || from === to || internalOriginalText.length > 500"></v-btn>
+              :disabled="
+                !internalOriginalText?.trim() ||
+                from === to ||
+                internalOriginalText.length > 500
+              "></v-btn>
           </v-col>
         </v-row>
         <v-row>
@@ -184,8 +188,13 @@ function handleSaveTranslation() {
 }
 
 const handleTranslate = async () => {
+  const texts =
+    typeof internalOriginalText.value === 'object'
+      ? JSON.stringify(internalOriginalText.value)
+      : internalOriginalText.value
+
   await translate({
-    text: internalOriginalText.value,
+    texts,
     from: from.value,
     to: to.value
   })

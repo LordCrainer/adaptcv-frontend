@@ -122,7 +122,8 @@ const actions: TranslationKeys['actions'] = {
   download: 'Descargar',
   exportPdf: 'Exportar PDF',
   downloadPdf: 'Descargar PDF',
-  exportCSV: 'Exportar CSV'
+  exportCSV: 'Exportar CSV',
+  translate: 'Traducir'
 }
 
 const generatePDF: TranslationKeys['generatePDF'] = {

@@ -102,6 +102,7 @@ interface Actions {
   exportPdf: string
   downloadPdf: string
   exportCSV: string
+  translate: string
 }
 
 interface GeneratePDF {

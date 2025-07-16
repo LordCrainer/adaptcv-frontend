@@ -70,32 +70,6 @@
     </v-lazy>
   </div>
 
-  <!-- <v-sheet
-    :class="
-      $vuetify.display.xs || $vuetify.display.sm
-        ? 'd-block'
-        : 'd-flex pa-4 ga-4 justify-center align-center'
-    ">
-    <v-window v-model="currentTab" class="rounded-lg">
-      <v-window-item value="edit">
-        <v-lazy
-          :options="{ threshold: 0.5 }"
-          transition="fade-transition"
-          class="ma-4">
-          <BuilderDetails />
-        </v-lazy>
-      </v-window-item>
-      <v-window-item value="preview">
-        <v-lazy
-          :options="{ threshold: 0.5 }"
-          transition="fade-transition"
-          class="ma-4">
-          <BuilderPreview />
-        </v-lazy>
-      </v-window-item>
-    </v-window>
-  </v-sheet> -->
-
   <v-dialog
     v-model="openDialog"
     max-width="650px"
@@ -105,6 +79,11 @@
       :title="$t('profile.title')"
       @close="closeSettings"></BuilderForm>
   </v-dialog>
+
+  <TranslationDialog
+    v-model="showTranslationDialog"
+    :originalText="JSON.stringify(builderState)"
+    @save="handleTranslationSave" />
 </template>
 
 <script lang="ts" setup>
@@ -117,6 +96,8 @@ import {
 import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
 import { watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { useTranslationApi } from '~/composables/useTranslationApi'
+import TranslationDialog from '~/components/general/TranslationDialog.vue'
 
 const BuilderDetails = defineAsyncComponent(
   () => import('~/modules/builder/views/BuilderDetails.vue')
@@ -131,6 +112,7 @@ const BuilderForm = defineAsyncComponent(
   () => import('~/modules/builder/components/BuilderForm.vue')
 )
 
+const { translate } = useTranslationApi()
 const route = useRoute()
 const router = useRouter()
 const { t } = useI18n()
@@ -146,6 +128,7 @@ const { registerActionHandler, getToolbarActions, currentTab } =
 
 // State
 const openDialog = ref(false)
+const showTranslationDialog = ref(false)
 const builderId = computed(() => route.params.builderId as string)
 
 // Computed properties
@@ -206,6 +189,10 @@ onMounted(() => {
       console.error('Error saving:', error)
     }
   })
+  // Translate action
+  registerActionHandler('translate', async () => {
+    showTranslationDialog.value = true
+  })
 
   // Export PDF action
   registerActionHandler('downloadPdf', async () => {
@@ -227,6 +214,13 @@ onMounted(() => {
     openDialog.value = true
   })
 })
+
+function handleTranslationSave(translatedText: string) {
+  updateBuilder(builderId.value, {
+    ...builderState.value,
+    ...JSON.parse(translatedText)
+  })
+}
 
 definePageMeta({
   name: 'builder-builderId',

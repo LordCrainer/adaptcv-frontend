@@ -43,6 +43,12 @@ export const useBuilderToolbar = () => {
       action: () => executeAction('downloadPdf'),
     },
     {
+      icon: 'mdi-translate',
+      value: 'actions.translate',
+      tooltip: 'Translate',
+      action: () => executeAction('translate')
+    },
+    {
       icon: 'mdi-content-save',
       value: 'actions.save',
       tooltip: 'Save',

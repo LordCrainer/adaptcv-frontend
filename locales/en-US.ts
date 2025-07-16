@@ -137,6 +137,7 @@ export default defineI18nLocale(async () => {
       exportPdf: 'Download PDF',
       downloadPdf: 'Download PDF',
       exportCSV: 'Download CSV',
+      translate: 'Translate',
     },
     common: {
       home: 'Home',

@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 
 export interface TranslationParams {
-  text: string
+  texts?: string | string[]
   from: string
   to: string
 }
@@ -21,9 +21,9 @@ export const useTranslationApi = () => {
     error.value = null
     translatedText.value = ''
 
-    const { text, from, to } = params
+    const { texts, from, to } = params
 
-    if (!text.trim() || !from || !to) {
+    if (!texts || !from || !to) {
       error.value = 'Missing required translation parameters.'
       isLoading.value = false
       return null

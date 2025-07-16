@@ -6,6 +6,11 @@ export interface TranslationParams {
   to: string
 }
 
+interface TranslationResponse {
+  translatedText: string
+  isJson?: boolean
+}
+
 const API_BASE = '/v1/translation'
 
 export const useTranslationApi = () => {
@@ -30,16 +35,18 @@ export const useTranslationApi = () => {
     }
 
     try {
-      const { data } = await api.post(`${API_BASE}/`, params)
+      const { data } = (await api.post(`${API_BASE}/`, params)) as {
+        data: TranslationResponse
+      }
 
       if (!data) {
         throw new Error('Translation failed')
       }
 
-      if (!data.translatedText || typeof data.translatedText !== 'string') {
+      if (!data.translatedText) {
         throw new Error('Invalid translation response format')
       }
-
+      console.log('Translation response:', data.translatedText, JSON.parse(data.translatedText))
       translatedText.value = data.translatedText
       return data.translatedText
     } catch (err: unknown) {

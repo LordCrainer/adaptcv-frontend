@@ -41,11 +41,7 @@
               class="ml-4"
               @click="handleTranslate"
               :loading="isLoading"
-              :disabled="
-                !internalOriginalText?.trim() ||
-                from === to ||
-                internalOriginalText.length > 500
-              "></v-btn>
+              :disabled="!internalOriginalText || from === to"></v-btn>
           </v-col>
         </v-row>
         <v-row>

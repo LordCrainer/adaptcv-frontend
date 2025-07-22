@@ -2,17 +2,8 @@
   <CardDefault
     :title="$t('profile.experience.title')"
     min-height="400px"
+    :toolbar-actions="toolbarActions"
     class="d-flex flex-column">
-    <template #right-items>
-      <v-btn
-        color="secondary"
-        variant="outlined"
-        prepend-icon="mdi-plus"
-        aria-label="Add Work Experience"
-        @click="add">
-        {{ $t('actions.add') }}
-      </v-btn>
-    </template>
     <v-card flat border class="rounded-md fill-height">
       <v-data-table
         :headers="headers"
@@ -47,20 +38,12 @@
     max-width="650px"
     transition="dialog-transition">
     <CardDefault
+      :toolbar-actions="toolbarActions"
       :title="
         $t(state.isEditing ? 'actions.edit' : 'actions.add') +
         ' ' +
         $t('profile.experience.title')
       ">
-      <template #right-items>
-        <v-btn
-          color="primary"
-          variant="text"
-          size="small"
-          icon="mdi-close"
-          aria-label="Close Work Experience Form"
-          @click="close"></v-btn>
-      </template>
       <WorkExperienceForm
         v-model="state.record"
         @submit="submitForm"
@@ -114,6 +97,19 @@ const state = ref({
   isEditing: false,
   record: {} as IWorkExperience
 })
+
+const toolbarActions = computed(() => [
+  {
+    color: 'primary',
+    variant: 'text',
+    icon: 'mdi-close',
+    onClick: close,
+    otherProps: {
+      'aria-label': 'Close Work Experience Form',
+      size: 'small'
+    }
+  }
+])
 
 function editionMode(isEditing: boolean) {
   state.value.isEditing = isEditing

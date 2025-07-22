@@ -2,6 +2,16 @@ import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
 
 export const useGeneratePDF = () => {
+  interface AdvancedPDFOptions {
+    elementWidth?: string
+    elementHeight?: string
+    pdfFormat?: string | number[]
+    pdfOrientation?: 'portrait' | 'landscape'
+    pdfUnit?: 'pt' | 'mm' | 'cm' | 'in' | 'px'
+    pdfCompress?: boolean
+    margin?: number
+  }
+
   async function generatePDF(elementId: string): Promise<jsPDF | null> {
     const templateElement = document.getElementById(elementId)
 
@@ -87,7 +97,10 @@ export const useGeneratePDF = () => {
   }
 
   // Función alternativa para generar PDF con mejor control de páginas
-  async function generateAdvancedPDF(elementId: string): Promise<jsPDF | null> {
+  async function generateAdvancedPDF(
+    elementId: string,
+    opts: AdvancedPDFOptions = {}
+  ): Promise<jsPDF | null> {
     const templateElement = document.getElementById(elementId)
     if (!templateElement) {
       console.error('No se encontró el elemento del template')
@@ -95,6 +108,17 @@ export const useGeneratePDF = () => {
     }
 
     try {
+      // Desestructurar opciones con valores por defecto
+      const {
+        elementWidth = '190mm',
+        elementHeight = 'auto',
+        pdfFormat = 'a4',
+        pdfOrientation = 'portrait',
+        pdfUnit = 'mm',
+        pdfCompress = true,
+        margin = 15
+      } = opts
+
       // Configurar elemento para impresión
       const originalStyles = {
         width: templateElement.style.width,
@@ -103,15 +127,15 @@ export const useGeneratePDF = () => {
       }
 
       const clonedElement = templateElement.cloneNode(true) as HTMLElement
-      clonedElement.style.width = '190mm'
-      clonedElement.style.maxWidth = '190mm'
-      clonedElement.style.height = 'auto'
+      clonedElement.style.width = elementWidth
+      clonedElement.style.maxWidth = elementWidth
+      clonedElement.style.height = elementHeight
       document.body.appendChild(clonedElement)
 
       const canvas = await html2canvas(clonedElement, {
         useCORS: true,
         allowTaint: true,
-        scale: 3, // Mayor escala para mejor calidad
+        scale: 3,
         backgroundColor: '#ffffff',
         logging: false,
         removeContainer: true,
@@ -123,15 +147,14 @@ export const useGeneratePDF = () => {
       Object.assign(clonedElement.style, originalStyles)
 
       const pdf = new jsPDF({
-        orientation: 'portrait',
-        unit: 'mm',
-        format: 'a4',
-        compress: true
+        orientation: pdfOrientation,
+        unit: pdfUnit,
+        format: pdfFormat,
+        compress: pdfCompress
       })
 
       const pdfWidth = pdf.internal.pageSize.getWidth()
       const pdfHeight = pdf.internal.pageSize.getHeight()
-      const margin = 15
       const contentWidth = pdfWidth - 2 * margin
       const contentHeight = pdfHeight - 2 * margin
 
@@ -181,7 +204,7 @@ export const useGeneratePDF = () => {
               'JPEG',
               margin,
               margin,
-              imgWidth,
+              contentWidth,
               pageImgHeight
             )
           }

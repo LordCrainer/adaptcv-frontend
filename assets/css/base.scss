@@ -23,3 +23,10 @@
 .fill-width {
   width: 100%;
 }
+
+@media print {
+  .page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+}

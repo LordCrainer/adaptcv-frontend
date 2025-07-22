@@ -86,8 +86,118 @@ export const useGeneratePDF = () => {
     }
   }
 
+  // Función alternativa para generar PDF con mejor control de páginas
+  async function generateAdvancedPDF(elementId: string): Promise<jsPDF | null> {
+    const templateElement = document.getElementById(elementId)
+    if (!templateElement) {
+      console.error('No se encontró el elemento del template')
+      return null
+    }
+
+    try {
+      // Configurar elemento para impresión
+      const originalStyles = {
+        width: templateElement.style.width,
+        height: templateElement.style.height,
+        maxWidth: templateElement.style.maxWidth
+      }
+
+      const clonedElement = templateElement.cloneNode(true) as HTMLElement
+      clonedElement.style.width = '190mm'
+      clonedElement.style.maxWidth = '190mm'
+      clonedElement.style.height = 'auto'
+      document.body.appendChild(clonedElement)
+
+      const canvas = await html2canvas(clonedElement, {
+        useCORS: true,
+        allowTaint: true,
+        scale: 3, // Mayor escala para mejor calidad
+        backgroundColor: '#ffffff',
+        logging: false,
+        removeContainer: true,
+        width: clonedElement.scrollWidth,
+        height: clonedElement.scrollHeight
+      })
+
+      // Restaurar estilos originales
+      Object.assign(clonedElement.style, originalStyles)
+
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4',
+        compress: true
+      })
+
+      const pdfWidth = pdf.internal.pageSize.getWidth()
+      const pdfHeight = pdf.internal.pageSize.getHeight()
+      const margin = 15
+      const contentWidth = pdfWidth - 2 * margin
+      const contentHeight = pdfHeight - 2 * margin
+
+      // Calcular dimensiones
+      const imgWidth = contentWidth
+      const imgHeight = (canvas.height * contentWidth) / canvas.width
+
+      if (imgHeight <= contentHeight) {
+        // Contenido cabe en una página
+        const imgData = canvas.toDataURL('image/jpeg', 0.95)
+        pdf.addImage(imgData, 'JPEG', margin, margin, imgWidth, imgHeight)
+      } else {
+        // Dividir en múltiples páginas con mejor algoritmo
+        const totalPages = Math.ceil(imgHeight / contentHeight)
+        const pageHeight = canvas.height / totalPages
+
+        for (let i = 0; i < totalPages; i++) {
+          if (i > 0) pdf.addPage()
+
+          const sourceY = i * pageHeight
+          const sourceHeight = Math.min(pageHeight, canvas.height - sourceY)
+
+          // Crear canvas para esta página
+          const pageCanvas = document.createElement('canvas')
+          pageCanvas.width = canvas.width
+          pageCanvas.height = sourceHeight
+
+          const ctx = pageCanvas.getContext('2d')
+          if (ctx) {
+            ctx.drawImage(
+              canvas,
+              0,
+              sourceY,
+              canvas.width,
+              sourceHeight,
+              0,
+              0,
+              canvas.width,
+              sourceHeight
+            )
+
+            const pageImgData = pageCanvas.toDataURL('image/jpeg', 0.95)
+            const pageImgHeight = (sourceHeight * contentWidth) / canvas.width
+
+            pdf.addImage(
+              pageImgData,
+              'JPEG',
+              margin,
+              margin,
+              imgWidth,
+              pageImgHeight
+            )
+          }
+        }
+      }
+
+      return pdf
+    } catch (error) {
+      console.error('Error generando PDF avanzado:', error)
+      return null
+    }
+  }
+
   return {
     generatePDF,
+    generateAdvancedPDF,
     downloadPDF
   }
 }

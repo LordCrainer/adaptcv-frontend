@@ -18,9 +18,11 @@
       </template>
     </v-toolbar>
     <div class="d-flex flex-row">
+      <!-- SIDEBAR -->
       <div
         style="width: 275px; min-width: 275px"
         class="ga-4 text-white d-flex flex-column pa-2">
+        <!-- PROFILE PICTURE -->
         <div class="d-flex flex-column align-center pa-4">
           <div class="border-radius-circle">
             <v-img
@@ -39,6 +41,7 @@
           </p>
         </div>
 
+        <!-- ABOUT ME - SLOGAN -->
         <div class="text-body-2">
           <p class="text-body-1 text-center pa-2 font-weight-bold">Slogan</p>
           <v-divider
@@ -55,6 +58,7 @@
           </div>
         </div>
 
+        <!-- CONTACTS -->
         <div class="text-body-2">
           <p class="text-body-1 text-center pa-2 font-weight-bold">Contact</p>
           <v-divider
@@ -80,7 +84,8 @@
           </template>
         </div>
 
-        <div class="text-body-2">
+        <!-- SKILLS -->
+        <div class="text-body-2 page-break">
           <p class="text-body-1 text-center pa-2 font-weight-bold">
             {{ $t('profile.skills.title') }}
           </p>
@@ -103,6 +108,7 @@
           </div>
         </div>
 
+        <!-- LANGUAGES -->
         <div class="text-body-2">
           <p class="text-body-1 text-center pa-2 font-weight-bold">
             {{ $t('profile.languages.title') }}
@@ -130,8 +136,10 @@
         </div>
       </div>
 
+      <!-- MAIN CONTENT -->
       <div
         class="bg-white own-rounded-bt-24 pa-4 ga-4 d-flex flex-column flex-grow-1">
+        <!-- ABOUT ME - SUMMARY -->
         <div class="d-flex flex-column ga-4">
           <div class="d-flex ga-4 align-center">
             <v-icon size="32" icon="mdi-account-circle" color=""></v-icon>
@@ -151,7 +159,7 @@
             <p class="text-h6">{{ $t('profile.experience.title') }}</p>
           </div>
           <div
-            class="d-flex ga-4 align-center"
+            class="d-flex ga-4 align-center page-break"
             v-for="exp in builderState.workExperience">
             <div class="rounded-divider ml-3"></div>
             <div class="text-caption" style="width: 100%">

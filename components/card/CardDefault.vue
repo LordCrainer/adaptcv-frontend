@@ -16,6 +16,7 @@
     <div class="flex-container flex-card px-4 py-4 fill-height">
       <slot></slot>
     </div>
+    <slot name="footer"></slot>
   </v-card>
 </template>
 

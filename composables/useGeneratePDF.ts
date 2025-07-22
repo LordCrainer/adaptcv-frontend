@@ -108,7 +108,6 @@ export const useGeneratePDF = () => {
     }
 
     try {
-      // Desestructurar opciones con valores por defecto
       const {
         elementWidth = '190mm',
         elementHeight = 'auto',
@@ -119,7 +118,6 @@ export const useGeneratePDF = () => {
         margin = 15
       } = opts
 
-      // Configurar elemento para impresión
       const originalStyles = {
         width: templateElement.style.width,
         height: templateElement.style.height,
@@ -143,8 +141,8 @@ export const useGeneratePDF = () => {
         height: clonedElement.scrollHeight
       })
 
-      // Restaurar estilos originales
       Object.assign(clonedElement.style, originalStyles)
+      clonedElement.remove()
 
       const pdf = new jsPDF({
         orientation: pdfOrientation,

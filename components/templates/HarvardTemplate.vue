@@ -9,7 +9,10 @@ const { formatDateRange } = useFormatDate()
 const { builderState } = storeToRefs(builderStore)
 
 const location = computed(() => {
-  return getLocation(builderState.value.userProfile?.city, builderState.value.userProfile?.country)
+  return getLocation(
+    builderState.value.userProfile?.city,
+    builderState.value.userProfile?.country
+  )
 })
 
 function getLocation(...args: (string | undefined)[]) {
@@ -20,14 +23,13 @@ function getLocation(...args: (string | undefined)[]) {
 <template>
   <v-card
     max-width="800"
-    border
     width="100%"
     class="mx-auto flex-card flex-container pa-4 text-caption">
-    <v-card-title class="text-h5 font-weight-bold text-center pb-0">
+    <v-card-title class="text-h5 font-weight-bold text-center pb-0 page-break">
       {{ builderState.userProfile?.name }}
     </v-card-title>
 
-    <v-card-item class="text-center">
+    <v-card-item class="text-center page-break">
       {{ location }} -
       <a
         :href="builderState.userProfile?.socialMedia?.linkedin"
@@ -43,7 +45,7 @@ function getLocation(...args: (string | undefined)[]) {
       {{ builderState.aboutMe?.summary }}
     </v-card-item>
 
-    <v-card-item>
+    <v-card-item class="page-break">
       <div class="text-body-2 font-weight-bold">
         {{ $t('profile.experience.title') }}
       </div>
@@ -82,12 +84,16 @@ function getLocation(...args: (string | undefined)[]) {
         </v-row>
       </v-col>
     </v-card-item>
-    <v-card-item>
+
+    <v-card-item class="page-break">
       <div class="text-body-2 font-weight-bold">
         {{ $t('profile.education.title') }}
       </div>
       <v-divider></v-divider>
-      <v-row v-for="(edu, index) in builderState.education" :key="index" class="pa-4">
+      <v-row
+        v-for="(edu, index) in builderState.education"
+        :key="index"
+        class="pa-4">
         <v-col cols="8" md="8" class="py-2 px-0">
           <p class="font-weight-bold">
             {{ edu.institution }}
@@ -107,7 +113,7 @@ function getLocation(...args: (string | undefined)[]) {
         </v-col>
       </v-row>
     </v-card-item>
-    <v-card-item>
+    <v-card-item class="page-break">
       <div class="text-body-2 font-weight-bold">
         {{ $t('profile.skills.title') }}
       </div>
@@ -124,7 +130,7 @@ function getLocation(...args: (string | undefined)[]) {
         </v-col>
       </v-row>
     </v-card-item>
-    <v-card-item>
+    <v-card-item class="page-break">
       <div class="text-body-2 font-weight-bold">
         {{ $t('profile.languages.title') }}
       </div>
@@ -132,7 +138,9 @@ function getLocation(...args: (string | undefined)[]) {
       <v-row class="pa-4">
         <v-col cols="8" md="8">
           <ul>
-            <li v-for="(language, index) in builderState.languages" :key="index">
+            <li
+              v-for="(language, index) in builderState.languages"
+              :key="index">
               {{ language.name }} ({{ language.proficiency }})
             </li>
           </ul>

@@ -115,7 +115,7 @@ export const useGeneratePDF = () => {
         pdfOrientation = 'portrait',
         pdfUnit = 'mm',
         pdfCompress = true,
-        margin = 15
+        margin = 0
       } = opts
 
       const originalStyles = {
@@ -165,15 +165,16 @@ export const useGeneratePDF = () => {
         const imgData = canvas.toDataURL('image/jpeg', 0.95)
         pdf.addImage(imgData, 'JPEG', margin, margin, imgWidth, imgHeight)
       } else {
-        // Dividir en múltiples páginas con mejor algoritmo
-        const totalPages = Math.ceil(imgHeight / contentHeight)
-        const pageHeight = canvas.height / totalPages
+        // Dividir en páginas usando la altura mm de contentHeight mapeada a píxeles
+        const pxPerMm = canvas.width / contentWidth
+        const pageHeightPx = Math.floor(contentHeight * pxPerMm)
+        const totalPages = Math.ceil(canvas.height / pageHeightPx)
 
         for (let i = 0; i < totalPages; i++) {
           if (i > 0) pdf.addPage()
 
-          const sourceY = i * pageHeight
-          const sourceHeight = Math.min(pageHeight, canvas.height - sourceY)
+          const sourceY = i * pageHeightPx
+          const sourceHeight = Math.min(pageHeightPx, canvas.height - sourceY)
 
           // Crear canvas para esta página
           const pageCanvas = document.createElement('canvas')

@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column">
+  <div class="d-flex flex-column ga-4">
     <v-card max-width="800" width="100%" class="mx-auto pa-4 text-caption">
       <v-card-title>
         <div class="text-h5 font-weight-bold text-center pb-0">

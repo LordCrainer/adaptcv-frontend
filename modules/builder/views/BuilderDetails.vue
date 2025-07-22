@@ -37,39 +37,33 @@ import CardDefault from '~/components/card/CardDefault.vue'
 const builderStore = useBuilderStore()
 const { hasChanges } = useObject()
 const { builderState } = storeToRefs(builderStore)
-const { getBuilderById, updateBuilder, updateSection } = useBuilder()
+const { updateBuilder } = useBuilder()
 
 const route = useRoute()
 const builderId = ref(route.params.builderId)
 const builderStateTemp = ref<IBuilder>()
 
-function onNameBlur() {
+async function onNameBlur() {
   if (
     builderStateTemp.value &&
     builderStateTemp.value.name !== builderState.value.name
   ) {
-    updateBuilder(builderId.value as string, {
+    await updateBuilder(builderId.value as string, {
       name: builderState.value.name
     })
-    // sync temp state
     builderStateTemp.value = { ...builderState.value }
   }
 }
 
 onMounted(async () => {
   const builderId = route.params.builderId
-  if (builderId && typeof builderId === 'string') {
-    await getBuilderById(builderId)
+  if (builderState.value._id === builderId) {
     builderStateTemp.value = { ...builderState.value }
   }
 })
-
-onUnmounted(() => {
+onBeforeUnmount(async () => {
   if (hasChanges(builderState.value, builderStateTemp.value)) {
-    const id = builderId.value
-    if (id && typeof id === 'string') {
-      updateBuilder(id, builderState.value)
-    }
+    await updateBuilder(builderId.value as string, builderState.value)
   }
 })
 </script>

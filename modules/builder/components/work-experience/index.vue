@@ -48,7 +48,9 @@
     transition="dialog-transition">
     <CardDefault
       :title="
-        state.isEditing ? 'profile.experience.edit' : 'profile.experience.add'
+        $t(state.isEditing ? 'actions.edit' : 'actions.add') +
+        ' ' +
+        $t('profile.experience.title')
       ">
       <template #right-items>
         <v-btn

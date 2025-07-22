@@ -91,7 +91,6 @@ import {
 import type { IBuilder } from '@lordcrainer/adaptcv-shared-types'
 import { watch } from 'vue'
 import { useRouter } from 'vue-router'
-import { useTranslationApi } from '~/composables/useTranslationApi'
 
 const BuilderDetails = defineAsyncComponent(
   () => import('~/modules/builder/views/BuilderDetails.vue')
@@ -106,11 +105,10 @@ const BuilderForm = defineAsyncComponent(
   () => import('~/modules/builder/components/BuilderForm.vue')
 )
 
-const { translate } = useTranslationApi()
 const route = useRoute()
 const router = useRouter()
 const { t } = useI18n()
-const { updateBuilder, builderState } = useBuilder()
+const { updateBuilder, builderState, getBuilderById } = useBuilder()
 
 // PDF Composable
 const { downloadTemplatePDF, clearError } = useBuilderPdfGenerator()
@@ -122,7 +120,6 @@ const { registerActionHandler, getToolbarActions, currentTab } =
 
 // State
 const openDialog = ref(false)
-const showTranslationDialog = ref(false)
 const builderId = computed(() => route.params.builderId as string)
 
 // Computed properties
@@ -173,11 +170,16 @@ async function handleSubmit(builder: IBuilder) {
 }
 
 // Register toolbar action handlers
-onMounted(() => {
+onMounted(async () => {
+  const builderId = route.params.builderId as string
+  if (builderId && typeof builderId === 'string') {
+    await getBuilderById(builderId)
+  }
+
   // Save action
   registerActionHandler('save', async () => {
     try {
-      await updateBuilder(builderId.value, builderState.value)
+      await updateBuilder(builderId, builderState.value)
       console.log('Saved successfully')
     } catch (error) {
       console.error('Error saving:', error)

@@ -5,7 +5,8 @@ const profile: TranslationKeys['profile'] = {
   title: 'CV Settings',
   namePlaceholder: 'CV Title',
   personalInfo: {
-    title: 'Personal Information',
+    contactInfo: 'Contact Information',
+    title: 'Information',
     fullname: 'Full Name',
     areaProfession: 'Area of Profession',
     areaProfessionPlaceholder: 'Select an area of profession',
@@ -18,7 +19,10 @@ const profile: TranslationKeys['profile'] = {
     country: 'Country',
     builder: 'Builder',
     aboutMe: 'About Me',
-    uploadPhoto: 'Upload Photo'
+    uploadPhoto: 'Upload Photo',
+    github: 'GitHub',
+    linkedin: 'LinkedIn',
+    website: 'Website'
   },
   aboutMe: {
     title: 'About Me',
@@ -48,7 +52,8 @@ const profile: TranslationKeys['profile'] = {
     undergraduate: 'Undergraduate',
     graduate: 'Graduate',
     masters: 'Masters',
-    doctorate: 'Doctorate'
+    doctorate: 'Doctorate',
+    addAriaLabel: 'Add education'
   },
   skills: {
     title: 'Skills',
@@ -81,7 +86,8 @@ const builder: TranslationKeys['builder'] = {
   description: 'Description',
   template: 'Template',
   id: 'ID',
-  sections: 'Sections'
+  sections: 'Sections',
+  selectTemplate: 'Select Template',
 }
 
 const baseEntity: TranslationKeys['baseEntity'] = {
@@ -135,6 +141,7 @@ export default defineI18nLocale(async () => {
       exportPdf: 'Download PDF',
       downloadPdf: 'Download PDF',
       exportCSV: 'Download CSV',
+      translate: 'Translate',
     },
     common: {
       home: 'Home',

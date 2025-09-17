@@ -1,18 +1,9 @@
 <template>
   <CardDefault
-    title="profile.education.title"
+    :title="$t('profile.education.title')"
     min-height="400px"
+    :toolbar-actions="toolbarActions"
     class="d-flex flex-column">
-    <template #right-items>
-      <v-btn
-        color="secondary"
-        variant="outlined"
-        prepend-icon="mdi-plus"
-        aria-label="Add Work Experience"
-        @click="add">
-        {{ $t('actions.add') }}
-      </v-btn>
-    </template>
     <v-card flat border class="rounded-md fill-height">
       <v-data-table
         :headers="headers"
@@ -36,13 +27,29 @@
     </v-card>
 
     <v-dialog v-model="state.openDialog" max-width="500px">
-      <EducationForm
-        :title="`${state.isEditing ? 'Edit' : 'Add'} an Education`"
-        :inputData="state.record"
-        @submit="submitForm"
-        @cancel="reset"
-        @close="close"
-        v-if="state.openDialog"></EducationForm>
+      <CardDefault
+        :title="
+          $t(state.isEditing ? 'actions.edit' : 'actions.add') +
+          ' ' +
+          $t('profile.education.title')
+        "
+        :toolbar-actions="[
+          {
+            color: 'primary',
+            variant: 'text',
+            icon: 'mdi-close',
+            onClick: close,
+            otherProps: { 'aria-label': 'Close Education Form' }
+          }
+        ]">
+        <EducationForm
+          :title="`${state.isEditing ? 'Edit' : 'Add'} an Education`"
+          :inputData="state.record"
+          @submit="submitForm"
+          @cancel="reset"
+          @close="close"
+          v-if="state.openDialog"></EducationForm>
+      </CardDefault>
     </v-dialog>
   </CardDefault>
 </template>
@@ -85,6 +92,19 @@ const educations = computed(() => {
     endDate: standardFormatDate(exp.endDate)
   }))
 })
+
+const toolbarActions = computed(() => [
+  {
+    label: t('actions.add'),
+    color: 'secondary',
+    variant: 'outlined',
+    otherProps: {
+      'aria-label': t('profile.education.addAriaLabel'),
+      prependIcon: 'mdi-plus'
+    },
+    onClick: add
+  }
+])
 
 const add = () => {
   editionMode(true)

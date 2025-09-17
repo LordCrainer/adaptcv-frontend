@@ -3,36 +3,47 @@
     class="mx-auto"
     width="100%"
     :color="global.name.value === 'dark' ? 'grey-darken-4' : color">
-    <div class="pa-4 d-flex">
-      <slot name="left-items"></slot>
-      <slot name="title">
-        <span class="text-h6 font-weight-black text-primary">
-          {{ $t(title) }}
-        </span>
-      </slot>
-      <v-spacer></v-spacer>
-      <slot name="right-items"></slot>
-    </div>
-    <div class="pa-4 fill-height">
+    <v-toolbar flat color="transparent" class="px-4">
+      <v-toolbar-title class="text-h6 font-weight-black text-primary">
+        {{ title }}
+      </v-toolbar-title>
+      <v-spacer />
+      <template v-for="(action, i) in toolbarActions" :key="i">
+        <v-btn
+          :color="action.color"
+          :icon="action.icon"
+          :text="action.label"
+          :variant="action.variant || 'flat'"
+          :disabled="action.disabled?.value"
+          :loading="action.loading?.value"
+          v-bind="action.otherProps"
+          @click="action.onClick"></v-btn>
+      </template>
+    </v-toolbar>
+    <div class="flex-container flex-card px-4 py-4 fill-height">
       <slot></slot>
     </div>
   </v-card>
 </template>
 
 <script setup lang="ts">
+import { label } from 'happy-dom/lib/PropertySymbol.js'
 import { useTheme } from 'vuetify'
 
 const { global } = useTheme()
 
-defineProps({
-  title: {
-    type: String,
-    required: true
-  },
-  icon: String,
-  color: {
-    type: String,
-    default: 'white'
-  }
+interface Props {
+  title: string
+  color?: string
+  icon?: string
+  toolbarActions?: any[]
+  footerActions?: any[]
+}
+
+withDefaults(defineProps<Props>(), {
+  icon: 'mdi-help-circle',
+  color: 'white',
+  toolbarActions: () => [],
+  footerActions: () => []
 })
 </script>

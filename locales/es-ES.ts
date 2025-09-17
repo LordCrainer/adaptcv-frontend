@@ -5,7 +5,8 @@ const profile: TranslationKeys['profile'] = {
   title: 'Configuración del currículum',
   namePlaceholder: 'Título del currículum',
   personalInfo: {
-    title: 'Información personal',
+    contactInfo: 'Información de contacto',
+    title: 'Información',
     fullname: 'Nombre completo',
     areaProfession: 'Área de profesión',
     areaProfessionPlaceholder: 'Selecciona un área de profesión',
@@ -18,7 +19,10 @@ const profile: TranslationKeys['profile'] = {
     country: 'País',
     builder: 'Rellena la información',
     aboutMe: 'Acerca de mí',
-    uploadPhoto: 'Subir foto'
+    uploadPhoto: 'Subir foto',
+    github: 'GitHub',
+    linkedin: 'LinkedIn',
+    website: 'Sitio web'
   },
   aboutMe: {
     title: 'Acerca de mí',
@@ -48,7 +52,8 @@ const profile: TranslationKeys['profile'] = {
     undergraduate: 'Licenciatura',
     graduate: 'Posgrado',
     masters: 'Maestría',
-    doctorate: 'Doctorado'
+    doctorate: 'Doctorado',
+    addAriaLabel: 'Agregar educación'
   },
   skills: {
     title: 'Habilidades',
@@ -81,7 +86,8 @@ const builder: TranslationKeys['builder'] = {
   description: 'Descripción',
   template: 'Plantilla',
   id: 'ID',
-  sections: 'Secciones'
+  sections: 'Secciones',
+  selectTemplate: 'Selecciona una plantilla'
 }
 
 const baseEntity: TranslationKeys['baseEntity'] = {
@@ -120,7 +126,8 @@ const actions: TranslationKeys['actions'] = {
   download: 'Descargar',
   exportPdf: 'Exportar PDF',
   downloadPdf: 'Descargar PDF',
-  exportCSV: 'Exportar CSV'
+  exportCSV: 'Exportar CSV',
+  translate: 'Traducir'
 }
 
 const generatePDF: TranslationKeys['generatePDF'] = {

@@ -2,7 +2,8 @@ import type {
   yearsOfExperience,
   ISkill
 } from '@lordcrainer/adaptcv-shared-types'
-import { useBuilderStore } from '~/modules/builder/store/builder.store'
+import { useBuilder } from '~/modules/builder/composables/useBuilder'
+import { computed } from 'vue'
 
 const SKILLS_LIST = ref(
   [
@@ -52,31 +53,27 @@ const DEFAULT_SKILL_ITEM: ISkill = {
 const MAX_SKILLS = 10
 
 export const useSkill = () => {
-  const builderStore = useBuilderStore()
-  const skills = computed(() => builderStore.builderState.skills || [])
+  const { builderState, updateSection } = useBuilder()
+  const skills = computed(() => builderState.value.skills || [])
 
   const removeSkill = (index: number) => {
     const updated = skills.value.filter((_, i) => i !== index)
-    builderStore.updateSection('skills', updated)
+    updateSection('skills', updated)
   }
 
   const addSkill = (skill: ISkill) => {
-    if (skills.value.length >= MAX_SKILLS) {
-      return
-    }
+    if (skills.value.length >= MAX_SKILLS) return
     const updated = [...skills.value, skill]
-    builderStore.updateSection('skills', updated)
+    updateSection('skills', updated)
   }
 
   const updateSkill = (index: number, skill: ISkill) => {
     const updated = skills.value.map((item, i) => (i === index ? skill : item))
-    builderStore.updateSection('skills', updated)
+    updateSection('skills', updated)
   }
 
   const upsertSkill = (data: ISkill) => {
-    if (!data.skill) {
-      return
-    }
+    if (!data.skill) return
     const index = findIndexBySkill(data.skill)
     if (index !== -1) {
       updateSkill(index, data)
@@ -85,13 +82,9 @@ export const useSkill = () => {
     }
   }
 
-  const findIndexBySkill = (skill: string): number => {
-    return skills.value.findIndex((item) => item.skill === skill)
-  }
+  const findIndexBySkill = (skill: string): number => skills.value.findIndex((item) => item.skill === skill)
 
-  const findSkill = (skill: string): ISkill | undefined => {
-    return skills.value.find((item) => item.skill === skill)
-  }
+  const findSkill = (skill: string): ISkill | undefined => skills.value.find((item) => item.skill === skill)
 
   return {
     upsertSkill,

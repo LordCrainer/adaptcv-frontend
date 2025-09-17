@@ -93,20 +93,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRules } from '~/composables/useRules'
-import { useAuthWrapper } from '../composables/useAuthWrapper'
-import { useAuthStore } from '../store/auth.store'
+import { useAuth } from '../composables/useAuth'
 
 const router = useRouter()
-const { isLoading } = useAuthStore()
-const { login } = useAuthWrapper()
+const { isLoading, login, error } = useAuth()
 const rules = useRules()
 const form = ref()
 
-const formData = ref({
-  email: '',
-  password: '',
-  remember: false
-})
+const formData = ref({ email: '', password: '', remember: false })
 
 const showPassword = ref(false)
 
@@ -117,11 +111,15 @@ function forgotPassword() {
 
 async function submit() {
   if (form.value?.isValid) {
-    await login({
-      email: formData.value.email,
-      password: formData.value.password
-    })
-    await router.push('/')
+    try {
+      await login({
+        email: formData.value.email,
+        password: formData.value.password
+      })
+      await router.push('/')
+    } catch {
+      console.error('Login failed:', error.value)
+    }
   } else {
     console.error('Form is invalid')
   }

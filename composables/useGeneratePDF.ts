@@ -2,6 +2,16 @@ import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
 
 export const useGeneratePDF = () => {
+  interface AdvancedPDFOptions {
+    elementWidth?: string
+    elementHeight?: string
+    pdfFormat?: string | number[]
+    pdfOrientation?: 'portrait' | 'landscape'
+    pdfUnit?: 'pt' | 'mm' | 'cm' | 'in' | 'px'
+    pdfCompress?: boolean
+    margin?: number
+  }
+
   async function generatePDF(elementId: string): Promise<jsPDF | null> {
     const templateElement = document.getElementById(elementId)
 
@@ -86,8 +96,130 @@ export const useGeneratePDF = () => {
     }
   }
 
+  // Función alternativa para generar PDF con mejor control de páginas
+  async function generateAdvancedPDF(
+    elementId: string,
+    opts: AdvancedPDFOptions = {}
+  ): Promise<jsPDF | null> {
+    const templateElement = document.getElementById(elementId)
+    if (!templateElement) {
+      console.error('No se encontró el elemento del template')
+      return null
+    }
+
+    try {
+      const {
+        elementWidth = '190mm',
+        elementHeight = 'auto',
+        pdfFormat = 'a4',
+        pdfOrientation = 'portrait',
+        pdfUnit = 'mm',
+        pdfCompress = true,
+        margin = 0
+      } = opts
+
+      const originalStyles = {
+        width: templateElement.style.width,
+        height: templateElement.style.height,
+        maxWidth: templateElement.style.maxWidth
+      }
+
+      const clonedElement = templateElement.cloneNode(true) as HTMLElement
+      clonedElement.style.width = elementWidth
+      clonedElement.style.maxWidth = elementWidth
+      clonedElement.style.height = elementHeight
+      document.body.appendChild(clonedElement)
+
+      const canvas = await html2canvas(clonedElement, {
+        useCORS: true,
+        allowTaint: true,
+        scale: 3,
+        backgroundColor: '#ffffff',
+        logging: false,
+        removeContainer: true,
+        width: clonedElement.scrollWidth,
+        height: clonedElement.scrollHeight
+      })
+
+      Object.assign(clonedElement.style, originalStyles)
+      clonedElement.remove()
+
+      const pdf = new jsPDF({
+        orientation: pdfOrientation,
+        unit: pdfUnit,
+        format: pdfFormat,
+        compress: pdfCompress
+      })
+
+      const pdfWidth = pdf.internal.pageSize.getWidth()
+      const pdfHeight = pdf.internal.pageSize.getHeight()
+      const contentWidth = pdfWidth - 2 * margin
+      const contentHeight = pdfHeight - 2 * margin
+
+      // Calcular dimensiones
+      const imgWidth = contentWidth
+      const imgHeight = (canvas.height * contentWidth) / canvas.width
+
+      if (imgHeight <= contentHeight) {
+        // Contenido cabe en una página
+        const imgData = canvas.toDataURL('image/jpeg', 0.95)
+        pdf.addImage(imgData, 'JPEG', margin, margin, imgWidth, imgHeight)
+      } else {
+        // Dividir en páginas usando la altura mm de contentHeight mapeada a píxeles
+        const pxPerMm = canvas.width / contentWidth
+        const pageHeightPx = Math.floor(contentHeight * pxPerMm)
+        const totalPages = Math.ceil(canvas.height / pageHeightPx)
+
+        for (let i = 0; i < totalPages; i++) {
+          if (i > 0) pdf.addPage()
+
+          const sourceY = i * pageHeightPx
+          const sourceHeight = Math.min(pageHeightPx, canvas.height - sourceY)
+
+          // Crear canvas para esta página
+          const pageCanvas = document.createElement('canvas')
+          pageCanvas.width = canvas.width
+          pageCanvas.height = sourceHeight
+
+          const ctx = pageCanvas.getContext('2d')
+          if (ctx) {
+            ctx.drawImage(
+              canvas,
+              0,
+              sourceY,
+              canvas.width,
+              sourceHeight,
+              0,
+              0,
+              canvas.width,
+              sourceHeight
+            )
+
+            const pageImgData = pageCanvas.toDataURL('image/jpeg', 0.95)
+            const pageImgHeight = (sourceHeight * contentWidth) / canvas.width
+
+            pdf.addImage(
+              pageImgData,
+              'JPEG',
+              margin,
+              margin,
+              contentWidth,
+              pageImgHeight
+            )
+          }
+        }
+      }
+
+      return pdf
+    } catch (error) {
+      console.error('Error generando PDF avanzado:', error)
+      return null
+    }
+  }
+
   return {
     generatePDF,
+    generateAdvancedPDF,
     downloadPDF
   }
 }

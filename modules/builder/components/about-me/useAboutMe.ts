@@ -1,5 +1,6 @@
 import type { IAboutMe } from '@lordcrainer/adaptcv-shared-types'
-import { useBuilderStore } from '~/modules/builder/store/builder.store'
+import { useBuilder } from '~/modules/builder/composables/useBuilder'
+import { computed } from 'vue'
 import type { IFileImage } from '~/types/global'
 
 const DEFAULT_ABOUT_ME: IAboutMe = {
@@ -11,27 +12,19 @@ const DEFAULT_ABOUT_ME: IAboutMe = {
 }
 
 export const useAboutMe = () => {
-  const builderStore = useBuilderStore()
+  const { builderState, updateSection } = useBuilder()
 
   const aboutMe = computed({
-    get: () => builderStore.builderState.aboutMe || { ...DEFAULT_ABOUT_ME },
-    set: (value) => {
-      builderStore.updateSection('aboutMe', value)
-    }
+    get: () => builderState.value.aboutMe || { ...DEFAULT_ABOUT_ME },
+    set: (value) => updateSection('aboutMe', value)
   })
 
-  const setAboutMe = (data: IAboutMe) => {
-    aboutMe.value = data
-  }
+  const setAboutMe = (data: IAboutMe) => { aboutMe.value = data }
 
-  const getAboutMe = () => {
-    return aboutMe.value
-  }
+  const getAboutMe = () => aboutMe.value
 
   const setAboutMeLogo = (logo: IFileImage) => {
-    if (logo.src) {
-      aboutMe.value.logo = logo
-    }
+    if (logo.src) aboutMe.value.logo = logo
   }
 
   return {

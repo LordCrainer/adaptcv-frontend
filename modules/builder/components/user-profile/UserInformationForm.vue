@@ -91,6 +91,39 @@
       v-model="formData.profession"
       autocomplete
       aria-label="Profession"></v-select>
+    <v-text-field
+      @blur="updateFormData"
+      density="comfortable"
+      v-model="formData.socialMedia!.github"
+      icon-color="primary"
+      prepend-inner-icon="mdi-github"
+      :label="$t('profile.personalInfo.github')"
+      placeholder="https://github.com/username"
+      active
+      variant="outlined"
+      aria-label="GitHub"></v-text-field>
+    <v-text-field
+      @blur="updateFormData"
+      density="comfortable"
+      v-model="formData.socialMedia!.linkedin"
+      icon-color="primary"
+      prepend-inner-icon="mdi-linkedin"
+      :label="$t('profile.personalInfo.linkedin')"
+      placeholder="https://linkedin.com/in/username"
+      active
+      variant="outlined"
+      aria-label="LinkedIn"></v-text-field>
+    <v-text-field
+      @blur="updateFormData"
+      density="comfortable"
+      v-model="formData.socialMedia!.website"
+      icon-color="primary"
+      prepend-inner-icon="mdi-web"
+      :label="$t('profile.personalInfo.website')"
+      placeholder="https://example.com"
+      active
+      variant="outlined"
+      aria-label="Website"></v-text-field>
   </v-form>
 </template>
 <script lang="ts" setup>
@@ -118,7 +151,11 @@ const form = ref()
 
 const formData = ref<IUserProfile>({
   ...DEFAULT_USER_PROFILE,
-  ...props.modelValue
+  ...props.modelValue,
+  socialMedia: {
+    ...DEFAULT_USER_PROFILE.socialMedia,
+    ...props.modelValue.socialMedia
+  }
 })
 const oldData = ref<IUserProfile>({
   ...props.modelValue
@@ -128,7 +165,14 @@ watch(
   () => props.modelValue,
   (newVal) => {
     if (hasChanges(newVal, formData.value)) {
-      formData.value = { ...DEFAULT_USER_PROFILE, ...newVal }
+      formData.value = {
+        ...DEFAULT_USER_PROFILE,
+        ...newVal,
+        socialMedia: {
+          ...DEFAULT_USER_PROFILE.socialMedia,
+          ...newVal.socialMedia
+        }
+      }
       oldData.value = { ...formData.value }
     }
   }
@@ -138,7 +182,7 @@ async function updateFormData() {
   if (!form.value) return
   const { valid } = await form.value.validate()
   if (valid && hasChanges(formData.value, oldData.value)) {
-    oldData.value = { ...formData.value }
+    oldData.value = JSON.parse(JSON.stringify(formData.value))
     emit('update:modelValue', formData.value)
   }
 }

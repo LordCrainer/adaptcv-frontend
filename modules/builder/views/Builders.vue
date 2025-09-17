@@ -12,7 +12,7 @@
   </BuilderToolbar>
   <v-data-table
     :headers="headers"
-    :items="builderStore.builders"
+    :items="builders"
     :items-per-page="5"
     class="elevation-1"
     hide-default-footer
@@ -30,8 +30,22 @@
           size="small"
           variant="text"
           icon
+          @click="preview(item?._id as string)">
+          <v-icon color="primary">mdi-eye</v-icon>
+        </v-btn>
+        <v-btn
+          size="small"
+          variant="text"
+          icon
           @click="edit(item?._id as string)">
           <v-icon color="primary">mdi-pencil</v-icon>
+        </v-btn>
+        <v-btn
+          size="small"
+          variant="text"
+          icon
+          @click="duplicate(item?._id as string)">
+          <v-icon color="secondary">mdi-content-copy</v-icon>
         </v-btn>
         <v-btn
           size="small"
@@ -60,13 +74,16 @@
 <script lang="ts" setup>
 import BuilderToolbar from '~/modules/builder/components/BuilderToolbar.vue'
 import BuilderForm from '../components/BuilderForm.vue'
-import { useBuilderStore } from '~/modules/builder/store/builder.store'
 import { useFormatDate } from '~/composables/useFormatDate'
-import { useBuilderWrapper } from '../composables/useBuilderWrapper'
+import { useBuilder } from '../composables/useBuilder'
 
-const builderStore = useBuilderStore()
-
-const { createBuilder, loadBuilders, deleteBuilder } = useBuilderWrapper()
+const {
+  createBuilder,
+  loadBuilders,
+  deleteBuilder,
+  duplicateBuilder,
+  builders
+} = useBuilder()
 const { formatDate } = useFormatDate()
 
 const state = ref({
@@ -95,15 +112,34 @@ const headers = [
   } as const
 ]
 
+function preview(builderId: string) {
+  if (builderId) {
+    router.push(`/builder/${builderId}?tab=preview`)
+  }
+}
+
 function edit(builderId: string) {
   if (builderId) {
-    router.push(`/builder/${builderId}`)
+    router.push(`/builder/${builderId}?tab=edit`)
   }
 }
 
 async function remove(builderId: string) {
   if (builderId) {
     await deleteBuilder(builderId)
+  }
+}
+
+async function duplicate(builderId: string) {
+  if (builderId) {
+    try {
+      const duplicatedBuilder = await duplicateBuilder(builderId)
+      if (duplicatedBuilder?._id) {
+        router.push(`/builder/${duplicatedBuilder._id}`)
+      }
+    } catch (error) {
+      console.error('Error duplicating builder:', error)
+    }
   }
 }
 

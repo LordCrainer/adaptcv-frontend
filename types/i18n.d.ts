@@ -1,5 +1,6 @@
 interface PersonalInformation {
   title: string
+  contactInfo: string
   fullname: string
   areaProfession: string
   areaProfessionPlaceholder: string
@@ -13,6 +14,9 @@ interface PersonalInformation {
   builder: string
   aboutMe: string
   uploadPhoto: string
+  github: string
+  linkedin: string
+  website: string
 }
 
 interface AboutMe {
@@ -46,6 +50,7 @@ interface Education {
   graduate: string
   masters: string
   doctorate: string
+  addAriaLabel: string
 }
 
 interface Skills {
@@ -101,6 +106,7 @@ interface Actions {
   exportPdf: string
   downloadPdf: string
   exportCSV: string
+  translate: string
 }
 
 interface GeneratePDF {
@@ -147,6 +153,7 @@ interface TranslationKeys {
     description: string
     status: string
     template: string
+    selectTemplate: string
   }
   profile: {
     name: string

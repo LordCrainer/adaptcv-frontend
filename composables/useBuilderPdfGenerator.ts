@@ -31,7 +31,7 @@ const globalPdfState = ref<PdfGenerationState>({
 const globalTemplateConfig = ref<TemplateConfig | null>(null)
 
 export const useBuilderPdfGenerator = () => {
-  const { generatePDF } = useGeneratePDF()
+  const { generateAdvancedPDF } = useGeneratePDF()
 
   const pdfState = globalPdfState
   const templateConfig = globalTemplateConfig
@@ -104,13 +104,7 @@ export const useBuilderPdfGenerator = () => {
       pdfState.value.isGenerating = true
       pdfState.value.error = null
 
-      if (process.env.NODE_ENV === 'development') {
-        console.log(
-          `🔄 Iniciando generación de PDF para template: ${currentTemplate.value}`
-        )
-      }
-
-      const pdf = await generatePDF(elementId)
+      const pdf = await generateAdvancedPDF(elementId)
 
       if (!pdf) {
         throw new Error('Cannot generate PDF: generatePDF returned null')

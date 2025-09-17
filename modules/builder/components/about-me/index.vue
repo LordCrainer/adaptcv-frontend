@@ -1,5 +1,5 @@
 <template>
-  <CardDefault title="profile.aboutMe.title">
+  <CardDefault :title="$t('profile.aboutMe.title')">
     <v-form>
       <v-row>
         <v-col cols="12" md="4" class="d-flex flex-1-0 justify-center">

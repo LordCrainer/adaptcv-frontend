@@ -19,7 +19,10 @@ const profile: TranslationKeys['profile'] = {
     country: 'Country',
     builder: 'Builder',
     aboutMe: 'About Me',
-    uploadPhoto: 'Upload Photo'
+    uploadPhoto: 'Upload Photo',
+    github: 'GitHub',
+    linkedin: 'LinkedIn',
+    website: 'Website'
   },
   aboutMe: {
     title: 'About Me',
@@ -49,7 +52,8 @@ const profile: TranslationKeys['profile'] = {
     undergraduate: 'Undergraduate',
     graduate: 'Graduate',
     masters: 'Masters',
-    doctorate: 'Doctorate'
+    doctorate: 'Doctorate',
+    addAriaLabel: 'Add education'
   },
   skills: {
     title: 'Skills',

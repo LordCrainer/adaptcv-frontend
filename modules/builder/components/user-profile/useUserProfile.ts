@@ -9,14 +9,22 @@ const DEFAULT_USER_PROFILE: IUserProfile = {
   phone: 0,
   phoneCode: 0,
   address: '',
-  image: { src: '' }
+  image: { src: '' },
+  socialMedia: {
+    github: '',
+    linkedin: '',
+    website: ''
+  }
 }
 
 export function useUserProfile() {
   const { builderState, updateSection } = useBuilder()
-  const userProfile = computed(
-    () => builderState.value.userProfile || { ...DEFAULT_USER_PROFILE }
-  )
+  const userProfile = computed({
+    get: () => builderState.value.userProfile || { ...DEFAULT_USER_PROFILE },
+    set: (value: IUserProfile) => {
+      updateSection('userProfile', value)
+    }
+  })
 
   function setUserProfile(data: IUserProfile) {
     updateSection('userProfile', data)

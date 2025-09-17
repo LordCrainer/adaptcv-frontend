@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 import UserInformation from './UserInformation.vue'
-import CardDefault from '~/components/card/CardDefault.vue'
+
 const Skills = defineAsyncComponent(
   () => import('~/modules/builder/components/skills/index.vue')
 )

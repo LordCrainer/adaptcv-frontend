@@ -14,6 +14,9 @@ interface PersonalInformation {
   builder: string
   aboutMe: string
   uploadPhoto: string
+  github: string
+  linkedin: string
+  website: string
 }
 
 interface AboutMe {
@@ -47,6 +50,7 @@ interface Education {
   graduate: string
   masters: string
   doctorate: string
+  addAriaLabel: string
 }
 
 interface Skills {
